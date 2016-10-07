@@ -5,29 +5,21 @@
 
 
 CREATE OR REPLACE TABLE consultant(
-
-);
-
-CREATE OR REPLACE TABLE absence(
-
-);
-
-CREATE OR REPLACE TABLE cra(
-
-);
-
-CREATE OR REPLACE TABLE notedefrais(
-
+	id number,
+	constraint pk_consultant primary key (id)
 );
 
 CREATE OR REPLACE TABLE client(
-
+	id number,
+	constraint pk_client primary key (id)
 );
 
 CREATE OR REPLACE TABLE mission(
-
+	id number,
+	constraint pk_mission primary key (id)
 );
 
 CREATE OR REPLACE TABLE parametrage(
-	
+	nom varchar2(30) NOT NULL,
+	valeur varchar2(30) NOT NULL
 );
