@@ -3,31 +3,28 @@
 -----------------------------------
 -- A exécuter avec le schéma oifyi
 
+DROP TABLE consultant;
+DROP TABLE client;
+DROP TABLE mission;
+DROP TABLE parametrage;
 
-CREATE OR REPLACE TABLE consultant(
 
+CREATE TABLE consultant(
+	id number,
+	constraint pk_consultant primary key (id)
 );
 
-CREATE OR REPLACE TABLE absence(
-
+CREATE TABLE client(
+	id number,
+	constraint pk_client primary key (id)
 );
 
-CREATE OR REPLACE TABLE cra(
-
+CREATE TABLE mission(
+	id number,
+	constraint pk_mission primary key (id)
 );
 
-CREATE OR REPLACE TABLE notedefrais(
-
-);
-
-CREATE OR REPLACE TABLE client(
-
-);
-
-CREATE OR REPLACE TABLE mission(
-
-);
-
-CREATE OR REPLACE TABLE parametrage(
-	
+CREATE TABLE parametrage(
+	nom varchar2(30) NOT NULL,
+	valeur varchar2(30) NOT NULL
 );
