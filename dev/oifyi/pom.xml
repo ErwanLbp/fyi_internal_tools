@@ -10,6 +10,7 @@
     <inceptionYear>2016</inceptionYear>
     <url>http://maven.apache.org</url>
 
+
     <developers>
         <developer>
             <name>Erwan Le Batard--Polès</name>
@@ -18,6 +19,15 @@
     </developers>
 
 
+    <dependencies>
+        <!--Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.3.Final</version>
+        </dependency>
+        <!--Hibernate end-->
+    </dependencies>
 
 
     <build>
@@ -63,12 +73,13 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--Flyway end-->
         </plugins>
     </build>
 
 
-    <!--Pour enlever une erreur à la compilation-->
     <distributionManagement>
+        <!--Pour enlever une erreur à la compilation-->
         <repository>
             <uniqueVersion>false</uniqueVersion>
             <id>corp1</id>
