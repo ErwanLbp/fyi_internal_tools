@@ -26,6 +26,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.2.3.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.3.0</version>
+        </dependency>
         <!--Hibernate end-->
     </dependencies>
 
@@ -48,22 +53,12 @@
                 <configuration>
                     <user>oifyi</user>
                     <password>oifyi</password>
-                    <url>jdbc:oracle:thin:@127.0.0.1:1521:XE</url>
+                    <url>jdbc:oracle:thin:@127.0.0.1:1521/oifyi</url>
                     <placeholders>
                         <keyABC>valueXYZ</keyABC>
                         <otherplaceholder>value123</otherplaceholder>
                     </placeholders>
-                    <locations>
-                        <location>filesystem:/oracle/sql</location>
-                    </locations>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.oracle</groupId>
-                        <artifactId>ojdbc14</artifactId>
-                        <version>10.2.0.3.0</version>
-                    </dependency>
-                </dependencies>
                 <executions>
                     <execution>
                         <goals>
