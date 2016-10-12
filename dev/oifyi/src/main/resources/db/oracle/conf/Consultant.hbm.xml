@@ -5,8 +5,8 @@
 <hibernate-mapping>
     <class name="main.java.common.Consultant" table="consultant" catalog="oifyi">
         <id name="id" type="java.lang.Integer">
-            <column name="id"/>
-            <generator class="identity"/>
+            <column name="id" not-null="true" unique="true"/>
+            <generator class="increment"/>
         </id>
         <property name="nom" type="java.lang.String">
             <column name="nom" length="30" not-null="true" unique="false"/>

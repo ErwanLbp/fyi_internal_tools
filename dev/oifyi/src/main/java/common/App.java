@@ -15,6 +15,14 @@ public class App {
         consultant.setNom("Alexis");
         consultant.setPrenom("Doan");
 
+        Consultant yasmine = new Consultant();
+        yasmine.setPrenom("Yasmine");
+        yasmine.setNom("Guedjou");
+
+        session.save(consultant);
+        session.saveOrUpdate(yasmine);
+
+        consultant.setNom("Autre");
         session.saveOrUpdate(consultant);
         session.getTransaction().commit();
     }
