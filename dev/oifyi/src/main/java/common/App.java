@@ -25,5 +25,7 @@ public class App {
         consultant.setNom("Autre");
         session.saveOrUpdate(consultant);
         session.getTransaction().commit();
+
+        System.out.println("***** FIN *****");
     }
 }

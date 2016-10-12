@@ -27,13 +27,6 @@
             <version>5.2.3.Final</version>
         </dependency>
         <!--Hibernate end-->
-        <!--Driver Oracle-->
-        <!--<dependency> Normalement on en a pas besoin-->
-            <!--<groupId>com.oracle</groupId>-->
-            <!--<artifactId>ojdbc14</artifactId>-->
-            <!--<version>10.2.0.3.0</version>-->
-        <!--</dependency>-->
-        <!--Driver Oracle end-->
     </dependencies>
 
 
@@ -55,12 +48,21 @@
                 <configuration>
                     <user>oifyi</user>
                     <password>oifyi</password>
-                    <url>jdbc:oracle:thin:@127.0.0.1:1521/oifyi</url>
+                    <url>jdbc:oracle:thin:@127.0.0.1:1521:XE</url>
                     <placeholders>
                         <keyABC>valueXYZ</keyABC>
                         <otherplaceholder>value123</otherplaceholder>
                     </placeholders>
                 </configuration>
+                <!--Driver Oracle-->
+                <dependencies>
+                    <dependency>
+                        <groupId>com.oracle</groupId>
+                        <artifactId>ojdbc14</artifactId>
+                        <version>10.2.0.3.0</version>
+                    </dependency>
+                </dependencies>
+                <!--Driver Oracle end-->
                 <executions>
                     <execution>
                         <goals>
