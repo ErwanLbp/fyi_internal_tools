@@ -26,6 +26,8 @@ public class App {
         session.saveOrUpdate(consultant);
         session.getTransaction().commit();
 
+        session.close();
+
         System.out.println("***** FIN *****");
     }
 }
