@@ -1,11 +1,16 @@
 package main.java.common;
 
 
+import main.java.persistence.CustomFlyway;
 import main.java.persistence.HibernateUtil;
 import org.hibernate.Session;
 
 public class App {
     public static void main(String[] args) {
+
+        // Lancement des migrations Flyway
+        CustomFlyway.migration();
+
         System.out.println("Maven + Hibernate + MySQL");
         Session session = HibernateUtil.getSessionFactory().openSession();
 
