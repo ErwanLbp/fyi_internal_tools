@@ -1,4 +1,4 @@
-package main.java.persistence;
+package persistence;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

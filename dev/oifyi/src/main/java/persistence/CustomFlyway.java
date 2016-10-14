@@ -1,4 +1,4 @@
-package main.java.persistence;
+package persistence;
 
 import org.flywaydb.core.Flyway;
 

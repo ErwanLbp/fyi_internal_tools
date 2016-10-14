@@ -1,8 +1,8 @@
-package main.java.dao;
+package dao;
 
-import main.java.common.Consultant;
-import main.java.persistence.HibernateUtil;
+import common.Consultant;
 import org.hibernate.Session;
+import persistence.HibernateUtil;
 
 import java.util.List;
 

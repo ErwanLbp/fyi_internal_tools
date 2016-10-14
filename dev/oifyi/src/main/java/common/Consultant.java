@@ -1,4 +1,4 @@
-package main.java.common;
+package common;
 
 /**
  * <h1>main.java Consultant</h1>

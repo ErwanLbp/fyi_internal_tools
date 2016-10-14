@@ -1,9 +1,8 @@
-package main.java.common;
+package common;
 
-
-import main.java.persistence.CustomFlyway;
-import main.java.persistence.HibernateUtil;
 import org.hibernate.Session;
+import persistence.CustomFlyway;
+import persistence.HibernateUtil;
 
 public class App {
     public static void main(String[] args) {
