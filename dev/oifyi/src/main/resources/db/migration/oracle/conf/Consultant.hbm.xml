@@ -3,16 +3,13 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="main.java.common.Consultant" table="consultant" catalog="oifyi">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" not-null="true" unique="true"/>
+    <class name="common.Consultant" table="consultant" catalog="oifyi">
+        <id name="id" type="int">
+            <column name="ID" not-null="true" unique="true"/>
             <generator class="increment"/>
         </id>
-        <property name="nom" type="java.lang.String">
-            <column name="nom" length="30" not-null="true" unique="false"/>
-        </property>
-        <property name="prenom" type="java.lang.String">
-            <column name="prenom" length="30" not-null="true" unique="false"/>
-        </property>
+        <property name="nom" type="string" column="NOM" length="30" not-null="true" unique="false"/>
+        <property name="prenom" type="string" column="PRENOM" length="30" not-null="true" unique="false"/>
+        <property name="mail" type="string" column="MAIL" not-null="false" length="30" unique="false"/>
     </class>
 </hibernate-mapping>
