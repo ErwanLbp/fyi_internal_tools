@@ -1,0 +1,11 @@
+tomcat:
+  image: tomcat:8.0-jre8
+  ports:
+    - "8888:8080"
+oracle-xe:
+  image: wnameless/oracle-xe-11g:latest
+  ports:
+    - "49160:22"
+    - "49161:1521"
+java:
+  image: openjdk:8-jdk
