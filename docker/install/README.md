@@ -23,6 +23,6 @@
 - Installer le plugin Docker pour InteliJ IDEA dans **File | Settings... | Plugins | Browse repositories...**, taper _docker_ puis cliquer sur **Install**
 - Appliquer et redémarrer l'IDE
 - Aller ensuite dans **File | Settings... | Build, Execution, Deployment | Clouds**, et créer une configuration **Docker** avec le petit plus vert
-- La configuration doit être la suivante (Bien avoir `docker-compose` comme executable) : ![Screen 1](screen1.png)
+- La configuration doit être la suivante (avec `unix://var/run/docker.sock` comme URL de l'API et `docker-compose` comme executable) : ![Screen 1](screen1.png)
 - Aller dans **Run | Edit configurations...**, et créer une configuration de **Docker Deployment** avec le petit plus vert
 - La configuration doit être la suivante (Bien séléctionner le ficher `docker-compose.yml`) : ![Screen 1](screen2.png)
