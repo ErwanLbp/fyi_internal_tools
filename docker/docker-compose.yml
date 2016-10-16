@@ -1,11 +1,27 @@
-tomcat:
-  image: tomcat:8.0-jre8
-  ports:
-    - "8888:8080"
-oracle-xe:
-  image: wnameless/oracle-xe-11g:latest
-  ports:
-    - "49160:22"
-    - "49161:1521"
-java:
-  image: openjdk:8-jdk
+version: '2'
+services:
+  tomcat:
+    image: tomcat:8.0-jre8
+    ports:
+      - "8888:8080"
+    networks:
+      - front-tier
+      - back-tier
+
+  oracle-xe:
+    image: wnameless/oracle-xe-11g:latest
+    shm_size: 2G
+    ports:
+      - "10022:22"
+      - "11521:1521"
+      - "18080:8080"
+    networks:
+      - back-tier
+    volumes:
+      - ../db:/docker-entrypoint-initdb.d/
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
