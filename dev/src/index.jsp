@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<header>
@@ -17,7 +17,7 @@
       <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profil</a></li>
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
     </ul>
-		</nav>	
+		</nav>
 	</header>
 	<div class="container">
 		coucou
