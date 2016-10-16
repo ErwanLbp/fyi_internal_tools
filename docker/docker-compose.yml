@@ -7,6 +7,8 @@ services:
     networks:
       - front-tier
       - back-tier
+    volumes:
+      - ../out/production/oifyi_ing2:/usr/local/tomcat/webapps/ROOT
 
   oracle-xe:
     image: wnameless/oracle-xe-11g:latest

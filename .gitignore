@@ -1,4 +1,3 @@
-dev/oifyi/.idea/
-dev/oifyi/target/
+.idea/
 out/
 *.iml
