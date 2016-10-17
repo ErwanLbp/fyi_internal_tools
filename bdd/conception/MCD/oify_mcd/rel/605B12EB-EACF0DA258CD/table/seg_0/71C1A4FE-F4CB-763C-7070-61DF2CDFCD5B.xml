@@ -8,7 +8,7 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="cl_id" id="8EDA9603-F1AD-3722-DFE2-617CDE5C1B9B">
+<Column name="id" id="8EDA9603-F1AD-3722-DFE2-617CDE5C1B9B">
 <createdBy>eisti</createdBy>
 <createdTime>2016-10-17 10:01:20 UTC</createdTime>
 <ownerDesignName>oify_mcd</ownerDesignName>
@@ -16,6 +16,219 @@
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="raison_sociale" id="ED083B46-2DEE-73B4-24FA-DD2F6170683E">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:22:02 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="forme_juridique" id="F66DA61A-FDB4-591A-80D5-C76676D38FA2">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:48:22 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="siret" id="0CE71D4A-95A4-6A79-4150-8335C63ADE03">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:56:55 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="num_tva" id="13A4C372-A2E1-F363-6863-13655050F511">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:57:21 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RCS" id="5FA7E46E-C3CF-32BD-102D-D1CBF18B7B05">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:56:55 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_numero" id="8EC8249A-81B9-2EF8-589F-D071800D0356">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:48:22 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_rue" id="92B8916B-6E08-1E42-603F-4E6811B7DEDB">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:48:41 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_cp" id="26D217FC-21E4-CA9A-4F2E-E1F5F9ECC0DA">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:49:48 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_ville" id="1BC83565-C626-3F5C-68A0-27693A04A397">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:49:48 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telephone" id="409E14E7-E6CF-7EF5-A18A-9A961F497B96">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:49:58 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="capital" id="7B427C6B-180D-D765-F9F3-F785D1EA9DB2">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:54:46 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ville_inscription" id="2FB194ED-145F-5E36-CC6F-584D1CB5319F">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:55:50 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="representant_nom" id="A9FE3683-E071-45DF-9EC5-9E615D0DE031">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:51:06 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="representant_fonction" id="6DDCD01F-2911-680A-FA12-79278113A703">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:51:06 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="respo_client_tel" id="52C7DBA6-1E85-70BB-497D-F5E15176589B">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:02:05 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contact_achats_nom" id="CC928647-593D-DC3C-8403-F56322C67ECE">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:02:05 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contact_achats_tel" id="DF66D49B-F5E1-81DE-DA09-CBE358846A96">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:03:49 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="respo_fournisseur_nom" id="10782175-7FDD-9198-A9A9-DAB9D79F23E4">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:10:16 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="respo_fournisseur_fonction" id="A0C58BF8-5F2B-EA6A-DCB6-5401C30AAA76">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:10:51 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="236F470F-B80F-E60F-B6F2-D37087D2B290" name="mission_consultant">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:02:40 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<ordsAlias>table_20</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="consultant_id" id="4A2F5D22-32DA-5A99-2EBA-1C72DD453F3C">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:06:49 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F47797D0-CBD9-B80A-46F9-2442577E6D39" referredColumn="0474BDD1-7AE6-CDC6-FACE-7C8A6E709C4A"/>
+</associations>
+</Column>
+<Column name="mission_id" id="6E4B7DD7-AD14-34AB-CD4B-EBCDA17A5407">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:07:22 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB8C979B-309A-8C23-FA94-5CE0217B1EF0" referredColumn="D8908471-FDD9-0B2F-5D8F-95D462A14E34"/>
+</associations>
+</Column>
+<Column name="prix" id="5F601403-3F47-3DED-6748-E063A054583A">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:05:38 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tjm" id="2BBCD537-8347-EC9C-872A-ED3E20051248">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 16:07:29 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6B7D4E7E-5C0C-6B2B-34F8-E662D6B80F21" name="mission_consultant_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:06:49 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A2F5D22-32DA-5A99-2EBA-1C72DD453F3C"/>
+<colUsage columnID="6E4B7DD7-AD14-34AB-CD4B-EBCDA17A5407"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2EDBA21F-9730-9DBA-E2AD-BF9B7A58148B" name="mission_consultant_mission_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:08:45 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6E4B7DD7-AD14-34AB-CD4B-EBCDA17A5407"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EC309103-8D88-5B77-5F39-27FDB098E19A" name="mission_consultant_consultant_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:08:58 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A2F5D22-32DA-5A99-2EBA-1C72DD453F3C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
