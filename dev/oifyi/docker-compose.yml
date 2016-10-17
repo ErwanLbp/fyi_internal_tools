@@ -8,7 +8,7 @@ services:
       - front-tier
       - back-tier
     volumes:
-      - ../out/production/oifyi_ing2:/usr/local/tomcat/webapps/ROOT
+      - target/production/oifyi_ing2:/usr/local/tomcat/webapps/ROOT #A adapter
 
   oracle-xe:
     image: wnameless/oracle-xe-11g:latest
@@ -20,7 +20,7 @@ services:
     networks:
       - back-tier
     volumes:
-      - ../db:/docker-entrypoint-initdb.d/
+      - ../../db:/docker-entrypoint-initdb.d/ #A adapter
 
   maven:
     image: maven:3-jdk-8
