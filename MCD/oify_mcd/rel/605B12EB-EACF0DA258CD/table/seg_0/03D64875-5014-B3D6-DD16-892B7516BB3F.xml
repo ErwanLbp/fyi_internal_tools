@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="03D64875-5014-B3D6-DD16-892B7516BB3F" name="cra_etat">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 10:06:22 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<ordsAlias>table_5</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ce_id" id="FBF698CB-130F-EB83-BF5F-CE0E90CE6846">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 10:07:21 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2594AE87-6389-2B1B-2B79-83C9C27804E3" name="cra_etat_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 10:07:21 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FBF698CB-130F-EB83-BF5F-CE0E90CE6846"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
