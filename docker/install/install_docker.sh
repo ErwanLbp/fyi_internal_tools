@@ -14,6 +14,8 @@ if [ $proxy -eq 1 ]; then
   # Ask password and username
   echo -n "Password : "
   read -s PASS
+  echo -n "Username : "
+  read -s USER
 
   # Set apt's proxy config
   if [ -e /etc/apt/apt.conf ]; then
