@@ -1,0 +1,1 @@
+Ce dossier contient les fichiers de conception, UML, etc. Et le script de création du schéma, qui est ici car il n'est pas compris compris comme une migration de la base
