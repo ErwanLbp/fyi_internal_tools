@@ -4,6 +4,7 @@
 <html>
 <body>
 <h2>Hello OIFYI!</h2>
+<i>Architecture de la page index : <a href="index_model.jsp">model index</a></i><br/><br/>
 
 <% List<Consultant> lc = TestDao.findAllConsultant();%>
 <table width="200" border="1">
