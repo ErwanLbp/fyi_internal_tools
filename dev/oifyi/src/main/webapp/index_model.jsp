@@ -1,9 +1,9 @@
-
+<!--
 http://oifyi.com/index.jsp?page=consultant&mode=new
 http://oifyi.com/index.jsp?page=administration&mode=alertes
+-->
 
-
-Chercher dans la bdd la ligne de la table mapping_url_fichier avec page='consultant' && mode='new'
+<!--Chercher dans la bdd la ligne de la table mapping_url_fichier avec page='consultant' && mode='new'-->
 
 
 <html>

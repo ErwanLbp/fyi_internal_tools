@@ -8,6 +8,7 @@ services:
       - front-tier
       - back-tier
     volumes:
+      #- target/production/oifyi_ing2:/var/lib/tomcat7/webapps/ROOT
       - target/production/oifyi_ing2:/usr/local/tomcat/webapps/ROOT #A adapter
 
   oracle-xe:
