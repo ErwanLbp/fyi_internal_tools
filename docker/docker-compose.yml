@@ -1,17 +1,19 @@
 version: '2'
+
 services:
+
   tomcat:
-    image: tomcat:8.0-jre8
+    build: ./containers/tomcat
+    image: oifyi_tomcat:latest
     ports:
       - "8888:8080"
     networks:
       - front-tier
       - back-tier
-    volumes:
-      - ../out/production/oifyi_ing2:/usr/local/tomcat/webapps/ROOT
 
   oracle-xe:
-    image: wnameless/oracle-xe-11g:latest
+    build: ./containers/oracle-xe
+    image: oifyi_oracle-xe:latest
     shm_size: 2G
     ports:
       - "10022:22"
@@ -19,11 +21,14 @@ services:
       - "18080:8080"
     networks:
       - back-tier
-    volumes:
-      - ../db:/docker-entrypoint-initdb.d/
 
   maven:
-    image: maven:3-jdk-8
+    build: ../dev
+    image: oifyi_maven:latest
+    networks:
+      - back-tier
+    volumes:
+      - ../dev:/app
 
 networks:
   front-tier:
