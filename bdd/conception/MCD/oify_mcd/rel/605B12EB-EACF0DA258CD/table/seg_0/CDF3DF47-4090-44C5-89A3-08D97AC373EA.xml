@@ -18,6 +18,17 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="nom" id="CE152A7C-2D73-D35E-DE77-E058F5DCA837">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 08:25:05 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 <Column name="numero_contrat" id="5D9371D8-E533-0130-83F7-151231497132">
 <createdBy>eisti</createdBy>
 <createdTime>2016-10-17 15:58:56 UTC</createdTime>
