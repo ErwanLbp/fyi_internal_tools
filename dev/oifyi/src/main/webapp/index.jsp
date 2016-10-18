@@ -21,6 +21,7 @@
     </nav>
 </header>
 <div class="container">
+    <i>Test d'accès à la base de données : <a href="index_test.jsp">Test BDD</a></i><br/><br/>
     coucou
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
