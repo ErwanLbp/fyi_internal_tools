@@ -62,6 +62,19 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="role_id" id="4A29C1D0-B260-C40C-0F1A-98483ED37CA4">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:36:19 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="ABA201AE-069B-9E41-630C-949EB05488E0" referredColumn="4F2EA0C6-3EF7-E4E1-2572-619C7DA4D0A4"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="775BD58D-EDAF-7030-0DFE-2D406D3FDDD8" name="consultant_PK">
@@ -73,6 +86,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="0474BDD1-7AE6-CDC6-FACE-7C8A6E709C4A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="79945282-C983-CB1D-631F-88D471EA3E2E" name="consultant_role_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:36:51 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A29C1D0-B260-C40C-0F1A-98483ED37CA4"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

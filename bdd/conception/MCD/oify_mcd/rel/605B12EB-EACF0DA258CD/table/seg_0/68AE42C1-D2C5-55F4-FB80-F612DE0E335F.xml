@@ -18,16 +18,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="cra_etat_id" id="D55C7BA6-012E-8F93-4F48-DFE4BEF22C92">
-<createdBy>eisti</createdBy>
-<createdTime>2016-10-17 10:12:57 UTC</createdTime>
-<ownerDesignName>oify_mcd</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="mission_id" id="C0829849-C28A-BB3C-CB01-12A4FFFD68FF">
 <createdBy>eisti</createdBy>
 <createdTime>2016-10-17 10:14:27 UTC</createdTime>
@@ -88,6 +78,18 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="7EEC1EEB-3013-1692-0222-D9A7BD07C3E7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="326025CF-0872-5910-B72B-1118EE928F15" name="cra_mois__UN">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:37:39 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C0829849-C28A-BB3C-CB01-12A4FFFD68FF"/>
+<colUsage columnID="EF7C3C03-AC7C-9A86-F63E-769CF1C6EB6D"/>
+<colUsage columnID="FE502C8F-D779-C6AC-C79C-C39949552B7B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="83E44A30-431D-F5A6-41E1-A00CF71A77C9" name="cra_mois_consultant_FK">
