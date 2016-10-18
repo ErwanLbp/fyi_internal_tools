@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.cergy.eisti</groupId>
+  <artifactId>oifyi</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>oifyi</name>
+  <description>Projet ING2 Semestre 3</description>
+  <url>http://maven.apache.org</url>
+
+  <developers>
+    <developer>
+      <name>Erwan Le Batard--Polès</name>
+      <email>lebatardpo@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Erwan Galleron</name>
+      <email>galleroner@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Paul Ragot</name>
+      <email>ragotpaul@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Benoît Chow Pit Wan</name>
+      <email>chowpitwan@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Alexis Doan</name>
+      <email>doanalexis@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Alexis Nandillon</name>
+      <email>nandillona@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Christophe Phan</name>
+      <email>phanchrist@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Alexandre Audibert</name>
+      <email>audibertal@eisti.eu</email>
+    </developer>
+    <developer>
+      <name>Guillaume Beaufort</name>
+      <email>beaufortgu@eisti.eu</email>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.2.3.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>4.3.3.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-install-plugin</artifactId>
+      <version>2.5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <finalName>${project.artifactId}-${project.version}</finalName>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.5.2</version>
+        <configuration>
+          <groupId>com.oracle</groupId>
+          <artifactId>ojdbc6</artifactId>
+          <version>11.2.0.2.0</version>
+          <packaging>jar</packaging>
+          <file>${project.basedir}/lib/ojdbc6.jar</file>
+          <generatePom>true</generatePom>
+        </configuration>
+        <executions>
+          <execution>
+          <id>install-jar-lib</id>
+          <goals>
+            <goal>install-file</goal>
+          </goals>
+          <phase>validate</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+  </build>
+
+
+</project>
