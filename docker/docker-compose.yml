@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+  tomcat:
+    build: ./containers/tomcat
+    image: oifyi_tomcat:latest
+    ports:
+      - "8888:8080"
+    networks:
+      - front-tier
+      - back-tier
+    volumes:
+      - ../target/oifyi:/usr/local/tomcat/webapps/ROOT
+
+  oracle-xe:
+    build: ./containers/oracle-xe
+    image: oifyi_oracle-xe:latest
+    shm_size: 2G
+    ports:
+      - "10022:22"
+      - "11521:1521"
+      - "18080:8080"
+    networks:
+      - back-tier
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
