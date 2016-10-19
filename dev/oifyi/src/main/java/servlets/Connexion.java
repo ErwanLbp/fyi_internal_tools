@@ -1,9 +1,8 @@
 package servlets;
 
-import dao.ConnexionDAO;
+import dao.ConsultantDAO;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,27 +21,19 @@ public class Connexion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String url = getServletContext().getContextPath();
-        boolean valide = true;
-
+        String url;
         String password = req.getParameter("password");
-        if (password.equals("")) {
-            valide = false;
-            req.setAttribute("erreur", "Le password n'est pas rempli");
-        }
-
         String login = req.getParameter("login");
-        if (login.equals("")) {
-            valide = false;
-            req.setAttribute("erreur", "Le login n'est pas rempli");
-        }
 
-        if (valide && ConnexionDAO.checkLoginPassword(login, password)) {
-            resp.sendRedirect(url + "?page=accueil");
+        if ((login.equals("") || password.equals("")) || !ConsultantDAO.checkLoginPassword(login, password)) {
+            req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
+            url = "/index.jsp?page=connexion&mode=view";
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(req, resp);
         } else {
-            getServletContext().getRequestDispatcher(url).forward(req, resp);
+            url = "?page=accueil&mode=view";
+            resp.sendRedirect(url);
         }
 
-        resp.sendRedirect(url);
     }
 }
