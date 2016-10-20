@@ -1,15 +1,24 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="common.Consultant" table="consultant" catalog="oifyi">
-        <id name="id" type="int">
-            <column name="ID" not-null="true" unique="true"/>
-            <generator class="increment"/>
+
+    <class name="common.Consultant" table="CONSULTANT" schema="OIFYI">
+        <id name="id">
+            <column name="ID" sql-type="number(*)" precision="2147483646"/>
         </id>
-        <property name="nom" type="string" column="NOM" length="30" not-null="true" unique="false"/>
-        <property name="prenom" type="string" column="PRENOM" length="30" not-null="true" unique="false"/>
-        <property name="mail" type="string" column="MAIL" not-null="false" length="30" unique="false"/>
+        <property name="nom">
+            <column name="NOM" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="prenom">
+            <column name="PRENOM" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="username">
+            <column name="USERNAME" sql-type="varchar2(50)" length="50"/>
+        </property>
+        <property name="password">
+            <column name="PASSWORD" sql-type="varchar2(50)" length="50"/>
+        </property>
     </class>
 </hibernate-mapping>

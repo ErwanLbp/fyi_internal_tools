@@ -1,19 +1,14 @@
 package common;
 
 /**
- * <h1>common Consultant</h1>
- * TODO Description
- *
- * @author Erwan
- * @version 1.0
- * @since 19-10-2016
+ * Created by eisti on 20/10/16.
  */
 public class Consultant {
-
     private long id;
     private String nom;
     private String prenom;
-    private String mail;
+    private String username;
+    private String password;
 
     public long getId() {
         return id;
@@ -39,12 +34,20 @@ public class Consultant {
         this.prenom = prenom;
     }
 
-    public String getMail() {
-        return mail;
+    public String getUsername() {
+        return username;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -57,7 +60,8 @@ public class Consultant {
         if (id != that.id) return false;
         if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
         if (prenom != null ? !prenom.equals(that.prenom) : that.prenom != null) return false;
-        if (mail != null ? !mail.equals(that.mail) : that.mail != null) return false;
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
 
         return true;
     }
@@ -67,7 +71,8 @@ public class Consultant {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (nom != null ? nom.hashCode() : 0);
         result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (mail != null ? mail.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 }
