@@ -17,7 +17,7 @@
     <jsp:include page="header.jsp" flush="true"/>
 </div>
 <div class="row">
-    <jsp:include page="connexion.jsp"/>
+    <jsp:include page="listing_client.jsp"/>
 </div>
 <div class="footer">
     <jsp:include page="footer.jsp" flush="true"/>
