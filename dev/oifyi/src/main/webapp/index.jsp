@@ -29,7 +29,6 @@
     <% } else { %>
     <jsp:include page="<%=cheminFichier%>" flush="true"/>
     <% } %>
-
 </div>
 <div class="footer">
     <jsp:include page="footer.jsp" flush="true"/>
