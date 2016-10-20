@@ -1,5 +1,6 @@
 package persistence;
 
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,11 +8,10 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     static {
         try {
-            // Crée la SessionFactory
             sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (HibernateException ex) {
             throw new RuntimeException("Problème de configuration : " + ex.getMessage(), ex);
@@ -37,7 +37,7 @@ public class HibernateUtil {
             s.close();
     }
 
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
+    public static Session getSessionFactory() {
+        return sessionFactory.openSession();
     }
 }
