@@ -19,11 +19,10 @@
 </div>
 <div class="row">
     <% String param_page = request.getParameter("page"), param_mode = request.getParameter("mode"); %>
-    <% if (param_page.equals("")) param_page = "accueil"; %>
-    <% if (param_mode.equals("")) param_mode = "view"; %>
-    <% System.out.println("page : " + param_page + "\nmode : " + param_mode); %>
-    <% String cheminFichier = param_page + ".jsp"; %>
-    <%--FIXME MappingUrlFichierDAO.getFichier(new MappingUrlFichierPK(param_page, param_mode));--%>
+    <% if (param_page == null) param_page = "accueil"; %>
+    <% if (param_mode == null) param_mode = "view"; %>
+    <% System.out.println("page=" + param_page + " et mode=" + param_mode); %>
+    <% String cheminFichier = MappingUrlFichierDAO.getFichier(new MappingUrlFichierPK(param_page, param_mode)); %>
     <% if (cheminFichier == null || cheminFichier.isEmpty()) { %>
     <jsp:include page="page404.jsp" flush="true"/>
     <% } else { %>
