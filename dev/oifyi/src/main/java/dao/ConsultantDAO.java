@@ -11,7 +11,7 @@ package dao;
 public class ConsultantDAO {
     public static boolean checkLoginPassword(String login, String password) {
         //TODO checkLoginPassword
-        return false;
+        return login.equals("erwan");
     }
 
 }

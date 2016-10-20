@@ -15,6 +15,10 @@ public class Consultant {
     private String prenom;
     private String mail;
 
+    public Consultant() {
+
+    }
+
     public long getId() {
         return id;
     }

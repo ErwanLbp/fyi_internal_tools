@@ -5,6 +5,8 @@ import common.MappingUrlFichierPK;
 import org.hibernate.Session;
 import persistence.HibernateUtil;
 
+import java.util.List;
+
 /**
  * <h1>dao MappingUrlFichierDAO</h1>
  * TODO Description
@@ -14,6 +16,8 @@ import persistence.HibernateUtil;
  * @since 18-10-2016
  */
 public class MappingUrlFichierDAO {
+
+    //TODO Javadoc : MappingUrlFichierDAO
     public static String getFichier(MappingUrlFichierPK mufpk) {
         Session session = HibernateUtil.getSessionFactory();
         session.beginTransaction();
@@ -24,6 +28,18 @@ public class MappingUrlFichierDAO {
         return (cheminFichier == null) ? null : cheminFichier.getCheminFichier();
     }
 
+    //TODO Javadoc : MappingUrlFichierDAO
+    public static List<MappingUrlFichier> getAll() {
+        Session session = HibernateUtil.getSessionFactory();
+        session.beginTransaction();
+
+        List<MappingUrlFichier> lmuf = (List<MappingUrlFichier>) session.createQuery("from MappingUrlFichier").list();
+        session.close();
+
+        return lmuf;
+    }
+
+    //TODO Javadoc : MappingUrlFichierDAO
     public static void insertOrUpdate(String page, String mode, String fichier) {
         Session session = HibernateUtil.getSessionFactory();
         session.beginTransaction();
@@ -34,6 +50,7 @@ public class MappingUrlFichierDAO {
         session.close();
     }
 
+    //TODO Javadoc : MappingUrlFichierDAO
     public static void delete(MappingUrlFichierPK mufpk) {
         Session session = HibernateUtil.getSessionFactory();
         session.beginTransaction();
