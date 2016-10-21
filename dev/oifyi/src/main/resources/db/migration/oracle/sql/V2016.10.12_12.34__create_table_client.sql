@@ -1,6 +1,6 @@
-CREATE TABLE client(
-	id number NOT NULL,
-	nom varchar2(30) NOT NULL,
-	prenom varchar2(30) NOT NULL,
-	constraint pk_client primary key (id)
+CREATE TABLE client (
+  id     NUMBER       NOT NULL,
+  nom    VARCHAR2(30) NOT NULL,
+  prenom VARCHAR2(30) NOT NULL,
+  CONSTRAINT pk_client PRIMARY KEY (id)
 );

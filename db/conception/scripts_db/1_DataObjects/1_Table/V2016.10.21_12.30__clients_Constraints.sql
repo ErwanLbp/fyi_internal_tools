@@ -1,1 +1,0 @@
-ALTER TABLE clients ADD CONSTRAINT clients_PK PRIMARY KEY ( id ) ;

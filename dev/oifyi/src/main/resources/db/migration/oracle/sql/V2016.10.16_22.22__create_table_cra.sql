@@ -1,7 +1,7 @@
-CREATE TABLE cra(
-	mois date NOT NULL,
-	idConsultant number NOT NULL,
-	idMission number NOT NULL,
-	idStatus number NOT NULL,
-	constraint pk_cra primary key (mois,idConsultant,idMission)
+CREATE TABLE cra (
+  mois         DATE   NOT NULL,
+  idConsultant NUMBER NOT NULL,
+  idMission    NUMBER NOT NULL,
+  idStatus     NUMBER NOT NULL,
+  CONSTRAINT pk_cra PRIMARY KEY (mois, idConsultant, idMission)
 );

@@ -1,7 +1,7 @@
-CREATE TABLE consultant(
-	id number NOT NULL,
-	nom varchar2(30) NOT NULL,
-	prenom varchar2(30) NOT NULL,
-	mail varchar2(30),
-	constraint pk_consultant primary key (id)
+CREATE TABLE consultant (
+  id     NUMBER       NOT NULL,
+  nom    VARCHAR2(30) NOT NULL,
+  prenom VARCHAR2(30) NOT NULL,
+  mail   VARCHAR2(30),
+  CONSTRAINT pk_consultant PRIMARY KEY (id)
 );

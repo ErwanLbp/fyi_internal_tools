@@ -7,7 +7,7 @@
         <p>Dab & Co</p>
     </div>
     <div class="col-lg-4">
-        <i>Test d'accès à la base de données : <a href="index_test.jsp">Test BDD</a></i><br/><br/>
+        <i>Test d'accès à la base de données : <a href="administration/list_url.jsp">Test BDD</a></i><br/><br/>
     </div>
 </nav>
 <!--</footer>-->

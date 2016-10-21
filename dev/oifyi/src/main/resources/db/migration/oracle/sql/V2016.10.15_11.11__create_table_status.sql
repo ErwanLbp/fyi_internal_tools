@@ -1,5 +1,5 @@
-CREATE TABLE status(
-	idStatus number NOT NULL,
-	libelle varchar2(30),
-	constraint pk_status primary key (idStatus)
+CREATE TABLE status (
+  idStatus NUMBER NOT NULL,
+  libelle  VARCHAR2(30),
+  CONSTRAINT pk_status PRIMARY KEY (idStatus)
 );
