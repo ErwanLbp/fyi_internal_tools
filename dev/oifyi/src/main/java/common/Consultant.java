@@ -1,24 +1,51 @@
 package common;
 
+import javax.persistence.*;
+
 /**
- * Created by eisti on 20/10/16.
+ * <h1>common Consultant</h1>
+ * TODO Description
+ *
+ * @author Erwan
+ * @version 1.0
+ * @since 21-10-2016
  */
+@Entity
+@Table(name = "consultant")
 public class Consultant {
-    private long id;
+
+    @Id
+    @Column(name = "ID", nullable = false)
+    private int id;
+
+    @Column(name = "NOM", nullable = false, length = 50)
     private String nom;
+
+    @Column(name = "PRENOM", nullable = false, length = 50)
     private String prenom;
+
+    @Column(name = "USERNAME", nullable = false, length = 50)
     private String username;
+
+    @Column(name = "PASSWORD", nullable = false, length = 50)
     private String password;
 
-    public Consultant() {
-
+    public Consultant(int id, String nom, String prenom, String username, String password) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.username = username;
+        this.password = password;
     }
 
-    public long getId() {
+    public Consultant() {
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -57,26 +84,26 @@ public class Consultant {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Consultant)) return false;
 
         Consultant that = (Consultant) o;
 
-        if (id != that.id) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
-        if (prenom != null ? !prenom.equals(that.prenom) : that.prenom != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (getId() != that.getId()) return false;
+        if (!getNom().equals(that.getNom())) return false;
+        if (!getPrenom().equals(that.getPrenom())) return false;
+        if (!getUsername().equals(that.getUsername())) return false;
+        return getPassword().equals(that.getPassword());
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + getNom().hashCode();
+        result = 31 * result + getPrenom().hashCode();
+        result = 31 * result + getUsername().hashCode();
+        result = 31 * result + getPassword().hashCode();
         return result;
     }
 }
+
