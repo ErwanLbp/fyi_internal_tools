@@ -1,0 +1,1 @@
+ALTER TABLE mission ADD CONSTRAINT Missions_PK PRIMARY KEY ( id ) ;
