@@ -16,5 +16,7 @@
 
         <!--Mappings des tables-->
         <mapping class="common.MappingUrlFichier"/>
+        <mapping class="common.Role"/>
+        <mapping class="common.Consultant"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,10 +1,27 @@
 package common;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- * Created by eisti on 20/10/16.
+ * <h1>common Mapping_url_fichier</h1>
+ * TODO Description
+ *
+ * @author Erwan
+ * @version 1.0
+ * @since 19-10-2016
  */
+
+@Entity
+@Table(name = "ROLE")
 public class Role {
+
+    @Id
     private long id;
+
+    @Column(name = "LIBELLE", nullable = false)
     private String libelle;
 
     public long getId() {
