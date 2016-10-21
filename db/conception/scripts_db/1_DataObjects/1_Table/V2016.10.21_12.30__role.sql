@@ -1,0 +1,3 @@
+CREATE TABLE role
+  ( id INTEGER NOT NULL , libelle VARCHAR2 (30) NOT NULL
+  ) ;
