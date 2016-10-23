@@ -7,23 +7,17 @@
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521/XE</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@//localhost:1521/XE</property>
         <property name="hibernate.connection.pool_size">10</property>
         <property name="hibernate.connection.autocommit">false</property>
         <property name="show_sql">true</property>
+        <property name="hibernate.connection.username">oifyi</property>
+        <property name="hibernate.connection.password">oifyi</property>
 
         <!--Mappings des tables-->
         <mapping class="common.MappingUrlFichier"/>
         <mapping class="common.Role"/>
         <mapping class="common.Consultant"/>
         <mapping class="common.Clients"/>
-        <mapping class="common.Cra"/>
-        <mapping class="common.CraJour"/>
-        <mapping class="common.CraMois"/>
-        <mapping class="common.Mission"/>
-        <mapping class="common.MissionConsultant"/>
-        <mapping class="common.Parametrage"/>
-        <mapping class="common.Status"/>
-        <mapping class="common.StatusCra"/>
     </session-factory>
 </hibernate-configuration>
