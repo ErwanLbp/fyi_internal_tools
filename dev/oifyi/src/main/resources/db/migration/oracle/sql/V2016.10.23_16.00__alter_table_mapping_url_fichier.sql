@@ -1,5 +1,3 @@
-DROP TABLE MAPPING_URL_FICHIER;
-
 CREATE TABLE mapping_url_fichier (
   id_muf         NUMBER       NOT NULL,
   nom_page       VARCHAR2(30) NOT NULL,

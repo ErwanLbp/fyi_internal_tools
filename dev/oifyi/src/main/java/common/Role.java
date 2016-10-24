@@ -1,8 +1,5 @@
 package common;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * <h1>common Mapping_url_fichier</h1>
  * TODO Description

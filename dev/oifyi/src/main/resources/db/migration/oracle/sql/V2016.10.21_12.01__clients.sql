@@ -1,5 +1,3 @@
-DROP TABLE client;
-
 CREATE TABLE client (
   id_client                         INTEGER       NOT NULL,
   raison_sociale             VARCHAR2(100) NOT NULL,

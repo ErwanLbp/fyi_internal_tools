@@ -1,5 +1,3 @@
-DROP TABLE consultant CASCADE CONSTRAINTS;
-
 CREATE TABLE consultant
 (
   id_consultant       INTEGER      NOT NULL,

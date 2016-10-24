@@ -1,5 +1,3 @@
-DROP TABLE mission;
-
 CREATE TABLE mission (
   id_mission                          INTEGER      NOT NULL,
   nom                         VARCHAR2(50) NOT NULL,
