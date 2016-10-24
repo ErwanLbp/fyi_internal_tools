@@ -63,4 +63,8 @@ public class MappingUrlFichier implements Serializable {
     public void setCheminFichier(String cheminFichier) {
         this.cheminFichier = cheminFichier;
     }
+
+    public String formerUrl() {
+        return "/index.jsp?page=" + this.getNomPage() + "&mode=" + this.getNomMode();
+    }
 }

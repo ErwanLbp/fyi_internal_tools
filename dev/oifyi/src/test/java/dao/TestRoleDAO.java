@@ -1,7 +1,6 @@
 package dao;
 
 import common.Role;
-import common.Role;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

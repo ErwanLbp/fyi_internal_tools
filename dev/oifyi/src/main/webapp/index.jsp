@@ -1,22 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="common.MappingUrlFichier" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page import="common.DroitsPages" %>
+<%@ page import="dao.DroitsPagesDAO" %>
+<%@ page import="common.Consultant" %>
+<%@ page import="dao.ConsultantDAO" %>
+<%@ page import="dao.RoleDAO" %>
 
-<% String param_page = request.getParameter("page"), param_mode = request.getParameter("mode"); %>
-<% if (param_page == null) param_page = "accueil"; %>
-<% if (param_mode == null) param_mode = "view"; %>
-<% System.out.println("page=" + param_page + " et mode=" + param_mode); %>
+<%--Regarder dans la base de données si la page demandée existe--%>
+<% String param_page = (request.getParameter("page") != null) ? request.getParameter("page") : "accueil"; %>
+<% String param_mode = (request.getParameter("mode") != null) ? request.getParameter("mode") : "connexion"; %>
 <% MappingUrlFichier muf = MappingUrlFichierDAO.getMuf(param_page, param_mode); %>
 <% boolean pageTrouve = true, pageAutorisee = false; %>
-<% if (muf.getCheminFichier() == null || muf.getCheminFichier().isEmpty()) { %>
+
+<%--Si elle existe, regarder si le consultant connecté a le droit d'y accéder--%>
+<% if (muf == null || muf.getCheminFichier().isEmpty()) { %>
 <% pageTrouve = false; %>
 <% } else { %>
 <%
-    //TODO Verification si le consultant connecté a le droit d'accès à cette page
-    pageAutorisee = true; //TMP
+    int roleLambda = RoleDAO.get("lambda").getId_role();
+    Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte");
+    int roleConsultantConnecte = (consultantConnecte == null) ? roleLambda : consultantConnecte.getRole_id(); // Si personne est connecté, le role de l'utilisateur est 'lambda'
+    if (roleConsultantConnecte == roleLambda && !(param_page.equals("accueil") && param_mode.equals("connexion")))  // Si l'utilisateur n'est pas connecté et qu'il essaye d'accéder
+        response.sendRedirect("index.jsp?page=accueil&mode=connexion");                                             // à une autre page que la page de connexion on le redirige
+    else {
+        pageAutorisee = DroitsPagesDAO.isAllowed(muf.getId_muf(), roleConsultantConnecte); // La page est autorisée si le role (lambda par défaut) et la page matchent dans la BDD
+        if (consultantConnecte != null)                                                    // ou s'il est admin
+            pageAutorisee = pageTrouve || ConsultantDAO.isAdmin(consultantConnecte.getId());
+    }
 %>
 <% } %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

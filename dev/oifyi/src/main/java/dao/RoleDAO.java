@@ -1,13 +1,9 @@
 package dao;
 
 import common.Role;
-import common.Role;
 import db.MyConnectorJDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +20,9 @@ public class RoleDAO {
     //TODO Javadoc : RoleDAO
     public static Role get(String libelle) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return null;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role WHERE LIBELLE=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role WHERE lower(LIBELLE)=lower(?)")) {
             req.setString(1, libelle);
             ResultSet res = req.executeQuery();
             if (res.next())
@@ -40,7 +36,7 @@ public class RoleDAO {
     //TODO Javadoc : RoleDAO
     public static Role get(int id_role) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return null;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role WHERE id_role=?")) {
             req.setInt(1, id_role);
@@ -57,25 +53,24 @@ public class RoleDAO {
     public static List<Role> getAll() {
 
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return null;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         List<Role> list_res = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role")) {
-            ResultSet res = req.executeQuery();
-            while (res.next()) {
+        try (Statement req = connection.createStatement()) {
+            ResultSet res = req.executeQuery("SELECT * FROM role");
+            while (res.next())
                 list_res.add(new Role(res.getInt("id_role"), res.getString("libelle")));
-            }
             return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            return list_res;
         }
     }
 
     //TODO Javadoc : RoleDAO
     public static boolean insert(Role role) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("INSERT INTO role (id_role, libelle) VALUES(?,?)")) {
             req.setInt(1, role.getId_role());
@@ -90,7 +85,7 @@ public class RoleDAO {
     //TODO Javadoc : RoleDAO
     public static boolean update(Role role) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("UPDATE role SET LIBELLE=? WHERE id_role=?")) {
             req.setString(1, role.getLibelle());
@@ -105,9 +100,9 @@ public class RoleDAO {
     //TODO Javadoc : RoleDAO
     public static boolean deleteByLibelle(String libelle) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM role WHERE LIBELLE=?")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM role WHERE lower(LIBELLE)=lower(?)")) {
             req.setString(1, libelle);
             return req.executeUpdate() == 1;
         } catch (SQLException e) {

@@ -20,16 +20,27 @@ public class Consultant {
 
     private String password;
 
-    public Consultant(int id, String nom, String prenom, String username, String password) {
-        this(nom, prenom, username, password);
+    private int role_id;
+
+    public Consultant(int id, String nom, String prenom, String username, String password, int role_id) {
+        this(nom, prenom, username, password, role_id);
         this.id = id;
     }
 
-    public Consultant(String nom, String prenom, String username, String password) {
+    public Consultant(String nom, String prenom, String username, String password, int role_id) {
         this.nom = nom;
         this.prenom = prenom;
         this.username = username;
         this.password = password;
+        this.role_id = role_id;
+    }
+
+    public int getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 
     public int getId() {

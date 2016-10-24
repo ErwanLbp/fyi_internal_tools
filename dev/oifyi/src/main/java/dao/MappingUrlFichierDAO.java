@@ -24,9 +24,9 @@ public class MappingUrlFichierDAO {
     //TODO Javadoc : MappingUrlFichierDAO
     public static MappingUrlFichier getMuf(String nom_page, String nom_mode) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return null;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier WHERE nom_page=? AND nom_mode=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier WHERE lower(nom_page)=lower(?) AND lower(nom_mode)=lower(?)")) {
             req.setString(1, nom_page);
             req.setString(2, nom_mode);
             ResultSet res = req.executeQuery();
@@ -42,7 +42,7 @@ public class MappingUrlFichierDAO {
     public static List<MappingUrlFichier> getAll() {
 
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return null;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         List<MappingUrlFichier> list_res = new ArrayList<>();
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier")) {
@@ -60,7 +60,7 @@ public class MappingUrlFichierDAO {
     //TODO Javadoc : MappingUrlFichierDAO
     public static boolean insert(MappingUrlFichier muf) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier, id_muf) VALUES(?,?,?,?)")) {
             req.setString(1, muf.getNomPage());
@@ -77,7 +77,7 @@ public class MappingUrlFichierDAO {
     //TODO Javadoc : MappingUrlFichierDAO
     public static boolean update(MappingUrlFichier muf) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("UPDATE mapping_url_fichier SET nom_page=?, nom_mode=?, chemin_fichier=? WHERE id_muf=?")) {
             req.setString(1, muf.getNomPage());
@@ -94,9 +94,9 @@ public class MappingUrlFichierDAO {
     //TODO Javadoc : MappingUrlFichierDAO
     public static boolean deleteByNomPageNomMode(String nom_page, String nom_mode) {
         Connection connection = MyConnectorJDBC.getConnection();
-        if (connection == null) return false;
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM mapping_url_fichier WHERE nom_page=? AND nom_mode=?")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM mapping_url_fichier WHERE lower(nom_page)=lower(?) AND lower(nom_mode)=lower(?)")) {
             req.setString(1, nom_page);
             req.setString(2, nom_mode);
             return req.executeUpdate() == 1;

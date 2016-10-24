@@ -1,0 +1,1 @@
+INSERT into MAPPING_URL_FICHIER(NOM_PAGE,NOM_MODE,CHEMIN_FICHIER) VALUES ('administration','list_pages','administration/list_url.jsp');

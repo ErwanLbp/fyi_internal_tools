@@ -40,5 +40,21 @@ public class Role {
         this.libelle = libelle;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Role)) return false;
+
+        Role role = (Role) o;
+
+        return getId_role() == role.getId_role() && getLibelle().equals(role.getLibelle());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId_role();
+        result = 31 * result + getLibelle().hashCode();
+        return result;
+    }
 }
 
