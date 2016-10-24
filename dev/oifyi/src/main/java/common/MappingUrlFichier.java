@@ -1,6 +1,6 @@
 package common;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * <h1>common Mapping_url_fichier</h1>
@@ -11,35 +11,49 @@ import javax.persistence.*;
  * @since 19-10-2016
  */
 
-@Entity
-@Table(name = "MAPPING_URL_FICHIER")
-public class MappingUrlFichier {
+public class MappingUrlFichier implements Serializable {
 
-    @EmbeddedId
-    private MappingUrlFichierPK mufpk;
+    private int id_muf;
 
-    @Column(name = "CHEMIN_FICHIER", nullable = false)
+    private String nomPage;
+
+    private String nomMode;
+
     private String cheminFichier;
 
     public MappingUrlFichier(String nomPage, String nomMode, String cheminFichier) {
-        mufpk = new MappingUrlFichierPK(nomPage, nomMode);
+        this.nomPage = nomPage;
+        this.nomMode = nomMode;
         this.cheminFichier = cheminFichier;
     }
 
-    public MappingUrlFichier(MappingUrlFichierPK mufpk) {
-        this(mufpk.getNomPage(), mufpk.getNomMode(), "");
+    public MappingUrlFichier(int id_muf, String nomPage, String nomMode, String cheminFichier) {
+        this(nomPage, nomMode, cheminFichier);
+        this.id_muf = id_muf;
     }
 
-    public MappingUrlFichier() {
-        this("", "", "");
+    public int getId_muf() {
+        return id_muf;
     }
 
-    public MappingUrlFichierPK getMufpk() {
-        return mufpk;
+    public void setId_muf(int id_muf) {
+        this.id_muf = id_muf;
     }
 
-    public void setMufpk(MappingUrlFichierPK mufpk) {
-        this.mufpk = mufpk;
+    public String getNomPage() {
+        return nomPage;
+    }
+
+    public void setNomPage(String nomPage) {
+        this.nomPage = nomPage;
+    }
+
+    public String getNomMode() {
+        return nomMode;
+    }
+
+    public void setNomMode(String nomMode) {
+        this.nomMode = nomMode;
     }
 
     public String getCheminFichier() {
@@ -57,15 +71,20 @@ public class MappingUrlFichier {
 
         MappingUrlFichier that = (MappingUrlFichier) o;
 
-        if (!getMufpk().equals(that.getMufpk())) return false;
+        if (getId_muf() != that.getId_muf()) return false;
+        if (!getNomPage().equals(that.getNomPage())) return false;
+        if (!getNomMode().equals(that.getNomMode())) return false;
         return getCheminFichier().equals(that.getCheminFichier());
 
     }
 
     @Override
     public int hashCode() {
-        int result = getMufpk().hashCode();
+        int result = getId_muf();
+        result = 31 * result + getNomPage().hashCode();
+        result = 31 * result + getNomMode().hashCode();
         result = 31 * result + getCheminFichier().hashCode();
         return result;
     }
+
 }

@@ -3,5 +3,5 @@ CREATE TABLE cra_jour (
   jour           DATE    NOT NULL,
   heures_travail INTEGER NOT NULL,
   CONSTRAINT cra_jour_PK PRIMARY KEY (id_cramois, jour),
-  CONSTRAINT cra_jour_cra_mois_FK FOREIGN KEY (id_cramois) REFERENCES cra_mois (id)
+  CONSTRAINT cra_jour_cra_mois_FK FOREIGN KEY (id_cramois) REFERENCES cra_mois (id_cra_mois)
 );

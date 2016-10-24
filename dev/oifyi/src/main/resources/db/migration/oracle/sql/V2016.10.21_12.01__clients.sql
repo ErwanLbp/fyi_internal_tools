@@ -1,7 +1,7 @@
 DROP TABLE client;
 
-CREATE TABLE clients (
-  id                         INTEGER       NOT NULL,
+CREATE TABLE client (
+  id_client                         INTEGER       NOT NULL,
   raison_sociale             VARCHAR2(100) NOT NULL,
   forme_juridique            VARCHAR2(20)  NOT NULL,
   siret                      VARCHAR2(50)  NOT NULL,
@@ -21,5 +21,5 @@ CREATE TABLE clients (
   contact_achats_tel         INTEGER,
   respo_fournisseur_nom      VARCHAR2(50),
   respo_fournisseur_fonction VARCHAR2(50),
-  CONSTRAINT clients_PK PRIMARY KEY (id)
+  CONSTRAINT client_PK PRIMARY KEY (id_client)
 );

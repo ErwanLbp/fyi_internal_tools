@@ -1,5 +1,5 @@
 CREATE TABLE role (
-  id      NUMBER       NOT NULL,
+  id_role NUMBER       NOT NULL,
   libelle VARCHAR2(30) NOT NULL,
-  CONSTRAINT pk_role PRIMARY KEY (id)
+  CONSTRAINT pk_role PRIMARY KEY (id_role)
 );
