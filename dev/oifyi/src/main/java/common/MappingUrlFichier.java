@@ -63,28 +63,4 @@ public class MappingUrlFichier implements Serializable {
     public void setCheminFichier(String cheminFichier) {
         this.cheminFichier = cheminFichier;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MappingUrlFichier)) return false;
-
-        MappingUrlFichier that = (MappingUrlFichier) o;
-
-        if (getId_muf() != that.getId_muf()) return false;
-        if (!getNomPage().equals(that.getNomPage())) return false;
-        if (!getNomMode().equals(that.getNomMode())) return false;
-        return getCheminFichier().equals(that.getCheminFichier());
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getId_muf();
-        result = 31 * result + getNomPage().hashCode();
-        result = 31 * result + getNomMode().hashCode();
-        result = 31 * result + getCheminFichier().hashCode();
-        return result;
-    }
-
 }

@@ -1,15 +1,11 @@
 package dao;
 
-import common.Consultant;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
-import persistence.HibernateUtil;
+import db.MyConnectorJDBC;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.sql.SQLException;
 
 /**
  * <h1>dao ConsultantDAO</h1>
@@ -22,20 +18,19 @@ import java.util.List;
 public class ConsultantDAO {
 
     public static boolean checkLoginPassword(String login, String password) {
-        Session session = HibernateUtil.getSessionFactory();
-        session.beginTransaction();
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) return false;
 
-        List<Consultant> listConsultants = (List<Consultant>) session.createQuery("from Consultant WHERE username=" + login + " AND password = " + password);
-        Query queryObject = session.createQuery("from Consultant WHERE username=? AND password = ?");
-        queryObject.setParameter(0, login);
-        queryObject.setParameter(1, password);
-        session.close();
-        try {
-            Consultant consultant = (Consultant) queryObject.getSingleResult();
-            return true;
-        } catch (Exception e) {
-            return false;
+        try (PreparedStatement req = connection.prepareStatement("SELECT username, password FROM CONSULTANT WHERE USERNAME=? AND password=?")) {
+            req.setString(1, login);
+            req.setString(2, password);
+            ResultSet res = req.executeQuery();
+            if (res.next() && !res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false;
     }
 
 }

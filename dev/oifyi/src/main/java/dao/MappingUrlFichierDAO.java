@@ -62,10 +62,11 @@ public class MappingUrlFichierDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) return false;
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES(?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier, id_muf) VALUES(?,?,?,?)")) {
             req.setString(1, muf.getNomPage());
             req.setString(2, muf.getNomMode());
             req.setString(3, muf.getCheminFichier());
+            req.setInt(4, -1);
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();

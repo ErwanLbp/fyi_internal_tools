@@ -2,12 +2,11 @@ package dao;
 
 import common.MappingUrlFichier;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * <h1>PACKAGE_NAME TestMappingUrlFichierDao</h1>
@@ -29,12 +28,23 @@ public class TestMappingUrlFichierDAO {
         MappingUrlFichierDAO.deleteByNomPageNomMode("test_page", "test_mode");
     }
 
+    @AfterClass
+    public static void suppressionsInsertTests() {
+        MappingUrlFichierDAO.deleteByNomPageNomMode("test_page_update", "test_mode_update");
+        MappingUrlFichierDAO.deleteByNomPageNomMode("test_page_insert", "test_mode_insert");
+    }
+
+    @Test
+    public void testContrainteUnicite() {
+        assertFalse(MappingUrlFichierDAO.insert(new MappingUrlFichier("test_page", "test_mode", "test_fichier")));
+    }
+
     @Test
     public void testInsert() {
-        assertTrue(MappingUrlFichierDAO.insert(new MappingUrlFichier("test_page", "test_mode", "test_fichier")));
-        MappingUrlFichier actual = MappingUrlFichierDAO.getMuf("test_page", "test_mode");
+        assertTrue(MappingUrlFichierDAO.insert(new MappingUrlFichier("test_page_insert", "test_mode_insert", "test_fichier_insert")));
+        MappingUrlFichier actual = MappingUrlFichierDAO.getMuf("test_page_insert", "test_mode_insert");
         assert actual != null;
-        assertEquals("test_fichier", actual.getCheminFichier());
+        assertEquals("test_fichier_insert", actual.getCheminFichier());
     }
 
     @Test

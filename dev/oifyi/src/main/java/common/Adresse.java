@@ -1,7 +1,5 @@
 package common;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
@@ -12,19 +10,14 @@ import java.io.Serializable;
  * @version 1.0
  * @since 21-10-2016
  */
-@Embeddable
 public class Adresse implements Serializable {
 
-    @Column(name = "ADRESSE_NUMERO", nullable = false)
     private int adresseNumero;
 
-    @Column(name = "ADRESSE_RUE", nullable = false)
     private String adresseRue;
 
-    @Column(name = "ADRESSE_CP", nullable = false)
     private int adresseCp;
 
-    @Column(name = "ADRESSE_VILLE", nullable = false)
     private String adresseVille;
 
     public Adresse(int adresseNumero, String adresseRue, int adresseCp, String adresseVille) {
@@ -32,10 +25,6 @@ public class Adresse implements Serializable {
         this.adresseRue = adresseRue;
         this.adresseCp = adresseCp;
         this.adresseVille = adresseVille;
-    }
-
-    public Adresse() {
-        this(0, "", 0, "");
     }
 
     public int getAdresseNumero() {
@@ -70,26 +59,4 @@ public class Adresse implements Serializable {
         this.adresseVille = adresseVille;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Adresse)) return false;
-
-        Adresse adresse = (Adresse) o;
-
-        if (getAdresseNumero() != adresse.getAdresseNumero()) return false;
-        if (getAdresseCp() != adresse.getAdresseCp()) return false;
-        if (!getAdresseRue().equals(adresse.getAdresseRue())) return false;
-        return getAdresseVille().equals(adresse.getAdresseVille());
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getAdresseNumero();
-        result = 31 * result + getAdresseRue().hashCode();
-        result = 31 * result + getAdresseCp();
-        result = 31 * result + getAdresseVille().hashCode();
-        return result;
-    }
 }
