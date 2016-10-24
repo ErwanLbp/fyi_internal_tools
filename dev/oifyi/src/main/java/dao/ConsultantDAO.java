@@ -97,4 +97,56 @@ public class ConsultantDAO {
         }
         return null;
     }
+
+    //TODO Javadoc : ConsultantDAO
+    public static boolean create(Consultant consultant) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO consultant (ID_CONSULTANT, NOM, PRENOM, USERNAME, PASSWORD, ROLE_ID) VALUES (?,?,?,?,?,?)")) {
+            req.setInt(1, consultant.getId());
+            req.setString(2, consultant.getNom());
+            req.setString(3, consultant.getPrenom());
+            req.setString(4, consultant.getUsername());
+            req.setString(5, consultant.getPassword());
+            req.setInt(6, consultant.getRole_id());
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //TODO Javadoc : ConsultantDAO
+    public static boolean update(Consultant consultant) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID_CONSULTANT=?")) {
+            req.setString(1, consultant.getNom());
+            req.setString(2, consultant.getPrenom());
+            req.setString(3, consultant.getUsername());
+            req.setString(4, consultant.getPassword());
+            req.setInt(5, consultant.getRole_id());
+            req.setInt(6, consultant.getId());
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //TODO Javadoc : ConsultantDAO
+    public static boolean deleteById(int id) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM consultant WHERE ID_CONSULTANT=?")) {
+            req.setInt(1, id);
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
