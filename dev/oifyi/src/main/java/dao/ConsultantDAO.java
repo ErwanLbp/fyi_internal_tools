@@ -1,11 +1,12 @@
 package dao;
 
+import common.Consultant;
 import db.MyConnectorJDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+
+import static oracle.net.aso.C03.e;
 
 /**
  * <h1>dao ConsultantDAO</h1>
@@ -32,5 +33,39 @@ public class ConsultantDAO {
         }
         return false;
     }
+
+    public static Consultant getById(int i) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) return false;
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT WHERE id=?")) {
+            req.setString(1, i);
+            ResultSet res = req.executeQuery();
+            res.next()
+            Consultant consultant = new Consultant(res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"));
+            return consultant;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<Consultant> getAll() throws SQLException {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) return null;
+        try (Statement req = connection.createStatement() {
+            ResultSet res = req.executeQuery("SELECT * FROM individu");
+            ArrayList<Consultant> listeConsultants = new ArrayList<Consultant>();
+            while (res.next()) {
+                listeConsultants.add(new Consultant(res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
+            }
+            return listeConsultants;
+        } catch (Exception e) {
+            System.out.println("Erreur de findAll");
+            return null;
+        }
+    }
+}
+
 
 }

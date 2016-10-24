@@ -20,7 +20,7 @@ public class Consultant {
 
     private String password;
 
-    public Consultant(int id, String nom, String prenom, String username, String password) {
+    public Consultant() {
         this(nom, prenom, username, password);
         this.id = id;
     }
