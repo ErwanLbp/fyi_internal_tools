@@ -68,7 +68,7 @@ public class MissionDAO {
     }
 
     //TODO Javadoc : MissionDAO
-    public static boolean create(Mission mission) {
+    public static boolean insert(Mission mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 

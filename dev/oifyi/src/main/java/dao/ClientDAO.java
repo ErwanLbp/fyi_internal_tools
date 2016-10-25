@@ -58,7 +58,7 @@ public class ClientDAO {
 
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CLIENT WHERE NOM=? AND PRENOM=?")) {
             req.setString(1, nom);
-            req.setString(2,prenom);
+            req.setString(2, prenom);
             ResultSet res = req.executeQuery();
             if (res.next())
                 return new Client(res.getInt("ID"), res.getString("nom"), res.getString("prenom"));
@@ -69,7 +69,7 @@ public class ClientDAO {
     }
 
     //TODO Javadoc : ClientDAO
-    public static boolean create(Client client) {
+    public static boolean insert(Client client) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
@@ -113,4 +113,20 @@ public class ClientDAO {
             return false;
         }
     }
+
+    //TODO Javadoc : ClientDAO
+    public static boolean deleteByNomPrenom(String nom, String prenom) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM client WHERE NOM=? AND PRENOM=?")) {
+            req.setString(1, nom);
+            req.setString(2, prenom);
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

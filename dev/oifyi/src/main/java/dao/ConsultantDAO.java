@@ -99,7 +99,7 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static boolean create(Consultant consultant) {
+    public static boolean insert(Consultant consultant) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
