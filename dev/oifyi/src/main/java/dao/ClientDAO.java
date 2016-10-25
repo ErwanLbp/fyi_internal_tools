@@ -17,12 +17,12 @@ import java.util.ArrayList;
 public class ClientDAO {
 
     //TODO Javadoc : ClientDAO
-    public static Client get(int i) {
+    public static Client get(int id_client) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CLIENT WHERE ID_CLIENT=?")) {
-            req.setInt(1, i);
+            req.setInt(1, id_client);
             ResultSet res = req.executeQuery();
             if (res.next())
                 return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"));

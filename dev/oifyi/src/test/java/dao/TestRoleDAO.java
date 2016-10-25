@@ -25,13 +25,13 @@ public class TestRoleDAO {
 
     @After
     public void deleteLigneBDD() {
-        RoleDAO.deleteByLibelle("test_role");
+        RoleDAO.delete("test_role");
     }
 
     @AfterClass
     public static void suppressionsInsertTests() {
-        RoleDAO.deleteByLibelle("test_role_update");
-        RoleDAO.deleteByLibelle("test_role_insert");
+        RoleDAO.delete("test_role_update");
+        RoleDAO.delete("test_role_insert");
     }
 
     @Test
@@ -59,7 +59,7 @@ public class TestRoleDAO {
 
     @Test
     public void testDelete() {
-        assertTrue(RoleDAO.deleteByLibelle("test_role"));
+        assertTrue(RoleDAO.delete("test_role"));
         Role actual = RoleDAO.get("test_role");
         assertNull(actual);
     }

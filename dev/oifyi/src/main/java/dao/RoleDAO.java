@@ -98,7 +98,7 @@ public class RoleDAO {
     }
 
     //TODO Javadoc : RoleDAO
-    public static boolean deleteByLibelle(String libelle) {
+    public static boolean delete(String libelle) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 

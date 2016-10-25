@@ -17,7 +17,7 @@ public class TestClientDAO {
 
     private static Client client = new Client("a", "b", "c", "d", 1, "e", 2, "f");
     private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", 1, "e_insert", 2, "f_insert");
-    private static Client client_update = new Client(client.getId(), "a_update", "b_update", "c_update", "d_update", 1, "e_update", 2, "f_update");
+    private static Client client_update = new Client("a_update", "b_update", "c_update", "d_update", 1, "e_update", 2, "f_update");
 
     @Before
     public void insertLigneBDD() {
@@ -32,7 +32,9 @@ public class TestClientDAO {
 
     @AfterClass
     public static void suppressionsInsertTests() {
-        ClientDAO.delete(client_insert.getId());
+        ClientDAO.delete(client.getRaison_sociale());
+        ClientDAO.delete(client_insert.getRaison_sociale());
+        ClientDAO.delete(client_update.getRaison_sociale());
     }
 
     @Test

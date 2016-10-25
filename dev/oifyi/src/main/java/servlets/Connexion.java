@@ -51,7 +51,7 @@ public class Connexion extends HttpServlet {
         }
 
         // Si les identifiants sont valides
-        Consultant consultantConnecte = ConsultantDAO.getByLogin(login); // On récupère le consultant associé
+        Consultant consultantConnecte = ConsultantDAO.get(login); // On récupère le consultant associé
         if (session.getAttribute("consultantConnecte") == null) // On l'ajoute à la session
             session.setAttribute("consultantConnecte", consultantConnecte);
         //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur

@@ -34,7 +34,7 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static Consultant getById(int i) {
+    public static Consultant get(int i) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
@@ -83,7 +83,7 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static Consultant getByLogin(String login) {
+    public static Consultant get(String login) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
@@ -137,7 +137,7 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static boolean deleteById(int id) {
+    public static boolean delete(int id) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
