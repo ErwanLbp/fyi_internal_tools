@@ -8,6 +8,11 @@
 <jsp:useBean id="consultant" scope="request" class="common.Consultant"/>
 <form method="post" action="/new_consultant" class="well">
     <legend>Saisie d'un consultant</legend>
+
+    <b>
+        <%= request.getParameter("erreur") == null ? "Remplissez tous les champs obligatoires" : request.getParameter("erreur") %>
+    </b>
+
     <div class="form-group">
         <label for="idNom">Nom : <input id="idNom" type="text" name="nom" class="form-control" value="<jsp:getProperty name="consultant" property="nom"/>" required/></label>
     </div>

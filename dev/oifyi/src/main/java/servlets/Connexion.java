@@ -23,6 +23,8 @@ import java.io.IOException;
  */
 public class Connexion extends HttpServlet {
 
+    String url_page = MappingUrlFichierDAO.getMuf("accueil","connexion").formerUrl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("index.jsp?page=accueil&mode=connexion").forward(req, resp);

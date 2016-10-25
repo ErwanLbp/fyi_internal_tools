@@ -38,7 +38,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT WHERE ID=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT WHERE ID_CONSULTANT=?")) {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
@@ -54,7 +54,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        ArrayList<Consultant> listeConsultants = new ArrayList<Consultant>();
+        ArrayList<Consultant> listeConsultants = new ArrayList<>();
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT");
             while (res.next())
@@ -71,7 +71,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT c.username, r.libelle FROM CONSULTANT c, ROLE r WHERE c.ID=? AND lower(r.LIBELLE)='admin' AND c.ROLE_ID=r.ID")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT c.username, r.libelle FROM CONSULTANT c, ROLE r WHERE c.ID_CONSULTANT=? AND lower(r.LIBELLE)='admin' AND c.ROLE_ID=r.ID_ROLE")) {
             req.setInt(1, ID);
             ResultSet res = req.executeQuery();
             if (res.next())
@@ -91,7 +91,7 @@ public class ConsultantDAO {
             req.setString(1, login);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Consultant(res.getInt("ID"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
+                return new Consultant(res.getInt("ID_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID_CONSULTANT=?")) {
             req.setString(1, consultant.getNom());
             req.setString(2, consultant.getPrenom());
             req.setString(3, consultant.getUsername());

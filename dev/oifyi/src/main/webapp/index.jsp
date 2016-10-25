@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="dao.MappingUrlFichierDAO" %>
-<%@ page import="common.MappingUrlFichier" %>
-<%@ page import="common.DroitsPages" %>
-<%@ page import="dao.DroitsPagesDAO" %>
 <%@ page import="common.Consultant" %>
+<%@ page import="common.MappingUrlFichier" %>
 <%@ page import="dao.ConsultantDAO" %>
+<%@ page import="dao.DroitsPagesDAO" %>
+<%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.RoleDAO" %>
 
 <%--Regarder dans la base de données si la page demandée existe--%>
@@ -38,26 +37,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%--<link href="WEB-INF/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
-    <link rel="stylesheet" href="style/general.css">
+    <link rel="stylesheet" href="WEB-INF/style/general.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <title>OIFYI Intranet</title>
 </head>
 <body class="container">
 <div class="header">
-    <jsp:include page="header.jsp" flush="true"/>
+    <jsp:include page="WEB-INF/header.jsp" flush="true"/>
 </div>
 <div class="row">
     <% if (!pageTrouve) { %>
-    <jsp:include page="page404.jsp" flush="true"/>
+    <jsp:include page="WEB-INF/page404.jsp" flush="true"/>
     <% } else if (!pageAutorisee) { %>
-    <jsp:include page="pageInterdite.jsp" flush="true"/>
+    <jsp:include page="WEB-INF/pageInterdite.jsp" flush="true"/>
     <% } else { %>
     <jsp:include page="<%=muf.getCheminFichier()%>" flush="true"/>
     <% } %>
 </div>
 <div class="footer">
-    <jsp:include page="footer.jsp" flush="true"/>
+    <jsp:include page="WEB-INF/footer.jsp" flush="true"/>
 </div>
 </body>
 </html>
