@@ -21,11 +21,11 @@ public class MissionDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION WHERE IDMISSION=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION WHERE ID=?")) {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Mission(res.getInt("idmission"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
+                return new Mission(res.getInt("ID"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +41,7 @@ public class MissionDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM MISSION");
             while (res.next())
-                listeMissions.add(new Mission(res.getInt("idmission"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin")));
+                listeMissions.add(new Mission(res.getInt("ID"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin")));
             return listeMissions;
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,7 +60,7 @@ public class MissionDAO {
             req.setDate(2, date_debut);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Mission(res.getInt("idmission"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
+                return new Mission(res.getInt("ID"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class MissionDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO Mission (IDMISSION, LIBELLE, DATE_DEBUT, DATE_FIN) VALUES (?,?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO Mission (ID, LIBELLE, DATE_DEBUT, DATE_FIN) VALUES (?,?,?,?)")) {
             req.setInt(1, mission.getId());
             req.setString(2, mission.getLibelle());
             req.setDate(3, (Date) mission.getDate_debut());
@@ -89,7 +89,7 @@ public class MissionDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE mission SET libelle = ?,date_debut = ?, date_fin=? WHERE idmission=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE mission SET libelle = ?,date_debut = ?, date_fin=? WHERE ID=?")) {
             req.setString(1, mission.getLibelle());
             req.setDate(2, (Date) mission.getDate_debut());
             req.setDate(3, (Date) mission.getDate_fin());
@@ -106,7 +106,7 @@ public class MissionDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM mission WHERE idmission=?")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM mission WHERE ID=?")) {
             req.setInt(1, id);
             return req.executeUpdate() == 1;
         } catch (Exception e) {

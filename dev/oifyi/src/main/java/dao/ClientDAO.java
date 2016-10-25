@@ -22,11 +22,11 @@ public class ClientDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CLIENT WHERE ID_CLIENT=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CLIENT WHERE ID=?")) {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_client"), res.getString("nom"), res.getString("prenom"));
+                return new Client(res.getInt("ID"), res.getString("nom"), res.getString("prenom"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class ClientDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM CLIENT");
             while (res.next())
-                listeClients.add(new Client(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom")));
+                listeClients.add(new Client(res.getInt("ID"), res.getString("nom"), res.getString("prenom")));
             return listeClients;
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class ClientDAO {
             req.setString(2,prenom);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"));
+                return new Client(res.getInt("ID"), res.getString("nom"), res.getString("prenom"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class ClientDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO client (ID_CONSULTANT, NOM, PRENOM) VALUES (?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO client(ID, NOM, PRENOM) VALUES (?,?,?)")) {
             req.setInt(1, client.getId());
             req.setString(2, client.getNom());
             req.setString(3, client.getPrenom());
@@ -89,7 +89,7 @@ public class ClientDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE client SET nom = ?,prenom = ? WHERE ID_CLIENT=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE client SET nom = ?,prenom = ? WHERE ID=?")) {
             req.setString(1, client.getNom());
             req.setString(2, client.getPrenom());
             req.setInt(3, client.getId());
@@ -105,7 +105,7 @@ public class ClientDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM client WHERE id_client=?")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM client WHERE ID=?")) {
             req.setInt(1, id);
             return req.executeUpdate() == 1;
         } catch (Exception e) {
