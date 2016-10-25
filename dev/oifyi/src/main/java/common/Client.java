@@ -43,6 +43,8 @@ public class Client {
 
     private String respo_fournisseur_nom;
 
+    private String respo_fournisseur_fonction;
+
 
     public Client(int id, String raison_sociale, String forme_juridique, String siret, String num_tva, String rcs, int adresse_numero, String adresse_rue, int adresse_cp, String adresse_ville, String telephone, int capital, String ville_inscription, String representant_nom, String representant_fonction, String respo_client_tel, String contact_achats_nom, String contact_achats_tel, String respo_fournisseur_nom) {
         this.id = id;
@@ -257,5 +259,13 @@ public class Client {
 
     public void setRespo_fournisseur_nom(String respo_fournisseur_nom) {
         this.respo_fournisseur_nom = respo_fournisseur_nom;
+    }
+
+    public String getRespo_fournisseur_fonction() {
+        return respo_fournisseur_fonction;
+    }
+
+    public void setRespo_fournisseur_fonction(String respo_fournisseur_fonction) {
+        this.respo_fournisseur_fonction = respo_fournisseur_fonction;
     }
 }

@@ -1,5 +1,5 @@
 CREATE TABLE client (
-  id_client                         INTEGER       NOT NULL,
+  id_client                  INTEGER       NOT NULL,
   raison_sociale             VARCHAR2(100) NOT NULL,
   forme_juridique            VARCHAR2(20)  NOT NULL,
   siret                      VARCHAR2(50)  NOT NULL,

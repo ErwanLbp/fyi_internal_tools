@@ -26,7 +26,7 @@ public class ClientDAO {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"),res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")),res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"),res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom"));
+                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")), res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"), res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class ClientDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM CLIENT");
             while (res.next())
-                listeClients.add(new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"),res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")),res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"),res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom")));
+                listeClients.add(new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")), res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"), res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom")));
             return listeClients;
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,7 +60,7 @@ public class ClientDAO {
             req.setString(1, forme_juridique);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"),res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")),res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"),res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom"));
+                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getString("rcs"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"), String.valueOf(res.getInt("telephone")), res.getInt("capital"), res.getString("ville_inscription"), res.getString("representant_nom"), res.getString("representant_fonction"), String.valueOf(res.getInt("respo_client_tel")), res.getString("contact_achats_nom"), String.valueOf(res.getInt("contact_achats_tel")), res.getString("respo_fournisseur_nom"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class ClientDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO client(ID_CLIENT, RAISON_SOCIALE, RAISON_SOCIALE, FORME_JURIDIQUE, SIRET, NUM_TVA, RCS, ADRESSE_NUMERO, ADRESSE_RUE, ADRESSE_CP, ADRESSE_VILLE, TELEPHONE, CAPITAL, VILLE_INSCRIPTION, REPRESENTANT_NOM, REPRESENTANT_FONCTION, RESPO_CLIENT_TEL, CONTACT_ACHATS_NOM, CONTACT_ACHATS_TEL, RESPO_FOURNISSEUR_NOM) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO client(RAISON_SOCIALE, RAISON_SOCIALE, FORME_JURIDIQUE, SIRET, NUM_TVA, RCS, ADRESSE_NUMERO, ADRESSE_RUE, ADRESSE_CP, ADRESSE_VILLE, TELEPHONE, CAPITAL, VILLE_INSCRIPTION, REPRESENTANT_NOM, REPRESENTANT_FONCTION, RESPO_CLIENT_TEL, CONTACT_ACHATS_NOM, CONTACT_ACHATS_TEL, RESPO_FOURNISSEUR_NOM, RESPO_FOURNISSEUR_FONCTION) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
             req.setInt(1, client.getId());
             req.setString(2, client.getRaison_sociale());
             req.setString(3, client.getForme_juridique());
@@ -92,6 +92,7 @@ public class ClientDAO {
             req.setString(17, client.getContact_achats_nom());
             req.setString(18, client.getContact_achats_tel());
             req.setString(19, client.getRespo_fournisseur_nom());
+            req.setString(20, client.getRespo_fournisseur_fonction());
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
