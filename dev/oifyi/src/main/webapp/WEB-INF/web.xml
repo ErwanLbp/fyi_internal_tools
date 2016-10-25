@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Connexion</servlet-name>
-        <url-pattern>/Connexion</url-pattern>
+        <url-pattern>/connexion</url-pattern>
     </servlet-mapping>
 
 </web-app>

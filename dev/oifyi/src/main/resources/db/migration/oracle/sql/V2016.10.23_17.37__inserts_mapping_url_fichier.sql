@@ -1,9 +1,14 @@
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (1, 'accueil', 'connexion', 'WEB-INF/accueil/connexion.jsp');
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (2, 'accueil', 'view', 'WEB-INF/accueil/accueil.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('profil', 'connexion', 'WEB-INF/profil/connexion.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('accueil', 'view', 'WEB-INF/accueil/accueil.jsp');
 
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (3, 'administration', 'list_url', 'WEB-INF/administration/list_url.jsp');
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (4, 'administration', 'parametrage', 'WEB-INF/administration/parametrage.jsp');
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (5, 'clients', 'list', 'WEB-INF/clients/listing_client.jsp');
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (6, 'consultant', 'new', 'WEB-INF/consultant/new_consultant.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'list_pages', 'WEB-INF/administration/list_url.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'parametrage', 'WEB-INF/administration/parametrage.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('clients', 'list', 'WEB-INF/clients/listing_client.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'new', 'WEB-INF/consultant/new_consultant.jsp');
 
-INSERT INTO mapping_url_fichier (id_muf, nom_page, nom_mode, chemin_fichier) VALUES (7, 'profil', 'update', 'WEB-INF/profil/modifier.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('profil', 'update', 'WEB-INF/profil/modifier.jsp');
+
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('profil', 'view', 'WEB-INF/profil/view.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('profil', 'deconnexion', 'WEB-INF/profil/deconnexion.jsp');
+
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('development', 'view', 'WEB-INF/development/view.jsp');

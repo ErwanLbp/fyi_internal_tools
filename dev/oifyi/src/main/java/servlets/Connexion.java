@@ -23,17 +23,17 @@ import java.io.IOException;
  */
 public class Connexion extends HttpServlet {
 
-    String url_page = MappingUrlFichierDAO.getMuf("accueil","connexion").formerUrl();
+    private String url_page_connexion = MappingUrlFichierDAO.getMuf("profil", "connexion").formerUrl();
+    private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("index.jsp?page=accueil&mode=connexion").forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_connexion).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String url;
         // Récupération des champs du formulaire
         String password = req.getParameter("password");
         String login = req.getParameter("login");
@@ -41,8 +41,7 @@ public class Connexion extends HttpServlet {
         // Invalide si champs vides ou introuvable dans la BDD
         if ((login.equals("") || password.equals("")) || !ConsultantDAO.checkLoginPassword(login, password)) {
             req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
-            url = MappingUrlFichierDAO.getMuf("accueil", "connexion").formerUrl();
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url); // On renvoi vers la page de connexion
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
         }
 
@@ -53,7 +52,6 @@ public class Connexion extends HttpServlet {
             session.setAttribute("consultantConnecte", consultantConnecte);
         //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur
 
-        url = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl(); // On redirige vers la page d'accueil
-        resp.sendRedirect(url);
+        resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil
     }
 }

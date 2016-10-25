@@ -1,5 +1,5 @@
 <div class="col-lg-offset-4 col-sm-4">
-    <form method="post" action="/Connexion" class="well">
+    <form method="post" action="/connexion" class="well">
         <legend>Connexion</legend>
 
         <b>
