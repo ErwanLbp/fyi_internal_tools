@@ -5,6 +5,7 @@ import db.MyConnectorJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <h1>dao ConsultantDAO</h1>
@@ -25,7 +26,7 @@ public class MissionDAO {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
+                return new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut"), res.getDate("date_fin"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +42,7 @@ public class MissionDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM MISSION");
             while (res.next())
-                listeMissions.add(new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin")));
+                listeMissions.add(new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut"), res.getDate("date_fin")));
             return listeMissions;
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,7 +61,7 @@ public class MissionDAO {
             req.setDate(2, date_debut);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut") , res.getDate("date_fin"));
+                return new Mission(res.getInt("ID_MISSION"), res.getString("libelle"), res.getDate("date_debut"), res.getDate("date_fin"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -113,5 +114,10 @@ public class MissionDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static List<Mission> getMissionsDuConsultant(int id_consultant) {
+        List<Mission> list_res = new ArrayList<>();
+        return list_res;
     }
 }

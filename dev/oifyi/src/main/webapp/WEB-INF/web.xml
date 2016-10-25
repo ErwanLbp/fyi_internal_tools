@@ -31,7 +31,14 @@
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
+        <servlet-name>saisieCra</servlet-name>
+        <servlet-class>servlets.SaisieCra</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>saisieCra</servlet-name>
+        <url-pattern>/saisieCra</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
