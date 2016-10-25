@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ClientDAO {
 
     //TODO Javadoc : ClientDAO
-    public static Client getById(int i) {
+    public static Client get(int i) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
