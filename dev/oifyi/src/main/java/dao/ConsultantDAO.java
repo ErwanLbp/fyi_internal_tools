@@ -91,7 +91,7 @@ public class ConsultantDAO {
             req.setString(1, login);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Consultant(res.getInt("ID"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
+                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -103,7 +103,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO consultant (ID, NOM, PRENOM, USERNAME, PASSWORD, ROLE_ID) VALUES (?,?,?,?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO consultant (ID_CONSULTANT, NOM, PRENOM, USERNAME, PASSWORD, ROLE_ID) VALUES (?,?,?,?,?,?)")) {
             req.setInt(1, consultant.getId());
             req.setString(2, consultant.getNom());
             req.setString(3, consultant.getPrenom());
@@ -122,7 +122,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID_CONSULTANT=?")) {
             req.setString(1, consultant.getNom());
             req.setString(2, consultant.getPrenom());
             req.setString(3, consultant.getUsername());
@@ -141,7 +141,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM consultant WHERE ID=?")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM consultant WHERE ID_CONSULTANT=?")) {
             req.setInt(1, id);
             return req.executeUpdate() == 1;
         } catch (Exception e) {
