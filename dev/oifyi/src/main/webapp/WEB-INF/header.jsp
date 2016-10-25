@@ -8,7 +8,8 @@
         <li><a href="<%=MappingUrlFichierDAO.getMuf("development", "view").formerUrl()%>">Dab & Co</a></li>
         <li>Consultant
             <ul>
-                <li><a href="<%=MappingUrlFichierDAO.getMuf("clients", "list").formerUrl()%>">Listing</a></li>
+                <li><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list").formerUrl()%>">Listing consultants</a></li>
+                <li><a href="<%=MappingUrlFichierDAO.getMuf("clients", "list").formerUrl()%>">Listing clients</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "saisie").formerUrl()%>">Saisie d'absences</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "validation").formerUrl()%>">Validation d'absences</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>">Saisie CRA</a></li>

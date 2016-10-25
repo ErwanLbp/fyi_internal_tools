@@ -1,12 +1,15 @@
-<%@ page import="common.Client" %>
-<%@ page import="dao.ClientDAO" %>
+<%@ page import="common.Consultant" %>
+<%@ page import="dao.ConsultantDAO" %>
+<%@ page import="common.Role" %>
+<%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
+
 
 
 <div class="container">
 
     <div class="col-md-6">
-        <h2>Rechercher un client</h2>
+        <h2>Rechercher un consultant</h2>
         <div id="custom-search-input">
             <div class="input-group col-md-12">
                 <input type="text" class="form-control input-lg" placeholder="Rechercher client"/>
@@ -24,28 +27,27 @@
 </br></br></br>
 
 <div class="row">
-    <% ArrayList<Client> lcli = ClientDAO.getAll();%>
+    <% ArrayList<Consultant> lcon = ConsultantDAO.getAll();%>
     <table class="table table-striped">
-
         <thead>
         <tr>
-            <td>Raison sociale</td>
-            <td> Nom signataire</td>
-            <td> telephone</td>
-            <td> adresse du siege</td>
-            <td> Fonction signataire</td>
-            <td> Forme Juridique</td>
+            <td>Id</td>
+            <td>Nom</td>
+            <td>Prénom</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Role</td>
         </tr>
         </thead>
         <tbody>
-        <%for (Client cli : lcli) {%>
+        <%for (Consultant con : lcon) {%>
         <tr>
-            <td> <%=cli.getRaison_sociale()%></td>
-            <td> <%=cli.getRepresentant_nom()%></td>
-            <td> <%=cli.getRepresentant_fonction()%></td>
-            <td> <%=cli.getTelephone()%></td>
-            <td> <%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%></td>
-            <td> <%=cli.getForme_juridique()%></td>
+            <td><%=con.getId()%></td>
+            <td><%=con.getNom()%></td>
+            <td><%=con.getPrenom()%></td>
+            <td><%=con.getUsername()%></td>
+            <td><%=con.getPassword()%></td>
+            <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%></td>
         </tr>
         </tbody>
         <%}%>

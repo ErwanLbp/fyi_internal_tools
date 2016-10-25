@@ -10,4 +10,4 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('fa
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('factu_missions', 'suivi', 'WEB-INF/missions/suivi_facturation.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'droits_roles', 'WEB-INF/administration/droits_roles.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'alertes_mails', 'WEB-INF/administration/alertes_mails.jsp');
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'list', 'WEB-INF/consultants/listing_consultants.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'list', 'WEB-INF/consultant/listing_consultants.jsp');

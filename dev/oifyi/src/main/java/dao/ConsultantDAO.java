@@ -58,7 +58,7 @@ public class ConsultantDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT");
             while (res.next())
-                listeConsultants.add(new Consultant(res.getInt("ID"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
             return listeConsultants;
         } catch (Exception e) {
             e.printStackTrace();
