@@ -34,20 +34,24 @@ public class Connexion extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+
+        if (session.getAttribute("consultantConnecte") != null)
+            resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur est déjà connecté
+
         // Récupération des champs du formulaire
         String password = req.getParameter("password");
         String login = req.getParameter("login");
 
         // Invalide si champs vides ou introuvable dans la BDD
         if ((login.equals("") || password.equals("")) || !ConsultantDAO.checkLoginPassword(login, password)) {
-            req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
+            req.setAttribute("erreur", "Le login et/ou le password n'est pas correct"); //FIXME Probleme : l'erreur ne s'affiche pas meme en cas de mauvais identifiants
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
         }
 
         // Si les identifiants sont valides
         Consultant consultantConnecte = ConsultantDAO.getByLogin(login); // On récupère le consultant associé
-        HttpSession session = req.getSession();
         if (session.getAttribute("consultantConnecte") == null) // On l'ajoute à la session
             session.setAttribute("consultantConnecte", consultantConnecte);
         //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur

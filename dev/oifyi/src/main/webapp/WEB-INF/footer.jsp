@@ -7,7 +7,7 @@
         <p>Dab & Co</p>
     </div>
     <div class="col-lg-4">
-        <i>Test d'accès à la base de données : <a href="<%=MappingUrlFichierDAO.getMuf("administration","list_pages").formerUrl()%>">Test BDD</a></i><br/><br/>
+        <i>Liste des pages de la BDD : <a href="<%=MappingUrlFichierDAO.getMuf("administration","list_pages").formerUrl()%>">Test BDD</a></i><br/><br/>
     </div>
 </nav>
 <!--</footer>-->

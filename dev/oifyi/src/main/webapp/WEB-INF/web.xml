@@ -14,12 +14,24 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>Connexion</servlet-name>
+        <servlet-name>connexion</servlet-name>
         <servlet-class>servlets.Connexion</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Connexion</servlet-name>
+        <servlet-name>connexion</servlet-name>
         <url-pattern>/connexion</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deconnexion</servlet-name>
+        <servlet-class>servlets.Deconnexion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deconnexion</servlet-name>
+        <url-pattern>/deconnexion</url-pattern>
+    </servlet-mapping>
+
+
+
 
 </web-app>
