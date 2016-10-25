@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -27,6 +28,8 @@ public class SaisieCra extends HttpServlet {
     private String url_page_cra = MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
     private String url_page_vue_cra = MappingUrlFichierDAO.getMuf("cra", "view").formerUrl();
+
+    private Date moisAnnee;
 
     private int[][] joursCra;
     private List<Mission> missions;
@@ -73,8 +76,14 @@ public class SaisieCra extends HttpServlet {
 
     //TODO Javadoc : SaisieCra
     private boolean recuperationChampsForm(HttpServletRequest req, Consultant consultantConnecte) {
+        try { //Récupération du mois courant
+            moisAnnee = Date.valueOf(req.getParameter("moisAnnee") + "-01"); //Format : yyyy-mm-dd
+        } catch (IllegalArgumentException iae) {
+            return false;
+        }
+
         // Récupération des champs journées autres que astreintes
-        missions = MissionDAO.getMissionsDuConsultant(consultantConnecte.getId());
+        missions = MissionDAO.getMissionsDuConsultant(consultantConnecte.getId(), moisAnnee);
         joursCra = new int[31][missions.size()];
 
         // Pour chaque champ de la forme '<idMission>_<jour>(_<typeJour>)'

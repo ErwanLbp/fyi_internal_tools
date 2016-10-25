@@ -1,6 +1,6 @@
 package common;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by eisti on 25/10/16.
