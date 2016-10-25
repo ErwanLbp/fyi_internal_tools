@@ -109,6 +109,8 @@ public class Client {
         this.respo_fournisseur_nom = respo_fournisseur_nom;
     }
 
+
+
     public int getId() {
         return id;
     }
