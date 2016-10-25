@@ -18,6 +18,38 @@ import java.util.List;
 public class MissionDAO {
 
     //TODO Javadoc : MissionDAO
+    public static Mission get(int id_mission) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION WHERE ID_MISSION=?")) {
+            req.setInt(1, id_mission);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return new Mission(res.getInt("id_mission"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //TODO Javadoc : MissionDAO
+    public static Mission get(String nom_mission) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION WHERE NOM=?")) {
+            req.setString(1, nom_mission);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return new Mission(res.getInt("id_mission"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //TODO Javadoc : MissionDAO
     public static boolean insert(Mission mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -57,12 +89,26 @@ public class MissionDAO {
     }
 
     //TODO Javadoc : MissionDAO
-    public static boolean deleteById(int id_mission) {
+    public static boolean delete(int id_mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("DELETE FROM MISSION WHERE ID_MISSION=?")) {
             req.setInt(1, id_mission);
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //TODO Javadoc : MissionDAO
+    public static boolean delete(String nom_mission) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM MISSION WHERE NOM=?")) {
+            req.setString(1, nom_mission);
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
