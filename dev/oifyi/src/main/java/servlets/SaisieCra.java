@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -90,7 +91,7 @@ public class SaisieCra extends HttpServlet {
         for (int i = 0; i < joursCra.length; i++) {
             for (int j = 0; j < missions.size(); j++) {
                 try {
-                    joursCra[i][j] = Integer.parseInt(req.getParameter(missions.get(i).getId() + "_" + j));
+                    joursCra[i][j] = Integer.parseInt(req.getParameter(missions.get(i).getId_mission() + "_" + j));
                 } catch (NumberFormatException nfe) {
                     joursCra[i][j] = 0;
                 }
@@ -105,10 +106,24 @@ public class SaisieCra extends HttpServlet {
 
     //TODO Javadoc : SaisieCra
     private String validationChamps() {
-        String erreur = null;
 
+        // Vérifications s'il y a bien un total de 1j saisi sur chaque jour
+        for (int i = 0; i < joursCra.length; i++) {
+            double sommeJour = 0;
+            for (int j = 0; j < missions.size(); j++) {
+                if (joursCra[i][j] > 1)
+                    return "Le jour " + i + " sur la mission " + missions.get(j).getNom() + " doit être <= 1.";
+                if (joursCra[i][j] < 0)
+                    return "Le jour " + i + " sur la mission " + missions.get(j).getNom() + " doit être >= 0.";
+                sommeJour += joursCra[i][j];
+            }
+            if (sommeJour < 1)
+                return "Le jour " + i + " n'est pas complet.";
+            if (sommeJour > 1)
+                return "Le jour " + i + " est trop rempli.";
+        }
 
-        return erreur;
+        return null;
     }
 
     //TODO Javadoc : SaisieCra

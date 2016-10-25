@@ -3,7 +3,12 @@ package common;
 import java.sql.Date;
 
 /**
- * Created by eisti on 25/10/16.
+ * <h1>common ConsultantDAO</h1>
+ * TODO Description
+ *
+ * @author Croute
+ * @version 1.0
+ * @since 25-10-2016
  */
 public class Mission {
 
