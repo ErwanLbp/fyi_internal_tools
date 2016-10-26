@@ -33,7 +33,7 @@ public class ClientDAO {
     }
 
     //TODO Javadoc : ClientDAO
-    public static ArrayList<Client> getAll() throws SQLException {
+    public static ArrayList<Client> getAll() {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 

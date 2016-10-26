@@ -13,6 +13,5 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('pr
 
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('development', 'view', 'WEB-INF/development/view.jsp');
 
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'saisie', 'WEB-INF/cra/saisie.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'view', 'WEB-INF/cra/view.jsp');
 
