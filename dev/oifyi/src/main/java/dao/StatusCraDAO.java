@@ -1,6 +1,6 @@
 package dao;
 
-import common.Role;
+import common.StatusCra;
 import db.MyConnectorJDBC;
 
 import java.sql.*;
@@ -8,58 +8,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <h1>dao RoleDAO</h1>
+ * <h1>dao StatusCraDAO</h1>
  * TODO Description
  *
  * @author Erwan
  * @version 1.0
- * @since 24-10-2016
+ * @since 25-10-2016
  */
-public class RoleDAO {
+public class StatusCraDAO {
 
-    //TODO Javadoc : RoleDAO
-    public static Role get(String libelle) {
+    //TODO Javadoc : StatusCraDAO
+    public static StatusCra get(String libelle) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role WHERE lower(LIBELLE)=lower(?)")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM status_cra WHERE lower(LIBELLE)=lower(?)")) {
             req.setString(1, libelle);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Role(res.getInt("id_role"), res.getString("libelle"));
+                return new StatusCra(res.getInt("id_status_cra"), res.getString("libelle"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    //TODO Javadoc : RoleDAO
-    public static Role get(int id_role) {
+    //TODO Javadoc : StatusCraDAO
+    public static StatusCra get(int id_status_cra) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM role WHERE id_role=?")) {
-            req.setInt(1, id_role);
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM status_cra WHERE id_status_cra=?")) {
+            req.setInt(1, id_status_cra);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Role(res.getInt("id_role"), res.getString("libelle"));
+                return new StatusCra(res.getInt("id_status_cra"), res.getString("libelle"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    //TODO Javadoc : RoleDAO
-    public static List<Role> getAll() {
+    //TODO Javadoc : StatusCraDAO
+    public static List<StatusCra> getAll() {
 
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        List<Role> list_res = new ArrayList<>();
+        List<StatusCra> list_res = new ArrayList<>();
         try (Statement req = connection.createStatement()) {
-            ResultSet res = req.executeQuery("SELECT * FROM role");
+            ResultSet res = req.executeQuery("SELECT * FROM status_cra");
             while (res.next())
-                list_res.add(new Role(res.getInt("id_role"), res.getString("libelle")));
+                list_res.add(new StatusCra(res.getInt("id_status_cra"), res.getString("libelle")));
             return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,14 +67,14 @@ public class RoleDAO {
         }
     }
 
-    //TODO Javadoc : RoleDAO
-    public static boolean insert(Role role) {
+    //TODO Javadoc : StatusCraDAO
+    public static boolean insert(StatusCra st_cra) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO role (id_role, libelle) VALUES(?,?)")) {
-            req.setInt(1, role.getId_role());
-            req.setString(2, role.getLibelle());
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO STATUS_CRA (id_status_cra, libelle) VALUES(?,?)")) {
+            req.setInt(1, st_cra.getId_status_cra());
+            req.setString(2, st_cra.getLibelle());
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,14 +82,14 @@ public class RoleDAO {
         }
     }
 
-    //TODO Javadoc : RoleDAO
-    public static boolean update(Role role) {
+    //TODO Javadoc : StatusCraDAO
+    public static boolean update(StatusCra st_cra) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE role SET LIBELLE=? WHERE id_role=?")) {
-            req.setString(1, role.getLibelle());
-            req.setInt(2, role.getId_role());
+        try (PreparedStatement req = connection.prepareStatement("UPDATE STATUS_CRA SET LIBELLE=? WHERE id_status_cra=?")) {
+            req.setString(1, st_cra.getLibelle());
+            req.setInt(2, st_cra.getId_status_cra());
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -97,12 +97,12 @@ public class RoleDAO {
         }
     }
 
-    //TODO Javadoc : RoleDAO
+    //TODO Javadoc : StatusCraDAO
     public static boolean delete(String libelle) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("DELETE FROM role WHERE lower(LIBELLE)=lower(?)")) {
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM status_cra WHERE lower(LIBELLE)=lower(?)")) {
             req.setString(1, libelle);
             return req.executeUpdate() == 1;
         } catch (SQLException e) {

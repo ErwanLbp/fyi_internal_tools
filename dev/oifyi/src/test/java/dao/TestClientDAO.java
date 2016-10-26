@@ -15,54 +15,83 @@ import static org.junit.Assert.*;
  */
 public class TestClientDAO {
 
-    private static Client client = new Client("test_client_rs", "test_client_fj", "test_client_siret", "test_client_num_tva", "test_client_rcs", 1, "test_client_adresse_rue", 95000, "test_client_adresse_ville", "test_client_telephone", 1000000, "test_client_ville_inscription", "test_client_representant_nom", "test_client_representant_fonction", "test_client_respo_client_tel", "test_client_contact_achats_nom", "test_client_contact_achats_tel", "test_client_respo_fournisseur_nom");
-    private static Client client_insert = new Client("test_client_rs_insert", "test_client_fj_insert", "test_client_siret_insert", "test_client_num_tva_insert", "test_client_rcs_insert", 2, "test_client_adresse_rue__insert", 95000, "test_client_adresse_ville_insert", "test_client_telephone_insert", 1000000, "test_client_ville_inscription_insert", "test_client_representant_nom_insert", "test_client_representant_fonction_insert", "test_client_respo_client_tel_insert", "test_client_contact_achats_nom_insert", "test_client_contact_achats_tel_insert", "test_client_respo_fournisseur_nom_insert");
-    private static Client client_update = new Client("test_client_raison_sociale_update", "test_client_forme_juridique_update", "test_client_siret_update", "test_client_num_tva_update", "test_client_rcs_update", 1, "test_client_adresse_rue_update", 95000, "test_client_adresse_ville_update", "test_client_telephone_update", 1000000, "test_client_ville_inscription_update", "test_client_representant_nom_update", "test_client_representant_fonction_update", "test_client_respo_client_tel_update", "test_client_contact_achats_nom_update", "test_client_contact_achats_tel_update", "test_client_respo_fournisseur_nom_update");
-    private static Client client_fake_id = new Client(70,"test_client_rs", "test_client_fj", "test_client_siret", "test_client_num_tva", "test_client_rcs", 1, "test_client_adresse_rue", 95000, "test_client_adresse_ville", "test_client_telephone", 1000000, "test_client_ville_inscription", "test_client_representant_nom", "test_client_representant_fonction", "test_client_respo_client_tel", "test_client_contact_achats_nom", "test_client_contact_achats_tel", "test_client_respo_fournisseur_nom");
+    private static Client client = new Client("a", "b", "c", "d", 1, "e", 2, "f");
+    private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", 1, "e_insert", 2, "f_insert");
+    private static Client client_update = new Client("a_update", "b_update", "c_update", "d_update", 1, "e_update", 2, "f_update");
 
     @Before
     public void insertLigneBDD() {
-        ClientDAO.insertComplet(client);
+        ClientDAO.insert(client);
+        client.setId(ClientDAO.get(client.getRaison_sociale()).getId());
     }
 
     @After
     public void deleteLigneBDD() {
-        ClientDAO.deleteById(client.getId());
+        ClientDAO.delete(client.getId());
     }
 
     @AfterClass
     public static void suppressionsInsertTests() {
-        ClientDAO.deleteById(client_insert.getId());
-        ClientDAO.deleteById(client_update.getId());
+        ClientDAO.delete(client.getRaison_sociale());
+        ClientDAO.delete(client_insert.getRaison_sociale());
+        ClientDAO.delete(client_update.getRaison_sociale());
     }
 
     @Test
     public void testInsert() {
-        assertTrue(ClientDAO.insertComplet(client_insert));
-        Client actual = ClientDAO.getByFormeJuridique(client_insert.getForme_juridique());
+        assertTrue(ClientDAO.insert(client_insert));
+        Client actual = ClientDAO.get(client_insert.getRaison_sociale());
         assert actual != null;
-        assertEquals(client_insert.getForme_juridique(), actual.getForme_juridique());
+        client_insert.setId(actual.getId());
+        assertEquals(client_insert.getRaison_sociale(), actual.getRaison_sociale());
     }
 
     @Test
     public void testUpdate() {
-        assertTrue(ClientDAO.updateByFormeJuridique(client.getForme_juridique(),client_update));
-        Client actual = ClientDAO.getByFormeJuridique(client_update.getForme_juridique());
+        client_update.setId(client.getId());
+        assertTrue(ClientDAO.update(client_update));
+        Client actual = ClientDAO.get(client_update.getRaison_sociale());
         assert actual != null;
-        assertEquals(client_update.getForme_juridique(), actual.getForme_juridique());
+        assertEquals(client_update.getRaison_sociale(), actual.getRaison_sociale());
     }
 
     @Test
-    public void testDelete() {
-        assertTrue(ClientDAO.deleteByFormeJuridique(client.getForme_juridique()));
-        Client actual = ClientDAO.getByFormeJuridique(client.getForme_juridique());
+    public void testDeleteById() {
+        assertTrue(ClientDAO.delete(client.getId()));
+        Client actual = ClientDAO.get(client.getId());
         assertNull(actual);
     }
 
+    @Test
+    public void testDeleteByRaisonSociale() {
+        assertTrue(ClientDAO.delete(client.getRaison_sociale()));
+        Client actual = ClientDAO.get(client.getId());
+        assertNull(actual);
+    }
 
     @Test
-    public void testGetInexistant() {
-        Client actual = ClientDAO.getById(client_fake_id.getId());
+    public void testGetId() {
+        Client actual = ClientDAO.get(client.getId());
+        assert actual != null;
+        assertEquals(client.getRaison_sociale(), actual.getRaison_sociale());
+    }
+
+    @Test
+    public void testGetRaisonSociale() {
+        Client actual = ClientDAO.get(client.getRaison_sociale());
+        assert actual != null;
+        assertEquals(client.getId(), actual.getId());
+    }
+
+    @Test
+    public void testGetIdInexistant() {
+        Client actual = ClientDAO.get(-1);
+        assertNull(actual);
+    }
+
+    @Test
+    public void testGetRaisonSocialeInexistant() {
+        Client actual = ClientDAO.get("###");
         assertNull(actual);
     }
 

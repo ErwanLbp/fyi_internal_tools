@@ -45,8 +45,8 @@ public class TestDroitsPagesDAO {
     public static void deletesRoleEtPage() {
         DroitsPagesDAO.deleteOne(new DroitsPages(muf_insert.getId_muf(), role_insert.getId_role()));
 
-        RoleDAO.deleteByLibelle(role.getLibelle());
-        RoleDAO.deleteByLibelle(role_insert.getLibelle());
+        RoleDAO.delete(role.getLibelle());
+        RoleDAO.delete(role_insert.getLibelle());
 
         MappingUrlFichierDAO.deleteByNomPageNomMode(muf.getNomPage(), muf.getNomMode());
         MappingUrlFichierDAO.deleteByNomPageNomMode(muf_insert.getNomPage(), muf_insert.getNomMode());

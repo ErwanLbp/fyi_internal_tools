@@ -1,45 +1,75 @@
 package common;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
- * Created by eisti on 25/10/16.
+ * <h1>common ConsultantDAO</h1>
+ * TODO Description
+ *
+ * @author Croute
+ * @version 1.0
+ * @since 25-10-2016
  */
 public class Mission {
 
-    private int id;
+    private int id_mission;
 
-    private String libelle;
+    private String nom;
+
+    private String numero_contrat;
+
+    private int client_id;
 
     private Date date_debut;
 
     private Date date_fin;
 
-    public Mission(int id, String libelle, Date date_debut, Date date_fin){
-        this(libelle,date_debut,date_fin);
-        this.id=id;
+    private int tjm;
+
+    public Mission(int id_mission, String nom, String numero_contrat, int client_id, Date date_debut, Date date_fin, int tjm) {
+        this(nom, numero_contrat, client_id, date_debut, date_fin, tjm);
+        this.id_mission = id_mission;
     }
 
-    public Mission(String libelle, Date date_debut, Date date_fin){
-        this.libelle = libelle;
-        this.date_debut=date_debut;
-        this.date_fin=date_fin;
+    public Mission(String nom, String numero_contrat, int client_id, Date date_debut, Date date_fin, int tjm) {
+        this.nom = nom;
+        this.numero_contrat = numero_contrat;
+        this.client_id = client_id;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.tjm = tjm;
     }
 
-    public int getId() {
-        return id;
+    public int getId_mission() {
+        return id_mission;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_mission(int id_mission) {
+        this.id_mission = id_mission;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public String getNom() {
+        return nom;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getNumero_contrat() {
+        return numero_contrat;
+    }
+
+    public void setNumero_contrat(String numero_contrat) {
+        this.numero_contrat = numero_contrat;
+    }
+
+    public int getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
     }
 
     public Date getDate_debut() {
@@ -56,5 +86,13 @@ public class Mission {
 
     public void setDate_fin(Date date_fin) {
         this.date_fin = date_fin;
+    }
+
+    public int getTjm() {
+        return tjm;
+    }
+
+    public void setTjm(int tjm) {
+        this.tjm = tjm;
     }
 }

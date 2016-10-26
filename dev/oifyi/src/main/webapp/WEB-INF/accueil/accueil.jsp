@@ -36,6 +36,7 @@
 
 
 <div class="col-lg-offset-4 col-sm-4">
+<<<<<<< HEAD
     <h1>OK PAGE ACCUEIL</h1>
 
     <li class="active"><a href="<%=MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl()%>">FYI Consulting <span class="sr-only">(current)</span></a></li>
@@ -68,5 +69,11 @@
         </ul>
     </li>
 
+
+
+    <h2>OK PAGE ACCUEIL</h2>
+    <ul>
+        <li>Afficher les menus ici svp</li>
+    </ul>
 
 </div>

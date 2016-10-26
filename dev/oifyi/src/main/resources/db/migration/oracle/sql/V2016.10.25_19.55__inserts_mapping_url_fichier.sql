@@ -1,5 +1,5 @@
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'saisie', 'WEB-INF/consultant/saisie_absences.jsp');
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'validation', 'WEB-INF/consultant/valdation_absences.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'validation', 'WEB-INF/consultant/validation_absences.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'saisie', 'WEB-INF/consultant/saisie_cra.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'validation', 'WEB-INF/consultant/validation_cra.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('notes_de_frais', 'saisie', 'WEB-INF/consultant/saisie_notes_de_frais.jsp');

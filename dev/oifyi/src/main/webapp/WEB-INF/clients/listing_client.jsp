@@ -1,6 +1,10 @@
 <%@ page import="common.Client" %>
 <%@ page import="dao.ClientDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<div class="col-lg-offset-4 col-sm-4">
+    <h1>Recherche client</h1>
+
+</div>
 
 
 <div class="container">
@@ -21,7 +25,7 @@
 
 </div>
 
-</br></br></br>
+<br/><br/><br/>
 
 <div class="row">
     <% ArrayList<Client> lcli = ClientDAO.getAll();%>
@@ -29,23 +33,29 @@
 
         <thead>
         <tr>
+            <td>Id</td>
             <td>Raison sociale</td>
-            <td> Nom signataire</td>
-            <td> telephone</td>
-            <td> adresse du siege</td>
-            <td> Fonction signataire</td>
-            <td> Forme Juridique</td>
+            <td>Forme Juridique</td>
+            <td>Siret</td>
+            <td>Numéro de TVA</td>
+            <td>Adresse</td>
         </tr>
         </thead>
         <tbody>
         <%for (Client cli : lcli) {%>
         <tr>
-            <td> <%=cli.getRaison_sociale()%></td>
-            <td> <%=cli.getRepresentant_nom()%></td>
-            <td> <%=cli.getRepresentant_fonction()%></td>
-            <td> <%=cli.getTelephone()%></td>
-            <td> <%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%></td>
-            <td> <%=cli.getForme_juridique()%></td>
+            <td><%=cli.getId()%>
+            </td>
+            <td><%=cli.getRaison_sociale()%>
+            </td>
+            <td><%=cli.getForme_juridique()%>
+            </td>
+            <td><%=cli.getSiret()%>
+            </td>
+            <td><%=cli.getNum_tva()%>
+            </td>
+            <td><%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%>
+            </td>
         </tr>
         </tbody>
         <%}%>
