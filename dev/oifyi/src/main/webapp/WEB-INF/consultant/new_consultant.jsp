@@ -20,6 +20,19 @@
         <label for="idPrenom">Prénom : <input id="idPrenom" type="text" name="prenom" class="form-control" value="<jsp:getProperty name="consultant" property="prenom"/>" required/></label>
     </div>
     <div class="form-group">
+        <label for="idUsername">Username : <input id="idUsername" type="text" name="username" class="form-control" value="<jsp:getProperty name="consultant" property="username"/>" required/></label>
+    </div>
+    <div class="form-group">
+        <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<jsp:getProperty name="consultant" property="password"/>" required/></label>
+    </div>
+    <div class="form-group">
+        <label for="idRole">Role : <input id="idRole" type="text" name="role" class="form-control" value="<jsp:getProperty name="consultant" property="role"/>" required/></label>
+    </div>
+
+
+
+
+<!--    <div class="form-group">
         <label for="idBirth">Date de naissance : <input id="idBirth" type="date" name="birth" class="form-control" value="<jsp:getProperty name="consultant" property="prenom"/>" required/></label>
     </div>
     <div class="form-group">
@@ -43,11 +56,10 @@
     <div class="form-group">
         <label for="idDateSortie">Date de sortie dans l'entreprise : <input id="idDateSortie" type="date" name="dateSortie" class="form-control" value="<jsp:getProperty name="consultant" property="dateSortie"/>" required/></label>
     </div>
-    <!-- à faire plus tard!-->
     <div class="form-group">
         <label for="idMissions">Affectations aux missions : <input id="idMissions" type="date" name="dateSortie" class="form-control" value="<jsp:getProperty name="consultant" property="missions"/>" required/></label>
     </div>
-    <!--!-->
+
     <div class="form-group">
         <label>Type de consultant :
             <input type="radio" name="idType" value="salarie"> Salarié
@@ -57,6 +69,6 @@
     <div class="form-group">
         <input type="submit" value="Ajouter un CV" class="btn btn-primary"/>
     </div>
-
+!-->
     <input type="submit" value="Créer/modifier le consultant" class="btn btn-primary"/>
 </form>

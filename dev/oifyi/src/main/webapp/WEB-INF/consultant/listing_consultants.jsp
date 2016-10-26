@@ -24,8 +24,10 @@
 
 </div>
 
+
 </br></br></br>
 
+<form method="post" action="/new_consultant" class="well">
 <div class="row">
     <% ArrayList<Consultant> lcon = ConsultantDAO.getAll();%>
     <table class="table table-striped">
@@ -37,6 +39,7 @@
             <td>Username</td>
             <td>Password</td>
             <td>Role</td>
+            <td>Modifier le consultant</td>
         </tr>
         </thead>
         <tbody>
@@ -48,8 +51,11 @@
             <td><%=con.getUsername()%></td>
             <td><%=con.getPassword()%></td>
             <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%></td>
+            <td><input type="submit" value="X" <% request.getAttribute("con");%>/> </td>
         </tr>
-        </tbody>
         <%}%>
+        </tbody>
     </table>
+    <input type="submit" value="Créer un consultant" <% request.getAttribute("");%>/>
 </div>
+</form>

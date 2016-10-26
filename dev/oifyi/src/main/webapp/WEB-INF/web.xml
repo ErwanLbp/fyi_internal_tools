@@ -31,6 +31,15 @@
         <url-pattern>/deconnexion</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>new_consultant</servlet-name>
+        <servlet-class>servlets.NewConsultant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>new_consultant</servlet-name>
+        <url-pattern>/new_consultant</url-pattern>
+    </servlet-mapping>
+
 
 
 

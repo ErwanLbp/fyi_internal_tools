@@ -1,7 +1,7 @@
 package common;
 
 /**
- * <h1>common Consultant</h1>
+ * <h1>common NewConsultant</h1>
  * TODO Description
  *
  * @author Erwan
