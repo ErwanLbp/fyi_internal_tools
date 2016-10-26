@@ -1,3 +1,6 @@
+<%@ page import="common.Client" %>
+<%@ page import="dao.ClientDAO" %>
+<%@ page import="java.util.ArrayList" %>
 <div class="col-lg-offset-4 col-sm-4">
     <h1>Recherche client</h1>
 
@@ -22,55 +25,39 @@
 
 </div>
 
+<br/><br/><br/>
 
-</br></br></br>
 <div class="row">
-
+    <% ArrayList<Client> lcli = ClientDAO.getAll();%>
     <table class="table table-striped">
 
         <thead>
         <tr>
+            <td>Id</td>
             <td>Raison sociale</td>
-            <td> Nom signataire</td>
-            <td> telephone</td>
-            <td> adresse du siege</td>
-            <td> Fonction signataire</td>
-            <td> Forme Juridique</td>
+            <td>Forme Juridique</td>
+            <td>Siret</td>
+            <td>Numéro de TVA</td>
+            <td>Adresse</td>
         </tr>
         </thead>
         <tbody>
+        <%for (Client cli : lcli) {%>
         <tr>
-            <td> client.raisonSociale</td>
-            <td> client.nom</td>
-            <td> client.telephone</td>
-            <td> client.adresse</td>
-            <td> client.fonction</td>
-            <td> client.fj</td>
-        </tr>
-        <tr>
-            <td> client.raisonSociale2</td>
-            <td> client.nom2</td>
-            <td> client.telephone2</td>
-            <td> client.adresse2</td>
-            <td> client.fonction2</td>
-            <td> client.fj2</td>
-        </tr>
-        <tr>
-            <td> client.raisonSociale3</td>
-            <td> client.nom3</td>
-            <td> client.telephone3</td>
-            <td> client.adresse3</td>
-            <td> client.fonction3</td>
-            <td> client.fj3</td>
-        </tr>
-        <tr>
-            <td> client.raisonSociale4</td>
-            <td> client.nom4</td>
-            <td> client.telephone4</td>
-            <td> client.adresse4</td>
-            <td> client.fonction4</td>
-            <td> client.fj4</td>
+            <td><%=cli.getId()%>
+            </td>
+            <td><%=cli.getRaison_sociale()%>
+            </td>
+            <td><%=cli.getForme_juridique()%>
+            </td>
+            <td><%=cli.getSiret()%>
+            </td>
+            <td><%=cli.getNum_tva()%>
+            </td>
+            <td><%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%>
+            </td>
         </tr>
         </tbody>
+        <%}%>
     </table>
 </div>
