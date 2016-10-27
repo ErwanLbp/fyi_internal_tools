@@ -110,4 +110,20 @@ public class RoleDAO {
             return false;
         }
     }
+
+    //TODO Javadoc : RoleDAO
+    public static boolean isInDB(int role) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM ROLE WHERE ID_ROLE=?")) {
+            req.setInt(1, role);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
