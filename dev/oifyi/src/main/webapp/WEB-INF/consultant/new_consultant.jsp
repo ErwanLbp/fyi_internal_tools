@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: eisti
-  Date: 19/10/16
-  Time: 11:33
-  To change this template use File | Settings | File Templates.
---%>
 <jsp:useBean id="consultant" scope="request" class="common.Consultant"/>
 <form method="post" action="/new_consultant" class="well">
     <legend>Saisie d'un consultant</legend>
@@ -30,9 +23,7 @@
     </div>
 
 
-
-
-<!--    <div class="form-group">
+    <!--    <div class="form-group">
         <label for="idBirth">Date de naissance : <input id="idBirth" type="date" name="birth" class="form-control" value="<jsp:getProperty name="consultant" property="prenom"/>" required/></label>
     </div>
     <div class="form-group">

@@ -13,7 +13,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by eisti on 25/10/16.
+ * <h1>${PACKAGE_NAME} ${NAME}</h1>
+ * TODO Description
+ * @author Erwan
+ * @version 1.0
+ * @since 27-10-2016
  */
 public class NewConsultant extends HttpServlet {
 
@@ -50,7 +54,7 @@ public class NewConsultant extends HttpServlet {
 
 
         // Si les champs sont valides
-        Consultant consultantCree= ConsultantDAO.getByLogin(username); // On récupère le consultant associé
+        Consultant consultantCree= ConsultantDAO.get(username); // On récupère le consultant associé
         if (session.getAttribute("consultantCree") == null) // On l'ajoute à la session
             session.setAttribute("consultantCree", consultantCree);
         //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur

@@ -40,7 +40,7 @@
         <url-pattern>/new_consultant</url-pattern>
     </servlet-mapping>
 
-
+    <servlet>
         <servlet-name>saisieCra</servlet-name>
         <servlet-class>servlets.SaisieCra</servlet-class>
     </servlet>
