@@ -1,5 +1,6 @@
 package dao;
 
+import common.Adresse;
 import common.Client;
 import org.junit.*;
 
@@ -15,9 +16,9 @@ import static org.junit.Assert.*;
  */
 public class TestClientDAO {
 
-    private static Client client = new Client("a", "b", "c", "d", 1, "e", 2, "f");
-    private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", 1, "e_insert", 2, "f_insert");
-    private static Client client_update = new Client("a_update", "b_update", "c_update", "d_update", 1, "e_update", 2, "f_update");
+    private static Client client = new Client("a", "b", "c", "d", new Adresse(1, "e", 2, "f"));
+    private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", new Adresse(1, "e_insert", 2, "f_insert"));
+    private static Client client_update = new Client("a_update", "b_update", "c_update", "d_update", new Adresse(1, "e_update", 2, "f_update"));
 
     @Before
     public void insertLigneBDD() {

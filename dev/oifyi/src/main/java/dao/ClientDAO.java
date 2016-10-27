@@ -1,5 +1,6 @@
 package dao;
 
+import common.Adresse;
 import common.Client;
 import db.MyConnectorJDBC;
 
@@ -25,7 +26,7 @@ public class ClientDAO {
             req.setInt(1, id_client);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"));
+                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), new Adresse(res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,7 +42,7 @@ public class ClientDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM CLIENT");
             while (res.next())
-                listeClients.add(new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville")));
+                listeClients.add(new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), new Adresse(res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"))));
             return listeClients;
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,7 +59,7 @@ public class ClientDAO {
             req.setString(1, raison_sociale);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"));
+                return new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), new Adresse(res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -75,10 +76,10 @@ public class ClientDAO {
             req.setString(2, client.getForme_juridique());
             req.setString(3, client.getSiret());
             req.setString(4, client.getNum_tva());
-            req.setInt(5, client.getAdresse_numero());
-            req.setString(6, client.getAdresse_rue());
-            req.setInt(7, client.getAdresse_cp());
-            req.setString(8, client.getAdresse_ville());
+            req.setInt(5, client.getAdresse().getNumero());
+            req.setString(6, client.getAdresse().getRue());
+            req.setInt(7, client.getAdresse().getCp());
+            req.setString(8, client.getAdresse().getVille());
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,10 +97,10 @@ public class ClientDAO {
             req.setString(2, client.getForme_juridique());
             req.setString(3, client.getSiret());
             req.setString(4, client.getNum_tva());
-            req.setInt(5, client.getAdresse_numero());
-            req.setString(6, client.getAdresse_rue());
-            req.setInt(7, client.getAdresse_cp());
-            req.setString(8, client.getAdresse_ville());
+            req.setInt(5, client.getAdresse().getNumero());
+            req.setString(6, client.getAdresse().getRue());
+            req.setInt(7, client.getAdresse().getCp());
+            req.setString(8, client.getAdresse().getVille());
             req.setInt(9, client.getId());
             return req.executeUpdate() == 1;
         } catch (Exception e) {

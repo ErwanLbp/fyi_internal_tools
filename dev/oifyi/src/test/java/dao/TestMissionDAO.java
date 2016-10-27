@@ -1,5 +1,6 @@
 package dao;
 
+import common.Adresse;
 import common.Client;
 import common.Mission;
 import org.junit.*;
@@ -20,8 +21,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestMissionDAO {
 
-    private static Client client = new Client("a", "b", "c", "d", 1, "e", 2, "f");
-    private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", 1, "e_insert", 2, "f_insert");
+    private static Client client = new Client("a", "b", "c", "d", new Adresse(1, "e", 2, "f"));
+    private static Client client_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", new Adresse(1, "e_insert", 2, "f_insert"));
 
     private static Mission mission;
     private static Mission mission_insert;

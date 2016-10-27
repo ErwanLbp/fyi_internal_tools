@@ -1,7 +1,5 @@
 package common;
 
-import java.io.Serializable;
-
 /**
  * <h1>common Adresse</h1>
  * TODO Description
@@ -10,53 +8,52 @@ import java.io.Serializable;
  * @version 1.0
  * @since 21-10-2016
  */
-public class Adresse implements Serializable {
+public class Adresse {
 
-    private int adresseNumero;
+    private int numero;
 
-    private String adresseRue;
+    private String rue;
 
-    private int adresseCp;
+    private int cp;
 
-    private String adresseVille;
+    private String ville;
 
-    public Adresse(int adresseNumero, String adresseRue, int adresseCp, String adresseVille) {
-        this.adresseNumero = adresseNumero;
-        this.adresseRue = adresseRue;
-        this.adresseCp = adresseCp;
-        this.adresseVille = adresseVille;
+    public Adresse(int numero, String rue, int cp, String ville) {
+        this.numero = numero;
+        this.rue = rue;
+        this.cp = cp;
+        this.ville = ville;
     }
 
-    public int getAdresseNumero() {
-        return adresseNumero;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setAdresseNumero(int adresseNumero) {
-        this.adresseNumero = adresseNumero;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
-    public String getAdresseRue() {
-        return adresseRue;
+    public String getRue() {
+        return rue;
     }
 
-    public void setAdresseRue(String adresseRue) {
-        this.adresseRue = adresseRue;
+    public void setRue(String rue) {
+        this.rue = rue;
     }
 
-    public int getAdresseCp() {
-        return adresseCp;
+    public int getCp() {
+        return cp;
     }
 
-    public void setAdresseCp(int adresseCp) {
-        this.adresseCp = adresseCp;
+    public void setCp(int cp) {
+        this.cp = cp;
     }
 
-    public String getAdresseVille() {
-        return adresseVille;
+    public String getVille() {
+        return ville;
     }
 
-    public void setAdresseVille(String adresseVille) {
-        this.adresseVille = adresseVille;
+    public void setVille(String ville) {
+        this.ville = ville;
     }
-
 }
