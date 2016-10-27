@@ -1,65 +1,42 @@
-<jsp:useBean id="consultant" scope="request" class="common.Consultant"/>
+<%@ page import="dao.RoleDAO" %>
+<%@ page import="common.Role" %>
+<%@ page import="java.util.List" %>
+
+<jsp:useBean id="newConsultant" scope="page" class="common.Consultant"/>
+<jsp:setProperty name="newConsultant" property="*"/>
+
 <form method="post" action="/new_consultant" class="well">
-    <legend>Saisie d'un consultant</legend>
+    <fieldset>
+        <legend>Saisie d'un consultant</legend>
 
-    <b>
-        <%= request.getParameter("erreur") == null ? "Remplissez tous les champs obligatoires" : request.getParameter("erreur") %>
-    </b>
+        <b>
+            <%= request.getParameter("erreur") == null ? "Remplissez tous les champs obligatoires" : request.getParameter("erreur") %>
+        </b>
 
-    <div class="form-group">
-        <label for="idNom">Nom : <input id="idNom" type="text" name="nom" class="form-control" value="<jsp:getProperty name="consultant" property="nom"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idPrenom">Prénom : <input id="idPrenom" type="text" name="prenom" class="form-control" value="<jsp:getProperty name="consultant" property="prenom"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idUsername">Username : <input id="idUsername" type="text" name="username" class="form-control" value="<jsp:getProperty name="consultant" property="username"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<jsp:getProperty name="consultant" property="password"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idRole">Role : <input id="idRole" type="text" name="role" class="form-control" value="<jsp:getProperty name="consultant" property="role"/>" required/></label>
-    </div>
+        <div class="form-group">
+            <label for="idNom">Nom : <input id="idNom" type="text" name="nom" class="form-control" value="<jsp:getProperty name="newConsultant" property="nom"/>" required/></label>
+        </div>
+        <div class="form-group">
+            <label for="idPrenom">Prénom : <input id="idPrenom" type="text" name="prenom" class="form-control" value="<jsp:getProperty name="newConsultant" property="prenom"/>" required/></label>
+        </div>
+        <div class="form-group">
+            <label for="idUsername">Username : <input id="idUsername" type="text" name="username" class="form-control" value="<jsp:getProperty name="newConsultant" property="username"/>" required/></label>
+        </div>
+        <div class="form-group">
+            <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<jsp:getProperty name="newConsultant" property="password"/>" required/></label>
+        </div>
+        <div class="form-group">
+            <label for="idRole">Role : </label>
+            <% List<Role> roles = RoleDAO.getAll(); %>
+            <select name="role" id="idRole" class="form-control" required>
+                <% for (Role r : roles) { %>
+                <option value="<%= r.getId_role()%>" <%= (newConsultant.getRole_id() == r.getId_role()) ? "selected" : "" %>><%= r.getLibelle() %>
+                </option>
+                <% } %>
+            </select>
+            <input id="idRole" type="text" name="role" class="form-control" value="<jsp:getProperty name="newConsultant" property="role"/>" required/>
+        </div>
 
-
-    <!--    <div class="form-group">
-        <label for="idBirth">Date de naissance : <input id="idBirth" type="date" name="birth" class="form-control" value="<jsp:getProperty name="consultant" property="prenom"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idAdresse">Adresse : <input id="idAdresse" type="text" name="adresse" class="form-control" value="<jsp:getProperty name="consultant" property="adresse"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idAdresseCP">Code Postal : <input id="idAdresseCP" type="text" name="adresseCP" class="form-control" value="<jsp:getProperty name="consultant" property="adresseCP"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idAdresseVille">Ville : <input id="idAdresseVille" type="text" name="adresseVille" class="form-control" value="<jsp:getProperty name="consultant" property="adresseVille"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idTelPerso">Tél. personnel : <input id="idTelPerso" type="text" name="telPerso" class="form-control" value="<jsp:getProperty name="consultant" property="telPerso"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idTelPro">Tél. professionnel : <input id="idTelPro" type="text" name="telPro" class="form-control" value="<jsp:getProperty name="consultant" property="telPro"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idDateEntree">Date d'entrée dans l'entreprise : <input id="idDateEntree" type="date" name="dateEntree" class="form-control" value="<jsp:getProperty name="consultant" property="dateEntree"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idDateSortie">Date de sortie dans l'entreprise : <input id="idDateSortie" type="date" name="dateSortie" class="form-control" value="<jsp:getProperty name="consultant" property="dateSortie"/>" required/></label>
-    </div>
-    <div class="form-group">
-        <label for="idMissions">Affectations aux missions : <input id="idMissions" type="date" name="dateSortie" class="form-control" value="<jsp:getProperty name="consultant" property="missions"/>" required/></label>
-    </div>
-
-    <div class="form-group">
-        <label>Type de consultant :
-            <input type="radio" name="idType" value="salarie"> Salarié
-            <input type="radio" name="idType" value="sous_traitant"> Sous-traitant
-        </label>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Ajouter un CV" class="btn btn-primary"/>
-    </div>
-!-->
-    <input type="submit" value="Créer/modifier le consultant" class="btn btn-primary"/>
+        <input type="submit" value="Créer/modifier le consultant" class="btn btn-primary"/>
+    </fieldset>
 </form>

@@ -57,7 +57,7 @@ public class RoleDAO {
 
         List<Role> list_res = new ArrayList<>();
         try (Statement req = connection.createStatement()) {
-            ResultSet res = req.executeQuery("SELECT * FROM role");
+            ResultSet res = req.executeQuery("SELECT * FROM role ORDER BY ID_ROLE");
             while (res.next())
                 list_res.add(new Role(res.getInt("id_role"), res.getString("libelle")));
             return list_res;

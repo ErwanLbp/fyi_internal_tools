@@ -22,6 +22,8 @@ public class Consultant {
 
     private int role_id;
 
+    //TODO AJouter des champs utiles
+
     public Consultant(int id, String nom, String prenom, String username, String password, int role_id) {
         this(nom, prenom, username, password, role_id);
         this.id = id;

@@ -45,7 +45,7 @@ public class MappingUrlFichierDAO {
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         List<MappingUrlFichier> list_res = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier ORDER BY NOM_PAGE,NOM_MODE")) {
             ResultSet res = req.executeQuery();
             while (res.next()) {
                 list_res.add(new MappingUrlFichier(res.getInt("id_muf"), res.getString("nom_page"), res.getString("nom_mode"), res.getString("chemin_fichier")));
