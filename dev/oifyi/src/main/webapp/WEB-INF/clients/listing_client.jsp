@@ -54,8 +54,8 @@
             </td>
             <td><%=cli.getNum_tva()%>
             </td>
-            <td><%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%>
-            </td>
+            <!--<td><%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%>
+            </td>!-->
         </tr>
         </tbody>
         <%}%>
