@@ -1,6 +1,5 @@
 package dao;
 
-import common.Client;
 import common.Role;
 import common.Consultant;
 import org.junit.*;
@@ -51,14 +50,6 @@ public class TestConsultantDAO {
     @After
     public void deleteLigneBDD() {
         ConsultantDAO.delete(consultant.getUsername());
-
-    }
-
-    @AfterClass
-    public static void suppressionsInsertTests() {
-        ClientDAO.delete(consultant.getUsername());
-        ClientDAO.delete(consultant_insert.getUsername());
-        ClientDAO.delete(consultant_update.getUsername());
     }
 
     @Test
@@ -105,6 +96,28 @@ public class TestConsultantDAO {
     public void testGetUsernameInexistant() {
         Consultant actual = ConsultantDAO.get("###");
         assertNull(actual);
+    }
+
+    @Test
+    public void testCheckLoginPasswordFake(){
+        assertTrue(ConsultantDAO.insert(consultant));
+        assertNotEquals(ConsultantDAO.get(consultant.getUsername()),"login faux");
+    }
+
+    @Test
+    public void testCheckLoginPassword() {
+        assertTrue(ConsultantDAO.insert(consultant));
+        assertNotEquals(ConsultantDAO.get(consultant.getUsername()), consultant.getPassword());
+    }
+
+    @Test
+    public void testIsInDb(){
+        assertTrue(ConsultantDAO.isInDB(ConsultantDAO.get(consultant.getUsername()).getId()));
+    }
+
+    @Test
+    public void testIsNotInDb(){
+        assertFalse(ConsultantDAO.isInDB(-1));
     }
 
 }
