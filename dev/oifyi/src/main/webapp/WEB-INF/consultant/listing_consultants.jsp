@@ -3,6 +3,7 @@
 <%@ page import="common.Role" %>
 <%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dao.MappingUrlFichierDAO" %>
 
 
 
@@ -27,7 +28,6 @@
 
 </br></br></br>
 
-<form method="post" action="/new_consultant" class="well">
 <div class="row">
     <% ArrayList<Consultant> lcon = ConsultantDAO.getAll();%>
     <table class="table table-striped">
@@ -51,11 +51,10 @@
             <td><%=con.getUsername()%></td>
             <td><%=con.getPassword()%></td>
             <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%></td>
-            <td><input type="submit" value="X" <% request.getAttribute("con");%>/> </td>
+            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "new").formerUrl()%>"><input type="button" class="btn btn-primary" value="Modifier le consultant" /></a></td>
         </tr>
         <%}%>
         </tbody>
     </table>
-    <input type="submit" value="Créer un consultant" <% request.getAttribute("");%>/>
+    <a href="<%=MappingUrlFichierDAO.getMuf("consultant", "new").formerUrl()%>"><input type="button" class="btn btn-primary" value="Créer un consultant" /></a>
 </div>
-</form>
