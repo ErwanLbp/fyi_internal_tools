@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -87,11 +86,11 @@ public class SaisieCra extends HttpServlet {
         missions = MissionDAO.getMissionsDuConsultant(consultantConnecte.getId(), moisAnnee);
         joursCra = new int[31][missions.size()];
 
-        // Pour chaque champ de la forme '<idMission>_<jour>(_<typeJour>)'
+        // Pour chaque champ de la forme 'M_<idMission>_<jour>(_<typeJour>)'
         for (int i = 0; i < joursCra.length; i++) {
             for (int j = 0; j < missions.size(); j++) {
                 try {
-                    joursCra[i][j] = Integer.parseInt(req.getParameter(missions.get(i).getId_mission() + "_" + j));
+                    joursCra[i][j] = Integer.parseInt(req.getParameter("M_" + missions.get(j).getId_mission() + "_" + i));
                 } catch (NumberFormatException nfe) {
                     joursCra[i][j] = 0;
                 }
@@ -99,7 +98,10 @@ public class SaisieCra extends HttpServlet {
         }
 
         // Récupération des champs d'astreintes
-        // Les astreintes seront de la forme 'A_<idMission>_<jour>(_<typeJour>)'
+        // Les astreintes de jour seront de la forme 'AS_J_<jour>'
+        // Les astreintes de nuit seront de la forme 'AS_N_<jour>'
+        // Les astreintes intervention seront de la forme 'AS_I_<jour>'
+
 
         return true;
     }

@@ -5,6 +5,7 @@ import db.MyConnectorJDBC;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -120,12 +121,14 @@ public class MissionDAO {
     public static List<Mission> getMissionsDuConsultant(int id_consultant, Date moisAnnee) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
-
         List<Mission> list_res = new ArrayList<>();
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION m, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID=? AND m.ID_MISSION=mc.MISSION_ID AND m.DATE_DEBUT<=? AND m.DATE_FIN>=?")) {
             req.setInt(1, id_consultant);
             req.setDate(2, moisAnnee);
-            req.setDate(3, moisAnnee); //FIXME à changer pour mettre la fin du mois
+            Calendar c = Calendar.getInstance();
+            c.setTimeInMillis(moisAnnee.getTime());
+            c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
+            req.setDate(3, new Date(c.getTimeInMillis()));
             ResultSet res = req.executeQuery();
             while (res.next())
                 list_res.add(new Mission(res.getInt("ID_MISSION"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm")));
