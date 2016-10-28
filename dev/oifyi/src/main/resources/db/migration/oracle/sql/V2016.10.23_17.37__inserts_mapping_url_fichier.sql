@@ -15,3 +15,5 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('de
 
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'view', 'WEB-INF/cra/view.jsp');
 
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('client', 'new', 'WEB-INF/clients/new_client.jsp');
+
