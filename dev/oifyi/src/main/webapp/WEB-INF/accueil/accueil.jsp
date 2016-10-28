@@ -8,6 +8,7 @@
             <ul>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "new").formerUrl()%>">Créer un consultant</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list").formerUrl()%>">Listing consultants</a></li>
+                <li><a href="<%=MappingUrlFichierDAO.getMuf("clients", "new").formerUrl()%>">Créer un client</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("clients", "list").formerUrl()%>">Listing clients</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "saisie").formerUrl()%>">Saisie d'absences</a></li>
                 <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "validation").formerUrl()%>">Validation d'absences</a></li>
