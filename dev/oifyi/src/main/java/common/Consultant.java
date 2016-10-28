@@ -16,7 +16,7 @@ public class Consultant {
 
     private String prenom;
 
-    private String username;
+    private String username; // FIXME contrainte d'unicité sur le login sinon ca fout un vrai bordel...
 
     private String password;
 

@@ -59,7 +59,7 @@ public class SaisieCra extends HttpServlet {
         // Il y a eu un problème si la récupération s'est mal passée
         // ou si la fonction de validation des champs échoue
         if (erreur != null || (erreur = validationChamps()) != null) { // Fonction test validités champs
-            req.setAttribute("erreur", erreur); //FIXME Probleme : l'erreur ne s'affiche jamais
+            req.setAttribute("erreur", erreur);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra); // On renvoi vers la page de saisie du cra
             dispatcher.forward(req, resp);
             System.out.println("Après redirection dispatcher"); // S'assurer que la suite de la fonction n'est pas exécutée après

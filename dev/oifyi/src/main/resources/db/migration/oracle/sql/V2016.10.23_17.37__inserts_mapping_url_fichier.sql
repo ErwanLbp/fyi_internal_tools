@@ -4,7 +4,7 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('ac
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'list_pages', 'WEB-INF/administration/list_url.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('administration', 'parametrage', 'WEB-INF/administration/parametrage.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('clients', 'list', 'WEB-INF/clients/listing_client.jsp');
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'new', 'WEB-INF/consultant/new_consultant.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'update', 'WEB-INF/consultant/update_consultant.jsp');
 
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('profil', 'update', 'WEB-INF/profil/modifier.jsp');
 

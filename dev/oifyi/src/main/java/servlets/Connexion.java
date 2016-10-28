@@ -45,7 +45,7 @@ public class Connexion extends HttpServlet {
 
         // Invalide si champs vides ou introuvable dans la BDD
         if ((login.equals("") || password.equals("")) || !ConsultantDAO.checkLoginPassword(login, password)) {
-            req.setAttribute("erreur", "Le login et/ou le password n'est pas correct"); //FIXME Probleme : l'erreur ne s'affiche pas meme en cas de mauvais identifiants
+            req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
         }

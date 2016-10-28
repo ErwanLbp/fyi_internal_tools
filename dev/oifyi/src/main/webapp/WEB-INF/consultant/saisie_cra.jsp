@@ -38,7 +38,7 @@
 
 <form action="/saisieCra" method="post" class="">
     <fieldset <%= !missions.isEmpty() ? "disabled" : "" %>>
-        <legend>Saisie du CRA du mois <b><%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
+        <legend>Saisie du CRA du mois <b><%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%> <%-- TODO Afficher l'errreur --%>
         </b></legend>
         <table class="table table-bordered table-striped table-condensed">
 
