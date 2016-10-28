@@ -50,17 +50,17 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static ArrayList<Consultant> getAll() throws SQLException {
+    public static ArrayList<Consultant> getAll() {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         ArrayList<Consultant> listeConsultants = new ArrayList<>();
         try (Statement req = connection.createStatement()) {
-            ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT");
+            ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT ORDER BY ID_CONSULTANT DESC ");
             while (res.next())
                 listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
             return listeConsultants;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return listeConsultants;
@@ -156,7 +156,7 @@ public class ConsultantDAO {
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("DELETE FROM consultant WHERE USERNAME=?")) {
-            req.setString(1,username);
+            req.setString(1, username);
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
