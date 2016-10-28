@@ -16,3 +16,17 @@ html {
     /*Pour les jours de weekend sur la page de saisie de CRA, il faut une couleur un peu plus sombre que les autres cases*/
     background-color: lightgrey;
 }
+
+#formSaisieCra input[type=text] {
+    border: none;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+#formSaisieCra td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 0;
+}
