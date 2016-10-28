@@ -1,17 +1,12 @@
-/*
 package dao;
 
-import common.Adresse;
 import common.Client;
+import common.Role;
 import common.Consultant;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
-*/
 /**
  * <h1>PACKAGE_NAME TestRoleDAO</h1>
  * TODO Description
@@ -19,89 +14,97 @@ import static org.junit.Assert.*;
  * @author Croute
  * @version 1.0
  * @since 25-10-2016
- *//*
-
+ */
 public class TestConsultantDAO {
 
-    private static Consultant consultant = new Client("a", "b", "c", "d");
-    private static Consultant consultant_insert = new Client("a_insert", "b_insert", "c_insert", "d_insert", new Adresse(1, "e_insert", 2, "f_insert"));
-    private static Consultant consultant_update = new Client("a_update", "b_update", "c_update", "d_update", new Adresse(1, "e_update", 2, "f_update"));
+    private static Role role = new Role("a");
+    private static Role role_insert = new Role("a_insert");
+
+    private static Consultant consultant;
+    private static Consultant consultant_insert;
+    private static Consultant consultant_update;
+
+    @BeforeClass
+    public static void insertsAvantClasse() {
+        RoleDAO.insert(role);
+        role.setId_role(RoleDAO.get(role.getLibelle()).getId_role());
+        RoleDAO.insert(role_insert);
+        role_insert.setId_role(RoleDAO.get(role_insert.getLibelle()).getId_role());
+    }
+
+    @AfterClass
+    public static void deletesApresClasse() {
+        ConsultantDAO.delete(consultant.getId());
+        ConsultantDAO.delete(consultant_insert.getId());
+        ConsultantDAO.delete(consultant_update.getId());
+        RoleDAO.delete(role.getLibelle());
+        RoleDAO.delete(role_insert.getLibelle());
+    }
+
 
     @Before
     public void insertLigneBDD() {
-        ClientDAO.insert(client);
-        client.setId(ClientDAO.get(client.getRaison_sociale()).getId());
+        consultant = new Consultant("a", "b", "c", "d", role.getId_role());
+        ConsultantDAO.insert(consultant);
     }
 
     @After
     public void deleteLigneBDD() {
-        ClientDAO.delete(client.getId());
+        ConsultantDAO.delete(consultant.getUsername());
+
     }
 
     @AfterClass
     public static void suppressionsInsertTests() {
-        ClientDAO.delete(client.getRaison_sociale());
-        ClientDAO.delete(client_insert.getRaison_sociale());
-        ClientDAO.delete(client_update.getRaison_sociale());
+        ClientDAO.delete(consultant.getUsername());
+        ClientDAO.delete(consultant_insert.getUsername());
+        ClientDAO.delete(consultant_update.getUsername());
     }
 
     @Test
     public void testInsert() {
-        assertTrue(ClientDAO.insert(client_insert));
-        Client actual = ClientDAO.get(client_insert.getRaison_sociale());
-        assert actual != null;
-        client_insert.setId(actual.getId());
-        assertEquals(client_insert.getRaison_sociale(), actual.getRaison_sociale());
+        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
+        assertTrue(ConsultantDAO.insert(consultant_insert));
+        Consultant actual = ConsultantDAO.get(consultant_insert.getUsername());
+        assert  actual != null;
+        consultant_insert.setId(actual.getId());
+        assertEquals(consultant_insert.getUsername(),actual.getUsername());
     }
 
     @Test
     public void testUpdate() {
-        client_update.setId(client.getId());
-        assertTrue(ClientDAO.update(client_update));
-        Client actual = ClientDAO.get(client_update.getRaison_sociale());
+        consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(),"a_update","b_update","c_update","d_update",ConsultantDAO.get(consultant.getUsername()).getRole_id());
+        assertTrue(ConsultantDAO.update(consultant_update));
+        Consultant actual = ConsultantDAO.get(consultant_update.getId());
         assert actual != null;
-        assertEquals(client_update.getRaison_sociale(), actual.getRaison_sociale());
+        assertEquals(consultant_update.getId(), actual.getId());
     }
 
+
     @Test
-    public void testDeleteById() {
-        assertTrue(ClientDAO.delete(client.getId()));
-        Client actual = ClientDAO.get(client.getId());
+    public void testDeleteByUsername() {
+        assertTrue(ConsultantDAO.delete(consultant.getUsername()));
+        Consultant actual = ConsultantDAO.get(consultant.getId());
         assertNull(actual);
     }
 
     @Test
-    public void testDeleteByRaisonSociale() {
-        assertTrue(ClientDAO.delete(client.getRaison_sociale()));
-        Client actual = ClientDAO.get(client.getId());
-        assertNull(actual);
-    }
-
-    @Test
-    public void testGetId() {
-        Client actual = ClientDAO.get(client.getId());
+    public void testGet() {
+        Consultant actual = ConsultantDAO.get(consultant.getUsername());
         assert actual != null;
-        assertEquals(client.getRaison_sociale(), actual.getRaison_sociale());
-    }
-
-    @Test
-    public void testGetRaisonSociale() {
-        Client actual = ClientDAO.get(client.getRaison_sociale());
-        assert actual != null;
-        assertEquals(client.getId(), actual.getId());
+        assertEquals(consultant.getUsername(), actual.getUsername());
     }
 
     @Test
     public void testGetIdInexistant() {
-        Client actual = ClientDAO.get(-1);
+        Consultant actual = ConsultantDAO.get(-1);
         assertNull(actual);
     }
 
     @Test
-    public void testGetRaisonSocialeInexistant() {
-        Client actual = ClientDAO.get("###");
+    public void testGetUsernameInexistant() {
+        Consultant actual = ConsultantDAO.get("###");
         assertNull(actual);
     }
 
 }
-*/

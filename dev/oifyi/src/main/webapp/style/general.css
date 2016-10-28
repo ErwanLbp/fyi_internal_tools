@@ -1,0 +1,18 @@
+/*[class*="col-"],.header,.footer {*/
+/*background-color: lightgreen;*/
+/*border: 1px solid black;*/
+/*border-radius: 6px;*/
+/*}*/
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.weekend {
+    /*Pour les jours de weekend sur la page de saisie de CRA, il faut une couleur un peu plus sombre que les autres cases*/
+    background-color: lightgrey;
+}

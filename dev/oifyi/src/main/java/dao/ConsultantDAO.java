@@ -42,7 +42,7 @@ public class ConsultantDAO {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Consultant(res.getInt("ID"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
+                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -148,5 +148,34 @@ public class ConsultantDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    //TODO Javadoc : ConsultantDAO
+    public static boolean delete(String username) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("DELETE FROM consultant WHERE USERNAME=?")) {
+            req.setString(1,username);
+            return req.executeUpdate() == 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isInDB(int id_consultant) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT WHERE ID_CONSULTANT=?")) {
+            req.setInt(1, id_consultant);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

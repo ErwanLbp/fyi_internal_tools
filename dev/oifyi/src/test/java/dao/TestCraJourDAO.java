@@ -122,7 +122,6 @@ public class TestCraJourDAO {
 
     @Test
     public void testUpdate() {
-        //craJour_update = new CraJour(CraMoisDAO.get(craMois.getMission_id(),craMois.getConsultant_id(),craMois.getMois_annee().toString()).getId_cra_mois(),Date.valueOf("2002-01-01"),3);
         craJour_update = new CraJour(CraJourDAO.get(craJour.getId_cramois(),craJour.getJour()).getId_cramois(),CraJourDAO.get(craJour.getId_cramois(),craJour.getJour()).getJour(),3);
         assertTrue(CraJourDAO.update(craJour_update));
         CraJour actual = CraJourDAO.get(craJour_update.getId_cramois(), craJour_update.getJour());
