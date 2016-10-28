@@ -69,29 +69,16 @@ public class UpdateConsultant extends HttpServlet {
     private String recuperationChampsForm(HttpServletRequest req) {
         try {
             String sIdConsultant = req.getParameter("id_consultant");
-            System.out.println(sIdConsultant);
             // Si on ne recoit pas d'id consultant, on le met à -1 pour le considérer vide
             if (sIdConsultant == null || sIdConsultant.isEmpty())
                 id_consultant = -1;
             else
                 id_consultant = Integer.parseInt(sIdConsultant);
-            System.out.println(id_consultant);
-
             nom = req.getParameter("nom");
-            System.out.println(nom);
-
             prenom = req.getParameter("prenom");
-            System.out.println(prenom);
-
             username = req.getParameter("username");
-            System.out.println(username);
-
             password = req.getParameter("password");
-            System.out.println(password);
-
             role = Integer.parseInt(req.getParameter("role"));
-            System.out.println(role);
-
         } catch (Exception e) {
             e.printStackTrace();
             return "Erreur lors de la récupération des champs";
