@@ -1,7 +1,7 @@
 package dao;
 
-import common.Role;
 import common.Consultant;
+import common.Role;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -45,6 +45,7 @@ public class TestConsultantDAO {
     public void insertLigneBDD() {
         consultant = new Consultant("a", "b", "c", "d", role.getId_role());
         ConsultantDAO.insert(consultant);
+        consultant.setId(ConsultantDAO.get(consultant.getUsername()).getId());
     }
 
     @After
@@ -57,14 +58,14 @@ public class TestConsultantDAO {
         consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
         assertTrue(ConsultantDAO.insert(consultant_insert));
         Consultant actual = ConsultantDAO.get(consultant_insert.getUsername());
-        assert  actual != null;
+        assert actual != null;
         consultant_insert.setId(actual.getId());
-        assertEquals(consultant_insert.getUsername(),actual.getUsername());
+        assertEquals(consultant_insert.getUsername(), actual.getUsername());
     }
 
     @Test
     public void testUpdate() {
-        consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(),"a_update","b_update","c_update","d_update",ConsultantDAO.get(consultant.getUsername()).getRole_id());
+        consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(), "a_update", "b_update", "c_update", "d_update", ConsultantDAO.get(consultant.getUsername()).getRole_id());
         assertTrue(ConsultantDAO.update(consultant_update));
         Consultant actual = ConsultantDAO.get(consultant_update.getId());
         assert actual != null;
@@ -80,43 +81,46 @@ public class TestConsultantDAO {
     }
 
     @Test
-    public void testGet() {
+    public void testGetByUsername() {
         Consultant actual = ConsultantDAO.get(consultant.getUsername());
         assert actual != null;
         assertEquals(consultant.getUsername(), actual.getUsername());
     }
 
     @Test
+    public void testGetByUsernameInexistant() {
+        assertNull(ConsultantDAO.get(consultant.getUsername() + "fake"));
+    }
+
+    @Test
+    public void testGetById() {
+        Consultant actual = ConsultantDAO.get(consultant.getId());
+        assert actual != null;
+        assertEquals(consultant.getId(), actual.getId());
+    }
+
+    @Test
     public void testGetIdInexistant() {
-        Consultant actual = ConsultantDAO.get(-1);
-        assertNull(actual);
+        assertNull(ConsultantDAO.get(-1));
     }
 
     @Test
-    public void testGetUsernameInexistant() {
-        Consultant actual = ConsultantDAO.get("###");
-        assertNull(actual);
-    }
-
-    @Test
-    public void testCheckLoginPasswordFake(){
-        assertTrue(ConsultantDAO.insert(consultant));
-        assertNotEquals(ConsultantDAO.get(consultant.getUsername()),"login faux");
+    public void testCheckLoginPasswordFake() {
+        assertFalse(ConsultantDAO.checkLoginPassword("###login", "###pass"));
     }
 
     @Test
     public void testCheckLoginPassword() {
-        assertTrue(ConsultantDAO.insert(consultant));
-        assertNotEquals(ConsultantDAO.get(consultant.getUsername()), consultant.getPassword());
+        assertTrue(ConsultantDAO.checkLoginPassword(consultant.getUsername(), consultant.getPassword()));
     }
 
     @Test
-    public void testIsInDb(){
-        assertTrue(ConsultantDAO.isInDB(ConsultantDAO.get(consultant.getUsername()).getId()));
+    public void testIsInDb() {
+        assertTrue(ConsultantDAO.isInDB(consultant.getId()));
     }
 
     @Test
-    public void testIsNotInDb(){
+    public void testIsNotInDb() {
         assertFalse(ConsultantDAO.isInDB(-1));
     }
 
