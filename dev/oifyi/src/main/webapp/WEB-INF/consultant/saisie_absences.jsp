@@ -23,6 +23,7 @@
             <td>Date fin</td>
             <td>Statut de l'absence</td>
             <td>Commentaire</td>
+            <td>Modifier l'absence</td>
         </tr>
         </thead>
         <tbody>
@@ -36,14 +37,15 @@
             </td>
             <td><%=abs.getDate_fin().toString()%>
             </td>
-            <td><%=StatutAbsenceDAO.get(abs.getId_type_absence()).getLibelle()%>
+            <td><%=StatutAbsenceDAO.get(abs.getId_statut_absence()).getLibelle()%>
             </td>
             <td><%=abs.getCommentaire()%>
             </td>
-<%--            <td><a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>&idClient=<%=cli.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>--%>
+            <td><%if (abs.getId_statut_absence()==2){ %> <a href="<%=MappingUrlFichierDAO.getMuf("absences", "update").formerUrl()%>&idAbsence=<%=abs.getId_absence()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a><%}%>
+            </td>
         </tr>
         </tbody>
         <%}%>
     </table>
-<%--    <a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Créer un client"/></a>--%>
+    <a href="<%=MappingUrlFichierDAO.getMuf("absences", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Nouvelle absence"/></a>
 </div>

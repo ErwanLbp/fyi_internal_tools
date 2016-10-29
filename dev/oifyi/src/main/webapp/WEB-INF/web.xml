@@ -41,6 +41,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>update_absence</servlet-name>
+        <servlet-class>servlets.UpdateAbsence</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>update_absence</servlet-name>
+        <url-pattern>/update_absence</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>update_consultant</servlet-name>
         <servlet-class>servlets.UpdateConsultant</servlet-class>
     </servlet>

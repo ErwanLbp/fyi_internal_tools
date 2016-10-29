@@ -12,6 +12,22 @@ import java.util.ArrayList;
 public class AbsenceDAO {
 
     //TODO Javadoc : AbsenceDAO
+    public static Absence get(int id_absence) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM ABSENCE WHERE ID_ABSENCE=?")) {
+            req.setInt(1, id_absence);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //TODO Javadoc : AbsenceDAO
     public static Absence get(int id_consultant, Date date_deb, Date date_fin) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -89,7 +105,7 @@ public class AbsenceDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO ABSENCE (ID_CONSULTANT, ID_TYPE_ABSENCE, PLUS_PRECISION, DATE_DEBUT, DATE_FIN, ID_STATUT, COMMENTAIRE) VALUES (?,?,?,?,?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO ABSENCE (ID_CONSULTANT, ID_TYPE_ABSENCE, PLUS_PRECISION, DATE_DEBUT, DATE_FIN, ID_STATUT_ABSENCE, COMMENTAIRE) VALUES (?,?,?,?,?,?,?)")) {
             req.setInt(1, absence.getId_consultant());
             req.setInt(2, absence.getId_type_absence());
             req.setString(3, absence.getPlus_precision());
@@ -109,7 +125,7 @@ public class AbsenceDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE ABSENCE SET ID_CONSULTANT=?,ID_TYPE_ABSENCE=?, PLUS_PRECISION=?, DATE_DEBUT=?, DATE_FIN=?, ID_STATUT=?, COMMENTAIRE=? WHERE ID_ABSENCE=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE ABSENCE SET ID_CONSULTANT=?,ID_TYPE_ABSENCE=?, PLUS_PRECISION=?, DATE_DEBUT=?, DATE_FIN=?, ID_STATUT_ABSENCE=?, COMMENTAIRE=? WHERE ID_ABSENCE=?")) {
             req.setInt(1, absence.getId_consultant());
             req.setInt(2, absence.getId_type_absence());
             req.setString(3, absence.getPlus_precision());
@@ -167,5 +183,21 @@ public class AbsenceDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    //TODO Javadoc : AbsenceDAO
+    public static boolean isInDB(int id_absence) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM ABSENCE WHERE ID_ABSENCE=?")) {
+            req.setInt(1, id_absence);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
