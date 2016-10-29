@@ -1,6 +1,9 @@
 <%@ page import="common.Client" %>
+<%@ page import="common.Adresse" %>
 <%@ page import="dao.ClientDAO" %>
+<%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="java.util.ArrayList" %>
+
 <div class="col-lg-offset-4 col-sm-4">
     <h1>Recherche client</h1>
 
@@ -54,10 +57,12 @@
             </td>
             <td><%=cli.getNum_tva()%>
             </td>
-            <!--<td><%=cli.getAdresse_numero()%> <%=cli.getAdresse_rue()%> <%=cli.getAdresse_cp()%> <%=cli.getAdresse_ville()%>
-            </td>!-->
+            <td><%=cli.getAdresse().getNumero()%> <%=cli.getAdresse().getRue()%> <%=cli.getAdresse().getCp()%> <%=cli.getAdresse().getVille()%>
+            </td>
+            <td><a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>&idClient=<%=cli.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
         </tr>
         </tbody>
         <%}%>
     </table>
+    <a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Créer un client"/></a>
 </div>
