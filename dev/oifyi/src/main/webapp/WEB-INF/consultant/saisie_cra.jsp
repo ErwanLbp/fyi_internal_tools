@@ -180,7 +180,7 @@
                 <th colspan="<%=colspanTH%>"><h5>Total</h5></th>
                 <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
-                    <input readonly type="text" min="0" max="1" size="<%=size%>" name="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
+                    <input readonly type="text" min="0" max="1" size="<%=size%>" id="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
                 </td>
                 <% } %>
                 <td>
@@ -195,7 +195,53 @@
 
 <script type="text/javascript">
     function remplirTotaux() {
+        // *******************
+        // ** Remise à zero **
+        // *******************
+        <% for(Mission mission: missions){ %>
+        document.getElementById("tot_M_<%=mission.getId_mission()%>")[0].value = 0;
+        <% } %>
+        document.getElementById("tot_AS_J").value = 0;
+        document.getElementById("tot_AS_N").value = 0;
+        document.getElementById("tot_AS_I").value = 0;
+        document.getElementById("tot_AB_F").value = 0;
+        document.getElementById("tot_AB_C").value = 0;
+        document.getElementById("tot_tot").value = 0
 
+        // ************************************************
+        // ** Totaux du bas et des cotés en même temps ! **
+        // ************************************************
+        for (i =<%=jourMinDuMois%>; i <=<%=jourMaxDuMois%>; i++) {
+            somme = 0;
+
+            // Récupération et ajout à la somme des valeur des cases missions
+            <% for(Mission mission: missions){ %>
+            somme += Number(document.getElementsByName("M_<%=mission.getId_mission()%>_" + i)[0].value);
+            document.getElementById("tot_M_<%=mission.getId_mission()%>").value = Number(document.getElementById("tot_M_<%=mission.getId_mission()%>").value) + Number(document.getElementsByName("M_<%=mission.getId_mission()%>_" + i)[0].value);
+            <% } %>
+
+            // Récupération et ajout à la somme des valeur des cases absences
+            somme += Number(document.getElementsByName("AB_C_" + i)[0].value);
+            somme += Number(document.getElementsByName("AB_F_" + i)[0].value);
+            document.getElementById("tot_AB_F").value = Number(document.getElementById("tot_AB_F").value) + Number(document.getElementsByName("AB_F_" + i)[0].value);
+            document.getElementById("tot_AB_C").value = Number(document.getElementById("tot_AB_C").value) + Number(document.getElementsByName("AB_C_" + i)[0].value);
+
+            // Ajout des totaux des astreintes
+            document.getElementById("tot_AS_J").value = Number(document.getElementById("tot_AS_J").value) + Number(document.getElementsByName("AS_J_" + i)[0].value);
+            document.getElementById("tot_AS_N").value = Number(document.getElementById("tot_AS_N").value) + Number(document.getElementsByName("AS_N_" + i)[0].value);
+            document.getElementById("tot_AS_I").value = Number(document.getElementById("tot_AS_I").value) + Number(document.getElementsByName("AS_I_" + i)[0].value);
+
+            // Assignation de la somme à la case total
+            document.getElementById("tot_col_" + i).value = somme;
+        }
+
+        // ***********************
+        // ** Totaux des totaux **
+        // ***********************
+        for (i =<%=jourMinDuMois%>; i <=<%=jourMaxDuMois%>; i++) {
+            // Assignation de la somme à la case total général
+            document.getElementById("tot_tot").value = Number(document.getElementById("tot_tot").value) + Number(document.getElementById("tot_col_" + i).value);
+        }
     }
-
+    remplirTotaux();
 </script>

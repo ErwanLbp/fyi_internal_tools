@@ -1,7 +1,6 @@
 package servlets;
 
 import common.Consultant;
-import common.MappingUrlFichier;
 import dao.ConsultantDAO;
 import dao.MappingUrlFichierDAO;
 
@@ -54,7 +53,6 @@ public class Connexion extends HttpServlet {
         Consultant consultantConnecte = ConsultantDAO.get(login); // On récupère le consultant associé
         if (session.getAttribute("consultantConnecte") == null) // On l'ajoute à la session
             session.setAttribute("consultantConnecte", consultantConnecte);
-        //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur
 
         resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil
     }

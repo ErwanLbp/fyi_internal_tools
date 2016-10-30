@@ -1,5 +1,3 @@
-<%@ page import="dao.MappingUrlFichierDAO" %>
-
 <div class="col-lg-offset-4 col-sm-4">
     <form method="post" action="/deconnexion" class="well">
         <legend>Déconnexion</legend>
