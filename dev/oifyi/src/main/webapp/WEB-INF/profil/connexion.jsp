@@ -1,5 +1,4 @@
 <%@ page import="common.Consultant" %>
-<%@ page import="dao.MappingUrlFichierDAO" %>
 
 <%--Si un utilisateur est déjà connecté on le redirige vers la page d'accueil--%>
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>

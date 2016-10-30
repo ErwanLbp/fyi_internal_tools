@@ -47,6 +47,7 @@ public class Connexion extends HttpServlet {
             req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
+            return;
         }
 
         // Si les identifiants sont valides

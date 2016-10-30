@@ -40,7 +40,6 @@ public class TestCraJourDAO {
     private static CraJour craJour_update;
 
 
-
     @BeforeClass
     public static void insertsAvantClasse() {
 
@@ -78,13 +77,13 @@ public class TestCraJourDAO {
         craMois.setId_cra_mois(CraMoisDAO.get(craMois.getMission_id(), craMois.getConsultant_id(), craMois.getMois_annee().toString()).getId_cra_mois());
         craMois_insert = new CraMois(mission_insert.getId_mission(), consultant_insert.getId(), Date.valueOf("2001-01-01"), statusCra_insert.getId_status_cra());
         CraMoisDAO.insert(craMois_insert);
-        craMois_insert.setId_cra_mois(CraMoisDAO.get(craMois_insert.getMission_id(),craMois_insert.getConsultant_id(),craMois_insert.getMois_annee().toString()).getId_cra_mois());
+        craMois_insert.setId_cra_mois(CraMoisDAO.get(craMois_insert.getMission_id(), craMois_insert.getConsultant_id(), craMois_insert.getMois_annee().toString()).getId_cra_mois());
     }
 
     @AfterClass
     public static void deletesApresClasse() {
-        CraJourDAO.delete(craJour_insert.getId_cramois(),craJour_insert.getJour());
-        CraJourDAO.delete(craJour_update.getId_cramois(),craJour_update.getJour());
+        CraJourDAO.delete(craJour_insert.getId_cramois(), craJour_insert.getJour());
+        CraJourDAO.delete(craJour_update.getId_cramois(), craJour_update.getJour());
         CraMoisDAO.delete(craMois_insert.getId_cra_mois());
         CraMoisDAO.delete(craMois.getId_cra_mois());
         MissionDAO.delete(mission.getNom());
@@ -101,7 +100,7 @@ public class TestCraJourDAO {
 
     @Before
     public void insertLigneBDD() {
-        craJour = new CraJour(CraMoisDAO.get(craMois.getMission_id(),craMois.getConsultant_id(),craMois.getMois_annee().toString()).getId_cra_mois(),Date.valueOf("2001-01-01"),1);
+        craJour = new CraJour(CraMoisDAO.get(craMois.getMission_id(), craMois.getConsultant_id(), craMois.getMois_annee().toString()).getId_cra_mois(), 1, 0.5);
         CraJourDAO.insert(craJour);
     }
 
@@ -112,7 +111,7 @@ public class TestCraJourDAO {
 
     @Test
     public void testInsert() {
-        craJour_insert = new CraJour(CraMoisDAO.get(craMois_insert.getMission_id(),craMois_insert.getConsultant_id(),craMois_insert.getMois_annee().toString()).getId_cra_mois(),Date.valueOf("2002-01-01"),2);
+        craJour_insert = new CraJour(CraMoisDAO.get(craMois_insert.getMission_id(), craMois_insert.getConsultant_id(), craMois_insert.getMois_annee().toString()).getId_cra_mois(), 1, 2);
         assertTrue(CraJourDAO.insert(craJour_insert));
         CraJour actual = CraJourDAO.get(craJour_insert.getId_cramois(), craJour_insert.getJour());
         assert actual != null;
@@ -122,7 +121,7 @@ public class TestCraJourDAO {
 
     @Test
     public void testUpdate() {
-        craJour_update = new CraJour(CraJourDAO.get(craJour.getId_cramois(),craJour.getJour()).getId_cramois(),CraJourDAO.get(craJour.getId_cramois(),craJour.getJour()).getJour(),3);
+        craJour_update = new CraJour(CraJourDAO.get(craJour.getId_cramois(), craJour.getJour()).getId_cramois(), CraJourDAO.get(craJour.getId_cramois(), craJour.getJour()).getJour(), 3);
         assertTrue(CraJourDAO.update(craJour_update));
         CraJour actual = CraJourDAO.get(craJour_update.getId_cramois(), craJour_update.getJour());
         assert actual != null;
@@ -139,7 +138,7 @@ public class TestCraJourDAO {
 
     @Test
     public void testGetIdDateInexistant() {
-        CraJour actual = CraJourDAO.get(-1, Date.valueOf("2002-01-01"));
+        CraJour actual = CraJourDAO.get(-1, 1);
         assertNull(actual);
     }
 }

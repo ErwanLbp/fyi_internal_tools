@@ -11,6 +11,7 @@
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 <% //Récupération du mois courant, si aucun paramètre n'est envoyé, le mois courant sera sélectionné
+    // La date en paramètre doit être au format yyyy-MM
     String moisAnnee = request.getParameter("moisAnnee");
     Calendar calendar = Calendar.getInstance();
     if (moisAnnee != null) {
@@ -18,7 +19,7 @@
             Date dMoisAnnee = new SimpleDateFormat("yyyy-MM").parse(moisAnnee);
             calendar.setTime(dMoisAnnee);
         } catch (ParseException e) {
-            request.setAttribute("erreur", "La date recue est mal écrite");
+            request.setAttribute("erreur", "La date reçue est mal écrite");
         }
     }
     calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));

@@ -47,7 +47,6 @@ public class SaisieCra extends HttpServlet {
         Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte");
         if (consultantConnecte == null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur est déjà connecté
-            System.out.println("Après redirection"); // S'assurer que la suite de la fonction n'est pas exécutée après
             return;
         }
 
@@ -62,7 +61,6 @@ public class SaisieCra extends HttpServlet {
             req.setAttribute("erreur", erreur);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra); // On renvoi vers la page de saisie du cra
             dispatcher.forward(req, resp);
-            System.out.println("Après redirection dispatcher"); // S'assurer que la suite de la fonction n'est pas exécutée après
             return;
         }
 

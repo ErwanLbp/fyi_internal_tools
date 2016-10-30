@@ -3,7 +3,10 @@ package dao;
 import common.CraJour;
 import db.MyConnectorJDBC;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -16,16 +19,16 @@ import java.util.ArrayList;
  */
 public class CraJourDAO {
 
-    public static CraJour get(int id_cramois, Date jour) {
+    public static CraJour get(int id_cramois, int jour) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_JOUR WHERE ID_CRAMOIS=? AND JOUR=?")) {
             req.setInt(1, id_cramois);
-            req.setDate(2, jour);
+            req.setInt(2, jour);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new CraJour(res.getInt("id_cramois"), res.getDate("jour"), res.getDouble("heures_travail"));
+                return new CraJour(res.getInt("id_cramois"), res.getInt("jour"), res.getDouble("travail"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -36,28 +39,27 @@ public class CraJourDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
+        ArrayList<CraJour> listeCraJour = new ArrayList<CraJour>();
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_JOUR WHERE ID_CRAMOIS=?")) {
             req.setInt(1, id_cramois);
             ResultSet res = req.executeQuery();
-            ArrayList<CraJour> listeCraJour = new ArrayList<CraJour>();
-            while (res.next()){
-                listeCraJour.add(new CraJour(res.getInt("id_cramois"), res.getDate("jour"), res.getDouble("heures_travail")));
-            }
+            while (res.next())
+                listeCraJour.add(new CraJour(res.getInt("id_cramois"), res.getInt("jour"), res.getDouble("travail")));
             return listeCraJour;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return listeCraJour;
     }
 
     public static boolean insert(CraJour cj) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO CRA_JOUR (ID_CRAMOIS, JOUR, HEURES_TRAVAIL) VALUES (?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO CRA_JOUR (ID_CRAMOIS, JOUR, TRAVAIL) VALUES (?,?,?)")) {
             req.setInt(1, cj.getId_cramois());
-            req.setDate(2, cj.getJour());
-            req.setDouble(3, cj.getHeures_travail());
+            req.setInt(2, cj.getJour());
+            req.setDouble(3, cj.getTravail());
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,12 +71,12 @@ public class CraJourDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE CRA_JOUR SET ID_CRAMOIS=?, JOUR=?, HEURES_TRAVAIL=? WHERE ID_CRAMOIS=? AND JOUR=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE CRA_JOUR SET ID_CRAMOIS=?, JOUR=?, TRAVAIL=? WHERE ID_CRAMOIS=? AND JOUR=?")) {
             req.setInt(1, cj.getId_cramois());
-            req.setDate(2, cj.getJour());
-            req.setDouble(3, cj.getHeures_travail());
+            req.setInt(2, cj.getJour());
+            req.setDouble(3, cj.getTravail());
             req.setInt(4, cj.getId_cramois());
-            req.setDate(5, cj.getJour());
+            req.setInt(5, cj.getJour());
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,13 +84,13 @@ public class CraJourDAO {
         }
     }
 
-    public static boolean delete(int id_cramois, Date jour) {
+    public static boolean delete(int id_cramois, int jour) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("DELETE FROM CRA_JOUR WHERE ID_CRAMOIS=? AND JOUR=?")) {
             req.setInt(1, id_cramois);
-            req.setDate(2, jour);
+            req.setInt(2, jour);
             return req.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -96,16 +98,16 @@ public class CraJourDAO {
         }
     }
 
-    public static boolean delete(int id_cramois) {
+    public static int delete(int id_cramois) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("DELETE FROM CRA_JOUR WHERE ID_CRAMOIS=?")) {
             req.setInt(1, id_cramois);
-            return req.executeUpdate() == 1;
+            return req.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return 0;
         }
     }
 

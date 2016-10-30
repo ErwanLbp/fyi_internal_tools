@@ -20,9 +20,10 @@
     int roleLambda = RoleDAO.get("lambda").getId_role();
     Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte");
     int roleConsultantConnecte = (consultantConnecte == null) ? roleLambda : consultantConnecte.getRole_id();      // Si personne est connecté, le role de l'utilisateur est 'lambda'
-    if (roleConsultantConnecte == roleLambda && !(param_page.equals("profil") && param_mode.equals("connexion")))  // Si l'utilisateur n'est pas connecté et qu'il essaye d'accéder
-        response.sendRedirect("connexion");                                                                        // à une autre page que la page de connexion on le redirige
-    else {
+    if (roleConsultantConnecte == roleLambda && !(param_page.equals("profil") && param_mode.equals("connexion"))) {  // Si l'utilisateur n'est pas connecté et qu'il essaye d'accéder
+        response.sendRedirect("connexion");                                                                            // à une autre page que la page de connexion on le redirige
+        return;
+    } else {
         pageAutorisee = DroitsPagesDAO.isAllowed(muf.getId_muf(), roleConsultantConnecte); // La page est autorisée si le role (lambda par défaut) et la page matchent dans la BDD
         if (consultantConnecte != null)                                                    // ou s'il est admin
             pageAutorisee = pageTrouve || ConsultantDAO.isAdmin(consultantConnecte.getId());

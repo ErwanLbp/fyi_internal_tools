@@ -35,7 +35,7 @@ public class UpdateClient extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(url_page_accueil).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_saisie_client).forward(req, resp);
     }
 
     @Override
