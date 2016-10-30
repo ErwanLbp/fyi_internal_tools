@@ -43,8 +43,10 @@ public class UpdateClient extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("consultantConnecte") == null)
+        if (session.getAttribute("consultantConnecte") == null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
+            return;
+        }
 
         // Récupération des champs du formulaire
         String erreur = recuperationChampsForm(req);
@@ -78,7 +80,7 @@ public class UpdateClient extends HttpServlet {
             raison_sociale = req.getParameter("raison_sociale");
             siret = req.getParameter("siret");
             num_tva = req.getParameter("num_tva");
-            adresse = new Adresse(Integer.parseInt(req.getParameter("adresseNumero")),req.getParameter("adresseRue"),Integer.parseInt(req.getParameter("adresseCP")),req.getParameter("adresseVille"));
+            adresse = new Adresse(Integer.parseInt(req.getParameter("adresseNumero")), req.getParameter("adresseRue"), Integer.parseInt(req.getParameter("adresseCP")), req.getParameter("adresseVille"));
         } catch (Exception e) {
             e.printStackTrace();
             return "Erreur lors de la récupération des champs";

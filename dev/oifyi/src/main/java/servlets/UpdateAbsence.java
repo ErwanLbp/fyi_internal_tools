@@ -1,11 +1,8 @@
 package servlets;
 
 import common.Absence;
-import common.Consultant;
 import dao.AbsenceDAO;
-import dao.ConsultantDAO;
 import dao.MappingUrlFichierDAO;
-import dao.RoleDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,8 +46,10 @@ public class UpdateAbsence extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("consultantConnecte") == null)
+        if (session.getAttribute("consultantConnecte") == null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
+            return;
+        }
 
         // Récupération des champs du formulaire
         String erreur = recuperationChampsForm(req);
@@ -96,14 +95,14 @@ public class UpdateAbsence extends HttpServlet {
 
     private String validationChamps() {
         if (id_absence != -1 && !AbsenceDAO.isInDB(id_absence)) return "L'id de l'absence à mettre à jour est inconnu";
-        if (id_type_absence==0) return "Le champ type absence n'est pas rempli";
+        if (id_type_absence == 0) return "Le champ type absence n'est pas rempli";
         if (date_deb.equals("")) return "Le champ date début n'est pas rempli";
         if (date_fin.equals("")) return "Le champ date fin n'est pas rempli";
         return null;
     }
 
     private String sauvegardeDB() {
-        Absence absenceCree = new Absence(id_absence,id_consultant, id_type_absence, plus_precision, date_deb, date_fin, id_statut_absence, commentaire);
+        Absence absenceCree = new Absence(id_absence, id_consultant, id_type_absence, plus_precision, date_deb, date_fin, id_statut_absence, commentaire);
 
         if (id_absence == -1) { // On insère le nouveau consultant dans le cas d'un insert
             if (!AbsenceDAO.insert(absenceCree))

@@ -35,8 +35,10 @@ public class Connexion extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("consultantConnecte") != null)
+        if (session.getAttribute("consultantConnecte") != null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur est déjà connecté
+            return;
+        }
 
         // Récupération des champs du formulaire
         String password = req.getParameter("password");
