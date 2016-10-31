@@ -50,6 +50,24 @@ public class MissionDAO {
         return null;
     }
 
+    //TODO Javadoc : ConsultantDAO
+    public static ArrayList<Mission> getAll() {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        ArrayList<Mission> listeMissions = new ArrayList<>();
+        try (Statement req = connection.createStatement()) {
+            ResultSet res = req.executeQuery("SELECT * FROM MISSION");
+            while (res.next())
+                listeMissions.add(new Mission(res.getInt("id_mission"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm")));
+            return listeMissions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeMissions;
+    }
+
+
     //TODO Javadoc : MissionDAO
     public static boolean insert(Mission mission) {
         Connection connection = MyConnectorJDBC.getConnection();
