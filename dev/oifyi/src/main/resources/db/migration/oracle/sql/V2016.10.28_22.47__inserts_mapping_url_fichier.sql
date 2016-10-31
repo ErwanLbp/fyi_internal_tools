@@ -1,1 +1,0 @@
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('clients', 'update', 'WEB-INF/clients/update_client.jsp');
