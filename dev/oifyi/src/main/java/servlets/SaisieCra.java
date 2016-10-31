@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -73,7 +74,7 @@ public class SaisieCra extends HttpServlet {
             resp.sendRedirect(url_page_accueil); // FIXME ne pas rediriger vers l'accueil
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra + "&moisAnneeCourant=" + new SimpleDateFormat("yyyy-MM").format(moisAnnee));
             dispatcher.forward(req, resp);
         }
     }

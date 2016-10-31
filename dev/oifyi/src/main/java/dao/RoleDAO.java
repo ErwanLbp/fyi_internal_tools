@@ -60,11 +60,11 @@ public class RoleDAO {
             ResultSet res = req.executeQuery("SELECT * FROM role ORDER BY ID_ROLE");
             while (res.next())
                 list_res.add(new Role(res.getInt("id_role"), res.getString("libelle")));
-            return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
-            return list_res;
+            list_res.clear();
         }
+        return list_res;
     }
 
     //TODO Javadoc : RoleDAO

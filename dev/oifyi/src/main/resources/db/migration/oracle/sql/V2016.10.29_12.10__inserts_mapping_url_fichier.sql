@@ -1,1 +1,2 @@
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'update', 'WEB-INF/consultant/update_absence.jsp');
+INSERT INTO MAPPING_URL_FICHIER (NOM_PAGE, NOM_MODE, CHEMIN_FICHIER) VALUES ('cra', 'listing', 'WEB-INF/consultant/listing_cra.jsp');

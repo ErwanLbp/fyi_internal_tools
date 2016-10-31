@@ -60,11 +60,11 @@ public class StatusCraDAO {
             ResultSet res = req.executeQuery("SELECT * FROM status_cra");
             while (res.next())
                 list_res.add(new StatusCra(res.getInt("id_status_cra"), res.getString("libelle")));
-            return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
-            return list_res;
+            list_res.clear();
         }
+        return list_res;
     }
 
     //TODO Javadoc : StatusCraDAO

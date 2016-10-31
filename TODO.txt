@@ -1,1 +1,3 @@
 Transformer la gestion du controller central du index.jsp en un Servlet
+Ajoute un bouton Retour qui retourne à la page précédente => ajouter attribute session pour la dernière page
+Ajoute migration de suppression des Muf inutile

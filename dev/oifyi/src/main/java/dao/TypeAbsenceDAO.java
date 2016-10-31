@@ -60,11 +60,11 @@ public class TypeAbsenceDAO {
             ResultSet res = req.executeQuery("SELECT * FROM type_absence ORDER BY ID_type_absence");
             while (res.next())
                 list_res.add(new TypeAbsence(res.getInt("id_type_absence"), res.getString("libelle")));
-            return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
-            return list_res;
+            list_res.clear();
         }
+        return list_res;
     }
 
     //TODO Javadoc : TypeAbsenceDAO

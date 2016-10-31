@@ -1,6 +1,7 @@
 package dao;
 
 import common.MappingUrlFichier;
+import db.MyConnectorJDBC;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import db.MyConnectorJDBC;
 
 /**
  * <h1>dao MappingUrlFichierDAO</h1>
@@ -47,14 +46,13 @@ public class MappingUrlFichierDAO {
         List<MappingUrlFichier> list_res = new ArrayList<>();
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM mapping_url_fichier ORDER BY NOM_PAGE,NOM_MODE")) {
             ResultSet res = req.executeQuery();
-            while (res.next()) {
+            while (res.next())
                 list_res.add(new MappingUrlFichier(res.getInt("id_muf"), res.getString("nom_page"), res.getString("nom_mode"), res.getString("chemin_fichier")));
-            }
-            return list_res;
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            list_res.clear();
         }
+        return list_res;
     }
 
     //TODO Javadoc : MappingUrlFichierDAO

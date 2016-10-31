@@ -81,7 +81,7 @@
             <%--Ligne pour les numéros de colonnes--%>
             <tr>
                 <th colspan="<%=colspanTH%>"></th>
-                <% for (int i = 0; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <th class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <%=i + 1%>
                 </th>
@@ -208,7 +208,7 @@
             </tr>
 
         </table>
-        <input type="submit" onclick="remplirVidesZeros(); alert()" class="btn btn-primary" value="Envoyer"/>
+        <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
     </fieldset>
 </form>
 
