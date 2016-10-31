@@ -121,6 +121,7 @@ public class MissionDAO {
     public static List<Mission> getMissionsDuConsultant(int id_consultant, Date moisAnnee) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
         List<Mission> list_res = new ArrayList<>();
         try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION m, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID=? AND m.ID_MISSION=mc.MISSION_ID AND m.DATE_DEBUT<=? AND m.DATE_FIN>=?")) {
             req.setInt(1, id_consultant);

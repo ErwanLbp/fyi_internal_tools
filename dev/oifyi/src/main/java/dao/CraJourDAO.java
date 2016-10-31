@@ -111,4 +111,8 @@ public class CraJourDAO {
         }
     }
 
+    public static String getInsert() {
+        return "INSERT INTO CRA_JOUR (ID_CRAMOIS, JOUR, TRAVAIL) VALUES (?,?,?)";
+    }
+
 }

@@ -12,7 +12,7 @@
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 <% //Récupération du mois courant, si aucun paramètre n'est envoyé, le mois courant sera sélectionné
     // La date en paramètre doit être au format yyyy-MM
-    String moisAnnee = request.getParameter("moisAnnee");
+    String moisAnnee = request.getParameter("moisAnneeCourant");
     Calendar calendar = Calendar.getInstance();
     if (moisAnnee != null) {
         try {
@@ -22,17 +22,30 @@
             request.setAttribute("erreur", "La date reçue est mal écrite");
         }
     }
+    // Remise du calendrier sur le premier jour du mois courant
     calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
 
+    // Date SQL pour le CraMoisDAO
     java.sql.Date moisAnneeSQL = new java.sql.Date(calendar.getTimeInMillis());
+
+    // Ajustement pour avoir le mois/annee du mois précédent
+    calendar.add(Calendar.MONTH, -1);
+    Date datePourMoisPrec = calendar.getTime();
+
+    // Ajustement pour avoir le mois/annee du mois suivant
+    calendar.add(Calendar.MONTH, +2);
+    Date datePourMoisSuiv = calendar.getTime();
+
+    // Réajustement pour avoir le mois/annee courant
+    calendar.add(Calendar.MONTH, -1);
     Date datePourMoisCourant = calendar.getTime();
 
-    int jourMinDuMois = calendar.getActualMinimum(Calendar.DAY_OF_MONTH);
+    // Variables de début et fin des boucles for pour afficher les cases de saisies
     int jourMaxDuMois = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 
     //Liste contenant les numéros de jours du weekend pour griser les colonnes
     List<Integer> listWeekend = new ArrayList<Integer>();
-    for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) {
+    for (int i = 0; i < jourMaxDuMois; i++) {
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
             listWeekend.add(i);
         calendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -46,26 +59,31 @@
 <form action="/saisieCra" method="post" class="well" id="formSaisieCra">
     <fieldset>
         <legend>
-            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>"><--</a>
+            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
             Saisie du CRA du mois
             <b>
                 <%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
             </b>
-            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>">--></a>
+            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>">--></a>
         </legend>
 
         <h3><b>
             <%= request.getAttribute("erreur") != null ? (String) request.getAttribute("erreur") : "" %>
         </b></h3>
 
+        <%--Champs caché pour transmettre le mois courant et le consultant concerné--%>
+        <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>
+        <input type="hidden" name="consultantConnecte_id" value="<%=consultantConnecte.getId()%>"/>
+
+
         <table class="table table-bordered table-striped table-condensed" onchange="remplirTotaux()" cellpadding="0" cellspacing="0">
 
             <%--Ligne pour les numéros de colonnes--%>
             <tr>
                 <th colspan="<%=colspanTH%>"></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i <= jourMaxDuMois; i++) { %>
                 <th class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
-                    <%=i%>
+                    <%=i + 1%>
                 </th>
                 <% } %>
                 <th>Total</th>
@@ -81,8 +99,8 @@
             <tr>
                 <th colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
                 </h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">  <!--FIXME N'afficher modifiable que sur les j-->
                     <input type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)"/>
                 </td>
                 <% } %>
@@ -105,7 +123,7 @@
             <%--Liste des astreintes et case de saisie pour chaque jour--%>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Jour<br>(nb jour)</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <input type="text" min="0" max="1" size="<%=size%>" name="AS_J_<%=i%>" title="Nombre d'astreinte de jour"/>
                 </td>
@@ -116,7 +134,7 @@
             </tr>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Nuit<br>(nb jour)</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <input type="text" min="0" max="1" size="<%=size%>" name="AS_N_<%=i%>" title="Nombre d'astreinte de nuit"/>
                 </td>
@@ -127,7 +145,7 @@
             </tr>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Interventions<br>(nb heure)</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <input type="text" min="0" max="1" size="<%=size%>" name="AS_I_<%=i%>" title="Nombre d'heure d'intervention de l'astreinte"/>
                 </td>
@@ -150,7 +168,7 @@
             <%--Liste des journées d'absences et case de saisie pour chaque jour--%>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Congé</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <input type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
                 </td>
@@ -161,9 +179,9 @@
             </tr>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
-                    <input type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
+                    <input type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
                 </td>
                 <% } %>
                 <td>
@@ -179,7 +197,7 @@
             <%--Ligne des totaux par jour et du total complet du mois--%>
             <tr>
                 <th colspan="<%=colspanTH%>"><h5>Total</h5></th>
-                <% for (int i = jourMinDuMois; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <td class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <input readonly type="text" min="0" max="1" size="<%=size%>" id="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
                 </td>
@@ -190,7 +208,7 @@
             </tr>
 
         </table>
-        <input type="submit" class="btn btn-primary" value="Envoyer"/>
+        <input type="submit" onclick="remplirVidesZeros(); alert()" class="btn btn-primary" value="Envoyer"/>
     </fieldset>
 </form>
 
@@ -200,7 +218,7 @@
         // ** Remise à zero **
         // *******************
         <% for(Mission mission: missions){ %>
-        document.getElementById("tot_M_<%=mission.getId_mission()%>")[0].value = 0;
+        document.getElementById("tot_M_<%=mission.getId_mission()%>").value = 0;
         <% } %>
         document.getElementById("tot_AS_J").value = 0;
         document.getElementById("tot_AS_N").value = 0;
@@ -212,7 +230,7 @@
         // ************************************************
         // ** Totaux du bas et des cotés en même temps ! **
         // ************************************************
-        for (i =<%=jourMinDuMois%>; i <=<%=jourMaxDuMois%>; i++) {
+        for (i = 0; i < <%=jourMaxDuMois%>; i++) {
             somme = 0;
 
             // Récupération et ajout à la somme des valeur des cases missions
@@ -239,10 +257,34 @@
         // ***********************
         // ** Totaux des totaux **
         // ***********************
-        for (i =<%=jourMinDuMois%>; i <=<%=jourMaxDuMois%>; i++) {
+        for (i = 0; i < <%=jourMaxDuMois%>; i++) {
             // Assignation de la somme à la case total général
             document.getElementById("tot_tot").value = Number(document.getElementById("tot_tot").value) + Number(document.getElementById("tot_col_" + i).value);
         }
     }
+
+    // Pour qu'au chargement les cases de total soient remplis
     remplirTotaux();
+
+    function remplirVidesZeros() {
+        // ************************************************
+        // ** Totaux du bas et des cotés en même temps ! **
+        // ************************************************
+        for (i = 0; i < <%=jourMaxDuMois%>; i++) {
+
+            // Pour les jours de missions
+            <% for(Mission mission: missions){ %>
+            if (document.getElementsByName("M_<%=mission.getId_mission()%>_" + i)[0].value == "") document.getElementsByName("M_<%=mission.getId_mission()%>_" + i)[0].value = 0;
+            <% } %>
+
+            // Pour les jours d'absences
+            if (document.getElementsByName("AB_C_" + i)[0].value == "") document.getElementsByName("AB_C_" + i)[0].value = 0;
+            if (document.getElementsByName("AB_F_" + i)[0].value == "") document.getElementsByName("AB_F_" + i)[0].value = 0;
+
+            // Pour les jours d'astreinte
+            if (document.getElementsByName("AS_J_" + i)[0].value == "") document.getElementsByName("AS_J_" + i)[0].value = 0;
+            if (document.getElementsByName("AS_N_" + i)[0].value == "") document.getElementsByName("AS_N_" + i)[0].value = 0;
+            if (document.getElementsByName("AS_I_" + i)[0].value == "") document.getElementsByName("AS_I_" + i)[0].value = 0;
+        }
+    }
 </script>
