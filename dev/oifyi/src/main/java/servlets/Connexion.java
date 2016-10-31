@@ -1,7 +1,6 @@
 package servlets;
 
 import common.Consultant;
-import common.MappingUrlFichier;
 import dao.ConsultantDAO;
 import dao.MappingUrlFichierDAO;
 
@@ -36,8 +35,10 @@ public class Connexion extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("consultantConnecte") != null)
+        if (session.getAttribute("consultantConnecte") != null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur est déjà connecté
+            return;
+        }
 
         // Récupération des champs du formulaire
         String password = req.getParameter("password");
@@ -48,13 +49,13 @@ public class Connexion extends HttpServlet {
             req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
+            return;
         }
 
         // Si les identifiants sont valides
         Consultant consultantConnecte = ConsultantDAO.get(login); // On récupère le consultant associé
         if (session.getAttribute("consultantConnecte") == null) // On l'ajoute à la session
             session.setAttribute("consultantConnecte", consultantConnecte);
-        //FIXME Faire qqc si un consultant est déjà connecté? rediriger vers la déconnexion ou afficher un message d'erreur
 
         resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil
     }

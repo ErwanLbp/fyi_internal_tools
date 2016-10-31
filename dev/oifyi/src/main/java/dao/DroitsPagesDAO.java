@@ -102,19 +102,4 @@ public class DroitsPagesDAO {
             return false;
         }
     }
-
-    //TODO Javadoc : DroitsPagesDAO
-    public static boolean isAllowed(int id_page, int id_role) {
-
-        Role role_lambda = RoleDAO.get("lambda");
-
-        List<Role> autorises = getRoles(id_page);
-        for (Role r : autorises) {
-            if (r.equals(role_lambda))
-                return true;
-            if (r.getId_role() == id_role)
-                return true;
-        }
-        return false;
-    }
 }

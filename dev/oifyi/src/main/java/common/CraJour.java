@@ -1,7 +1,5 @@
 package common;
 
-import java.sql.Date;
-
 /**
  * Created by Croute on 27/10/16.
  */
@@ -9,14 +7,14 @@ public class CraJour {
 
     private int id_cramois;
 
-    private Date jour;
+    private int jour;
 
-    private double heures_travail;
+    private double travail;
 
-    public CraJour(int id_cramois, Date jour, double heures_travail) {
+    public CraJour(int id_cramois, int jour, double heures_travail) {
         this.id_cramois = id_cramois;
         this.jour = jour;
-        this.heures_travail = heures_travail;
+        this.travail = heures_travail;
     }
 
     public int getId_cramois() {
@@ -27,19 +25,19 @@ public class CraJour {
         this.id_cramois = id_cramois;
     }
 
-    public Date getJour() {
+    public int getJour() {
         return jour;
     }
 
-    public void setJour(Date jour) {
+    public void setJour(int jour) {
         this.jour = jour;
     }
 
-    public double getHeures_travail() {
-        return heures_travail;
+    public double getTravail() {
+        return travail;
     }
 
-    public void setHeures_travail(double heures_travail) {
-        this.heures_travail = heures_travail;
+    public void setTravail(double travail) {
+        this.travail = travail;
     }
 }

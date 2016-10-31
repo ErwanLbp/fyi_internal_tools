@@ -43,8 +43,10 @@ public class UpdateConsultant extends HttpServlet {
 
         HttpSession session = req.getSession();
 
-        if (session.getAttribute("consultantConnecte") == null)
+        if (session.getAttribute("consultantConnecte") == null) {
             resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
+            return;
+        }
 
         // Récupération des champs du formulaire
         String erreur = recuperationChampsForm(req);
