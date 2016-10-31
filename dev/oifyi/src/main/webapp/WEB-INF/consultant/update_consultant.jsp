@@ -39,6 +39,7 @@
         <div class="form-group">
             <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<%=consultant!=null ? consultant.getPassword() : ""%>" required/></label>
         </div>
+
         <div class="form-group">
             <label for="idRole">Role : </label>
             <% List<Role> roles = RoleDAO.getAll(); %>
