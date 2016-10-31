@@ -50,10 +50,10 @@ public class TestMissionDAO {
 
     @AfterClass
     public static void suppressionsInsertTests() {
-        MissionDAO.delete(mission_insert.getNom());
-        MissionDAO.delete(mission_update.getNom());
-        ClientDAO.delete(client.getRaison_sociale());
-        ClientDAO.delete(client_insert.getRaison_sociale());
+        MissionDAO.delete(MissionDAO.get(mission_insert.getNom()).getId_mission());
+        MissionDAO.delete(mission_update.getId_mission());
+        ClientDAO.delete(client.getId());
+        ClientDAO.delete(client_insert.getId());
     }
 
     @Test
