@@ -1,9 +1,13 @@
 package dao;
 
+import common.CraJour;
 import common.CraMois;
 import db.MyConnectorJDBC;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <h1>dao CraMoisDAO</h1>
@@ -91,6 +95,75 @@ public class CraMoisDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static String getInsert() {
+        return "INSERT INTO CRA_MOIS (MISSION_ID, CONSULTANT_ID, MOIS_ANNEE, STATUS_ID) VALUES (?,?,?,?)";
+    }
+
+    public static boolean insertToutMoisTransaction(List<CraMois> lCraMois, Map<CraJour, Integer> mCraJour) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        boolean toutVaBien = true;
+
+        // Déclaration de deux Statement, 1 pour le CraMois et 1 pour le CraJour
+        try (PreparedStatement insertCraMois = connection.prepareStatement(CraMoisDAO.getInsert()); PreparedStatement insertCraJour = connection.prepareStatement(CraJourDAO.getInsert())) {
+
+            // Désactivation de l'auto commit pour démarrer la transaction
+            connection.setAutoCommit(false);
+
+            // Création d'une Map qui va contenir {idMission -> idCraMois}
+            Map<Integer, Integer> mMissionCraMois = new HashMap<>();
+            for (CraMois cm : lCraMois) {
+                // Remplissage des champs du CraMois
+                insertCraMois.setInt(1, cm.getMission_id());
+                insertCraMois.setInt(2, cm.getConsultant_id());
+                insertCraMois.setDate(3, cm.getMois_annee());
+                insertCraMois.setInt(4, cm.getStatus_cra_id());
+                if (!(insertCraMois.executeUpdate() == 1))
+                    throw new SQLException();
+
+                // Récupération de l'id du CraMois inséré
+                CraMois cmRecup = CraMoisDAO.get(cm.getMission_id(), cm.getConsultant_id(), cm.getMois_annee().toString());
+                if (cmRecup == null)
+                    throw new SQLException();
+
+                // On ajoute l'idMission et l'idCraMois à la map, pour les retrouver après
+                mMissionCraMois.put(cmRecup.getMission_id(), cmRecup.getId_cra_mois());
+            }
+
+            // Pour chaque ligne de CraJour à insérer, remplissage des champs du CraJour en mettant l'idCraMois en fonction de la map mMissionCraMois
+            for (Map.Entry<CraJour, Integer> icj : mCraJour.entrySet()) {
+                insertCraJour.setInt(1, mMissionCraMois.get(icj.getValue()));
+                insertCraJour.setInt(2, icj.getKey().getJour());
+                insertCraJour.setDouble(3, icj.getKey().getTravail());
+                if (!(insertCraJour.executeUpdate() == 1))
+                    throw new SQLException();
+            }
+
+            // Commit de la transaction pour sauvegarder
+            connection.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            toutVaBien = false;
+            // En cas d'erreur, on annule la transaction
+            try {
+                connection.rollback();
+            } catch (SQLException excep) {
+                e.printStackTrace();
+                // Tout va super mal
+            }
+        }
+
+        // On remet l'autocommit pour les requetes futures
+        try {
+            connection.setAutoCommit(true);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Tout va méga mal, l'ordi va péter
+        }
+        return toutVaBien;
     }
 
 }

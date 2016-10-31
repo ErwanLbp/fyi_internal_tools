@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="common.Consultant" %>
+<%@ page import="common.DroitsPages" %>
 <%@ page import="common.MappingUrlFichier" %>
 <%@ page import="dao.ConsultantDAO" %>
 <%@ page import="dao.DroitsPagesDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
-<%@ page import="dao.RoleDAO" %>
 
 <%--Regarder dans la base de données si la page demandée existe--%>
 <% String param_page = (request.getParameter("page") != null) ? request.getParameter("page") : "profil"; %>
@@ -17,16 +17,17 @@
 <% pageTrouve = false; %>
 <% } else { %>
 <%
-    int roleLambda = RoleDAO.get("lambda").getId_role();
     Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte");
-    int roleConsultantConnecte = (consultantConnecte == null) ? roleLambda : consultantConnecte.getRole_id();      // Si personne est connecté, le role de l'utilisateur est 'lambda'
-    if (roleConsultantConnecte == roleLambda && !(param_page.equals("profil") && param_mode.equals("connexion")))  // Si l'utilisateur n'est pas connecté et qu'il essaye d'accéder
-        response.sendRedirect("connexion");                                                                        // à une autre page que la page de connexion on le redirige
-    else {
-        pageAutorisee = DroitsPagesDAO.isAllowed(muf.getId_muf(), roleConsultantConnecte); // La page est autorisée si le role (lambda par défaut) et la page matchent dans la BDD
-        if (consultantConnecte != null)                                                    // ou s'il est admin
-            pageAutorisee = pageTrouve || ConsultantDAO.isAdmin(consultantConnecte.getId());
-    }
+    // Si un utilisateur est connecté on regarde s'il a le droit d'accès ou s'il est admin
+    if (consultantConnecte != null)
+        pageAutorisee = DroitsPagesDAO.isInDB(new DroitsPages(muf.getId_muf(), consultantConnecte.getRole_id())) || ConsultantDAO.isAdmin(consultantConnecte.getId());
+        // Si personne est connecté, on accepte la page de connexion seulement
+    else if (param_page.equals("profil") && param_mode.equals("connexion"))
+        pageAutorisee = true;
+        //Si personne est connecté, on redirige vers la page de connexion
+    else
+        response.sendRedirect(MappingUrlFichierDAO.getMuf("profil", "connexion").formerUrl());
+
 %>
 <% } %>
 
@@ -35,9 +36,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="style/general.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/general.css">
     <title>OIFYI Intranet</title>
 </head>
 <body class="container">

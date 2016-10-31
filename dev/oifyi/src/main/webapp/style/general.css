@@ -30,3 +30,11 @@ html {
     text-align: center;
     padding: 0;
 }
+
+body {
+    background-image: url("logo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 1000px;
+    padding: 2px;
+}

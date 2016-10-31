@@ -41,6 +41,7 @@ public class Deconnexion extends HttpServlet {
             req.setAttribute("erreur", "La session est déjà détruite");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_deconnexion); // On renvoi vers la page de deconnexion
             dispatcher.forward(req, resp);
+            return;
         }
 
         resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil
