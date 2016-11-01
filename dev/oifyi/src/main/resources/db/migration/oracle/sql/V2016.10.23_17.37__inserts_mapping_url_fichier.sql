@@ -34,4 +34,3 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('no
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('fournisseurs', 'facturation', 'WEB-INF/clients/factu_fournisseurs.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('fournisseurs', 'contrats', 'WEB-INF/clients/contrats_fournisseurs.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('independants', 'facturation', 'WEB-INF/consultant/facturation_indep.jsp');
-

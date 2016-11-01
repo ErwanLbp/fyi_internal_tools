@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -31,6 +32,7 @@ public class SaisieCra extends HttpServlet {
 
     private String url_page_cra = MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
+    private String url_page_list_cra = MappingUrlFichierDAO.getMuf("cra", "list").formerUrl();
 
     private int consultant_id;
     private Date moisAnnee;
@@ -70,10 +72,10 @@ public class SaisieCra extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_accueil); // FIXME ne pas rediriger vers l'accueil
+            resp.sendRedirect(url_page_list_cra);
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra + "&moisAnneeCourant=" + new SimpleDateFormat("yyyy-MM").format(moisAnnee));
             dispatcher.forward(req, resp);
         }
     }

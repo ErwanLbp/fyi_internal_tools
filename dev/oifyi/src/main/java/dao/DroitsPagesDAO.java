@@ -52,6 +52,7 @@ public class DroitsPagesDAO {
                 list_res.add(new MappingUrlFichier(res.getInt("id_muf"), res.getString("nom_page"), res.getString("nom_mode"), res.getString("chemin_fichier")));
         } catch (SQLException e) {
             e.printStackTrace();
+            list_res.clear();
         }
         return list_res;
     }
@@ -69,6 +70,7 @@ public class DroitsPagesDAO {
                 list_res.add(new Role(res.getInt("id_role"), res.getString("libelle")));
         } catch (SQLException e) {
             e.printStackTrace();
+            list_res.clear();
         }
         return list_res;
     }

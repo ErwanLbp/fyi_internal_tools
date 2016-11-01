@@ -24,6 +24,7 @@ import java.io.IOException;
 public class UpdateClient extends HttpServlet {
 
     private String url_page_saisie_client = MappingUrlFichierDAO.getMuf("clients", "update").formerUrl();
+    private String url_page_list_client = MappingUrlFichierDAO.getMuf("clients", "list").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
 
     private int id_client;
@@ -60,7 +61,7 @@ public class UpdateClient extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_accueil);
+            resp.sendRedirect(url_page_list_client);
         else {
             req.setAttribute("erreur", erreur);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_saisie_client);

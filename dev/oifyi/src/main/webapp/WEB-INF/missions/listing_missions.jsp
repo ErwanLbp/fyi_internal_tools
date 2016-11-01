@@ -1,24 +1,23 @@
-<%@ page import="common.Mission" %>
 <%@ page import="common.Consultant" %>
+<%@ page import="common.Mission" %>
+<%@ page import="dao.ClientDAO" %>
+<%@ page import="dao.ConsultantDAO" %>
+<%@ page import="dao.MappingUrlFichierDAO" %>
+<%@ page import="dao.MissionDAO" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dao.*" %>
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
 <div class="row">
     <% ArrayList<Mission> lmis = MissionDAO.getAll();%>
-    <%--    <% ArrayList<Absence> labs = AbsenceDAO.getAll();%>--%>
     <table class="table table-striped">
-
-        <thead>
         <tr>
-            <td>Raison sociale du client</td>
-            <td>Nom</td>
-            <td>Date début</td>
-            <td>Date fin</td>
+            <th>Raison sociale du client</th>
+            <th>Nom</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Action</th>
         </tr>
-        </thead>
-        <tbody>
         <%for (Mission mis : lmis) {%>
         <tr>
             <td><%=ClientDAO.get(mis.getClient_id()).getRaison_sociale()%>
@@ -29,13 +28,12 @@
             </td>
             <td><%=mis.getDate_fin().toString()%>
             </td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "update").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher"<%} else {%>value="Afficher"<%}%>/></a>
+            <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "update").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher" <%} else {%>value="Afficher"<%}%>/></a>
             </td>
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "consultants").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher les consultants"<%} else {%>value="Afficher les consultants"<%}%>/></a>
             </td>
         </tr>
-        </tbody>
         <%}%>
     </table>
     <a href="<%=MappingUrlFichierDAO.getMuf("missions", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Nouvelle mission"/></a>

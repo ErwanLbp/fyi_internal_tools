@@ -43,9 +43,9 @@ public class ClientDAO {
             ResultSet res = req.executeQuery("SELECT * FROM CLIENT");
             while (res.next())
                 listeClients.add(new Client(res.getInt("id_client"), res.getString("raison_sociale"), res.getString("forme_juridique"), res.getString("siret"), res.getString("num_tva"), new Adresse(res.getInt("adresse_numero"), res.getString("adresse_rue"), res.getInt("adresse_cp"), res.getString("adresse_ville"))));
-            return listeClients;
         } catch (Exception e) {
             e.printStackTrace();
+            listeClients.clear();
         }
         return listeClients;
     }

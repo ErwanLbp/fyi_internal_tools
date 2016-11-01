@@ -59,9 +59,9 @@ public class ConsultantDAO {
             ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT ORDER BY ID_CONSULTANT DESC ");
             while (res.next())
                 listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
-            return listeConsultants;
         } catch (SQLException e) {
             e.printStackTrace();
+            listeConsultants.clear();
         }
         return listeConsultants;
     }

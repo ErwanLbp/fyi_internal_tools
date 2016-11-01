@@ -49,10 +49,10 @@
             <label for="idPlusPrecision">Plus de précision : <input id="idPlusPrecision" type="text" name="plus_precision" class="form-control" value="<%=absence!=null ? absence.getPlus_precision() : ""%>"/></label>
         </div>
         <div class="form-group">
-            <label for="idDateDeb">Date début* : <input id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=absence!=null ? absence.getDate_debut().toString() : ""%>" required/></label>
+            <label for="idDateDeb">Date début* : <input placeholder="yyyy-mm-dd" id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=absence!=null ? absence.getDate_debut().toString() : ""%>" required/></label>
         </div>
         <div class="form-group">
-            <label for="idDateFin">Date fin* : <input id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=absence!=null ? absence.getDate_fin().toString() : ""%>" required/></label>
+            <label for="idDateFin">Date fin* : <input placeholder="yyyy-mm-dd" id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=absence!=null ? absence.getDate_fin().toString() : ""%>" required/></label>
         </div>
         <input type="hidden" name="id_statut_absence" value="<%= absence==null ? "2" : ""+absence.getId_statut_absence() %>"/>
         <div class="form-group">

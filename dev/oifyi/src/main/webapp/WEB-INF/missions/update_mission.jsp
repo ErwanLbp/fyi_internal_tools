@@ -1,6 +1,9 @@
+<%@ page import="common.Client" %>
+<%@ page import="common.Consultant" %>
+<%@ page import="common.Mission" %>
+<%@ page import="dao.ClientDAO" %>
+<%@ page import="dao.MissionDAO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="common.*" %>
-<%@ page import="dao.*" %>
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
@@ -50,15 +53,15 @@
         </div>
 
         <div class="form-group">
-            <label for="idDateDeb">Date début* : <input id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=mission!=null ? mission.getDate_debut().toString() : ""%>" required/></label>
+            <label for="idDateDeb">Date début* : <input placeholder="yyyy-mm-dd" id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=mission!=null ? mission.getDate_debut().toString() : ""%>" required/></label>
         </div>
 
         <div class="form-group">
-            <label for="idDateFin">Date fin* : <input id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=mission!=null ? mission.getDate_fin().toString() : ""%>" required/></label>
+            <label for="idDateFin">Date fin* : <input placeholder="yyyy-mm-dd" id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=mission!=null ? mission.getDate_fin().toString() : ""%>" required/></label>
         </div>
 
         <div class="form-group">
-            <label for="idTJM">TJM : <input id="idTJM" type="text" name="tjm" class="form-control" value="<%=mission!=null ? mission.getTjm() : null%>"/></label>
+            <label for="idTJM">TJM : <input id="idTJM" type="number" min="0" step="1" name="tjm" class="form-control" value="<%=mission!=null ? mission.getTjm() : 0%>"/></label>
         </div>
 
 

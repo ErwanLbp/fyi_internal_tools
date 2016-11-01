@@ -24,7 +24,7 @@ import java.sql.Date;
 public class UpdateAbsence extends HttpServlet {
 
     private String url_page_update_absence = MappingUrlFichierDAO.getMuf("absences", "update").formerUrl();
-    private String url_page_saisie_absence = MappingUrlFichierDAO.getMuf("absences", "saisie").formerUrl();
+    private String url_page_list_absence = MappingUrlFichierDAO.getMuf("absences", "list").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
 
     private int id_absence;
@@ -38,7 +38,7 @@ public class UpdateAbsence extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(url_page_accueil).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_update_absence).forward(req, resp);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class UpdateAbsence extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_saisie_absence);
+            resp.sendRedirect(url_page_list_absence);
         else {
             req.setAttribute("erreur", erreur);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_update_absence);

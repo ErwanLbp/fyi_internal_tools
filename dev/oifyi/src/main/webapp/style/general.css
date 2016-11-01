@@ -32,9 +32,26 @@ html {
 }
 
 body {
-    background-image: url("logo.jpg");
+    /*background-image: url("logo.jpg");*/
     background-repeat: no-repeat;
     background-position: center;
     height: 1000px;
     padding: 2px;
+}
+
+.firstCase{
+    width: 10000px;
+}
+
+.inputeSize{
+    /*padding:0;*/
+    /*margin:0;*/
+    height: 48px;
+    text-align: center;
+}
+
+.intStyle{
+    border-width: thick;
+    border-color: black;
+    border-style: solid;
 }

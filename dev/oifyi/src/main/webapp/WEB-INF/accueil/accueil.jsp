@@ -7,7 +7,7 @@
             <li>Consultant
                 <ul>
                     <li><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list").formerUrl()%>">Listing consultants</a></li>
-                    <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "saisie").formerUrl()%>">Saisie d'absences</a></li>
+                    <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "list").formerUrl()%>">Listing absences</a></li>
                     <li><a href="<%=MappingUrlFichierDAO.getMuf("absences", "validation").formerUrl()%>">Validation d'absences</a></li>
                     <li><a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>">Saisie CRA</a></li>
                     <li><a href="<%=MappingUrlFichierDAO.getMuf("cra", "validation").formerUrl()%>">Validation CRA</a></li>
@@ -48,6 +48,7 @@
 <div class="row">
     <div class="col-lg-offset-4 col-sm-4">
         <h2>
+            <a href="<%=MappingUrlFichierDAO.getMuf("cra", "listing").formerUrl()%>">Liste des cra</a>
             <b>
                 <%= request.getAttribute("erreur") != null ? (String) request.getAttribute("erreur") : "" %>
             </b>

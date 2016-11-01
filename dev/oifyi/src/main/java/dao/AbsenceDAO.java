@@ -20,7 +20,7 @@ public class AbsenceDAO {
             req.setInt(1, id_absence);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE"));
+                return new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class AbsenceDAO {
             req.setDate(3, date_fin);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE"));
+                return new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -55,7 +55,7 @@ public class AbsenceDAO {
             req.setInt(1, id_consultant);
             ResultSet res = req.executeQuery();
             while (res.next())
-                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
+                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
             return listeAbsencesConsultant;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,7 +75,7 @@ public class AbsenceDAO {
             req.setDate(3, date_fin_periode);
             ResultSet res = req.executeQuery();
             while (res.next())
-                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
+                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
             return listeAbsencesConsultant;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,10 +92,10 @@ public class AbsenceDAO {
         try (Statement req = connection.createStatement()) {
             ResultSet res = req.executeQuery("SELECT * FROM ABSENCE");
             while (res.next())
-                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"),res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
-            return listeAbsencesConsultant;
+                listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
         } catch (SQLException e) {
             e.printStackTrace();
+            listeAbsencesConsultant.clear();
         }
         return listeAbsencesConsultant;
     }
@@ -112,7 +112,7 @@ public class AbsenceDAO {
             req.setDate(4, absence.getDate_debut());
             req.setDate(5, absence.getDate_fin());
             req.setInt(6, absence.getId_statut_absence());
-            req.setString(7,absence.getCommentaire());
+            req.setString(7, absence.getCommentaire());
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class AbsenceDAO {
             req.setDate(4, absence.getDate_debut());
             req.setDate(5, absence.getDate_fin());
             req.setInt(6, absence.getId_statut_absence());
-            req.setString(7,absence.getCommentaire());
+            req.setString(7, absence.getCommentaire());
             req.setInt(8, absence.getId_absence());
             return req.executeUpdate() == 1;
         } catch (Exception e) {

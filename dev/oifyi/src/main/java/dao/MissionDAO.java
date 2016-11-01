@@ -153,6 +153,7 @@ public class MissionDAO {
                 list_res.add(new Mission(res.getInt("ID_MISSION"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm")));
         } catch (SQLException e) {
             e.printStackTrace();
+            list_res.clear();
         }
         return list_res;
     }

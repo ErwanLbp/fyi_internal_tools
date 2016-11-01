@@ -39,7 +39,7 @@ public class UpdateMission extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(url_page_accueil).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_update_mission).forward(req, resp);
     }
 
     @Override

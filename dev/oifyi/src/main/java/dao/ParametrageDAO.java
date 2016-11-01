@@ -37,9 +37,9 @@ public class ParametrageDAO {
             ResultSet res = req.executeQuery("SELECT * FROM PARAMETRAGE");
             while (res.next())
                 listeParametrages.add(new Parametrage(res.getString("libelle"), res.getString("valeur")));
-            return listeParametrages;
         } catch (Exception e) {
             e.printStackTrace();
+            listeParametrages.clear();
         }
         return listeParametrages;
     }

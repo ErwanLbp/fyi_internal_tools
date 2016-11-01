@@ -5,6 +5,7 @@ import common.CraMois;
 import db.MyConnectorJDBC;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -166,4 +167,20 @@ public class CraMoisDAO {
         return toutVaBien;
     }
 
+    public static List<CraMois> getAll(int id_consultant) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        List<CraMois> list_res = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE CONSULTANT_ID=? ORDER BY MOIS_ANNEE,MISSION_ID DESC")) {
+            req.setInt(1, id_consultant);
+            ResultSet res = req.executeQuery();
+            while (res.next())
+                list_res.add(new CraMois(res.getInt("id_cra_mois"), res.getInt("mission_id"), res.getInt("consultant_id"), res.getDate("mois_annee"), res.getInt("status_id")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            list_res.clear();
+        }
+        return list_res;
+    }
 }
