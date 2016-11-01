@@ -37,7 +37,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+
     <link rel="stylesheet" href="style/general.css">
     <title>OIFYI Intranet</title>
 </head>
@@ -45,7 +48,7 @@
 <div class="header">
     <jsp:include page="WEB-INF/header.jsp" flush="true"/>
 </div>
-<div class="row">
+<div class="row center">
     <% if (!pageTrouve) { %>
     <jsp:include page="WEB-INF/page404.jsp" flush="true"/>
     <% } else if (!pageAutorisee) { %>
@@ -53,9 +56,6 @@
     <% } else { %>
     <jsp:include page="<%=muf.getCheminFichier()%>" flush="true"/>
     <% } %>
-</div>
-<div class="footer">
-    <jsp:include page="WEB-INF/footer.jsp" flush="true"/>
 </div>
 </body>
 </html>
