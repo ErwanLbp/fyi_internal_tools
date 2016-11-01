@@ -68,6 +68,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>update_mission_consultant</servlet-name>
+        <servlet-class>servlets.UpdateMission_Consultant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>update_mission_consultant</servlet-name>
+        <url-pattern>/update_mission_consultant</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>saisieCra</servlet-name>
         <servlet-class>servlets.SaisieCra</servlet-class>
     </servlet>

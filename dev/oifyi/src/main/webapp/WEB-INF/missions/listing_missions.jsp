@@ -8,7 +8,6 @@
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
-
 <div class="row">
     <% ArrayList<Mission> lmis = MissionDAO.getAll();%>
     <table class="table table-striped">
@@ -30,6 +29,9 @@
             <td><%=mis.getDate_fin().toString()%>
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "update").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher" <%} else {%>value="Afficher"<%}%>/></a>
+            </td>
+            </td>
+            <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "consultants").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher les consultants"<%} else {%>value="Afficher les consultants"<%}%>/></a>
             </td>
         </tr>
         <%}%>
