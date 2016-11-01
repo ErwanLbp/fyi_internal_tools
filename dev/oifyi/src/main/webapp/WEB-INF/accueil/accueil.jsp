@@ -17,7 +17,6 @@
                     <li role="presentation" class="divider"></li>
                     <li role="presentation" class="dropdown-header">Absences</li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=MappingUrlFichierDAO.getMuf("absences", "list").formerUrl()%>">Listing</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=MappingUrlFichierDAO.getMuf("absences", "validation").formerUrl()%>">Validation</a></li>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation" class="dropdown-header">Compte rendu d'activité</li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=MappingUrlFichierDAO.getMuf("cra", "listing").formerUrl()%>">Listing</a></li>

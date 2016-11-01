@@ -61,10 +61,10 @@ public class UpdateMission_Consultant extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_listing_missions);
+            resp.sendRedirect(url_page_update_mission_consultant);
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_update_mission);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_listing_mission_consultant);
             dispatcher.forward(req, resp);
         }
     }
