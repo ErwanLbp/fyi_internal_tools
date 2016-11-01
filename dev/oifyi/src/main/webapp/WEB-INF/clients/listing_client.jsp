@@ -1,8 +1,7 @@
 <%@ page import="common.Client" %>
-<%@ page import="common.Adresse" %>
 <%@ page import="dao.ClientDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
 <div class="col-lg-offset-4 col-sm-4">
     <h1>Recherche client</h1>
@@ -31,20 +30,18 @@
 <br/><br/><br/>
 
 <div class="row">
-    <% ArrayList<Client> lcli = ClientDAO.getAll();%>
+    <% List<Client> lcli = ClientDAO.getAll();%>
     <table class="table table-striped">
 
-        <thead>
         <tr>
-            <td>Id</td>
-            <td>Raison sociale</td>
-            <td>Forme Juridique</td>
-            <td>Siret</td>
-            <td>Numéro de TVA</td>
-            <td>Adresse</td>
+            <th>Id</th>
+            <th>Raison sociale</th>
+            <th>Forme Juridique</th>
+            <th>Siret</th>
+            <th>Numéro de TVA</th>
+            <th>Adresse</th>
+            <th>Action</th>
         </tr>
-        </thead>
-        <tbody>
         <%for (Client cli : lcli) {%>
         <tr>
             <td><%=cli.getId()%>
@@ -61,7 +58,6 @@
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>&idClient=<%=cli.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
         </tr>
-        </tbody>
         <%}%>
     </table>
     <a href="<%=MappingUrlFichierDAO.getMuf("clients", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Créer un client"/></a>
