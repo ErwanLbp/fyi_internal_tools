@@ -63,6 +63,7 @@ public class MissionDAO {
             return listeMissions;
         } catch (SQLException e) {
             e.printStackTrace();
+            listeMissions.clear();
         }
         return listeMissions;
     }

@@ -4,12 +4,12 @@
 <%@ page import="dao.ConsultantDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.MissionDAO" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
 <div class="row">
-    <% ArrayList<Mission> lmis = MissionDAO.getAll();%>
+    <% List<Mission> lmis = MissionDAO.getAll();%>
     <table class="table table-striped">
         <tr>
             <th>Raison sociale du client</th>

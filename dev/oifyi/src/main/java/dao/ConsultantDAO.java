@@ -67,12 +67,12 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static boolean isAdmin(int ID) {
+    public static boolean isAdmin(int id) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("SELECT c.username, r.libelle FROM CONSULTANT c, ROLE r WHERE c.ID_CONSULTANT=? AND lower(r.LIBELLE)='admin' AND c.ROLE_ID=r.ID_ROLE")) {
-            req.setInt(1, ID);
+            req.setInt(1, id);
             ResultSet res = req.executeQuery();
             if (res.next())
                 return true;
