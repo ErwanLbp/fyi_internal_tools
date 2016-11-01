@@ -51,11 +51,8 @@
 
         <input type="hidden" name="id_mission" value="<%= mission==null ? "" : ""+mission.getId_mission() %>"/>
 
-        <input type="hidden" name="id_consultant" value="<%= consultantConnecte.getId() %>"/>
-
-        <%--FIXME on fera une recherche et on récupérera l'id dans un hidden--%>
         <div class="form-group">
-            <label for="id_consultant">Client : </label>
+            <label for="id_consultant">Consultant : </label>
             <% ArrayList<Consultant> listeConsultantsDispo = Mission_ConsultantDAO.getConsultantsDisposPourUneMission(id_mission); %>
             <select name="id_consultant" id="id_consultant" class="form-control" required>
                 <% for (Consultant c : listeConsultantsDispo) { %>
@@ -63,6 +60,10 @@
                 </option>
                 <% } %>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="idPrix">Prix : <input id="idPrix" type="text" name="prix" class="form-control" required/></label>
         </div>
 
         <input type="submit" value="Ajouter le consultant" class="btn btn-primary"/>
