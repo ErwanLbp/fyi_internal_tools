@@ -49,4 +49,5 @@
         </tr>
         <%}%>
     </table>
+    <a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>"><input type="button" class="btn btn-primary" value="Saisir un nouveau cra"/></a>
 </div>
