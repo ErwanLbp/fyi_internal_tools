@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" %>
 <%@ page import="common.Consultant" %>
 <%@ page import="common.DroitsPages" %>
 <%@ page import="common.MappingUrlFichier" %>

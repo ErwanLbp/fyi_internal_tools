@@ -14,14 +14,14 @@
                 <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
             </div>
             <% } else if (consultantConnecte != null) { %>
-            <div class="alert alert-erreur alert-dismissible" role="alert">
+            <div class="alert alert-danger alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <strong>Erreur ! </strong><%= "Un utilisateur est déjà connecté" %>
             </div>
             <% } else { %>
             <div class="alert alert-info alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <strong>Info ! </strong><%= request.getAttribute("erreur") %>
+                <strong>Info ! </strong><%= "Remplissez tous les champs" %>
             </div>
             <% } %>
 

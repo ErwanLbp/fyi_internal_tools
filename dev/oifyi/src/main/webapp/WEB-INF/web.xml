@@ -13,6 +13,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <jsp-config>
+        <jsp-property-group>
+            <description>Config. de l'encodage des fichiers</description>
+            <url-pattern>*.jsp</url-pattern>
+            <url-pattern>*.css</url-pattern>
+            <url-pattern>*.java</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
     <servlet>
         <servlet-name>connexion</servlet-name>
         <servlet-class>servlets.Connexion</servlet-class>
@@ -84,6 +94,5 @@
         <servlet-name>saisieCra</servlet-name>
         <url-pattern>/saisieCra</url-pattern>
     </servlet-mapping>
-
 
 </web-app>
