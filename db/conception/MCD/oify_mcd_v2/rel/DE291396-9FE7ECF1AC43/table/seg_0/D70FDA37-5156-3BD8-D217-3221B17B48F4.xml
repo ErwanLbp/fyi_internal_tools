@@ -1,0 +1,113 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D70FDA37-5156-3BD8-D217-3221B17B48F4" name="consultant">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>5DE2D866-8E07-69D0-6609-211AFD6F3C67</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_consultant" id="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>7BE1F85C-C700-109E-0E5A-E404B7E72CA4</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="BE1A3FC3-7C56-0B3F-442A-FE1A8DDA8B82">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F4091BCC-F4AA-1B4A-D25C-FCD1B75B6B69</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prenom" id="01DB6916-4B6C-5223-64DC-6AB8D4097A1D">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F907EF63-6BB4-DAFA-0959-DDD9419CF70A</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="username" id="A598A4D7-3F34-CE74-9FE3-6CF0BBE406F3">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>66B64BD8-3150-7EAB-8DB2-915C74D1535B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="AED0005D-E0D9-D157-7D2E-4DA5FAA16A71">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>226FDB1B-E7EE-76FF-D897-7AE801646659</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="role_id" id="05F17910-0F84-521E-5002-B79BE89E7786">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>4D1C55DE-5F66-D308-BD40-C531F3456642</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A029C3C0-15A1-F7D8-0958-4834B545BEEB" referredColumn="304F6088-1462-4903-DE88-359B00EBA820"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C4086BE8-F370-1EBD-F490-34370DEAF1B0" name="consultant_PK">
+<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C71EFC35-0C1E-E0EE-AFD7-7B30019DDAFE</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="860BE3D2-12B3-BF95-FCDC-3BD0DDA13D13" name="consultant_role_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="05F17910-0F84-521E-5002-B79BE89E7786"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

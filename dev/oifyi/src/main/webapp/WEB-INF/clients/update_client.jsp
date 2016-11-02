@@ -18,9 +18,17 @@
     <fieldset>
         <legend>Saisie d'un client</legend>
 
-        <b>
-            <%= request.getAttribute("erreur") == null ? "Remplissez tous les champs obligatoires" : (String) request.getAttribute("erreur") %>
-        </b>
+        <% if (request.getAttribute("erreur") != null) { %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+        </div>
+        <% } else { %>
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
+        </div>
+        <% } %>
 
         <input type="hidden" name="id_client" value="<%= client==null ? "" : ""+client.getId() %>"/>
 

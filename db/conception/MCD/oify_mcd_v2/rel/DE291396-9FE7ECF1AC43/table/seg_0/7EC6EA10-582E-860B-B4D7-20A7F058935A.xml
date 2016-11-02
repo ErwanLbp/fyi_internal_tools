@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7EC6EA10-582E-860B-B4D7-20A7F058935A" name="role">
+<sourceDDLFile>V2016.10.13_23.45__create_table_role.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>19C7896F-F5B0-5C5A-1C9B-34417FA40CA3</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_role" id="304F6088-1462-4903-DE88-359B00EBA820">
+<sourceDDLFile>V2016.10.13_23.45__create_table_role.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>7A92E0F9-D4BA-2922-9070-24D28EF191D6</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="libelle" id="326B64E2-77A1-C418-3DF8-2317A52FE9F5">
+<sourceDDLFile>V2016.10.13_23.45__create_table_role.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>394D6FF6-38A5-5EEF-E5BB-680750FDB007</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5C2C0AED-B32C-6A3D-1CCE-B53A5405840F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EE89B5A4-E5DB-5D93-DA04-B73C9DD635E4" name="pk_role">
+<sourceDDLFile>V2016.10.13_23.45__create_table_role.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>689A6399-E73C-9A5E-E8AA-67A189AD03D0</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="304F6088-1462-4903-DE88-359B00EBA820"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3B97947C-EA9C-B9B9-2653-F87E9035CBBA" name="u_role">
+<sourceDDLFile>V2016.10.13_23.45__create_table_role.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>8BBC0AD3-B0EB-493F-5476-9D780968372A</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="326B64E2-77A1-C418-3DF8-2317A52FE9F5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

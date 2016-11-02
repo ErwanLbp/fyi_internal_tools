@@ -8,11 +8,22 @@
         <fieldset <%= consultantConnecte != null ? "disabled" : "" %>>
             <legend>Connexion</legend>
 
-            <b>
-                <%= request.getAttribute("erreur") == null ?
-                        (consultantConnecte != null ? "Un utilisateur est déjà connecté" : "Remplissez tous les champs")
-                        : (String) request.getAttribute("erreur") %>
-            </b>
+            <% if (request.getAttribute("erreur") != null) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+            </div>
+            <% } else if (consultantConnecte != null) { %>
+            <div class="alert alert-erreur alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Erreur ! </strong><%= "Un utilisateur est déjà connecté" %>
+            </div>
+            <% } else { %>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Info ! </strong><%= request.getAttribute("erreur") %>
+            </div>
+            <% } %>
 
             <div class="form-group">
                 <label for="idLogin">Login:<input id="idLogin" type="text" name="login" class="form-control" align="left" accesskey="l" required/></label>

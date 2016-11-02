@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E3F69AB2-9B2D-3AA1-327F-A19CA142A9B1" name="mission_consultant">
+<sourceDDLFile>V2016.10.21_12.05__mission_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>A9CFD826-3653-9479-6466-1B42390CF814</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="consultant_id" id="B1B710D1-2B44-C831-439D-784EB151F59C">
+<sourceDDLFile>V2016.10.21_12.05__mission_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>76C3B451-2ECF-6239-584E-50C63F3E7BFE</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="34E5E399-1BEE-AA9A-DA73-60FB6DE870E1" referredColumn="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B"/>
+</associations>
+</Column>
+<Column name="mission_id" id="7D458564-ACB5-9271-9656-12A144C2DFEC">
+<sourceDDLFile>V2016.10.21_12.05__mission_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>6A6CB5A7-D8DB-E4A0-9D03-D2ED2AC1257D</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DC0D23D4-D56B-4D5B-F6C3-BC327DC2D30E" referredColumn="7F41D02C-F3AC-1270-8106-19BDEC57B50C"/>
+</associations>
+</Column>
+<Column name="prix" id="0AC00272-2472-6444-4970-EE6DD32DA45B">
+<sourceDDLFile>V2016.10.21_12.05__mission_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>10BA819F-4C0C-0D64-5B63-84F8E0787734</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DE34F28E-FC44-48E6-3CBD-EC1CD9C82CDB" name="mission_consultant_PK">
+<sourceDDLFile>V2016.10.21_12.05__mission_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C6F52F5E-BDEE-72E1-9B01-1CADDABEFFC5</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B1B710D1-2B44-C831-439D-784EB151F59C"/>
+<colUsage columnID="7D458564-ACB5-9271-9656-12A144C2DFEC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="70EA1423-C887-98C4-438D-ACEFE78DCC42" name="mission_consult_consult_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B1B710D1-2B44-C831-439D-784EB151F59C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="526D8407-5BCB-5F81-9510-50926B99F36F" name="mission_consultant_mission_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D458564-ACB5-9271-9656-12A144C2DFEC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

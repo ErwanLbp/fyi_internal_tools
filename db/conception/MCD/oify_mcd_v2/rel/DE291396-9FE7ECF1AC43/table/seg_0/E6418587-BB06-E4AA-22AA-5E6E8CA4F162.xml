@@ -1,0 +1,138 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E6418587-BB06-E4AA-22AA-5E6E8CA4F162" name="client">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>33D56A91-EF09-C32D-64F6-B026E116649A</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_client" id="F01D1382-E257-8553-3B16-2F3AC2A5C569">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>80BB02D3-9795-C4A0-F07A-C9732F051446</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="raison_sociale" id="13B6A58C-7F6B-2709-0A82-FC23AD38B5D2">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>380D57B6-58A7-DC3D-975C-A7863DB085D0</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="forme_juridique" id="08ADBC88-B7CF-E694-928D-FBFB33F2F2B0">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>9F5C5AE7-9DDD-3340-A913-454BEE4D12A5</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5C2C0AED-B32C-6A3D-1CCE-B53A5405840F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="siret" id="7538D08A-8769-9446-B38A-1D63029CD807">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>10A11C17-1136-5293-97E7-112EA4DCACBE</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="num_tva" id="60CDF4A4-59D1-5323-A783-9056115DD795">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>146D86A6-88AB-E399-32DC-DD397B703DA1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_numero" id="0BC2FE88-BA51-2040-A5B4-B58D9975B895">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F3BED616-77A5-5335-F68E-D372C3144A1C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_rue" id="C7BBD28C-FCBF-ADD2-03C5-56458306DC4E">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>8BC74A5A-7A98-4F63-CF00-CE1DFB67ABAF</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_cp" id="1BAF9DD5-7224-FCF9-EEEF-FCC30AA7DAD3">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F5040CDA-EAE1-B2EF-1B53-3A38F7F30956</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="adresse_ville" id="56FB1CB9-E1DE-B3F8-8B3E-5C00E3624D61">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>DD528B8A-0AEA-DD74-793F-CEB1E84ACE59</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7F3BBD74-F603-0E7F-9C3F-5C4EC71599C3" name="client_PK">
+<sourceDDLFile>V2016.10.21_12.01__clients.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>A84A5CB3-F904-3059-6266-C4427E51E1BC</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F01D1382-E257-8553-3B16-2F3AC2A5C569"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="before_insert_consultant" directorySegmentName="seg_0" id="F0C4D362-5C1F-7EF6-A0E3-78BBACEDA3EF">
+<sourceDDLFile>V2016.10.24_21.28__create_seq_trigger_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<actions>INSERT</actions>
+<body>BEGIN&lt;br/&gt;    :new.id_consultant := seq_id_consultant.nextval;&lt;br/&gt;  END;</body>
+<triggerTime>BEFORE</triggerTime>
+<table>D70FDA37-5156-3BD8-D217-3221B17B48F4</table>
+</TriggerOraclev10g>

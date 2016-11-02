@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="oify_mcd_v2" id="F38D2F08-10C6-BDAD-D664-4E3934B96ECE" version="3.5">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 09:56:10 UTC</createdTime>
+<ownerDesignName>oify_mcd</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>F38D2F08-10C6-BDAD-D664-4E3934B96ECE</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="39532705-F4A2-255D-38B2-611873524E89">
+<designStoragePath>/V2016.10.13_23.45__create_table_role</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

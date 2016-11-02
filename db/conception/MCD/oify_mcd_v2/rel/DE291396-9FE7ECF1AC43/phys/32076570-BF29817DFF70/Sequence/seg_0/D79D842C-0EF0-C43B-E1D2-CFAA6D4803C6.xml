@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SequenceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.SequenceOraclev10g" name="seq_id_statusCra" directorySegmentName="seg_0" id="D79D842C-0EF0-C43B-E1D2-CFAA6D4803C6">
+<sourceDDLFile>V2016.10.26_00.25__seq_trigger_status_cra.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</SequenceOraclev10g>

@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="before_insert_type_absence" directorySegmentName="seg_0" id="C04BCBCB-3A54-5A81-192A-924286774E6D">
+<sourceDDLFile>V2016.10.29_03.04__seq_trigger_type_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<actions>INSERT</actions>
+<body>BEGIN&lt;br/&gt;    :new.id_type_absence := seq_id_type_absence.nextval;&lt;br/&gt;  END;</body>
+<triggerTime>BEFORE</triggerTime>
+<table>D9C0DCE4-5B86-0473-3F93-902F777434D4</table>
+</TriggerOraclev10g>

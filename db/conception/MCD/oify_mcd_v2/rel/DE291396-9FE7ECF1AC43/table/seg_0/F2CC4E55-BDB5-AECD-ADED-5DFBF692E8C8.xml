@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F2CC4E55-BDB5-AECD-ADED-5DFBF692E8C8" name="cra_jour">
+<sourceDDLFile>V2016.10.21_12.07__cra_jour.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>D4B7933F-8C8C-3E61-259A-07873A7988AA</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_cramois" id="4E9C3EFB-F6E2-243F-C724-521B3226EB34">
+<sourceDDLFile>V2016.10.21_12.07__cra_jour.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C8AD2A14-BA46-1964-FE56-0DA0D29266FA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C187FB8B-B359-915E-EDBC-C7D3F2E7E21D" referredColumn="D92D6A7D-21B6-1BE8-B278-B04D383E0222"/>
+</associations>
+</Column>
+<Column name="jour" id="B5E25318-FF56-B70B-5098-3301C4D75E6D">
+<sourceDDLFile>V2016.10.21_12.07__cra_jour.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>DA2063B0-3A85-CD54-CA90-598D33CAEBE8</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="travail" id="7B8FED99-D886-948A-91B4-A701FF422622">
+<sourceDDLFile>V2016.10.21_12.07__cra_jour.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>40676826-68B9-9A0D-6448-E6D010EC7E93</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2FD651B4-C53E-89FB-C6F6-45CA5679431E" name="cra_jour_PK">
+<sourceDDLFile>V2016.10.21_12.07__cra_jour.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>A18AEBAD-D414-8D71-8161-C96696499245</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E9C3EFB-F6E2-243F-C724-521B3226EB34"/>
+<colUsage columnID="B5E25318-FF56-B70B-5098-3301C4D75E6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8CECEC28-A264-97F1-5187-BAAD15CBBFD7" name="cra_jour_cra_mois_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E9C3EFB-F6E2-243F-C724-521B3226EB34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

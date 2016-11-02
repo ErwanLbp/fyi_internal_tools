@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="before_insert_client" directorySegmentName="seg_0" id="E41DE0B3-E0AF-F071-26E9-C22A42F43974">
+<sourceDDLFile>V2016.10.25_14.05__create_seq_trigger_client.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<actions>INSERT</actions>
+<body>BEGIN&lt;br/&gt;    :new.id_client := seq_id_client.nextval;&lt;br/&gt;  END;</body>
+<triggerTime>BEFORE</triggerTime>
+<table>E6418587-BB06-E4AA-22AA-5E6E8CA4F162</table>
+</TriggerOraclev10g>

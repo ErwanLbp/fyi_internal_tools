@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5A0004B8-EE99-3C99-FACF-A67DE6BABBDE" name="mapping_url_fichier">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:44:51 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="page" id="F76E636C-3E33-2A90-2E7F-8815CC4A41B9">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 08:03:55 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mode" id="F5FF2810-2EC0-2E88-2FFC-309F813DF790">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 08:03:55 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fichier" id="BD331A14-2775-D508-68F8-A9C4C9F151DE">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:48:41 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FD7A66DD-9B3F-A778-D258-8558C5CC77E6" name="mapping_url_fichier_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-18 07:48:41 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F76E636C-3E33-2A90-2E7F-8815CC4A41B9"/>
+<colUsage columnID="F5FF2810-2EC0-2E88-2FFC-309F813DF790"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
