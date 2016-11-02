@@ -7,17 +7,17 @@
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 <% // Récupération de l'id de la mission à modifier
-    int id_mission = Integer.parseInt(request.getParameter("idMission"));
+    int idMission = Integer.parseInt(request.getParameter("idMission"));
 %>
 
 
 
 <div class="row">
-    <% Mission mission = MissionDAO.get(id_mission);%>
+    <% Mission mission = MissionDAO.get(idMission);%>
     <h1>Les consultants assignés à la mission <%=mission.getNom()%> pour le client <%=ClientDAO.get(mission.getClient_id()).getRaison_sociale()%></h1>
 
 
-    <% ArrayList<Consultant> lcon = Mission_ConsultantDAO.getConsultantsPourUneMission(id_mission);%>
+    <% ArrayList<Consultant> lcon = Mission_ConsultantDAO.getConsultantsPourUneMission(mission.getId_mission());%>
     <table class="table table-striped">
 
         <thead>
@@ -37,9 +37,7 @@
         </tbody>
         <%}%>
     </table>
-    <a href="<%=MappingUrlFichierDAO.getMuf("mission_consultant", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Ajouter le consultant sur la mission"/></a>
 </div>
-
 
 <form method="post" action="/update_mission_consultant" class="well">
     <fieldset>
@@ -52,18 +50,15 @@
         <input type="hidden" name="id_mission" value="<%= mission==null ? "" : ""+mission.getId_mission() %>"/>
 
         <div class="form-group">
-            <label for="id_consultant">Consultant : </label>
-            <% ArrayList<Consultant> listeConsultantsDispo = Mission_ConsultantDAO.getConsultantsDisposPourUneMission(id_mission); %>
+            <label for="id_consultant">Consultants disponibles : </label>
+            <% ArrayList<Consultant> listeConsultantsDispo = Mission_ConsultantDAO.getConsultantsDisposPourUneMission(mission.getId_mission()); %>
             <select name="id_consultant" id="id_consultant" class="form-control" required>
                 <% for (Consultant c : listeConsultantsDispo) { %>
-                <option value="<%= c.getId()%>"><%= c.getNom() %> <%= c.getPrenom() %>
+                <option value="<%= c.getId()%>">
+                    <%=c.getNom()%> <%=c.getPrenom()%>
                 </option>
                 <% } %>
             </select>
-        </div>
-
-        <div class="form-group">
-            <label for="idPrix">Prix : <input id="idPrix" type="text" name="prix" class="form-control" required/></label>
         </div>
 
         <input type="submit" value="Ajouter le consultant" class="btn btn-primary"/>

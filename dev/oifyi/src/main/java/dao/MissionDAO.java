@@ -158,4 +158,19 @@ public class MissionDAO {
         }
         return list_res;
     }
+
+    public static boolean isInDB(int id_mission) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION WHERE ID_MISSION=?")) {
+            req.setInt(1, id_mission);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

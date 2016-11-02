@@ -2,10 +2,7 @@ package servlets;
 
 import common.Mission;
 import common.Mission_Consultant;
-import dao.AbsenceDAO;
-import dao.MappingUrlFichierDAO;
-import dao.MissionDAO;
-import dao.Mission_ConsultantDAO;
+import dao.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,15 +23,12 @@ import java.sql.Date;
  */
 public class UpdateMission_Consultant extends HttpServlet {
 
-    private String url_page_listing_mission_consultant = MappingUrlFichierDAO.getMuf("mission_consultant", "list").formerUrl();
+    private String url_page_listing_mission_consultant = MappingUrlFichierDAO.getMuf("missions", "list_assignations").formerUrl()+"&idMission=";
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
 
     private int id_mission;
     private int id_consultant;
-    private float prix;
 
-    private String sIdConsultant;
-    private String sPrix;
 
 
     @Override
@@ -60,12 +54,12 @@ public class UpdateMission_Consultant extends HttpServlet {
         if (erreur == null) erreur = sauvegardeDB();
 
         // En cas d'erreur on renvoi sur la page, avec l'erreur
-        // Si il n'y a pas d'erreur on redirige vers l'accueil
+        // Si il n'y a pas d'erreur on redirige vers la page sans l'erreur
         if (erreur == null)
-            resp.sendRedirect(url_page_listing_mission_consultant);
+            resp.sendRedirect(url_page_listing_mission_consultant+String.valueOf(id_mission));
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_listing_mission_consultant);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_listing_mission_consultant+String.valueOf(id_mission));
             dispatcher.forward(req, resp);
         }
     }
@@ -74,17 +68,7 @@ public class UpdateMission_Consultant extends HttpServlet {
         try {
 
             id_mission = Integer.parseInt(req.getParameter("id_mission"));
-            sIdConsultant = req.getParameter("id_consultant");
-            if (!sIdConsultant.isEmpty()){
-                id_consultant = Integer.parseInt(req.getParameter("id_consultant"));
-            }
-            else id_consultant=-1;
-            sPrix = req.getParameter("prix");
-            if (!sPrix.isEmpty()){
-                prix = Float.parseFloat(req.getParameter("prix"));
-            }
-            else prix=-1;
-
+            id_consultant = Integer.parseInt(req.getParameter("id_consultant"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,15 +78,18 @@ public class UpdateMission_Consultant extends HttpServlet {
     }
 
     private String validationChamps() {
-        if (id_mission != -1 && !AbsenceDAO.isInDB(id_mission)) return "L'id de la mission à mettre à jour est inconnu";
-        if (id_consultant==-1) return "Le champ consultant n'est pas rempli";
-        if (prix==-1) return "Le champ prix n'est pas rempli";
+        if (!MissionDAO.isInDB(id_mission)) return "L'id de la mission est inconnu";
+        if (!ConsultantDAO.isInDB(id_consultant)) return "L'id du consultant est inconnu";
+        if (Mission_ConsultantDAO.isInDB(id_mission,id_consultant)) return "Le consultant est déjà associé à la maison";
         return null;
     }
 
     private String sauvegardeDB() {
-        Mission_Consultant mission_consultantCree = new Mission_Consultant(id_mission,id_consultant,prix);
-        Mission_ConsultantDAO.insert(mission_consultantCree);
+        Mission_Consultant mission_consultantCree = new Mission_Consultant(id_consultant,id_mission);
+        if (!Mission_ConsultantDAO.insert(mission_consultantCree)){
+                return "Echec de l'insertion de la nouvelle mission_consultant";
+        }
         return null;
+
     }
 }

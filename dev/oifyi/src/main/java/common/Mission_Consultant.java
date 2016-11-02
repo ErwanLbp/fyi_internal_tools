@@ -8,13 +8,11 @@ public class Mission_Consultant {
 
     private int mission_id;
 
-    private float prix;
-
-    public Mission_Consultant(int consultant_id, int mission_id, float prix) {
+    public Mission_Consultant(int consultant_id, int mission_id) {
         this.consultant_id = consultant_id;
         this.mission_id = mission_id;
-        this.prix = prix;
     }
+
 
     public int getConsultant_id() {
         return consultant_id;
@@ -30,13 +28,5 @@ public class Mission_Consultant {
 
     public void setMission_id(int mission_id) {
         this.mission_id = mission_id;
-    }
-
-    public float getPrix() {
-        return prix;
-    }
-
-    public void setPrix(float prix) {
-        this.prix = prix;
     }
 }

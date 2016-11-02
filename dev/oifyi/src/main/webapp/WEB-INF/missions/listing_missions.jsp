@@ -29,9 +29,7 @@
             <td><%=mis.getDate_fin().toString()%>
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "update").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher" <%} else {%>value="Afficher"<%}%>/></a>
-            </td>
-            </td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("missions", "consultants").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher les consultants"<%} else {%>value="Afficher les consultants"<%}%>/></a>
+                <a href="<%=MappingUrlFichierDAO.getMuf("missions", "list_assignations").formerUrl()%>&idMission=<%=mis.getId_mission()%>"><input type="button" class="btn btn-primary" <%if (ConsultantDAO.isAdmin(consultantConnecte.getId())) {%>value="Modifier/afficher les consultants"<%} else {%>value="Afficher les consultants"<%}%>/></a>
             </td>
         </tr>
         <%}%>
