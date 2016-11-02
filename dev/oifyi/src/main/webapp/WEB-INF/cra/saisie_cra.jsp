@@ -90,7 +90,7 @@
             <%--Ligne pour les numéros de colonnes--%>
             <tr class="tailleLigne">
                 <th class="firstCase" colspan="<%=colspanTH%>"></th>
-                <% for (int i = 0; i <= jourMaxDuMois; i++) { %>
+                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                 <th class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
                     <%=i + 1%>
                 </th>
@@ -113,7 +113,7 @@
                     <%
                         CraJour cj = null;
                         if (mMissionIdCraMois.get(m.getId_mission()) != null)
-                            cj = CraJourDAO.get(mMissionIdCraMois.get(m.getId_mission()), i);
+                            cj = CraJourDAO.get(mMissionIdCraMois.get(m.getId_mission()), i+1);
                         String travail = (cj == null) ? "" : "" + cj.getTravail();
                     %>
                     <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)" value="<%=travail%>"/>
