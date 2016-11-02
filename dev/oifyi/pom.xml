@@ -85,13 +85,7 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.0.3</version>
                 <configuration>
-                    <user>oifyi</user>
-                    <password>oifyi</password>
-                    <url>jdbc:oracle:thin:@127.0.0.1:1521:XE</url>
-                    <placeholders>
-                        <keyABC>valueXYZ</keyABC>
-                        <otherplaceholder>value123</otherplaceholder>
-                    </placeholders>
+                    <configFile>src/main/resources/database/migration/oracle/conf/flyway.properties</configFile>
                 </configuration>
                 <!--Driver Oracle-->
                 <dependencies>
@@ -105,8 +99,9 @@
                 <executions>
                     <execution>
                         <goals>
+                            <goal>clean</goal>
                             <goal>migrate</goal>
-                            <goal>info</goal>
+                            <goal>validate</goal>
                         </goals>
                     </execution>
                 </executions>
