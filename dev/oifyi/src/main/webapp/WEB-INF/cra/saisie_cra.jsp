@@ -1,15 +1,18 @@
 <%@ page import="common.Consultant" %>
+<%@ page import="common.CraJour" %>
 <%@ page import="common.Mission" %>
+<%@ page import="dao.CraJourDAO" %>
+<%@ page import="dao.CraMoisDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.MissionDAO" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Calendar" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.*" %>
 
-<% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
+<%
+    Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte");
+    int id_consultant = consultantConnecte.getId();
+%>
 <% //Récupération du mois courant, si aucun paramètre n'est envoyé, le mois courant sera sélectionné
     // La date en paramètre doit être au format yyyy-MM
     String moisAnnee = request.getParameter("moisAnneeCourant");
@@ -52,12 +55,15 @@
     }
 %>
 
-<% int colspanTH = 3, colspanTitres = 35, size = 0; %>
+<% int colspanTH = 3, nbCol = colspanTH + jourMaxDuMois + 1, size = 0; %>
 
-<% List<Mission> missions = MissionDAO.getMissionsDuConsultant(consultantConnecte.getId(), moisAnneeSQL); %>
+<%
+    List<Mission> missions = MissionDAO.getMissionsDuConsultant(id_consultant, moisAnneeSQL);
+    Map<Integer, Integer> mMissionIdCraMois = CraMoisDAO.getMapMissionIdCraMois(id_consultant, moisAnneeSQL);
+%>
 
 <form action="/saisieCra" method="post" class="well" id="formSaisieCra">
-    <fieldset>
+    <fieldset <%= (!mMissionIdCraMois.isEmpty()) ? "disabled" : "" %>>
         <legend>
             <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
             Saisie du CRA du mois
@@ -73,7 +79,7 @@
 
         <%--Champs caché pour transmettre le mois courant et le consultant concerné--%>
         <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>
-        <input type="hidden" name="consultantConnecte_id" value="<%=consultantConnecte.getId()%>"/>
+        <input type="hidden" name="consultant_id" value="<%=id_consultant%>"/>
 
 
         <table class="table table-bordered table-striped table-condensed" onchange="remplirTotaux()" cellpadding="0" cellspacing="0">
@@ -91,7 +97,7 @@
 
             <%--Ligne de titre pour 'Journées facturables'--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"><h4><b>Journees facturables</b></h4></th>
+                <th colspan="<%=nbCol%>"><h4><b>Journees facturables</b></h4></th>
             </tr>
 
             <%--Liste des missions et case de saisie pour chaque jour--%>
@@ -100,8 +106,14 @@
                 <th class="firstCase" colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
                 </h5></th>
                 <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">  <!--FIXME N'afficher modifiable que sur les j-->
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)"/>
+                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <%
+                        CraJour cj = null;
+                        if (mMissionIdCraMois.get(m.getId_mission()) != null)
+                            cj = CraJourDAO.get(mMissionIdCraMois.get(m.getId_mission()), i);
+                        String travail = (cj == null) ? "" : "" + cj.getTravail();
+                    %>
+                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)" value="<%=travail%>"/>
                 </td>
                 <% } %>
                 <td>
@@ -112,12 +124,12 @@
 
             <%--Ligne de séparation--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"></th>
+                <th colspan="<%=nbCol%>"></th>
             </tr>
 
             <%--Ligne de titre pour 'Astreintes'--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"><h4><b>Astreintes</b></h4></th>
+                <th colspan="<%=nbCol%>"><h4><b>Astreintes</b></h4></th>
             </tr>
 
             <%--Liste des astreintes et case de saisie pour chaque jour--%>
@@ -157,12 +169,12 @@
 
             <%--Ligne de séparation--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"></th>
+                <th colspan="<%=nbCol%>"></th>
             </tr>
 
             <%--Ligne de titre pour 'Journées d'absences'--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"><h4><b>Journees d'absences</b></h4></th>
+                <th colspan="<%=nbCol%>"><h4><b>Journees d'absences</b></h4></th>
             </tr>
 
             <%--Liste des journées d'absences et case de saisie pour chaque jour--%>
@@ -191,7 +203,7 @@
 
             <%--Ligne de séparation--%>
             <tr>
-                <th colspan="<%=colspanTitres%>"></th>
+                <th colspan="<%=nbCol%>"></th>
             </tr>
 
             <%--Ligne des totaux par jour et du total complet du mois--%>
