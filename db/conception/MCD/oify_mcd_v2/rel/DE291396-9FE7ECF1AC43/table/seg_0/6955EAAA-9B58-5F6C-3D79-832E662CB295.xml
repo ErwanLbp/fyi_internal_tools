@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6955EAAA-9B58-5F6C-3D79-832E662CB295" name="cra_mois">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>9605A1A9-0E08-B769-95DA-634EEC94AA95</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_cra_mois" id="D92D6A7D-21B6-1BE8-B278-B04D383E0222">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>0329E11D-44DB-C3AF-4C03-752F40B3D22B</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mission_id" id="49A661F8-1617-290E-3783-81C83F82E86F">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>314B43C4-C120-8EC0-BA97-A12D6DCF21C6</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2C3002CD-DFA0-8932-55B0-EB3B8CB50B66" referredColumn="7F41D02C-F3AC-1270-8106-19BDEC57B50C"/>
+</associations>
+</Column>
+<Column name="consultant_id" id="608DBFBA-E99A-2CD3-CD61-0F6AB4A6AA2C">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>58AD9449-0123-A064-97D0-BDADB0FC8913</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0A387E2B-AEC2-F6A8-C502-7A55A34F1F81" referredColumn="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B"/>
+</associations>
+</Column>
+<Column name="mois_annee" id="9667AA8B-5614-2F63-803A-35944A65B4B7">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>608E9338-3601-6A58-D1C8-FADC02FF83A6</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="status_id" id="2D07CCF9-869F-4A35-5AF6-A026025128F4">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>6795C1A7-A037-96EE-A996-55644B2A6659</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B1026B27-9CAD-EF27-5CC8-B046E8B95E78" referredColumn="52F2A445-5DDE-5B9F-1DB9-CEFD7BF8398B"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="063FC4A0-393E-59D6-BF4E-472561DC74D2" name="CRA_PK">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>BD3DA720-92AC-25A1-0372-7AFFEDD49ED8</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D92D6A7D-21B6-1BE8-B278-B04D383E0222"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="399B2B37-DE64-17FB-EB34-F7764AC37847" name="cra_mois__UN">
+<sourceDDLFile>V2016.10.21_12.06__cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F41C54FD-82B4-149C-8DC2-409E8B80649A</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49A661F8-1617-290E-3783-81C83F82E86F"/>
+<colUsage columnID="608DBFBA-E99A-2CD3-CD61-0F6AB4A6AA2C"/>
+<colUsage columnID="9667AA8B-5614-2F63-803A-35944A65B4B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="859486CB-DFC1-B829-096B-9237C85522BD" name="cra_mois_consultant_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="608DBFBA-E99A-2CD3-CD61-0F6AB4A6AA2C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A788E99D-E704-4EEF-D7AD-BE44C57CC1D0" name="cra_mois_missions_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49A661F8-1617-290E-3783-81C83F82E86F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="08DCDA78-CE14-DFD6-8B34-08D1312641B4" name="cra_mois_status_cra_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D07CCF9-869F-4A35-5AF6-A026025128F4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

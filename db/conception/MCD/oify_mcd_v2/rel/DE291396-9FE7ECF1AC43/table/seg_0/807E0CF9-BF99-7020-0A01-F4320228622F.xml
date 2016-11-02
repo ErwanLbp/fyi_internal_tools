@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="807E0CF9-BF99-7020-0A01-F4320228622F" name="mapping_url_fichier">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>0DFC7976-61A5-E219-4CE1-A79843F88590</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_muf" id="356F3B2C-D1F6-5B12-F095-B7573EA3576A">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>67BF06DA-E3BA-A101-EBD9-BE95E4614784</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom_page" id="47DBF4F8-0551-90CB-E4DF-305829906BC5">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>027F290C-755E-4536-6604-8E881F64D507</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5C2C0AED-B32C-6A3D-1CCE-B53A5405840F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom_mode" id="EADEB9EE-E59A-40FD-5E1F-2172B78383CA">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>1495D7A4-FC74-B96E-236D-DC5E01C8A30D</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>5C2C0AED-B32C-6A3D-1CCE-B53A5405840F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="chemin_fichier" id="8EF86896-BABD-04DA-1B85-D442D8A9C48A">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>A5EBA0B2-270D-6FD5-1A79-3D6478E36C35</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5C1E5F2D-CBB1-2C83-7280-09982060B944" name="pk_muf">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>918CEAF9-1E34-E441-7FBC-8AE6244929D5</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="356F3B2C-D1F6-5B12-F095-B7573EA3576A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DE751D15-7F32-A712-65E5-41D0DCA0795A" name="u_muf">
+<sourceDDLFile>V2016.10.23_16.00__alter_table_mapping_url_fichier.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>D2C8DCC3-1432-8CAB-5DEC-CBC0D7A63037</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="47DBF4F8-0551-90CB-E4DF-305829906BC5"/>
+<colUsage columnID="EADEB9EE-E59A-40FD-5E1F-2172B78383CA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

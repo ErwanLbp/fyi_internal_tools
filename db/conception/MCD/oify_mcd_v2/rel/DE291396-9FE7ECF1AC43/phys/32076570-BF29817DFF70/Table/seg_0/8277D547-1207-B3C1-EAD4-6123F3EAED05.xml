@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="mission" directorySegmentName="seg_0" id="8277D547-1207-B3C1-EAD4-6123F3EAED05">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="client_id" id="73242F27-C707-33C7-4EE4-3ED34EB1D59E">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_mission" id="7F41D02C-F3AC-1270-8106-19BDEC57B50C">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="tjm" id="993656EE-C64F-4A49-4ABD-88E594D9EBB0">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="numero_contrat" id="A5DCD3CE-9B74-38D4-2B11-C310F6A0410B">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="nom" id="CFEEA9A1-CFF4-8518-5635-7BFFE60169E4">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="date_fin" id="D9E5267E-4F6C-69F6-B2E7-6C7B6EBBBFBB">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="date_debut" id="E9BA7B7A-C798-AE1B-B2EF-0B0AAA3361C8">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="missions_client_FK" id="E1612B6D-7EB5-D100-2C5A-B7EA4DDA6301">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Missions_PK" id="DC32441C-98F8-A497-6D7F-A83E33356CFF">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

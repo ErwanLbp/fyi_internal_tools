@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1C620A4-4C43-7DA8-4CEB-CC3668E40E0D" name="absence">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>E654D9CA-3AFB-1441-538C-6BEA79131C9B</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_absence" id="CED5D813-C975-CD32-AA63-FEBDE5B3370C">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>5613D7DC-ECDC-59CF-D6ED-E675C2A98C63</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_consultant" id="A712748A-1FE5-134B-1CB3-6183637F2302">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>EA2965B4-E73D-D884-1320-2FEB857AB19A</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2CE02AF7-5AE2-75F6-7660-B2BBED60AA37" referredColumn="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B"/>
+</associations>
+</Column>
+<Column name="id_type_absence" id="F238E9CA-E2FA-003A-A058-FF66195A1FB4">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>B9C700C9-8AB3-AF87-36EF-0348394EF532</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="84612EEF-FCE2-CFD5-ADD0-67C94B5B3889" referredColumn="180EE96C-AE06-B47A-296E-5FC2883EF1CF"/>
+</associations>
+</Column>
+<Column name="plus_precision" id="606C43BC-89FF-221D-02E1-9A01C04EC388">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>2660EC72-8BC5-7504-DF91-3EB268615F3A</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_debut" id="8FDF3618-4764-D952-899C-4993CDA6FDC4">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>B0F380F8-C757-1198-1474-F1E5F118E9DF</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_fin" id="3D85FC95-813B-E04D-A327-175969ED071B">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>95F39830-3B99-E16B-21FC-DEA9AFF47BD4</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_statut_absence" id="E5EE5164-44F1-0CDD-B14B-53351DD2DE17">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>5EDFBC59-C2F1-6F0B-91AE-90A96EAD9ED5</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="74F5AE2C-4064-2E66-630F-1A704290EED0" referredColumn="256DEF28-19AE-CDD2-1AFE-20FE5A3FED8B"/>
+</associations>
+</Column>
+<Column name="commentaire" id="E3EF146E-7262-4164-202E-E61E4F5830B8">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C7CEBD6C-CC9C-37A8-BC20-CFDD7348B0C8</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="49BCE35B-18FC-0C3F-89BE-AE4450A4AD49" name="absence_PK">
+<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>553BD54D-9226-C4ED-B921-F3854A3F016E</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CED5D813-C975-CD32-AA63-FEBDE5B3370C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BD414695-CA55-3115-4446-850C49ED451A" name="absence_consultant_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A712748A-1FE5-134B-1CB3-6183637F2302"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="16DC2FCA-8F38-BCD4-3D8C-0FE66947C324" name="absence_statut_absence_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E5EE5164-44F1-0CDD-B14B-53351DD2DE17"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="412023C3-980A-81A8-D9F8-2B5DB7B9A33E" name="absence_type_absence_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F238E9CA-E2FA-003A-A058-FF66195A1FB4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

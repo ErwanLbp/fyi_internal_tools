@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="431C2E11-8ED9-541C-503B-F392BBB063BF" name="parametrage">
+<sourceDDLFile>V2016.10.21_12.03__parametrage.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>727FFEC0-BA22-F665-5E85-71CED4B3BC58</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="libelle" id="A780E0E0-C583-D05A-6106-03FEF5EA45AB">
+<sourceDDLFile>V2016.10.21_12.03__parametrage.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>6E9ABCF5-2518-3A2B-9231-E2EE330BDD53</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>626A5058-9434-AE9C-2091-A41181006F9F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="valeur" id="140B5D38-8878-816D-F8B2-E4B5A8F40656">
+<sourceDDLFile>V2016.10.21_12.03__parametrage.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C6ECDF38-6DDD-0A27-D870-2324B84BF736</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>626A5058-9434-AE9C-2091-A41181006F9F</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BEA97034-87E8-2DD2-FF20-4D7810E0CAF0" name="parametrage_PK">
+<sourceDDLFile>V2016.10.21_12.03__parametrage.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>F80CE8D8-C820-CDBE-819F-8152360CE245</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A780E0E0-C583-D05A-6106-03FEF5EA45AB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<DomainFile class="oracle.dbtools.crest.model.design.DomainFileWrapper" fileName="V2016.10.13_23.45__create_table_role_Domains">
+   <domains>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_255" id="4DC62F91-52D5-12A1-13C7-9B65295CCC64">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>255</dataTypeSize>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_30" id="5C2C0AED-B32C-6A3D-1CCE-B53A5405840F">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>30</dataTypeSize>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_30 CHAR" id="626A5058-9434-AE9C-2091-A41181006F9F">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>30 CHAR</dataTypeSize>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="Date_0_0_0" id="903DE180-6B86-F7ED-56BD-27A742440AB8">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT007</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_100" id="91928177-2675-73BA-DE62-04DCC3B02354">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>100</dataTypeSize>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_0_0_0" id="C5A78DB9-68AC-8FFC-34E1-9C0199B76709">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT019</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="Integer_0_0_0" id="E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT011</logicalDatatype>
+      </Domain>
+      <Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_50" id="F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72">
+         <createdBy>eisti</createdBy>
+         <createdTime>2016-11-02 09:08:37 UTC</createdTime>
+         <ownerDesignName>oify_mcd_v2</ownerDesignName>
+         <avTSortOrder>0</avTSortOrder>
+         <dataTypePrecision>0</dataTypePrecision>
+         <dataTypeScale>0</dataTypeScale>
+         <dataTypeSize>50</dataTypeSize>
+         <fileName>V2016.10.13_23.45__create_table_role_Domains</fileName>
+         <logicalDatatype>LOGDT024</logicalDatatype>
+      </Domain>
+   </domains>
+</DomainFile>

@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8277D547-1207-B3C1-EAD4-6123F3EAED05" name="mission">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>07360EC6-55A6-881B-D843-987CFEC4F52C</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_mission" id="7F41D02C-F3AC-1270-8106-19BDEC57B50C">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>3BF4B22C-D2A3-E276-B31E-1887F244CF59</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="CFEEA9A1-CFF4-8518-5635-7BFFE60169E4">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>6FCA7A4D-D2C5-9BE1-30E7-369F24CE1340</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="numero_contrat" id="A5DCD3CE-9B74-38D4-2B11-C310F6A0410B">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>EA638FA4-2528-1B7F-B72D-69262BA9AF98</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="client_id" id="73242F27-C707-33C7-4EE4-3ED34EB1D59E">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>A5A89CDF-0091-AB22-BD4A-DA2B8880DCD4</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="81867513-F267-F786-4A15-B3AB43B0184B" referredColumn="F01D1382-E257-8553-3B16-2F3AC2A5C569"/>
+</associations>
+</Column>
+<Column name="date_debut" id="E9BA7B7A-C798-AE1B-B2EF-0B0AAA3361C8">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>40DF4BB0-A6C4-CAE3-207F-5D8B73F33B9E</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_fin" id="D9E5267E-4F6C-69F6-B2E7-6C7B6EBBBFBB">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>53DDE235-6799-D15D-0D5B-378E96563BE1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tjm" id="993656EE-C64F-4A49-4ABD-88E594D9EBB0">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>9DF72306-81C7-548A-8214-AE1EEBF0B814</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DC32441C-98F8-A497-6D7F-A83E33356CFF" name="Missions_PK">
+<sourceDDLFile>V2016.10.21_12.02__mission.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>FF25629F-8811-9477-814E-2AABF9B30466</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F41D02C-F3AC-1270-8106-19BDEC57B50C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E1612B6D-7EB5-D100-2C5A-B7EA4DDA6301" name="missions_client_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="73242F27-C707-33C7-4EE4-3ED34EB1D59E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

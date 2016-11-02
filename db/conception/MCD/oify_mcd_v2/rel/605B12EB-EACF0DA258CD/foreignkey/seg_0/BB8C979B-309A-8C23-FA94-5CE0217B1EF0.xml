@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BB8C979B-309A-8C23-FA94-5CE0217B1EF0" containerWithKeyObject="236F470F-B80F-E60F-B6F2-D37087D2B290" localFKIndex="2EDBA21F-9730-9DBA-E2AD-BF9B7A58148B" name="mission_consultant_mission_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-10-17 15:08:45 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CDF3DF47-4090-44C5-89A3-08D97AC373EA</referredTableID>
+<keyObject>DDD540E0-63D3-1288-94F9-AE51AB8D00D3</keyObject>
+<referredKeyID>DDD540E0-63D3-1288-94F9-AE51AB8D00D3</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

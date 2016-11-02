@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="before_insert_cra_mois" directorySegmentName="seg_0" id="F27B9D7B-2F00-5114-5186-02C31D6DC26C">
+<sourceDDLFile>V2016.10.25_21.28__seq_trigger_cra_mois.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<actions>INSERT</actions>
+<body>BEGIN&lt;br/&gt;    :new.id_cra_mois := seq_id_cra_mois.nextval;&lt;br/&gt;  END;</body>
+<triggerTime>BEFORE</triggerTime>
+<table>6955EAAA-9B58-5F6C-3D79-832E662CB295</table>
+</TriggerOraclev10g>

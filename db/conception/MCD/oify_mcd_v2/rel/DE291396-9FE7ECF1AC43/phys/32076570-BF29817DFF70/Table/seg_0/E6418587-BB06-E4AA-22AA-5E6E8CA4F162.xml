@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="client" directorySegmentName="seg_0" id="E6418587-BB06-E4AA-22AA-5E6E8CA4F162">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="forme_juridique" id="08ADBC88-B7CF-E694-928D-FBFB33F2F2B0">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="adresse_numero" id="0BC2FE88-BA51-2040-A5B4-B58D9975B895">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="raison_sociale" id="13B6A58C-7F6B-2709-0A82-FC23AD38B5D2">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="adresse_cp" id="1BAF9DD5-7224-FCF9-EEEF-FCC30AA7DAD3">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="adresse_ville" id="56FB1CB9-E1DE-B3F8-8B3E-5C00E3624D61">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="num_tva" id="60CDF4A4-59D1-5323-A783-9056115DD795">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="siret" id="7538D08A-8769-9446-B38A-1D63029CD807">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="adresse_rue" id="C7BBD28C-FCBF-ADD2-03C5-56458306DC4E">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_client" id="F01D1382-E257-8553-3B16-2F3AC2A5C569">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="client_PK" id="7F3BBD74-F603-0E7F-9C3F-5C4EC71599C3">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

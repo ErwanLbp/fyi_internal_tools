@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="08C30E7B-A5CB-363D-FB83-94E05FC107AE" name="droits_pages">
+<sourceDDLFile>V2016.10.23_16.02__create_table_droits_pages.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>7B512C24-7E6C-E413-4D2B-56E4D13ADC34</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_page" id="A1D5E7CB-ECC8-929F-CDA3-A82CB74D819F">
+<sourceDDLFile>V2016.10.23_16.02__create_table_droits_pages.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>8A054341-DDFC-C1EB-063E-D9BBDC13D247</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D097AB70-35EA-565A-75D0-E1F48D524CA0" referredColumn="356F3B2C-D1F6-5B12-F095-B7573EA3576A"/>
+</associations>
+</Column>
+<Column name="id_role" id="6AF76415-02D9-BFBF-BCFB-25EECDA42477">
+<sourceDDLFile>V2016.10.23_16.02__create_table_droits_pages.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>8C1956A5-F709-ED93-BDC8-98DFD270E949</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BE9B9E09-59F4-2E47-69FF-637A5998FF54" referredColumn="304F6088-1462-4903-DE88-359B00EBA820"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F75C388B-C1B4-0BE3-7581-7C257154D05D" name="pk_droits_pages">
+<sourceDDLFile>V2016.10.23_16.02__create_table_droits_pages.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>C2B1454B-8CB1-8F2F-7314-7E54CFEDE963</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A1D5E7CB-ECC8-929F-CDA3-A82CB74D819F"/>
+<colUsage columnID="6AF76415-02D9-BFBF-BCFB-25EECDA42477"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="30EE967A-567C-6A26-A7B3-09994767EFD3" name="fk_droits_pages_page">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A1D5E7CB-ECC8-929F-CDA3-A82CB74D819F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CB38E07F-4824-F668-FD24-6B9A919EC41F" name="fk_droits_pages_role">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6AF76415-02D9-BFBF-BCFB-25EECDA42477"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

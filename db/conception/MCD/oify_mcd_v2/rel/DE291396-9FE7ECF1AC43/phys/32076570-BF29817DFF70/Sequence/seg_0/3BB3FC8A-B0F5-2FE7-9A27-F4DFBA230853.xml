@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SequenceOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.SequenceOraclev10g" name="seq_id_consultant" directorySegmentName="seg_0" id="3BB3FC8A-B0F5-2FE7-9A27-F4DFBA230853">
+<sourceDDLFile>V2016.10.24_21.28__create_seq_trigger_consultant.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:04 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+</SequenceOraclev10g>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="74F5AE2C-4064-2E66-630F-1A704290EED0" containerWithKeyObject="A1C620A4-4C43-7DA8-4CEB-CC3668E40E0D" localFKIndex="16DC2FCA-8F38-BCD4-3D8C-0FE66947C324" name="absence_statut_absence_FK">
+<sourceDDLFile>V2016.10.29_04.28__inserts_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>94C81679-9277-76FB-B6F8-4121118EC381</importedID>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>589FC818-CF47-8945-3385-D86178839AA3</referredTableID>
+<keyObject>2BE8983B-3402-6643-EB79-5DA5B6187087</keyObject>
+<referredKeyID>2BE8983B-3402-6643-EB79-5DA5B6187087</referredKeyID>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

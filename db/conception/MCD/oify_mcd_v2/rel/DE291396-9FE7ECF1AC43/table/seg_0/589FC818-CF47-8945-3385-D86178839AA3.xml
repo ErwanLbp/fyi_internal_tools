@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="589FC818-CF47-8945-3385-D86178839AA3" name="statut_absence">
+<sourceDDLFile>V2016.10.29_03.02__create_statut_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>9DD9084A-9A40-28E1-8919-3EDACE2904B3</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_statut_absence" id="256DEF28-19AE-CDD2-1AFE-20FE5A3FED8B">
+<sourceDDLFile>V2016.10.29_03.02__create_statut_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>25232417-D6FB-079A-73FD-86B71A7AC10D</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<domain>E02B9AA6-D4A5-E41F-E5D4-8229136DDA4D</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="libelle" id="6784FB81-D40D-D3EC-D616-566C8D251B55">
+<sourceDDLFile>V2016.10.29_03.02__create_statut_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>EB94770E-2DBF-69F5-FA90-BF7ED4E9ACC7</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>F3C6E326-0FB2-82E6-F04E-F1A2F3BEBC72</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2BE8983B-3402-6643-EB79-5DA5B6187087" name="statut_absence_PK">
+<sourceDDLFile>V2016.10.29_03.02__create_statut_absence.sql</sourceDDLFile>
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-02 09:08:37 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<importedID>6EB73915-063D-377B-6D5B-0B950E7CD1DA</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="256DEF28-19AE-CDD2-1AFE-20FE5A3FED8B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
