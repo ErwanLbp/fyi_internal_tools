@@ -20,7 +20,7 @@
     }
 %>
 
-<form method="post" action="/update_mission" class="well">
+<form method="post" action="<%=request.getContextPath()%>/update_mission" class="well">
     <fieldset>
         <legend>Saisie d'une mission</legend>
 

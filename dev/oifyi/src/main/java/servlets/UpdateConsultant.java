@@ -36,7 +36,7 @@ public class UpdateConsultant extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(url_page_accueil).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_accueil).forward(req, resp);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UpdateConsultant extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (session.getAttribute("consultantConnecte") == null) {
-            resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
+            resp.sendRedirect(getServletContext().getContextPath() + url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
             return;
         }
 
@@ -61,10 +61,10 @@ public class UpdateConsultant extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_list_consultant);
+            resp.sendRedirect(getServletContext().getContextPath() + url_page_list_consultant);
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_saisie_consultant);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_saisie_consultant);
             dispatcher.forward(req, resp);
         }
     }

@@ -17,7 +17,7 @@
     }
 %>
 
-<form method="post" action="/update_consultant" class="well">
+<form method="post" action="<%=request.getContextPath()%>/update_consultant" class="well">
     <fieldset>
         <legend>Saisie d'un consultant</legend>
 

@@ -14,7 +14,7 @@
     }
 %>
 
-<form method="post" action="/update_client" class="well">
+<form method="post" action="<%=request.getContextPath()%>/update_client" class="well">
     <fieldset>
         <legend>Saisie d'un client</legend>
 

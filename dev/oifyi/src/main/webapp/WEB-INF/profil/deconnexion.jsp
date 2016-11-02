@@ -1,5 +1,5 @@
 <div class="col-lg-offset-4 col-sm-4">
-    <form method="post" action="/deconnexion" class="well">
+    <form method="post" action="<%=request.getContextPath()%>/deconnexion" class="well">
         <legend>Déconnexion</legend>
 
         <% if (request.getAttribute("erreur") != null) { %>

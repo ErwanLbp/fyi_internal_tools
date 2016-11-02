@@ -25,9 +25,10 @@ public class Connexion extends HttpServlet {
     private String url_page_connexion = MappingUrlFichierDAO.getMuf("profil", "connexion").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(url_page_connexion).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_connexion).forward(req, resp);
     }
 
     @Override
@@ -47,7 +48,7 @@ public class Connexion extends HttpServlet {
         // Invalide si champs vides ou introuvable dans la BDD
         if ((login.equals("") || password.equals("")) || !ConsultantDAO.checkLoginPassword(login, password)) {
             req.setAttribute("erreur", "Le login et/ou le password n'est pas correct");
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_connexion); // On renvoi vers la page de connexion
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_connexion); // On renvoi vers la page de connexion
             dispatcher.forward(req, resp);
             return;
         }

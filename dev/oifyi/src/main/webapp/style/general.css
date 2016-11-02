@@ -1,8 +1,8 @@
-/*[class*="col-"],.header,.footer {*/
-/*background-color: lightgreen;*/
-/*border: 1px solid black;*/
-/*border-radius: 6px;*/
-/*}*/
+[class*="col-"], .header, .footer {
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 6px;
+}
 
 html {
     box-sizing: border-box;
@@ -41,9 +41,7 @@ html {
     width: inherit;
     height: 99%;
     z-index: -4000;
-    background: url("logo/logo.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url("logo/logo.jpg") no-repeat center;
 }
 
 .firstCase {
@@ -58,7 +56,5 @@ html {
 }
 
 .intStyle {
-    border-width: thick;
-    border-color: black;
-    border-style: solid;
+    border: thick solid black;
 }
