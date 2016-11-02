@@ -73,9 +73,12 @@
             <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>">--></a>
         </legend>
 
-        <h3><b>
-            <%= request.getAttribute("erreur") != null ? (String) request.getAttribute("erreur") : "" %>
-        </b></h3>
+        <% if (request.getAttribute("erreur") != null) { %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+        </div>
+        <% } %>
 
         <%--Champs caché pour transmettre le mois courant et le consultant concerné--%>
         <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>

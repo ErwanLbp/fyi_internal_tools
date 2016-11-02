@@ -1,12 +1,9 @@
-<%@ page import="common.Consultant" %>
-<%@ page import="common.Role" %>
-<%@ page import="dao.ConsultantDAO" %>
-<%@ page import="dao.RoleDAO" %>
-<%@ page import="java.util.List" %>
 <%@ page import="common.Absence" %>
-<%@ page import="dao.AbsenceDAO" %>
+<%@ page import="common.Consultant" %>
 <%@ page import="common.TypeAbsence" %>
+<%@ page import="dao.AbsenceDAO" %>
 <%@ page import="dao.TypeAbsenceDAO" %>
+<%@ page import="java.util.List" %>
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
@@ -27,9 +24,17 @@
     <fieldset>
         <legend>Saisie d'une absence</legend>
 
-        <b>
-            <%= request.getAttribute("erreur") == null ? "Remplissez tous les champs obligatoires*" : (String) request.getAttribute("erreur") %>
-        </b>
+        <% if (request.getAttribute("erreur") != null) { %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+        </div>
+        <% } else { %>
+        <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
+        </div>
+        <% } %>
 
         <input type="hidden" name="id_absence" value="<%= absence==null ? "" : ""+absence.getId_absence() %>"/>
 
