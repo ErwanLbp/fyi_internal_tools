@@ -1,13 +1,13 @@
 package dao;
 
 import common.CraJour;
+import common.CraMois;
 import db.MyConnectorJDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <h1>dao CraJourDAO</h1>
@@ -114,5 +114,4 @@ public class CraJourDAO {
     public static String getInsert() {
         return "INSERT INTO CRA_JOUR (ID_CRAMOIS, JOUR, TRAVAIL) VALUES (?,?,?)";
     }
-
 }

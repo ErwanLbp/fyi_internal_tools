@@ -183,4 +183,31 @@ public class CraMoisDAO {
         }
         return list_res;
     }
+
+    public static List<CraMois> getAll(int id_consultant, Date moisAnnee) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        List<CraMois> list_res = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE CONSULTANT_ID=? AND MOIS_ANNEE=? ORDER BY MOIS_ANNEE,MISSION_ID DESC")) {
+            req.setInt(1, id_consultant);
+            req.setDate(2, moisAnnee);
+            ResultSet res = req.executeQuery();
+            while (res.next())
+                list_res.add(new CraMois(res.getInt("id_cra_mois"), res.getInt("mission_id"), res.getInt("consultant_id"), res.getDate("mois_annee"), res.getInt("status_id")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            list_res.clear();
+        }
+        return list_res;
+    }
+
+    public static Map<Integer, Integer> getMapMissionIdCraMois(int id_consultant, Date moisAnnee) {
+        List<CraMois> lcm = getAll(id_consultant, moisAnnee);
+        Map<Integer, Integer> mii = new HashMap<>();
+        for (CraMois cm : lcm) {
+            mii.put(cm.getMission_id(), cm.getId_cra_mois());
+        }
+        return mii;
+    }
 }

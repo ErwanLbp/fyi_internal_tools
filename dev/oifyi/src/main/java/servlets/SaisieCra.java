@@ -32,7 +32,7 @@ public class SaisieCra extends HttpServlet {
 
     private String url_page_cra = MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
-    private String url_page_list_cra = MappingUrlFichierDAO.getMuf("cra", "list").formerUrl();
+    private String url_page_list_cra = MappingUrlFichierDAO.getMuf("cra", "listing").formerUrl();
 
     private int consultant_id;
     private Date moisAnnee;
@@ -83,7 +83,7 @@ public class SaisieCra extends HttpServlet {
     //TODO Javadoc : SaisieCra
     private String recuperationChampsForm(HttpServletRequest req) {
         try {
-            consultant_id = Integer.parseInt(req.getParameter("consultantConnecte_id"));
+            consultant_id = Integer.parseInt(req.getParameter("consultant_id"));
         } catch (Exception e) {
             return "L'id du consultant connecté n'est pas au bon format ou n'a pas été trouvé";
         }
