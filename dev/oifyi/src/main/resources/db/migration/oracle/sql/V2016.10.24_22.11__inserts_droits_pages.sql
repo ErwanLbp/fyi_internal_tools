@@ -5,7 +5,6 @@ INSERT INTO droits_pages (id_page, id_role) VALUES (1,3);
 INSERT INTO droits_pages (id_page, id_role) VALUES (1,4);
 INSERT INTO droits_pages (id_page, id_role) VALUES (1,5);
 INSERT INTO droits_pages (id_page, id_role) VALUES (1,6);
-INSERT INTO droits_pages (id_page, id_role) VALUES (1,7);
 
 -- La page de profil est accessible à tous les consultant
 INSERT INTO droits_pages (id_page, id_role) VALUES (2,1);
@@ -38,4 +37,3 @@ INSERT INTO droits_pages (id_page, id_role) VALUES (5,3);
 INSERT INTO droits_pages (id_page, id_role) VALUES (5,4);
 INSERT INTO droits_pages (id_page, id_role) VALUES (5,5);
 INSERT INTO droits_pages (id_page, id_role) VALUES (5,6);
-INSERT INTO droits_pages (id_page, id_role) VALUES (5,7);
