@@ -4,7 +4,7 @@
     <groupId>fr.cergy.eisti</groupId>
     <artifactId>oifyi</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>oifyi Maven Webapp</name>
     <description>Projet ING2 du premier semestre.</description>
     <inceptionYear>2016</inceptionYear>
