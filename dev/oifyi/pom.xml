@@ -85,7 +85,9 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.0.3</version>
                 <configuration>
-                    <configFile>src/main/resources/database/migration/oracle/conf/flyway.properties</configFile>
+                    <user>oifyi</user>
+                    <password>oifyi</password>
+                    <url>jdbc:oracle:thin:@127.0.0.1:1521:XE</url>
                 </configuration>
                 <!--Driver Oracle-->
                 <dependencies>

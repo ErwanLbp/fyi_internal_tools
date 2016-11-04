@@ -10,7 +10,7 @@
 
 <div class="row">
     <% List<Mission> lmis = MissionDAO.getAll();%>
-    <table class="table table-striped">
+    <table class="table table-striped well">
         <tr>
             <th>Raison sociale du client</th>
             <th>Nom</th>

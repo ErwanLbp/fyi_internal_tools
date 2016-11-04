@@ -3,7 +3,7 @@
 <%@ page import="dao.MappingUrlFichierDAO" %>
 
 <% List<MappingUrlFichier> lmuf = MappingUrlFichierDAO.getAll();%>
-<table width="100%" border="1">
+<table width="100%" border="1" class="table table-striped table-bordered table-condensed well">
     <caption>Contenu table Mapping Url Fichier</caption>
     <tr>
         <th>Id</th>

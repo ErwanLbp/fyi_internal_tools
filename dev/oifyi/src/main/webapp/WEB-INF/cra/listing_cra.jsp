@@ -16,7 +16,7 @@
 <% List<CraMois> lcm = CraMoisDAO.getAll(consultant_id); %>
 
 <div class="row">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered well">
         <caption>Liste des cra du consultant <%= consultant_id %>
         </caption>
 

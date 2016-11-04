@@ -31,7 +31,7 @@
 
 <div class="row">
     <% List<Client> lcli = ClientDAO.getAll();%>
-    <table class="table table-striped">
+    <table class="table table-striped well">
 
         <tr>
             <th>Id</th>
