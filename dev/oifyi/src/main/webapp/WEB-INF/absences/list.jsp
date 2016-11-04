@@ -13,20 +13,17 @@
 <div class="row">
     <% ArrayList<Absence> labs = AbsenceDAO.getAllForConsultant(consultantConnecte.getId());%>
 <%--    <% ArrayList<Absence> labs = AbsenceDAO.getAll();%>--%>
-    <table class="table table-striped">
+    <table class="table table-striped well">
 
-        <thead>
         <tr>
-            <td>Type d'absence</td>
-            <td>Plus de précision</td>
-            <td>Date début</td>
-            <td>Date fin</td>
-            <td>Statut de l'absence</td>
-            <td>Commentaire</td>
-            <td>Modifier l'absence</td>
+            <th>Type d'absence</th>
+            <th>Plus de précision</th>
+            <th>Date début</th>
+            <th>Date fin</th>
+            <th>Statut de l'absence</th>
+            <th>Commentaire</th>
+            <th>Modifier l'absence</th>
         </tr>
-        </thead>
-        <tbody>
         <%for (Absence abs : labs) {%>
         <tr>
             <td><%=TypeAbsenceDAO.get(abs.getId_type_absence()).getLibelle()%>
@@ -44,7 +41,6 @@
             <td><%if (abs.getId_statut_absence()==2){ %> <a href="<%=MappingUrlFichierDAO.getMuf("absences", "update").formerUrl()%>&idAbsence=<%=abs.getId_absence()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a><%}%>
             </td>
         </tr>
-        </tbody>
         <%}%>
     </table>
     <a href="<%=MappingUrlFichierDAO.getMuf("absences", "update").formerUrl()%>"><input type="button" class="btn btn-primary" value="Nouvelle absence"/></a>

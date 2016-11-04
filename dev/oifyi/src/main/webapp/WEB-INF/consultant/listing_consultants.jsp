@@ -24,7 +24,7 @@
 
 <div class="row">
     <% ArrayList<Consultant> lcon = ConsultantDAO.getAll();%>
-    <table class="table table-striped">
+    <table class="table table-striped well">
         <tr>
             <th>Id</th>
             <th>Nom</th>
