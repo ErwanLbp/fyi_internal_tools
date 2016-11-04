@@ -44,7 +44,7 @@
         <input type="hidden" name="id_consultant" value="<%= consultant==null ? "" : ""+consultant.getId() %>"/>
 
         <div class="form-group">
-            <label for="id_consultant">Consultants disponibles : </label>
+            <label for="id_consultant">Roles disponibles : </label>
             <% ArrayList<Role> listeRolesDispo = Consultant_RoleDAO.getRolesDisposPourUnConsultant(consultant.getId()); %>
             <select name="id_consultant" id="id_consultant" class="form-control" required>
                 <% for (Role r : listeRolesDispo) { %>
