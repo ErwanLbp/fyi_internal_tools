@@ -100,5 +100,3 @@ public class Mission_ConsultantDAO {
 
 
 }
-
-//SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password, co.role_id FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.MISSION_ID=1 AND co.id_consultant NOT IN (SELECT CONSULTANT_ID FROM MISSION_CONSULTANT WHERE MISSION_ID=1);
