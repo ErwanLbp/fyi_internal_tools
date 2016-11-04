@@ -25,7 +25,7 @@ public class Deconnexion extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_deconnexion).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_deconnexion).forward(req, resp);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Deconnexion extends HttpServlet {
             session.invalidate();
         } catch (IllegalStateException ise) { // Si la session est déjà détruite
             req.setAttribute("erreur", "La session est déjà détruite");
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_deconnexion); // On renvoi vers la page de deconnexion
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_deconnexion); // On renvoi vers la page de deconnexion
             dispatcher.forward(req, resp);
             return;
         }

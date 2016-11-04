@@ -38,7 +38,7 @@ public class UpdateMission extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_update_mission).forward(req, resp);
+        this.getServletContext().getRequestDispatcher(url_page_update_mission).forward(req, resp);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UpdateMission extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (session.getAttribute("consultantConnecte") == null)
-            resp.sendRedirect(getServletContext().getContextPath() + url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
+            resp.sendRedirect(url_page_accueil); // On redirige vers la page d'accueil si un utilisateur n'est pas déjà connecté
 
         // Récupération des champs du formulaire
         String erreur = recuperationChampsForm(req);
@@ -61,10 +61,10 @@ public class UpdateMission extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(getServletContext().getContextPath() + url_page_listing_missions);
+            resp.sendRedirect(url_page_listing_missions);
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(getServletContext().getContextPath() + url_page_update_mission);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_update_mission);
             dispatcher.forward(req, resp);
         }
     }

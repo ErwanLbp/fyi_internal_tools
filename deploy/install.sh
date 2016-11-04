@@ -7,7 +7,7 @@ echo "******************************************************************"
 echo
 
 pathTMCT8=/var/lib/tomcat8/webapps
-pathMigSQL=oifyi/WEB-INF/classes/database/migration/oracle/sql
+pathMigSQL=oifyi/WEB-INF/classes/db/migration/oracle/sql
 pathExec=`pwd`
 
 echo "*** Suppression d'une précédente install du war 'oifyi'"
