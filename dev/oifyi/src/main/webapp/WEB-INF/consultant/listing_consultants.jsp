@@ -49,7 +49,7 @@
             <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%>
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list_assignations").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
+            <%--<td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list_assignations").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>--%>
 
         </tr>
         <%}%>
