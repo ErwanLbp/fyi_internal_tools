@@ -69,21 +69,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="role_id" id="05F17910-0F84-521E-5002-B79BE89E7786">
-<sourceDDLFile>V2016.10.17_22.22__recreate_table_consultant.sql</sourceDDLFile>
-<createdBy>eisti</createdBy>
-<createdTime>2016-11-02 09:08:37 UTC</createdTime>
-<ownerDesignName>oify_mcd_v2</ownerDesignName>
-<importedID>4D1C55DE-5F66-D308-BD40-C531F3456642</importedID>
-<use>0</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="A029C3C0-15A1-F7D8-0958-4834B545BEEB" referredColumn="304F6088-1462-4903-DE88-359B00EBA820"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C4086BE8-F370-1EBD-F490-34370DEAF1B0" name="consultant_PK">
@@ -97,16 +82,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="396A04FB-D5EF-DA74-F0BE-AD7A22A5D53B"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="860BE3D2-12B3-BF95-FCDC-3BD0DDA13D13" name="consultant_role_FK">
-<createdBy>eisti</createdBy>
-<createdTime>2016-11-02 09:08:37 UTC</createdTime>
-<ownerDesignName>oify_mcd_v2</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="05F17910-0F84-521E-5002-B79BE89E7786"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
