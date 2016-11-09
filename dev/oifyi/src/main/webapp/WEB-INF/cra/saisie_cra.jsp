@@ -62,7 +62,7 @@
     Map<Integer, Integer> mMissionIdCraMois = CraMoisDAO.getMapMissionIdCraMois(id_consultant, moisAnneeSQL);
 %>
 
-<form action="<%=request.getContextPath()%>/saisieCra" method="post" class="well" id="formSaisieCra">
+<form action="/oifyi/saisieCra" method="post" class="well" id="formSaisieCra">
     <fieldset <%= (!mMissionIdCraMois.isEmpty()) ? "disabled" : "" %>>
         <legend>
             <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>

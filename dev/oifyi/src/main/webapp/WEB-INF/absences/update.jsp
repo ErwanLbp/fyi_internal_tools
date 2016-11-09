@@ -20,7 +20,7 @@
     }
 %>
 
-<form method="post" action="<%=request.getContextPath()%>/update_absence" class="well">
+<form method="post" action="/oifyi/update_absence" class="well">
     <fieldset>
         <legend>Saisie d'une absence</legend>
 

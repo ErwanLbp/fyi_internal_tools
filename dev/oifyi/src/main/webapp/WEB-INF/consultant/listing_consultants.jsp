@@ -32,7 +32,7 @@
             <th>Username</th>
             <th>Password</th>
             <th>Role</th>
-            <th>Modifier le consultant</th>
+            <th colspan="2">Action</th>
         </tr>
         <%for (Consultant con : lcon) {%>
         <tr>
@@ -48,9 +48,8 @@
             </td>
             <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%>
             </td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
+            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier le consultant"/></a></td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list_assignations").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
-
         </tr>
         <%}%>
     </table>
