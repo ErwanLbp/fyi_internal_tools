@@ -48,8 +48,12 @@
             </td>
             <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%>
             </td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier le consultant"/></a></td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list_assignations").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
+            <td>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" onclick="window.location.href='<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>'" title="Modifier le consultant"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                    <button class="btn btn-danger" onclick="window.location.href='/oifyi/supprimerConsultant?idConsultant=<%=con.getId()%>'" title="Supprimer le consultant"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                </div>
+            </td>
         </tr>
         <%}%>
     </table>

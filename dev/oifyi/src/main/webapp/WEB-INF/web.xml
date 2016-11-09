@@ -102,4 +102,13 @@
         <url-pattern>/oifyi/saisieCra</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>supprimerConsultant</servlet-name>
+        <servlet-class>servlets.SupprimerConsultant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>supprimerConsultant</servlet-name>
+        <url-pattern>/oifyi/supprimerConsultant</url-pattern>
+    </servlet-mapping>
+
 </web-app>
