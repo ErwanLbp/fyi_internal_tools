@@ -8,7 +8,7 @@
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
-<div class="row">
+<div class="col-lg-12">
     <% List<Mission> lmis = MissionDAO.getAll();%>
     <table class="table table-striped well">
         <tr>

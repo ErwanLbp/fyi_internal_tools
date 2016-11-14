@@ -14,7 +14,7 @@
 <% int moisTmp = 0; %>
 <% List<CraMois> lcm = CraMoisDAO.getAll(consultant_id); %>
 
-<div class="row">
+<div class="col-lg-12">
     <table class="table table-striped table-bordered well">
         <caption>Liste des cra du consultant <%= consultant_id %>
         </caption>

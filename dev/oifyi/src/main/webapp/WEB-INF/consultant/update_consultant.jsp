@@ -16,49 +16,50 @@
         }
     }
 %>
+<div class="col-lg-12">
+    <form method="post" action="/oifyi/update_consultant" class="well">
+        <fieldset>
+            <legend>Saisie d'un consultant</legend>
 
-<form method="post" action="/oifyi/update_consultant" class="well">
-    <fieldset>
-        <legend>Saisie d'un consultant</legend>
+            <% if (request.getAttribute("erreur") != null) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+            </div>
+            <% } else { %>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
+            </div>
+            <% } %>
 
-        <% if (request.getAttribute("erreur") != null) { %>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
-        </div>
-        <% } else { %>
-        <div class="alert alert-info alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
-        </div>
-        <% } %>
+            <input type="hidden" name="id_consultant" value="<%= consultant==null ? "" : ""+consultant.getId() %>"/>
 
-        <input type="hidden" name="id_consultant" value="<%= consultant==null ? "" : ""+consultant.getId() %>"/>
+            <div class="form-group">
+                <label for="idNom">Nom : <input id="idNom" type="text" name="nom" class="form-control" value="<%=consultant!=null ? consultant.getNom() : ""%>" required/></label>
+            </div>
+            <div class="form-group">
+                <label for="idPrenom">Prénom : <input id="idPrenom" type="text" name="prenom" class="form-control" value="<%=consultant!=null ? consultant.getPrenom() : ""%>" required/></label>
+            </div>
+            <div class="form-group">
+                <label for="idUsername">Username : <input id="idUsername" type="text" name="username" class="form-control" value="<%=consultant!=null ? consultant.getUsername() : ""%>" required/></label>
+            </div>
+            <div class="form-group">
+                <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<%=consultant!=null ? consultant.getPassword() : ""%>" required/></label>
+            </div>
 
-        <div class="form-group">
-            <label for="idNom">Nom : <input id="idNom" type="text" name="nom" class="form-control" value="<%=consultant!=null ? consultant.getNom() : ""%>" required/></label>
-        </div>
-        <div class="form-group">
-            <label for="idPrenom">Prénom : <input id="idPrenom" type="text" name="prenom" class="form-control" value="<%=consultant!=null ? consultant.getPrenom() : ""%>" required/></label>
-        </div>
-        <div class="form-group">
-            <label for="idUsername">Username : <input id="idUsername" type="text" name="username" class="form-control" value="<%=consultant!=null ? consultant.getUsername() : ""%>" required/></label>
-        </div>
-        <div class="form-group">
-            <label for="idPassword">Password : <input id="idPassword" type="text" name="password" class="form-control" value="<%=consultant!=null ? consultant.getPassword() : ""%>" required/></label>
-        </div>
+            <div class="form-group">
+                <label for="idRole">Role : </label>
+                <% List<Role> roles = RoleDAO.getAll(); %>
+                <select name="role" id="idRole" class="form-control" required>
+                    <% for (Role r : roles) { %>
+                    <option value="<%= r.getId_role()%>" <%=consultant != null ? (consultant.getRole_id() == r.getId_role() ? "selected" : "") : "" %>><%= r.getLibelle() %>
+                    </option>
+                    <% } %>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="idRole">Role : </label>
-            <% List<Role> roles = RoleDAO.getAll(); %>
-            <select name="role" id="idRole" class="form-control" required>
-                <% for (Role r : roles) { %>
-                <option value="<%= r.getId_role()%>" <%=consultant != null ? (consultant.getRole_id() == r.getId_role() ? "selected" : "") : "" %>><%= r.getLibelle() %>
-                </option>
-                <% } %>
-            </select>
-        </div>
-
-        <input type="submit" value="<%= consultant==null?"Créer":"Modifier" %> le consultant" class="btn btn-primary"/>
-    </fieldset>
-</form>
+            <input type="submit" value="<%= consultant==null?"Créer":"Modifier" %> le consultant" class="btn btn-primary"/>
+        </fieldset>
+    </form>
+</div>
