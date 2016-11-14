@@ -3,7 +3,10 @@ package dao;
 import common.Consultant;
 import db.MyConnectorJDBC;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -50,13 +53,17 @@ public class ConsultantDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static ArrayList<Consultant> getAll() {
+    public static ArrayList<Consultant> getAll(String orderBy) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         ArrayList<Consultant> listeConsultants = new ArrayList<>();
-        try (Statement req = connection.createStatement()) {
-            ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT ORDER BY ID_CONSULTANT DESC ");
+        String reqOrderBy = orderBy == null ? "id_consultant" : orderBy;
+        System.out.println(reqOrderBy);
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT ORDER BY ? DESC")) {
+            req.setString(1, reqOrderBy);
+            ResultSet res = req.executeQuery();
             while (res.next())
                 listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
         } catch (SQLException e) {

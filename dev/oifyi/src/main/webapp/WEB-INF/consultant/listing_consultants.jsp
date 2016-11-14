@@ -3,36 +3,58 @@
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="common.Recherche" %>
 
 
 <div class="col-lg-12">
-    <div class="row">
+    <div class="row barre-recherche">
         <div class="col-md-5">
             <form method="post" action="/oifyi/recherche_consultant">
-
+                <div id="custom-search-input" class="input-group col-md-12">
+                    <input type="text" class="form-control" placeholder="Rechercher un consultant"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
             </form>
-            <h4>Rechercher un consultant</h4>
-            <div id="custom-search-input" class="input-group col-md-12">
-                <input type="text" class="form-control input-lg" placeholder="Rechercher un consultant"/>
-                <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="button">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-            </span>
-            </div>
         </div>
     </div>
 
     <div class="row">
-        <% ArrayList<Consultant> lcon = ConsultantDAO.getAll();%>
+        <% ArrayList<Consultant> lcon = ConsultantDAO.getAll(request.getParameter("sort"));%>
+        <%
+            String url_page = Recherche.supprimerSort(request.getRequestURI()+"?"+request.getQueryString());
+        %>
         <div class="col-md-12">
             <table class="table table-striped well">
                 <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Username</th>
-                    <th>Password</th>
+                    <th>
+                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=id_consultant'">
+                            Id <span class="glyphicon glyphicon-sort"></span>
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=Nom'">
+                            Nom <span class="glyphicon glyphicon-sort"></span>
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=Prenom'">
+                            Prénom <span class="glyphicon glyphicon-sort"></span>
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=Username'">
+                            Username <span class="glyphicon glyphicon-sort"></span>
+                        </button>
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=Password'">
+                            Password <span class="glyphicon glyphicon-sort"></span>
+                        </button>
+                    </th>
                     <th>Role</th>
                     <th colspan="2">Action</th>
                 </tr>

@@ -52,3 +52,7 @@ html {
 .intStyle {
     border: thick solid black;
 }
+
+.barre-recherche{
+    margin-bottom: 15px;
+}
