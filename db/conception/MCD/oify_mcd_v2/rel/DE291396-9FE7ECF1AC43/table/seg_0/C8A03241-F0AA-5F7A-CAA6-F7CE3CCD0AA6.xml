@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C8A03241-F0AA-5F7A-CAA6-F7CE3CCD0AA6" name="status_note_frais">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:03:05 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<ordsAlias>table_30</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_status" id="5A0A056E-75C3-885F-0810-1463C58C246B">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:07:54 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="libelle" id="6A26D60C-1474-97A7-D86E-5B23B48415D1">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:08:47 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5A3CEBEE-99D8-0C73-252A-84C492421451" name="status_note_frais_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:07:54 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5A0A056E-75C3-885F-0810-1463C58C246B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="61B8DF99-D6A1-385A-F183-33C1A37DAEAA" name="fournisseur">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:37:03 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<ordsAlias>table_27</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_fournisseur" id="7890C0EF-7F8B-5BFA-3C52-952602FB2D06">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:37:19 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="raison_sociale" id="796F4FE2-94FD-A01D-798A-2C68E97AD805">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:37:38 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telephone" id="7EB38895-46A8-1F43-6B55-8ABFEFB88B8F">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:39:53 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mail" id="822DCFEC-880C-278A-3C41-5C00CD7AA09C">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:39:53 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rib" id="BC104F17-DDAD-45A4-F1C5-8377DAF68FCD">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:42:22 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="siret" id="0A176FC4-9ED3-4E14-FA5F-5595E5307FEE">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:42:39 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="num_tva" id="FE813203-5F8C-52BF-2691-70350799BC9C">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:42:53 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7161436A-FD7F-9CB8-5A92-F2336FE9E077" name="fournisseur_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:37:19 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7890C0EF-7F8B-5BFA-3C52-952602FB2D06"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

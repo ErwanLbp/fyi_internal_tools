@@ -44,7 +44,7 @@
 </div>
 
 <div class="row">
-    <form method="post" action="/update_mission_consultant" class="well">
+    <form method="post" action="/oifyi/update_mission_consultant" class="well">
         <fieldset>
             <legend>Assigner un nouveau consultant</legend>
 
