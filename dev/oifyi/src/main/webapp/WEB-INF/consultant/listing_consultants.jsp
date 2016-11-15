@@ -1,8 +1,10 @@
 <%@ page import="common.Consultant" %>
+<%@ page import="common.Role" %>
 <%@ page import="dao.ConsultantDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="dao.Consultant_RoleDAO" %>
 
 
 <div class="row">
@@ -34,7 +36,10 @@
             <th>Role</th>
             <th>Modifier le consultant</th>
         </tr>
-        <%for (Consultant con : lcon) {%>
+        <%
+            for (Consultant con : lcon) {
+                ArrayList<Role> lrol = Consultant_RoleDAO.getRoles(con.getId());
+        %>
         <tr>
             <td><%=con.getId()%>
             </td>
@@ -46,11 +51,17 @@
             </td>
             <td><%=con.getPassword()%>
             </td>
-            <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%>
+            <td><%
+                for (Role rol : lrol) {
+                    if (rol == lrol.get(lrol.size() - 1)) {%>
+                <%= rol.getLibelle()%> <%
+                } else {%>
+                <%= rol.getLibelle() + ", "%>
+                <% }
+                }
+                %>
             </td>
             <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
-            <td><a href="<%=MappingUrlFichierDAO.getMuf("consultant", "list_assignations").formerUrl()%>&idConsultant=<%=con.getId()%>"><input type="button" class="btn btn-primary" value="Modifier"/></a></td>
-
         </tr>
         <%}%>
     </table>

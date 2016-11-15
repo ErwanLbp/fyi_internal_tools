@@ -184,26 +184,24 @@ public class Consultant_RoleDAO {
 
             if (consultant.getId() == -1) {
                 if (!ConsultantDAO.insert(consultant))
-                    throw new SQLException();
+                    throw new SQLException("Erreur lors de l'insertion du consultant");
             } else {
                 if (!ConsultantDAO.update(consultant))
-                    throw new SQLException();
+                    throw new SQLException("Erreur lors de l'update du consultant");
             }
 
             int id_consultant = ConsultantDAO.get(consultant.getUsername()).getId();
-
-            int nb_del = Consultant_RoleDAO.delete(id_consultant);
-
-            if (consultant.getId() != -1 && nb_del < 1) throw new SQLException();
-
+            System.out.println("ok get Consultant : " + id_consultant);
+            if (consultant.getId() != -1 && Consultant_RoleDAO.delete(id_consultant) < 1) throw new SQLException();
+            System.out.println("ok delete");
             for (int id_role : l_id_roles) {
-                // Remplissage des champs du CraMois
+                // Remplissage des champs de Consultant_Role
                 req.setInt(1, id_consultant);
                 req.setInt(2, id_role);
                 if (!(req.executeUpdate() == 1))
                     throw new SQLException();
             }
-
+            System.out.println("ok remplissage champs req");
             // Commit de la transaction pour sauvegarder
             connection.commit();
         } catch (SQLException e) {

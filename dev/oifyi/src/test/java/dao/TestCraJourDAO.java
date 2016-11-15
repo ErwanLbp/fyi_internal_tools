@@ -60,10 +60,12 @@ public class TestCraJourDAO {
         RoleDAO.insert(role_insert);
         role_insert.setId_role(RoleDAO.get(role_insert.getLibelle()).getId_role());
 
-        consultant = new Consultant("a", "b", "c", "d", role.getId_role());
+        //consultant = new Consultant("a", "b", "c", "d", role.getId_role());
+        consultant = new Consultant("a", "b", "c", "d");
         ConsultantDAO.insert(consultant);
         consultant.setId(ConsultantDAO.get(consultant.getUsername()).getId());
-        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
+        //consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
+        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert");
         ConsultantDAO.insert(consultant_insert);
         consultant_insert.setId(ConsultantDAO.get(consultant_insert.getUsername()).getId());
 
