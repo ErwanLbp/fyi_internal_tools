@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Mission_ConsultantDAO {
 
-    //TODO Javadoc : Mission_ConsultantDAO
+/*    //TODO Javadoc : Mission_ConsultantDAO
     public static ArrayList<Consultant> getConsultantsPourUneMission(int mission_id) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -31,9 +31,26 @@ public class Mission_ConsultantDAO {
             e.printStackTrace();
         }
         return listeConsultants;
-    }
+    }*/
 
     //TODO Javadoc : Mission_ConsultantDAO
+    public static ArrayList<Consultant> getConsultantsPourUneMission(int mission_id) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+        ArrayList<Consultant> listeConsultants = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID = co.ID_CONSULTANT AND mc.MISSION_ID=?")) {
+            req.setInt(1, mission_id);
+            ResultSet res = req.executeQuery();
+            while (res.next()) {
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeConsultants;
+    }
+
+/*    //TODO Javadoc : Mission_ConsultantDAO
     public static ArrayList<Consultant> getConsultantsDisposPourUneMission(int mission_id) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -44,6 +61,24 @@ public class Mission_ConsultantDAO {
             ResultSet res = req.executeQuery();
             while (res.next()) {
                 listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listeConsultants;
+    }*/
+
+    //TODO Javadoc : Mission_ConsultantDAO
+    public static ArrayList<Consultant> getConsultantsDisposPourUneMission(int mission_id) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+        ArrayList<Consultant> listeConsultants = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.MISSION_ID=? AND co.id_consultant NOT IN (SELECT CONSULTANT_ID FROM MISSION_CONSULTANT WHERE MISSION_ID=?)")) {
+            req.setInt(1, mission_id);
+            req.setInt(2, mission_id);
+            ResultSet res = req.executeQuery();
+            while (res.next()) {
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
             }
         }catch (SQLException e) {
             e.printStackTrace();

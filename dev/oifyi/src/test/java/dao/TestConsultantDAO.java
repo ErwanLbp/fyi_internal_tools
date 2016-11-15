@@ -43,7 +43,9 @@ public class TestConsultantDAO {
 
     @Before
     public void insertLigneBDD() {
-        consultant = new Consultant("a", "b", "c", "d", role.getId_role());
+       // consultant = new Consultant("a", "b", "c", "d", role.getId_role());
+        consultant = new Consultant("a", "b", "c", "d");
+
         ConsultantDAO.insert(consultant);
         consultant.setId(ConsultantDAO.get(consultant.getUsername()).getId());
     }
@@ -55,7 +57,9 @@ public class TestConsultantDAO {
 
     @Test
     public void testInsert() {
-        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
+//        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert", role_insert.getId_role());
+        consultant_insert = new Consultant("a_insert", "b_insert", "c_insert", "d_insert");
+
         assertTrue(ConsultantDAO.insert(consultant_insert));
         Consultant actual = ConsultantDAO.get(consultant_insert.getUsername());
         assert actual != null;
@@ -65,7 +69,9 @@ public class TestConsultantDAO {
 
     @Test
     public void testUpdate() {
-        consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(), "a_update", "b_update", "c_update", "d_update", ConsultantDAO.get(consultant.getUsername()).getRole_id());
+       // consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(), "a_update", "b_update", "c_update", "d_update", ConsultantDAO.get(consultant.getUsername()).getRole_id());
+        consultant_update = new Consultant(ConsultantDAO.get(consultant.getUsername()).getId(), "a_update", "b_update", "c_update", "d_update");
+
         assertTrue(ConsultantDAO.update(consultant_update));
         Consultant actual = ConsultantDAO.get(consultant_update.getId());
         assert actual != null;

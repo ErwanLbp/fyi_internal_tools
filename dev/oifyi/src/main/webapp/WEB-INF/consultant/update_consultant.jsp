@@ -1,6 +1,7 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.Role" %>
 <%@ page import="dao.ConsultantDAO" %>
+<%@ page import="dao.Consultant_RoleDAO" %>
 <%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.List" %>
 
@@ -15,6 +16,7 @@
             consultant = null;
         }
     }
+
 %>
 <div class="col-lg-12">
     <form method="post" action="/oifyi/update_consultant" class="well">
@@ -49,17 +51,16 @@
             </div>
 
             <div class="form-group">
-                <label for="idRole">Role : </label>
+                <label>Roles : </label>
                 <% List<Role> roles = RoleDAO.getAll(); %>
-                <select name="role" id="idRole" class="form-control" required>
-                    <% for (Role r : roles) { %>
-                    <option value="<%= r.getId_role()%>" <%=consultant != null ? (consultant.getRole_id() == r.getId_role() ? "selected" : "") : "" %>><%= r.getLibelle() %>
-                    </option>
-                    <% } %>
-                </select>
+                <% for (Role r : roles) { %>
+                <label for="checkboxrole"><%= r.getLibelle() %> : </label>
+                <input type=checkbox name="role" id="checkboxrole" class="form-control" value="<%= r.getId_role()%>" <%= (consultant != null) ? (Consultant_RoleDAO.isInDB(consultant.getId(), r.getId_role()) ? "checked" : "") : "" %>/>
+                <% } %>
             </div>
 
             <input type="submit" value="<%= consultant==null?"Créer":"Modifier" %> le consultant" class="btn btn-primary"/>
+
         </fieldset>
     </form>
 </div>

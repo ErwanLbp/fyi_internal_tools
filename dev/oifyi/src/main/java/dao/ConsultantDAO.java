@@ -45,7 +45,7 @@ public class ConsultantDAO {
             req.setInt(1, i);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
+                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,7 +65,7 @@ public class ConsultantDAO {
             req.setString(1, reqOrderBy);
             ResultSet res = req.executeQuery();
             while (res.next())
-                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
         } catch (SQLException e) {
             e.printStackTrace();
             listeConsultants.clear();
@@ -78,7 +78,7 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT c.username, r.libelle FROM CONSULTANT c, ROLE r WHERE c.ID_CONSULTANT=? AND lower(r.LIBELLE)='admin' AND c.ROLE_ID=r.ID_ROLE")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT co.ID_CONSULTANT, co.NOM, co.prenom, co.USERNAME, co.PASSWORD FROM CONSULTANT co, ROLE ro, CONSULTANT_ROLE cr WHERE lower(ro.libelle)='admin' AND co.ID_CONSULTANT=? AND co.ID_CONSULTANT=cr.ID_CONSULTANT AND cr.ID_ROLE = ro.ID_ROLE")) {
             req.setInt(1, id);
             ResultSet res = req.executeQuery();
             if (res.next())
@@ -98,7 +98,7 @@ public class ConsultantDAO {
             req.setString(1, login);
             ResultSet res = req.executeQuery();
             if (res.next())
-                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id"));
+                return new Consultant(res.getInt("ID_CONSULTANT"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -110,13 +110,12 @@ public class ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("INSERT INTO consultant (ID_CONSULTANT, NOM, PRENOM, USERNAME, PASSWORD, ROLE_ID) VALUES (?,?,?,?,?,?)")) {
+        try (PreparedStatement req = connection.prepareStatement("INSERT INTO consultant (ID_CONSULTANT, NOM, PRENOM, USERNAME, PASSWORD) VALUES (?,?,?,?,?)")) {
             req.setInt(1, consultant.getId());
             req.setString(2, consultant.getNom());
             req.setString(3, consultant.getPrenom());
             req.setString(4, consultant.getUsername());
             req.setString(5, consultant.getPassword());
-            req.setInt(6, consultant.getRole_id());
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,18 +123,16 @@ public class ConsultantDAO {
         }
     }
 
-    //TODO Javadoc : ConsultantDAO
     public static boolean update(Consultant consultant) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ?, ROLE_ID=? WHERE ID_CONSULTANT=?")) {
+        try (PreparedStatement req = connection.prepareStatement("UPDATE consultant SET nom = ?,prenom = ?, username = ?, password = ? WHERE ID_CONSULTANT=?")) {
             req.setString(1, consultant.getNom());
             req.setString(2, consultant.getPrenom());
             req.setString(3, consultant.getUsername());
             req.setString(4, consultant.getPassword());
-            req.setInt(5, consultant.getRole_id());
-            req.setInt(6, consultant.getId());
+            req.setInt(5, consultant.getId());
             return req.executeUpdate() == 1;
         } catch (Exception e) {
             e.printStackTrace();

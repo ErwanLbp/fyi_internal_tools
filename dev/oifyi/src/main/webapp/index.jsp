@@ -1,9 +1,10 @@
-<%@ page import="common.Consultant" %>
-<%@ page import="common.DroitsPages" %>
-<%@ page import="common.MappingUrlFichier" %>
 <%@ page import="dao.ConsultantDAO" %>
 <%@ page import="dao.DroitsPagesDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="common.*" %>
+<%@ page import="dao.Consultant_RoleDAO" %>
+<%@ page import="java.util.Iterator" %>
 
 <%--Regarder dans la base de données si la page demandée existe--%>
 <% String param_page = (request.getParameter("page") != null) ? request.getParameter("page") : "profil"; %>
@@ -18,9 +19,20 @@
 <%
     Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte");
     // Si un utilisateur est connecté on regarde s'il a le droit d'accès ou s'il est admin
-    if (consultantConnecte != null)
-        pageAutorisee = DroitsPagesDAO.isInDB(new DroitsPages(muf.getId_muf(), consultantConnecte.getRole_id())) || ConsultantDAO.isAdmin(consultantConnecte.getId());
-        // Si personne est connecté, on accepte la page de connexion seulement
+
+    if (consultantConnecte != null) {
+        //pageAutorisee = DroitsPagesDAO.isInDB(new DroitsPages(muf.getId_muf(), consultantConnecte.getRole_id())) || ConsultantDAO.isAdmin(consultantConnecte.getId());
+        pageAutorisee = ConsultantDAO.isAdmin(consultantConnecte.getId());
+        if (!pageAutorisee) {
+            ArrayList<Role> rolesConsultantConnecte = Consultant_RoleDAO.getRoles(consultantConnecte.getId());
+            Iterator<Role> it = rolesConsultantConnecte.iterator();
+            while (!pageAutorisee && it.hasNext()) {
+                Role roleCourant = it.next();
+                pageAutorisee = DroitsPagesDAO.isInDB(new DroitsPages(muf.getId_muf(), roleCourant.getId_role()));
+            }
+        }
+    }
+    // Si personne est connecté, on accepte la page de connexion seulement
     else if (param_page.equals("profil") && param_mode.equals("connexion"))
         pageAutorisee = true;
         //Si personne est connecté, on redirige vers la page de connexion
