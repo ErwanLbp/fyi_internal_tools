@@ -1,9 +1,9 @@
 <%@ page import="common.Consultant" %>
+<%@ page import="common.Recherche" %>
 <%@ page import="dao.ConsultantDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="common.Recherche" %>
 
 
 <div class="col-lg-12">
@@ -24,9 +24,7 @@
 
     <div class="row">
         <% ArrayList<Consultant> lcon = ConsultantDAO.getAll(request.getParameter("sort"));%>
-        <%
-            String url_page = Recherche.supprimerSort(request.getRequestURI()+"?"+request.getQueryString());
-        %>
+        <% String url_page = Recherche.supprimerSort(request.getRequestURI() + "?" + request.getQueryString()); %>
         <div class="col-md-12">
             <table class="table table-striped well">
                 <tr>

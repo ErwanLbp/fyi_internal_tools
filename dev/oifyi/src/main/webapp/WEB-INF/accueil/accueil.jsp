@@ -11,7 +11,6 @@
                 <div class="btn-group">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dpm1" data-toggle="dropdown">Consultant <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dpm1">
-                        <li role="presentation" class="divider"></li>
                         <li role="presentation" class="dropdown-header">Consultant</li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=MappingUrlFichierDAO.getMuf("consultant", "list").formerUrl()%>">Listing</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="<%=MappingUrlFichierDAO.getMuf("consultant", "paye_suivi").formerUrl()%>">Suivi de la paye</a></li>
