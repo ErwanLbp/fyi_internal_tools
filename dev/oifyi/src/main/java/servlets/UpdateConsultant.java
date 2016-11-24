@@ -1,7 +1,7 @@
 package servlets;
 
 import common.Consultant;
-import common.Consultant_Role;
+import common.Role;
 import dao.ConsultantDAO;
 import dao.Consultant_RoleDAO;
 import dao.MappingUrlFichierDAO;
@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <h1>${PACKAGE_NAME} ${NAME}</h1>
@@ -36,8 +36,6 @@ public class UpdateConsultant extends HttpServlet {
     private String prenom;
     private String username;
     private String password;
-    //private int role;
-    private String[] s_tab_id_role;
     private ArrayList<Integer> liste_id_role = new ArrayList<>();
 
     @Override
@@ -87,10 +85,11 @@ public class UpdateConsultant extends HttpServlet {
             prenom = req.getParameter("prenom");
             username = req.getParameter("username");
             password = req.getParameter("password");
-            //role = Integer.parseInt(req.getParameter("role"));
-            s_tab_id_role = req.getParameterValues("role");
-            for (int i = 0; i < s_tab_id_role.length; i++) {
-                liste_id_role.add(Integer.parseInt(s_tab_id_role[i]));
+            List<Role> roles = RoleDAO.getAll();
+            for (Role r : roles) {
+                String tmp = req.getParameter("role_" + r.getId_role());
+                if (tmp != null && !tmp.isEmpty())
+                    liste_id_role.add(Integer.parseInt(tmp));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,7 +112,6 @@ public class UpdateConsultant extends HttpServlet {
     }
 
     private String sauvegardeDB() {
-        //Consultant consultantCree = new Consultant(id_consultant, nom, prenom, username, password, role);
         Consultant consultantCree = new Consultant(id_consultant, nom, prenom, username, password);
         if (!Consultant_RoleDAO.insertConsultantEtTousRolesTransaction(consultantCree, liste_id_role)) {
             return "Erreur lors de l'insertion des roles du consultant";
@@ -165,6 +163,6 @@ public class UpdateConsultant extends HttpServlet {
         /*if (!Consultant_RoleDAO.insertTousRolesTransaction(liste_consultant_roleCree))
             return "Erreur lors de l'insertion des roles du consultant";*/
 
-        //return null;
+    //return null;
 
 }

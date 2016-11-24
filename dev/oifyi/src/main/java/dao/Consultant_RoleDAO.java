@@ -2,7 +2,6 @@ package dao;
 
 import common.Consultant;
 import common.Consultant_Role;
-import common.Mission_Consultant;
 import common.Role;
 import db.MyConnectorJDBC;
 
@@ -176,7 +175,7 @@ public class Consultant_RoleDAO {
 
         boolean toutVaBien = true;
 
-        // Déclaration de deux Statement, 1 pour le CraMois et 1 pour le CraJour
+        // Déclaration de du Statement pour l'insert du consultant_role
         try (PreparedStatement req = connection.prepareStatement(Consultant_RoleDAO.getInsert())) {
 
             // Désactivation de l'auto commit pour démarrer la transaction
@@ -189,12 +188,14 @@ public class Consultant_RoleDAO {
                 if (!ConsultantDAO.update(consultant))
                     throw new SQLException("Erreur lors de l'update du consultant");
             }
+            System.out.println("---");
 
             int id_consultant = ConsultantDAO.get(consultant.getUsername()).getId();
             System.out.println("ok get Consultant : " + id_consultant);
             if (consultant.getId() != -1 && Consultant_RoleDAO.delete(id_consultant) < 1) throw new SQLException();
             System.out.println("ok delete");
             for (int id_role : l_id_roles) {
+                System.out.println(id_consultant + " " + id_role);
                 // Remplissage des champs de Consultant_Role
                 req.setInt(1, id_consultant);
                 req.setInt(2, id_role);
