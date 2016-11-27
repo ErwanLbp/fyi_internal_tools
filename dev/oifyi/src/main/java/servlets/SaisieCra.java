@@ -3,11 +3,9 @@ package servlets;
 import common.CraJour;
 import common.CraMois;
 import common.Mission;
-import common.StatusCra;
 import dao.CraMoisDAO;
 import dao.MappingUrlFichierDAO;
 import dao.MissionDAO;
-import dao.StatusCraDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,7 +41,6 @@ public class SaisieCra extends HttpServlet {
 
     private int jourMaxDuMois;
     private boolean[] auMoinsUnJourTravaille;
-    private StatusCra statusCraEnvoye;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -75,7 +72,11 @@ public class SaisieCra extends HttpServlet {
             resp.sendRedirect(url_page_list_cra);
         else {
             req.setAttribute("erreur", erreur);
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url_page_cra + "&moisAnneeCourant=" + new SimpleDateFormat("yyyy-MM").format(moisAnnee));
+            RequestDispatcher dispatcher;
+            if (moisAnnee != null)
+                dispatcher = getServletContext().getRequestDispatcher(url_page_cra + "&moisAnneeCourant=" + new SimpleDateFormat("yyyy-MM").format(moisAnnee));
+            else
+                dispatcher = getServletContext().getRequestDispatcher(url_page_cra);
             dispatcher.forward(req, resp);
         }
     }
@@ -87,10 +88,6 @@ public class SaisieCra extends HttpServlet {
         } catch (Exception e) {
             return "L'id du consultant connecté n'est pas au bon format ou n'a pas été trouvé";
         }
-
-        statusCraEnvoye = StatusCraDAO.get("Envoyé");
-        if (statusCraEnvoye == null)
-            return "Erreur lors de la récupération du status 'Cra Envoyé'";
 
         try { //Récupération du mois courant en timeMillis
             long lMoisAnnee = Long.parseLong(req.getParameter("moisAnnee"));
@@ -204,12 +201,11 @@ public class SaisieCra extends HttpServlet {
         int[] id_cramois = new int[missions.size()];
         List<CraMois> lCraMois = new ArrayList<>();
         Map<CraJour, Integer> mCraJour = new HashMap<>();
-        int statusEnvoye = statusCraEnvoye.getId_status_cra();
 
         // Création de la ligne de cra_mois si au moins un jour est saisi sur la mission
         for (int i = 0; i < missions.size(); i++) {
             if (auMoinsUnJourTravaille[i])
-                lCraMois.add(new CraMois(missions.get(i).getId_mission(), consultant_id, moisAnnee, statusEnvoye));
+                lCraMois.add(new CraMois(missions.get(i).getId_mission(), consultant_id, moisAnnee, 2));
         }
 
         // Création d'une ligne pour chaque jour dans cra_jour, absence, et astreinte

@@ -110,7 +110,7 @@
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
                     </h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
                         <%
                             CraJour cj = null;
                             if (mMissionIdCraMois.get(m.getId_mission()) != null)
@@ -140,7 +140,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Jour (nb jour)</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
                         <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_J_<%=i%>" title="Nombre d'astreinte de jour"/>
                     </td>
                     <% } %>
@@ -151,7 +151,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Nuit (nb jour)</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
                         <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_N_<%=i%>" title="Nombre d'astreinte de nuit"/>
                     </td>
                     <% } %>
@@ -162,7 +162,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Interventions (nb heure)</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
                         <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_I_<%=i%>" title="Nombre d'heure d'intervention de l'astreinte"/>
                     </td>
                     <% } %>
@@ -185,7 +185,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Congé</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
                         <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
                     </td>
                     <% } %>
@@ -196,7 +196,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
                         <input class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
                     </td>
                     <% } %>
@@ -214,7 +214,7 @@
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Total</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                    <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
                         <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
                     </td>
                     <% } %>

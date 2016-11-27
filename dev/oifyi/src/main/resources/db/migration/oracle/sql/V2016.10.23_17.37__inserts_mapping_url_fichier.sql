@@ -17,7 +17,7 @@ INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('co
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('consultant', 'paye_suivi', 'WEB-INF/consultant/suivi_paye.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'listing', 'WEB-INF/cra/listing_cra.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'saisie', 'WEB-INF/cra/saisie_cra.jsp');
-INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'validation', 'WEB-INF/consultant/validation.jsp');
+INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('cra', 'validation', 'WEB-INF/cra/validation.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'list', 'WEB-INF/absences/list.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('absences', 'update', 'WEB-INF/absences/update.jsp');
 INSERT INTO mapping_url_fichier (nom_page, nom_mode, chemin_fichier) VALUES ('missions', 'list', 'WEB-INF/missions/listing_missions.jsp');

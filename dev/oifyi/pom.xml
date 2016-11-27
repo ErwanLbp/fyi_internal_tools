@@ -97,6 +97,7 @@
                 <executions>
                     <execution>
                         <goals>
+                            <goal>clean</goal>
                             <goal>migrate</goal>
                             <goal>validate</goal>
                         </goals>
@@ -106,16 +107,4 @@
             <!--Flyway end-->
         </plugins>
     </build>
-
-
-    <distributionManagement>
-        <!--Pour enlever une erreur à la compilation-->
-        <repository>
-            <uniqueVersion>true</uniqueVersion>
-            <id>corp1</id>
-            <name>Corporate Repository</name>
-            <url>file:./target/repositoryDeploy</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>
 </project>

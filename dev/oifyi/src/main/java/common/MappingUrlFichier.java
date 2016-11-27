@@ -114,6 +114,6 @@ public class MappingUrlFichier implements Serializable {
      *
      */
     public String formerUrl() {
-        return "/oifyi/index.jsp?page=" + this.getNomPage() + "&mode=" + this.getNomMode();
+        return "/index.jsp?page=" + this.getNomPage() + "&mode=" + this.getNomMode();
     }
 }

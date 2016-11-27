@@ -87,6 +87,7 @@ public class CraMoisDAO {
 
     public static boolean delete(int id_cra_mois) {
         Connection connection = MyConnectorJDBC.getConnection();
+
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         try (PreparedStatement req = connection.prepareStatement("DELETE FROM CRA_MOIS WHERE ID_CRA_MOIS=?")) {
@@ -124,6 +125,7 @@ public class CraMoisDAO {
                 insertCraMois.setInt(4, cm.getStatus_cra_id());
                 if (!(insertCraMois.executeUpdate() == 1))
                     throw new SQLException();
+                insertCraMois.clearParameters();
 
                 // Récupération de l'id du CraMois inséré
                 CraMois cmRecup = CraMoisDAO.get(cm.getMission_id(), cm.getConsultant_id(), cm.getMois_annee().toString());
@@ -141,6 +143,7 @@ public class CraMoisDAO {
                 insertCraJour.setDouble(3, icj.getKey().getTravail());
                 if (!(insertCraJour.executeUpdate() == 1))
                     throw new SQLException();
+                insertCraJour.clearParameters();
             }
 
             // Commit de la transaction pour sauvegarder
@@ -209,5 +212,52 @@ public class CraMoisDAO {
             mii.put(cm.getMission_id(), cm.getId_cra_mois());
         }
         return mii;
+    }
+
+    public static List<CraMois> getAll(Date moisAnnee) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        List<CraMois> list_res = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE MOIS_ANNEE=? ORDER BY MISSION_ID, CONSULTANT_ID DESC")) {
+            req.setDate(1, moisAnnee);
+            ResultSet res = req.executeQuery();
+            while (res.next())
+                list_res.add(new CraMois(res.getInt("id_cra_mois"), res.getInt("mission_id"), res.getInt("consultant_id"), res.getDate("mois_annee"), res.getInt("status_id")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            list_res.clear();
+        }
+        return list_res;
+    }
+
+    public static boolean isInDB(int idCraMois) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE ID_CRA_MOIS=?")) {
+            req.setInt(1, idCraMois);
+            ResultSet res = req.executeQuery();
+            if (res.next())
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean setStatus(int idCraMois, int newStatut) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        try (PreparedStatement req = connection.prepareStatement("UPDATE CRA_MOIS SET STATUS_ID=? WHERE ID_CRA_MOIS=?")) {
+            req.setInt(1, newStatut);
+            req.setInt(2, idCraMois);
+            return req.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
     }
 }
