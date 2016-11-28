@@ -111,4 +111,13 @@
         <url-pattern>/oifyi/supprimerConsultant</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ValiderCra</servlet-name>
+   <servlet-class>servlets.ValiderCra</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValiderCra</servlet-name>
+        <url-pattern>/oifyi/ValiderCra</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
