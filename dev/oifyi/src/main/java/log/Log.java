@@ -82,6 +82,10 @@ public class Log {
             info(msg_format, true, true);
     }
 
+    public static void erreur(String msg) {
+        erreur(msg, false);
+    }
+
     public static void succes(String msg, boolean queDebutLigne) {
         String msg_format = "[O]\t" + msg;
         if (queDebutLigne)
@@ -89,4 +93,9 @@ public class Log {
         else
             info(msg_format, true, true);
     }
+
+    public static void succes(String msg) {
+        succes(msg, false);
+    }
+
 }

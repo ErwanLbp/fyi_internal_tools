@@ -1,9 +1,10 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.Mission" %>
+<%@ page import="common.Role" %>
 <%@ page import="dao.ClientDAO" %>
+<%@ page import="dao.Consultant_RoleDAO" %>
 <%@ page import="dao.MissionDAO" %>
 <%@ page import="dao.Mission_ConsultantDAO" %>
-<%@ page import="dao.RoleDAO" %>
 <%@ page import="java.util.ArrayList" %>
 
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
@@ -37,7 +38,11 @@
                 </td>
                 <td><%=con.getPrenom()%>
                 </td>
-                <td><%=RoleDAO.get(con.getRole_id()).getLibelle()%>
+                <td>
+                    <% ArrayList<Role> lrol = Consultant_RoleDAO.getRoles(con.getId()); %>
+                    <% for (Role rol : lrol) { %>
+                    <%= (rol == lrol.get(lrol.size() - 1)) ? rol.getLibelle() : rol.getLibelle() + ", " %>
+                    <% } %>
                 </td>
             </tr>
             </tbody>
