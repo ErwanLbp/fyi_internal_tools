@@ -49,11 +49,7 @@
                             Username <span class="glyphicon glyphicon-sort"></span>
                         </button>
                     </th>
-                    <th>
-                        <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=Password'">
-                            Password <span class="glyphicon glyphicon-sort"></span>
-                        </button>
-                    </th>
+                    <th>Password</th>
                     <th>Role</th>
                     <th colspan="2">Action</th>
                 </tr>

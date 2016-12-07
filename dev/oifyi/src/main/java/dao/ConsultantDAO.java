@@ -3,10 +3,7 @@ package dao;
 import common.Consultant;
 import db.MyConnectorJDBC;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -59,11 +56,9 @@ public class ConsultantDAO {
 
         ArrayList<Consultant> listeConsultants = new ArrayList<>();
         String reqOrderBy = orderBy == null ? "id_consultant" : orderBy;
-        System.out.println(reqOrderBy);
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT ORDER BY ? DESC")) {
-            req.setString(1, reqOrderBy);
-            ResultSet res = req.executeQuery();
+        try (Statement req = connection.createStatement()) {
+            ResultSet res = req.executeQuery("SELECT * FROM CONSULTANT ORDER BY " + reqOrderBy + " DESC");
             while (res.next())
                 listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
         } catch (SQLException e) {
