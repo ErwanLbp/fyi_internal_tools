@@ -13,27 +13,22 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
- * <h1>servlets ValiderCra</h1>
- * TODO Description
- *
  * @author Erwan
  * @version 1.0
  * @since 25-10-2016
  */
 public class ValiderCra extends HttpServlet {
 
-    private String url_page_cra = MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl();
     private String url_page_accueil = MappingUrlFichierDAO.getMuf("accueil", "view").formerUrl();
     private String url_page_list_cra = MappingUrlFichierDAO.getMuf("cra", "validation").formerUrl();
 
     private Date moisAnnee;
-    private Map<Integer, String> actionParId;
+    private Map<Integer, Integer> statusParId;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -62,7 +57,7 @@ public class ValiderCra extends HttpServlet {
         // En cas d'erreur on renvoi sur la page, avec l'erreur
         // Si il n'y a pas d'erreur on redirige vers l'accueil
         if (erreur == null)
-            resp.sendRedirect(url_page_cra);
+            resp.sendRedirect(url_page_list_cra + "&moisAnneeCourant=" + new SimpleDateFormat("yyyy-MM").format(moisAnnee));
         else {
             req.setAttribute("erreur", erreur);
             RequestDispatcher dispatcher;
@@ -74,58 +69,49 @@ public class ValiderCra extends HttpServlet {
         }
     }
 
-    //TODO Javadoc : SaisieCra
     private String recuperationChampsForm(HttpServletRequest req) {
-        actionParId = new HashMap<>();
+        statusParId = new HashMap<>();
         try {
             String[] idCraMois = req.getParameterValues("idCraMois");
             for (String s : idCraMois) {
-                int idTmp = Integer.parseInt(s);
-                actionParId.put(idTmp, req.getParameter("action_" + idTmp));
+                int idCMTmp = Integer.parseInt(s);
+                int idStatusCraTmp = Integer.parseInt(req.getParameter("statusCra_" + idCMTmp));
+                statusParId.put(idCMTmp, idStatusCraTmp);
             }
         } catch (Exception e) {
-            return "Erreur lors de la récupération des champs action ou id_cra_mois";
+            return "Erreur lors de la récupération des champs statusCra ou id_cra_mois";
         }
 
         try { //Récupération du mois courant en timeMillis
             long lMoisAnnee = Long.parseLong(req.getParameter("moisAnnee"));
             moisAnnee = new Date(lMoisAnnee);
         } catch (Exception e) {
-            return "La date envoyé n'a pas pu être récupérée";
+            return "La date envoyée n'a pas pu être récupérée";
         }
         return null;
     }
 
-    //TODO Javadoc : SaisieCra
     private String validationChamps() {
-        List<String> validator = new ArrayList<>();
-        validator.add("none");
-        validator.add("valider");
-        validator.add("modifier");
-        for (Map.Entry<Integer, String> cmAction : actionParId.entrySet()) {
-            if (!validator.contains(cmAction.getValue()))
-                return "L'action demandée pour l'id_cra_mois " + cmAction.getKey() + " n'est pas possible";
-            CraMois cm = CraMoisDAO.get(cmAction.getKey());
-            if (cm == null)
-                return "Le cra_mois " + cmAction.getKey() + " n'existe pas";
-            int cm_status = cm.getStatus_cra_id();
-            if (cm_status != 2 && cm_status != 4)
-                return "Le cra_mois " + cmAction.getValue() + " ne peut pas changer de statut";
+        Iterator<Map.Entry<Integer, Integer>> it = statusParId.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<Integer, Integer> entry = it.next();
+            CraMois craMoisDansDB = CraMoisDAO.get(entry.getKey());
+            if (craMoisDansDB == null)
+                return "L'id_cra_mois " + entry.getKey() + " est inconnu dans la base de données";
+            if (craMoisDansDB.getStatus_cra_id() == entry.getValue())
+                it.remove();
+            else if (craMoisDansDB.getStatus_cra_id() != 2 && craMoisDansDB.getStatus_cra_id() != 4)
+                return "Le cra_mois " + entry.getKey() + " ne peut pas changer de statut";
+            else if (craMoisDansDB.getStatus_cra_id() == 4 && entry.getValue() != 3)
+                return "Le cra_mois " + entry.getKey() + " ne peut qu'etre soit <i>A modifier</i> ou <i>Validé</i>";
         }
         return null;
     }
 
     private String sauvegardeDB() {
         boolean toutVaBien = true;
-        for (Map.Entry<Integer, String> cmAction : actionParId.entrySet()) {
-            switch (cmAction.getValue()) {
-                case "valider":
-                    toutVaBien = CraMoisDAO.setStatus(cmAction.getKey(), 3);
-                    break;
-                case "modifier":
-                    toutVaBien = CraMoisDAO.setStatus(cmAction.getKey(), 4);
-                    break;
-            }
+        for (Map.Entry<Integer, Integer> cmAction : statusParId.entrySet()) {
+            toutVaBien = toutVaBien && CraMoisDAO.setStatus(cmAction.getKey(), cmAction.getValue());
         }
         if (!toutVaBien)
             return "Erreur lors de la modification d'un ou des status du mois de cra";
