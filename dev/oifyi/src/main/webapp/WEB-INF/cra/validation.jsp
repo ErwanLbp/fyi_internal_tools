@@ -9,9 +9,6 @@
 <%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 
-
-<% Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte"); %>
-
 <% //Récupération du mois courant, si aucun paramètre n'est envoyé, le mois courant sera sélectionné
     // La date en paramètre doit être au format yyyy-MM
     String moisAnnee = request.getParameter("moisAnneeCourant");
@@ -20,17 +17,14 @@
         try {
             Date dMoisAnnee = new SimpleDateFormat("yyyy-MM").parse(moisAnnee);
             calendar.setTime(dMoisAnnee);
-            System.out.println(calendar.getTime());
         } catch (ParseException e) {
             request.setAttribute("erreur", "La date reçue est mal écrite");
         }
     }
-    System.out.println(calendar.getTime());
 
     // Remise du calendrier sur le premier jour du mois courant
     calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
     calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
-    System.out.println("Après remise à 1 : " + calendar.getTime());
 
     // Date SQL pour le CraMoisDAO
     java.sql.Date moisAnneeSQL = new java.sql.Date(calendar.getTimeInMillis());
@@ -53,7 +47,15 @@
 <% String url_page = Recherche.supprimerSort(request.getRequestURI() + "?" + request.getQueryString()); %>
 
 <div class="col-lg-12">
-    <form method="post" action="/ValiderCra">
+
+    <% if (request.getAttribute("erreur") != null) { %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+    </div>
+    <% } %>
+
+    <form method="post" action="/oifyi/ValiderCra" itemscope="request">
         <table class="table table-striped table-bordered well">
             <caption>
                 <a href="<%=MappingUrlFichierDAO.getMuf("cra","validation").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
@@ -106,8 +108,8 @@
                         List<StatusCra> statusCras = StatusCraDAO.getAll();
                         statusCras.remove(0);
                     %>
-                    <label for="statusCra" class="input-group-addon">Status</label>
-                    <select name="statusCra" id="statusCra">
+                    <label for="statusCra_<%=cm.getId_cra_mois()%>" class="input-group-addon">Status</label>
+                    <select name="statusCra_<%=cm.getId_cra_mois()%>" id="statusCra_<%=cm.getId_cra_mois()%>">
                         <% for (StatusCra statusCra : statusCras) { %>
                         <option value="<%=statusCra.getId_status_cra()%>" <%=cm.getStatus_cra_id() == statusCra.getId_status_cra() ? "selected" : ""%>><%=statusCra.getLibelle()%>
                         </option>
@@ -115,7 +117,8 @@
                     </select>
                 </td>
                 <td width="10%">
-                    <a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>&moisAnneeCourant=<%=new SimpleDateFormat("yyyy-MM").format(cm.getMois_annee())%>&idConsultant=<%=cm.getConsultant_id()%>">
+                    <a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>&moisAnneeCourant=<%=new SimpleDateFormat("yyyy-MM").format(cm.getMois_annee())%>&idConsultant=<%=cm.getConsultant_id()%>"
+                       onclick="open('<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>&moisAnneeCourant=<%=new SimpleDateFormat("yyyy-MM").format(cm.getMois_annee())%>&idConsultant=<%=cm.getConsultant_id()%>', 'Popup', 'scrollbars=1,resizable=1,height=800,width=1200'); return false;">
                         <input type="button" class="btn btn-primary" value="Détails"/>
                     </a>
                 </td>
@@ -123,8 +126,7 @@
             <%}%>
         </table>
 
-        <input type="hidden" name="moisAnnee" value="<%=moisAnnee%>"/>
+        <input type="hidden" name="moisAnnee" value="<%=moisAnneeSQL.getTime()%>"/>
         <input type="submit" class="btn btn-primary" value="Changer les status des CRA cochés"/>
     </form>
-
 </div>
