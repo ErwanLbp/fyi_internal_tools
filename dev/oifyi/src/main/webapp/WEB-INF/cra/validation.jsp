@@ -53,7 +53,6 @@
 
 <div class="col-lg-12">
     <form method="post" action="/ValiderCra">
-
         <table class="table table-striped table-bordered well">
             <caption>
                 <a href="<%=MappingUrlFichierDAO.getMuf("cra","validation").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
@@ -104,15 +103,16 @@
                     <input type="hidden" name="idCraMois" value="<%=cm.getId_cra_mois()%>"/>
                     <table>
                         <tr>
-                            <td rawspan="3"><%=StatusCraDAO.get(cm.getStatus_cra_id()).getLibelle()%>
+                            <% String libelle_status = StatusCraDAO.get(cm.getStatus_cra_id()).getLibelle(); %>
+                            <td rowspan="3" class="<%=libelle_status%> well"><%=libelle_status%>
                             </td>
-                            <td><label for="none">Ne rien faire</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="none" value="none"/></td>
+                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="none_<%=cm.getId_cra_mois()%>" value="none" checked/></span><label for="none_<%=cm.getId_cra_mois()%>" class="form-control">Ne rien faire</label></td>
                         </tr>
                         <tr>
-                            <td><label for="valider">Valider</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="valider" value="valider"/></td>
+                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="valider_<%=cm.getId_cra_mois()%>" value="valider"/></span><label for="valider_<%=cm.getId_cra_mois()%>" class="form-control">Valider</label></td>
                         </tr>
                         <tr>
-                            <td><label for="modifier">A modifier</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="modifier" value="modifier"/></td>
+                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="modifier_<%=cm.getId_cra_mois()%>" value="modifier"/></span><label for="modifier_<%=cm.getId_cra_mois()%>" class="form-control">A modifier</label></td>
                         </tr>
                     </table>
                 </td>

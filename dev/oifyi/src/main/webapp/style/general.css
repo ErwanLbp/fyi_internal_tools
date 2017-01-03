@@ -53,6 +53,21 @@ html {
     border: thick solid black;
 }
 
-.barre-recherche{
+.barre-recherche {
     margin-bottom: 15px;
+}
+
+.validation-action-cell {
+}
+
+.Envoyé, .Envoyￃﾩ {
+    color: blue;
+}
+
+.Validé, .Validￃﾩ {
+    color: green;
+}
+
+.modifier {
+    color: orange;
 }
