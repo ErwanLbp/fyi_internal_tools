@@ -1,5 +1,6 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraMois" %>
+<%@ page import="common.Recherche" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -42,7 +43,8 @@
 %>
 
 <% int moisTmp = 0; %>
-<% List<CraMois> lcm = CraMoisDAO.getAll(moisAnneeSQL); %>
+<% List<CraMois> lcm = CraMoisDAO.getAll(moisAnneeSQL, request.getParameter("sort")); %>
+<% String url_page = Recherche.supprimerSort(request.getRequestURI() + "?" + request.getQueryString()); %>
 
 <div class="col-lg-12">
     <form method="post" action="/ValiderCra">
@@ -58,10 +60,22 @@
             </caption>
 
             <tr>
-                <th>Date</th>
+                <th>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=mois_annee'">
+                        Date <span class="glyphicon glyphicon-sort"></span>
+                    </button>
+                </th>
                 <th>Mission</th>
-                <th>Consultant</th>
-                <th>Status</th>
+                <th>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=consultant_id'">
+                        Consultant <span class="glyphicon glyphicon-sort"></span>
+                    </button>
+                </th>
+                <th>
+                    <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=status_id'">
+                        Status <span class="glyphicon glyphicon-sort"></span>
+                    </button>
+                </th>
                 <th>Action</th>
             </tr>
 
@@ -77,15 +91,25 @@
                 <script type="text/javascript">document.getElementById("mois_<%=moisTmp%>").rowSpan = Number(document.getElementById("mois_<%=moisTmp%>").rowSpan) + 1;
                 </script>
                 <% } %>
-                <td width="45%"><%=MissionDAO.get(cm.getMission_id()).getNom()%>
+                <td width="40%"><%=MissionDAO.get(cm.getMission_id()).getNom()%>
                 </td>
-                <td width="15%"><%=consultantTmp.getNom() + " " + consultantTmp.getPrenom()%>
+                <td width="10%"><%=consultantTmp.getNom() + " " + consultantTmp.getPrenom()%>
                 </td>
-                <td width="20%"><%=StatusCraDAO.get(cm.getStatus_cra_id()).getLibelle()%>
+                <td width="30%">
                     <input type="hidden" name="idCraMois" value="<%=cm.getId_cra_mois()%>"/>
-                    <label for="none">Ne rien faire</label><input type="radio" name="action<%=cm.getId_cra_mois()%>" id="none" value="none"/>
-                    <label for="valider">Valider</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="valider" value="valider"/>
-                    <label for="modifier">Demander modif.</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="modifier" value="modifier"/>
+                    <table>
+                        <tr>
+                            <td rawspan="3"><%=StatusCraDAO.get(cm.getStatus_cra_id()).getLibelle()%>
+                            </td>
+                            <td><label for="none">Ne rien faire</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="none" value="none"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="valider">Valider</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="valider" value="valider"/></td>
+                        </tr>
+                        <tr>
+                            <td><label for="modifier">A modifier</label><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="modifier" value="modifier"/></td>
+                        </tr>
+                    </table>
                 </td>
                 <td width="10%">
                     <a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>&moisAnneeCourant=<%=new SimpleDateFormat("yyyy-MM").format(cm.getMois_annee())%>&idConsultant=<%=cm.getConsultant_id()%>">

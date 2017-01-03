@@ -51,13 +51,15 @@ public class MissionDAO {
     }
 
     //TODO Javadoc : ConsultantDAO
-    public static ArrayList<Mission> getAll() {
+    public static ArrayList<Mission> getAll(String orderBy) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         ArrayList<Mission> listeMissions = new ArrayList<>();
+        String reqOrderBy = orderBy == null ? "nom" : orderBy;
+
         try (Statement req = connection.createStatement()) {
-            ResultSet res = req.executeQuery("SELECT * FROM MISSION");
+            ResultSet res = req.executeQuery("SELECT * FROM MISSION ORDER BY " + reqOrderBy + " DESC");
             while (res.next())
                 listeMissions.add(new Mission(res.getInt("id_mission"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm")));
             return listeMissions;

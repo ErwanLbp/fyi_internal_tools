@@ -170,12 +170,14 @@ public class CraMoisDAO {
         return toutVaBien;
     }
 
-    public static List<CraMois> getAll(int id_consultant) {
+    public static List<CraMois> getAll(int id_consultant, String orderBy) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         List<CraMois> list_res = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE CONSULTANT_ID=? ORDER BY MOIS_ANNEE,MISSION_ID DESC")) {
+        String reqOrderBy = orderBy == null ? "mois_annee" : orderBy;
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE CONSULTANT_ID=? ORDER BY " + reqOrderBy + " DESC")) {
             req.setInt(1, id_consultant);
             ResultSet res = req.executeQuery();
             while (res.next())
@@ -214,12 +216,14 @@ public class CraMoisDAO {
         return mii;
     }
 
-    public static List<CraMois> getAll(Date moisAnnee) {
+    public static List<CraMois> getAll(Date moisAnnee, String orderBy) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         List<CraMois> list_res = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE MOIS_ANNEE=? ORDER BY MISSION_ID, CONSULTANT_ID DESC")) {
+        String reqOrderBy = orderBy == null ? "status_id" : orderBy;
+
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CRA_MOIS WHERE MOIS_ANNEE=? ORDER BY " + reqOrderBy + " DESC")) {
             req.setDate(1, moisAnnee);
             ResultSet res = req.executeQuery();
             while (res.next())

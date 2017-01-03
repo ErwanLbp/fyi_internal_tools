@@ -65,14 +65,6 @@
 <div class="col-lg-12">
     <form action="/oifyi/saisieCra" method="post" class="well" id="formSaisieCra">
         <fieldset <%= (!mMissionIdCraMois.isEmpty()) ? "disabled" : "" %>>
-            <legend>
-                <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
-                Saisie du CRA du mois
-                <b>
-                    <%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
-                </b>
-                <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>">--></a>
-            </legend>
 
             <% if (request.getAttribute("erreur") != null) { %>
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -85,8 +77,15 @@
             <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>
             <input type="hidden" name="consultant_id" value="<%=id_consultant%>"/>
 
-
             <table class="table table-bordered table-striped table-condensed" onchange="remplirTotaux()" cellpadding="0" cellspacing="0">
+                <caption>
+                    <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"> <-- </a>
+                    Saisie du CRA du mois
+                    <b>
+                        <%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
+                    </b>
+                    <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>"> --> </a>
+                </caption>
 
                 <%--Ligne pour les numéros de colonnes--%>
                 <tr class="tailleLigne">

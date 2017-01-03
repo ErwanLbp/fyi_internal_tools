@@ -1,5 +1,6 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraMois" %>
+<%@ page import="common.Recherche" %>
 <%@ page import="dao.CraMoisDAO" %>
 <%@ page import="dao.MappingUrlFichierDAO" %>
 <%@ page import="dao.MissionDAO" %>
@@ -12,17 +13,25 @@
 
 <% int consultant_id = consultantConnecte.getId(); %>
 <% int moisTmp = 0; %>
-<% List<CraMois> lcm = CraMoisDAO.getAll(consultant_id); %>
+<% List<CraMois> lcm = CraMoisDAO.getAll(consultant_id, request.getParameter("sort")); %>
+<% String url_page = Recherche.supprimerSort(request.getRequestURI() + "?" + request.getQueryString()); %>
 
 <div class="col-lg-12">
     <table class="table table-striped table-bordered well">
         <caption>Liste des cra du consultant <%= consultant_id %>
         </caption>
-
         <tr>
-            <th>Date</th>
+            <th>
+                <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=mois_annee'">
+                    Date <span class="glyphicon glyphicon-sort"></span>
+                </button>
+            </th>
             <th>Mission</th>
-            <th>Status</th>
+            <th>
+                <button type="button" class="btn btn-default" onclick="window.location.href='<%=url_page%>&sort=status_id'">
+                    Status <span class="glyphicon glyphicon-sort"></span>
+                </button>
+            </th>
             <th>Action</th>
         </tr>
         <%for (CraMois cm : lcm) {%>
