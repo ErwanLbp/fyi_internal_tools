@@ -4,7 +4,7 @@
 <% Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte"); %>
 
 <div class="col-lg-offset-4 col-sm-4">
-    <form method="post" action="<%=request.getContextPath()%>/connexion" class="well">
+    <form method="post" action="/oifyi/connexion" class="well">
         <fieldset <%= consultantConnecte != null ? "disabled" : "" %>>
             <legend>Connexion</legend>
 

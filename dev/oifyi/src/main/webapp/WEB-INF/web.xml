@@ -27,7 +27,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>connexion</servlet-name>
-        <url-pattern>/connexion</url-pattern>
+        <url-pattern>/oifyi/connexion</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -36,7 +36,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>deconnexion</servlet-name>
-        <url-pattern>/deconnexion</url-pattern>
+        <url-pattern>/oifyi/deconnexion</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -54,7 +54,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>update_absence</servlet-name>
-        <url-pattern>/update_absence</url-pattern>
+        <url-pattern>/oifyi/update_absence</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -63,7 +63,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>update_consultant</servlet-name>
-        <url-pattern>/update_consultant</url-pattern>
+        <url-pattern>/oifyi/update_consultant</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -72,7 +72,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>update_consultant_role</servlet-name>
-        <url-pattern>/update_consultant_role</url-pattern>
+        <url-pattern>/oifyi/update_consultant_role</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -81,7 +81,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>update_mission</servlet-name>
-        <url-pattern>/update_mission</url-pattern>
+        <url-pattern>/oifyi/update_mission</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -90,7 +90,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>update_mission_consultant</servlet-name>
-        <url-pattern>/update_mission_consultant</url-pattern>
+        <url-pattern>/oifyi/update_mission_consultant</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -99,7 +99,25 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>saisieCra</servlet-name>
-        <url-pattern>/saisieCra</url-pattern>
+        <url-pattern>/oifyi/saisieCra</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>supprimerConsultant</servlet-name>
+        <servlet-class>servlets.SupprimerConsultant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>supprimerConsultant</servlet-name>
+        <url-pattern>/oifyi/supprimerConsultant</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValiderCra</servlet-name>
+   <servlet-class>servlets.ValiderCra</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValiderCra</servlet-name>
+        <url-pattern>/oifyi/ValiderCra</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

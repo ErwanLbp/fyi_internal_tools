@@ -20,51 +20,53 @@
     }
 %>
 
-<form method="post" action="<%=request.getContextPath()%>/update_absence" class="well">
-    <fieldset>
-        <legend>Saisie d'une absence</legend>
+<div class="col-lg-12">
+    <form method="post" action="/oifyi/update_absence" class="well">
+        <fieldset>
+            <legend>Saisie d'une absence</legend>
 
-        <% if (request.getAttribute("erreur") != null) { %>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
-        </div>
-        <% } else { %>
-        <div class="alert alert-info alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
-        </div>
-        <% } %>
+            <% if (request.getAttribute("erreur") != null) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+            </div>
+            <% } else { %>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Info ! </strong><%= "Remplissez tous les champs obligatoires *" %>
+            </div>
+            <% } %>
 
-        <input type="hidden" name="id_absence" value="<%= absence==null ? "" : ""+absence.getId_absence() %>"/>
+            <input type="hidden" name="id_absence" value="<%= absence==null ? "" : ""+absence.getId_absence() %>"/>
 
-        <input type="hidden" name="id_consultant" value="<%= consultantConnecte.getId() %>"/>
+            <input type="hidden" name="id_consultant" value="<%= consultantConnecte.getId() %>"/>
 
-        <div class="form-group">
-            <label for="id_type_absence">Type d'absence* : </label>
-            <% List<TypeAbsence> ltyp = TypeAbsenceDAO.getAll(); %>
-            <select name="id_type_absence" id="id_type_absence" class="form-control" required>
-                <% for (TypeAbsence typ : ltyp) { %>
-                <option value="<%= typ.getId_type_absence()%>" <%=absence != null ? (absence.getId_type_absence() == typ.getId_type_absence() ? "selected" : "") : "" %>><%= typ.getLibelle() %>
-                </option>
-                <% } %>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="idPlusPrecision">Plus de précision : <input id="idPlusPrecision" type="text" name="plus_precision" class="form-control" value="<%=absence!=null ? absence.getPlus_precision() : ""%>"/></label>
-        </div>
-        <div class="form-group">
-            <label for="idDateDeb">Date début* : <input placeholder="yyyy-mm-dd" id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=absence!=null ? absence.getDate_debut().toString() : ""%>" required/></label>
-        </div>
-        <div class="form-group">
-            <label for="idDateFin">Date fin* : <input placeholder="yyyy-mm-dd" id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=absence!=null ? absence.getDate_fin().toString() : ""%>" required/></label>
-        </div>
-        <input type="hidden" name="id_statut_absence" value="<%= absence==null ? "2" : ""+absence.getId_statut_absence() %>"/>
-        <div class="form-group">
-            <label for="idCommentaire">Commentaire : <input id="idCommentaire" type="text" name="commentaire" class="form-control" value="<%=absence!=null ? absence.getCommentaire() : ""%>"/></label>
-        </div>
+            <div class="form-group">
+                <label for="id_type_absence">Type d'absence* : </label>
+                <% List<TypeAbsence> ltyp = TypeAbsenceDAO.getAll(); %>
+                <select name="id_type_absence" id="id_type_absence" class="form-control" required>
+                    <% for (TypeAbsence typ : ltyp) { %>
+                    <option value="<%= typ.getId_type_absence()%>" <%=absence != null ? (absence.getId_type_absence() == typ.getId_type_absence() ? "selected" : "") : "" %>><%= typ.getLibelle() %>
+                    </option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="idPlusPrecision">Plus de précision : <input id="idPlusPrecision" type="text" name="plus_precision" class="form-control" value="<%=absence!=null ? absence.getPlus_precision() : ""%>"/></label>
+            </div>
+            <div class="form-group">
+                <label for="idDateDeb">Date début* : <input placeholder="yyyy-mm-dd" id="idDateDeb" type="date" name="date_deb" class="form-control" value="<%=absence!=null ? absence.getDate_debut().toString() : ""%>" required/></label>
+            </div>
+            <div class="form-group">
+                <label for="idDateFin">Date fin* : <input placeholder="yyyy-mm-dd" id="idDateFin" type="date" name="date_fin" class="form-control" value="<%=absence!=null ? absence.getDate_fin().toString() : ""%>" required/></label>
+            </div>
+            <input type="hidden" name="id_statut_absence" value="<%= absence==null ? "2" : ""+absence.getId_statut_absence() %>"/>
+            <div class="form-group">
+                <label for="idCommentaire">Commentaire : <input id="idCommentaire" type="text" name="commentaire" class="form-control" value="<%=absence!=null ? absence.getCommentaire() : ""%>"/></label>
+            </div>
 
 
-        <input type="submit" value="<%= absence==null?"Créer":"Modifier" %> l'absence" class="btn btn-primary"/>
-    </fieldset>
-</form>
+            <input type="submit" value="<%= absence==null?"Créer":"Modifier" %> l'absence" class="btn btn-primary"/>
+        </fieldset>
+    </form>
+</div>

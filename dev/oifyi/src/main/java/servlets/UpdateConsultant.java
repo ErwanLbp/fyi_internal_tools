@@ -1,7 +1,9 @@
 package servlets;
 
 import common.Consultant;
+import common.Role;
 import dao.ConsultantDAO;
+import dao.Consultant_RoleDAO;
 import dao.MappingUrlFichierDAO;
 import dao.RoleDAO;
 
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <h1>${PACKAGE_NAME} ${NAME}</h1>
@@ -32,7 +36,7 @@ public class UpdateConsultant extends HttpServlet {
     private String prenom;
     private String username;
     private String password;
-    private int role;
+    private ArrayList<Integer> liste_id_role = new ArrayList<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -81,7 +85,12 @@ public class UpdateConsultant extends HttpServlet {
             prenom = req.getParameter("prenom");
             username = req.getParameter("username");
             password = req.getParameter("password");
-            role = Integer.parseInt(req.getParameter("role"));
+            List<Role> roles = RoleDAO.getAll();
+            for (Role r : roles) {
+                String tmp = req.getParameter("role_" + r.getId_role());
+                if (tmp != null && !tmp.isEmpty())
+                    liste_id_role.add(Integer.parseInt(tmp));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return "Erreur lors de la récupération des champs";
@@ -95,13 +104,28 @@ public class UpdateConsultant extends HttpServlet {
         if (prenom.equals("")) return "Le champ prenom n'est pas rempli";
         if (username.equals("")) return "Le champ username n'est pas rempli";
         if (password.equals("")) return "Le champ password n'est pas rempli";
-        if (!RoleDAO.isInDB(role)) return "La valeur du champ role est inconnue";
+        if (liste_id_role.size() < 1) return "Il n'y a pas de rôle sélectionné.";
+        for (int i : liste_id_role) {
+            if (!RoleDAO.isInDB(i)) return "La valeur du champ role est inconnue";
+        }
         return null;
     }
 
     private String sauvegardeDB() {
-        Consultant consultantCree = new Consultant(id_consultant, nom, prenom, username, password, role);
+        Consultant consultantCree = new Consultant(id_consultant, nom, prenom, username, password);
+        if (!Consultant_RoleDAO.insertConsultantEtTousRolesTransaction(consultantCree, liste_id_role)) {
+            return "Erreur lors de l'insertion des roles du consultant";
+        }
+        return null;
+    }
 
+
+/*        ArrayList<Consultant_Role> liste_consultant_roleCree = new ArrayList<>();
+        for (int id_role : liste_id_role) {
+            liste_consultant_roleCree.add(new Consultant_Role(id_consultant, id_role));
+        }*/
+
+/*
         if (id_consultant == -1) { // On insère le nouveau consultant dans le cas d'un insert
             if (!ConsultantDAO.insert(consultantCree))
                 return "Echec de l'insertion du nouveau consultant";
@@ -110,5 +134,35 @@ public class UpdateConsultant extends HttpServlet {
                 return "Echec de la mise à jour du consultant";
         }
         return null;
-    }
+*/
+
+/*        if (id_consultant == -1) { // On insère le nouveau consultant dans le cas d'un insert
+            if (!ConsultantDAO.insert(consultantCree))
+                return "Echec de l'insertion du nouveau consultant";
+*//*            for (Consultant_Role cr : liste_consultant_roleCree) {
+                if (!Consultant_RoleDAO.insert(cr)) {
+                    return "Echec de l'insertion du nouveau role";
+                }*//*
+            if (!Consultant_RoleDAO.insertTousRolesTransaction(liste_consultant_roleCree)) {
+                return "Erreur lors de l'insertion des roles du consultant";
+            }
+        } else { // On update le consultant dans le cas d'un update
+            if (!ConsultantDAO.update(consultantCree))
+                return "Echec de la mise à jour du consultant";
+            Consultant_RoleDAO.delete(id_consultant);
+*//*            for (Consultant_Role cr : liste_consultant_roleCree) {
+                if (!Consultant_RoleDAO.insert(cr)) {
+                    return "Echec de l'insertion du nouveau role";
+                }
+            }*//*
+            if (!Consultant_RoleDAO.insertTousRolesTransaction(liste_consultant_roleCree)) {
+                return "Erreur lors de l'insertion des roles du consultant";
+            }
+        }*/
+    // On lance l'insertion de la transaction
+        /*if (!Consultant_RoleDAO.insertTousRolesTransaction(liste_consultant_roleCree))
+            return "Erreur lors de l'insertion des roles du consultant";*/
+
+    //return null;
+
 }

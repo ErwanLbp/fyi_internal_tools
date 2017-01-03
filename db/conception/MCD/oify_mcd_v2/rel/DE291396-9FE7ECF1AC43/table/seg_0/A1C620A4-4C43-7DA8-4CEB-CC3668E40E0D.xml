@@ -51,19 +51,6 @@
 <colAssociation fkAssociation="84612EEF-FCE2-CFD5-ADD0-67C94B5B3889" referredColumn="180EE96C-AE06-B47A-296E-5FC2883EF1CF"/>
 </associations>
 </Column>
-<Column name="plus_precision" id="606C43BC-89FF-221D-02E1-9A01C04EC388">
-<sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
-<createdBy>eisti</createdBy>
-<createdTime>2016-11-02 09:08:37 UTC</createdTime>
-<ownerDesignName>oify_mcd_v2</ownerDesignName>
-<importedID>2660EC72-8BC5-7504-DF91-3EB268615F3A</importedID>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<domain>91928177-2675-73BA-DE62-04DCC3B02354</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="date_debut" id="8FDF3618-4764-D952-899C-4993CDA6FDC4">
 <sourceDDLFile>V2016.10.29_03.10__create_absence.sql</sourceDDLFile>
 <createdBy>eisti</createdBy>

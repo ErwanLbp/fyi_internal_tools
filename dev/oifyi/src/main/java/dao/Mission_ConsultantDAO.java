@@ -1,7 +1,6 @@
 package dao;
 
 import common.Consultant;
-import common.Mission;
 import common.Mission_Consultant;
 import db.MyConnectorJDBC;
 
@@ -21,14 +20,15 @@ public class Mission_ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
         ArrayList<Consultant> listeConsultants = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password, co.role_id FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID = co.ID_CONSULTANT AND mc.MISSION_ID=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID = co.ID_CONSULTANT AND mc.MISSION_ID=?")) {
             req.setInt(1, mission_id);
             ResultSet res = req.executeQuery();
             while (res.next()) {
-                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
+            listeConsultants.clear();
         }
         return listeConsultants;
     }
@@ -38,14 +38,13 @@ public class Mission_ConsultantDAO {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
         ArrayList<Consultant> listeConsultants = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT co.id_consultant, co.nom, co.prenom, co.username, co.password, co.role_id FROM CONSULTANT co, MISSION_CONSULTANT mc WHERE mc.MISSION_ID=? AND co.id_consultant NOT IN (SELECT CONSULTANT_ID FROM MISSION_CONSULTANT WHERE MISSION_ID=?)")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM CONSULTANT WHERE ID_CONSULTANT NOT IN (SELECT CONSULTANT_ID FROM MISSION_CONSULTANT WHERE MISSION_ID=?)")) {
             req.setInt(1, mission_id);
-            req.setInt(2, mission_id);
             ResultSet res = req.executeQuery();
             while (res.next()) {
-                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password"), res.getInt("role_id")));
+                listeConsultants.add(new Consultant(res.getInt("id_consultant"), res.getString("nom"), res.getString("prenom"), res.getString("username"), res.getString("password")));
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return listeConsultants;
@@ -79,14 +78,14 @@ public class Mission_ConsultantDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-            return false;
+        return false;
     }
 
     public static boolean isInDB(int id_mission, int id_consultant) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION_CONSULTANT WHERE ID_MISSION=? AND ID_CONSULTANT=?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION_CONSULTANT WHERE MISSION_ID=? AND CONSULTANT_ID=?")) {
             req.setInt(1, id_mission);
             req.setInt(2, id_consultant);
             ResultSet res = req.executeQuery();

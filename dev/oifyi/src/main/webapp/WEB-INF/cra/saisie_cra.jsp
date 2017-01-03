@@ -62,170 +62,171 @@
     Map<Integer, Integer> mMissionIdCraMois = CraMoisDAO.getMapMissionIdCraMois(id_consultant, moisAnneeSQL);
 %>
 
-<form action="<%=request.getContextPath()%>/saisieCra" method="post" class="well" id="formSaisieCra">
-    <fieldset <%= (!mMissionIdCraMois.isEmpty()) ? "disabled" : "" %>>
-        <legend>
-            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"><--</a>
-            Saisie du CRA du mois
-            <b>
-                <%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
-            </b>
-            <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>">--></a>
-        </legend>
+<div class="col-lg-12">
+    <form action="/oifyi/saisieCra" method="post" class="well" id="formSaisieCra">
+        <fieldset <%= (!mMissionIdCraMois.isEmpty()) ? "disabled" : "" %>>
 
-        <% if (request.getAttribute("erreur") != null) { %>
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
-        </div>
-        <% } %>
-
-        <%--Champs caché pour transmettre le mois courant et le consultant concerné--%>
-        <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>
-        <input type="hidden" name="consultant_id" value="<%=id_consultant%>"/>
-
-
-        <table class="table table-bordered table-striped table-condensed" onchange="remplirTotaux()" cellpadding="0" cellspacing="0">
-
-            <%--Ligne pour les numéros de colonnes--%>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <th class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
-                    <%=i + 1%>
-                </th>
-                <% } %>
-                <th>Total</th>
-            </tr>
-
-            <%--Ligne de titre pour 'Journées facturables'--%>
-            <tr>
-                <th colspan="<%=nbCol%>"><h4><b>Journees facturables</b></h4></th>
-            </tr>
-
-            <%--Liste des missions et case de saisie pour chaque jour--%>
-            <% for (Mission m : missions) { %>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
-                </h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <%
-                        CraJour cj = null;
-                        if (mMissionIdCraMois.get(m.getId_mission()) != null)
-                            cj = CraJourDAO.get(mMissionIdCraMois.get(m.getId_mission()), i+1);
-                        String travail = (cj == null) ? "" : "" + cj.getTravail();
-                    %>
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)" value="<%=travail%>"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_M_<%=m.getId_mission()%>" title="Total de jours travaillés sur cette mission"/>
-                </td>
-            </tr>
+            <% if (request.getAttribute("erreur") != null) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <strong>Erreur! </strong><%= request.getAttribute("erreur") %>
+            </div>
             <% } %>
 
-            <%--Ligne de séparation--%>
-            <tr>
-                <th colspan="<%=nbCol%>"></th>
-            </tr>
+            <%--Champs caché pour transmettre le mois courant et le consultant concerné--%>
+            <input type="hidden" name="moisAnnee" value="<%=datePourMoisCourant.getTime()%>"/>
+            <input type="hidden" name="consultant_id" value="<%=id_consultant%>"/>
 
-            <%--Ligne de titre pour 'Astreintes'--%>
-            <tr>
-                <th colspan="<%=nbCol%>"><h4><b>Astreintes</b></h4></th>
-            </tr>
+            <table class="table table-bordered table-striped table-condensed" onchange="remplirTotaux()" cellpadding="0" cellspacing="0">
+                <caption>
+                    <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisPrec)%>"> <-- </a>
+                    Saisie du CRA du mois
+                    <b>
+                        <%= new SimpleDateFormat("MM - yyyy").format(datePourMoisCourant)%>
+                    </b>
+                    <a href="<%=MappingUrlFichierDAO.getMuf("cra","saisie").formerUrl()%>&moisAnneeCourant=<%= new SimpleDateFormat("yyyy-MM").format(datePourMoisSuiv)%>"> --> </a>
+                </caption>
 
-            <%--Liste des astreintes et case de saisie pour chaque jour--%>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Jour (nb jour)</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_J_<%=i%>" title="Nombre d'astreinte de jour"/>
-                </td>
+                <%--Ligne pour les numéros de colonnes--%>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <th class="<%= listWeekend.contains(i) ? "weekend" : "" %>">
+                        <%=i + 1%>
+                    </th>
+                    <% } %>
+                    <th>Total</th>
+                </tr>
+
+                <%--Ligne de titre pour 'Journées facturables'--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"><h4><b>Journees facturables</b></h4></th>
+                </tr>
+
+                <%--Liste des missions et case de saisie pour chaque jour--%>
+                <% for (Mission m : missions) { %>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
+                    </h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
+                        <%
+                            CraJour cj = null;
+                            if (mMissionIdCraMois.get(m.getId_mission()) != null)
+                                cj = CraJourDAO.get(mMissionIdCraMois.get(m.getId_mission()), i + 1);
+                            String travail = (cj == null) ? "" : "" + cj.getTravail();
+                        %>
+                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="M_<%=m.getId_mission()%>_<%=i%>" title="Pourcentage du jour travaillé (entre 0 et 1)" value="<%=travail%>"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_M_<%=m.getId_mission()%>" title="Total de jours travaillés sur cette mission"/>
+                    </td>
+                </tr>
                 <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_J" title="Nombre total d'astreinte de jour"/>
-                </td>
-            </tr>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Nuit (nb jour)</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_N_<%=i%>" title="Nombre d'astreinte de nuit"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_N" title="Nombre total d'astreinte de nuit"/>
-                </td>
-            </tr>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Interventions (nb heure)</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_I_<%=i%>" title="Nombre d'heure d'intervention de l'astreinte"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_I" title="Nombre total d'heures d'intervention"/>
-                </td>
-            </tr>
 
-            <%--Ligne de séparation--%>
-            <tr>
-                <th colspan="<%=nbCol%>"></th>
-            </tr>
+                <%--Ligne de séparation--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"></th>
+                </tr>
 
-            <%--Ligne de titre pour 'Journées d'absences'--%>
-            <tr>
-                <th colspan="<%=nbCol%>"><h4><b>Journees d'absences</b></h4></th>
-            </tr>
+                <%--Ligne de titre pour 'Astreintes'--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"><h4><b>Astreintes</b></h4></th>
+                </tr>
 
-            <%--Liste des journées d'absences et case de saisie pour chaque jour--%>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Congé</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AB_C" title="Nombre total de jours de congés"/>
-                </td>
-            </tr>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AB_F" title="Nombre total de jours feriés"/>
-                </td>
-            </tr>
+                <%--Liste des astreintes et case de saisie pour chaque jour--%>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Jour (nb jour)</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
+                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_J_<%=i%>" title="Nombre d'astreinte de jour"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_J" title="Nombre total d'astreinte de jour"/>
+                    </td>
+                </tr>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Nuit (nb jour)</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
+                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_N_<%=i%>" title="Nombre d'astreinte de nuit"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_N" title="Nombre total d'astreinte de nuit"/>
+                    </td>
+                </tr>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Interventions (nb heure)</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
+                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AS_I_<%=i%>" title="Nombre d'heure d'intervention de l'astreinte"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AS_I" title="Nombre total d'heures d'intervention"/>
+                    </td>
+                </tr>
 
-            <%--Ligne de séparation--%>
-            <tr>
-                <th colspan="<%=nbCol%>"></th>
-            </tr>
+                <%--Ligne de séparation--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"></th>
+                </tr>
 
-            <%--Ligne des totaux par jour et du total complet du mois--%>
-            <tr class="tailleLigne">
-                <th class="firstCase" colspan="<%=colspanTH%>"><h5>Total</h5></th>
-                <% for (int i = 0; i < jourMaxDuMois; i++) { %>
-                <td class="<%= listWeekend.contains(i) ? "weekend" : "" %> intStyle">
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
-                </td>
-                <% } %>
-                <td>
-                    <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_tot" title="Total de jours imputés"/>
-                </td>
-            </tr>
+                <%--Ligne de titre pour 'Journées d'absences'--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"><h4><b>Journees d'absences</b></h4></th>
+                </tr>
 
-        </table>
-        <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
-    </fieldset>
-</form>
+                <%--Liste des journées d'absences et case de saisie pour chaque jour--%>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Congé</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
+                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AB_C" title="Nombre total de jours de congés"/>
+                    </td>
+                </tr>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
+                        <input class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_AB_F" title="Nombre total de jours feriés"/>
+                    </td>
+                </tr>
+
+                <%--Ligne de séparation--%>
+                <tr>
+                    <th colspan="<%=nbCol%>"></th>
+                </tr>
+
+                <%--Ligne des totaux par jour et du total complet du mois--%>
+                <tr class="tailleLigne">
+                    <th class="firstCase" colspan="<%=colspanTH%>"><h5>Total</h5></th>
+                    <% for (int i = 0; i < jourMaxDuMois; i++) { %>
+                    <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_col_<%=i%>" title="Total du pourcentage de jour travaillé"/>
+                    </td>
+                    <% } %>
+                    <td>
+                        <input class="inputeSize" readonly type="text" min="0" max="1" size="<%=size%>" id="tot_tot" title="Total de jours imputés"/>
+                    </td>
+                </tr>
+
+            </table>
+            <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
+        </fieldset>
+    </form>
+</div>
 
 <script type="text/javascript">
     function remplirTotaux() {

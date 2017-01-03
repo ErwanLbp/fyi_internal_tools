@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3F65D197-0354-F201-24D0-53B23E36E1CF" name="note_frais">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:52:56 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<ordsAlias>table_29</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_note_frais" id="71B45304-5825-B7FC-1A2E-91509B6F3E6E">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:55:02 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DE7DC368-1E46-928B-8647-19342A4EE9DA" referredColumn="5A0A056E-75C3-885F-0810-1463C58C246B"/>
+</associations>
+</Column>
+<Column name="date" id="BF7C0701-1AAA-CF34-5C7F-13C8FCFDEE7A">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 16:55:02 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>903DE180-6B86-F7ED-56BD-27A742440AB8</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="libelle" id="AB985BA8-0D80-2BD6-5514-11703CA1F8BC">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:01:47 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>4DC62F91-52D5-12A1-13C7-9B65295CCC64</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_status" id="782DAE8F-6AB4-0E23-C6D9-1CD2877F3D02">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:01:47 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>C5A78DB9-68AC-8FFC-34E1-9C0199B76709</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="087B1BCB-ABE0-4FAB-9616-52A09373B9BA" name="note_frais_PK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:03:01 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="71B45304-5825-B7FC-1A2E-91509B6F3E6E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E8146F9F-BA90-29EF-BCDB-2F225EDC19AF" name="note_frais_status_note_frais_FK">
+<createdBy>eisti</createdBy>
+<createdTime>2016-11-08 17:09:13 UTC</createdTime>
+<ownerDesignName>oify_mcd_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="71B45304-5825-B7FC-1A2E-91509B6F3E6E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
