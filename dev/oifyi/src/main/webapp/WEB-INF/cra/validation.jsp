@@ -1,6 +1,7 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraMois" %>
 <%@ page import="common.Recherche" %>
+<%@ page import="common.StatusCra" %>
 <%@ page import="dao.*" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -95,26 +96,23 @@
                 <script type="text/javascript">document.getElementById("mois_<%=moisTmp%>").rowSpan = Number(document.getElementById("mois_<%=moisTmp%>").rowSpan) + 1;
                 </script>
                 <% } %>
-                <td width="40%"><%=MissionDAO.get(cm.getMission_id()).getNom()%>
+                <td width="45%"><%=MissionDAO.get(cm.getMission_id()).getNom()%>
                 </td>
-                <td width="10%"><%=consultantTmp.getNom() + " " + consultantTmp.getPrenom()%>
+                <td width="15%"><%=consultantTmp.getNom() + " " + consultantTmp.getPrenom()%>
                 </td>
-                <td width="30%">
+                <td width="20%" class="input-group">
                     <input type="hidden" name="idCraMois" value="<%=cm.getId_cra_mois()%>"/>
-                    <table>
-                        <tr>
-                            <% String libelle_status = StatusCraDAO.get(cm.getStatus_cra_id()).getLibelle(); %>
-                            <td rowspan="3" class="<%=libelle_status%> well"><%=libelle_status%>
-                            </td>
-                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="none_<%=cm.getId_cra_mois()%>" value="none" checked/></span><label for="none_<%=cm.getId_cra_mois()%>" class="form-control">Ne rien faire</label></td>
-                        </tr>
-                        <tr>
-                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="valider_<%=cm.getId_cra_mois()%>" value="valider"/></span><label for="valider_<%=cm.getId_cra_mois()%>" class="form-control">Valider</label></td>
-                        </tr>
-                        <tr>
-                            <td class="input-group validation-action-cell"><span class="input-group-addon"><input type="radio" name="action_<%=cm.getId_cra_mois()%>" id="modifier_<%=cm.getId_cra_mois()%>" value="modifier"/></span><label for="modifier_<%=cm.getId_cra_mois()%>" class="form-control">A modifier</label></td>
-                        </tr>
-                    </table>
+                    <%
+                        List<StatusCra> statusCras = StatusCraDAO.getAll();
+                        statusCras.remove(0);
+                    %>
+                    <label for="statusCra" class="input-group-addon">Status</label>
+                    <select name="statusCra" id="statusCra">
+                        <% for (StatusCra statusCra : statusCras) { %>
+                        <option value="<%=statusCra.getId_status_cra()%>" <%=cm.getStatus_cra_id() == statusCra.getId_status_cra() ? "selected" : ""%>><%=statusCra.getLibelle()%>
+                        </option>
+                        <%}%>
+                    </select>
                 </td>
                 <td width="10%">
                     <a href="<%=MappingUrlFichierDAO.getMuf("cra", "saisie").formerUrl()%>&moisAnneeCourant=<%=new SimpleDateFormat("yyyy-MM").format(cm.getMois_annee())%>&idConsultant=<%=cm.getConsultant_id()%>">

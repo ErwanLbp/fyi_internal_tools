@@ -61,13 +61,13 @@ html {
 }
 
 .Envoyé, .Envoyￃﾩ {
-    color: blue;
+    background-color: blue;
 }
 
 .Validé, .Validￃﾩ {
-    color: green;
+    background-color: green;
 }
 
 .modifier {
-    color: orange;
+    background-color: orange;
 }
