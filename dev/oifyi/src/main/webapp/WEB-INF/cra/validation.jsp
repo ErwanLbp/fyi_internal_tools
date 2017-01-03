@@ -19,12 +19,17 @@
         try {
             Date dMoisAnnee = new SimpleDateFormat("yyyy-MM").parse(moisAnnee);
             calendar.setTime(dMoisAnnee);
+            System.out.println(calendar.getTime());
         } catch (ParseException e) {
             request.setAttribute("erreur", "La date reçue est mal écrite");
         }
     }
+    System.out.println(calendar.getTime());
+
     // Remise du calendrier sur le premier jour du mois courant
     calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+    System.out.println("Après remise à 1 : " + calendar.getTime());
 
     // Date SQL pour le CraMoisDAO
     java.sql.Date moisAnneeSQL = new java.sql.Date(calendar.getTimeInMillis());
