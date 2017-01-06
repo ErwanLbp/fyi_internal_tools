@@ -113,11 +113,20 @@
 
     <servlet>
         <servlet-name>ValiderCra</servlet-name>
-   <servlet-class>servlets.ValiderCra</servlet-class>
+        <servlet-class>servlets.ValiderCra</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ValiderCra</servlet-name>
         <url-pattern>/oifyi/ValiderCra</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <servlet-name>UpdateProfil</servlet-name>
+        <servlet-class>servlets.UpdateProfil</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateProfil</servlet-name>
+        <url-pattern>/oifyi/update_profil_consultant</url-pattern>
+    </servlet-mapping>
+
 </web-app>
