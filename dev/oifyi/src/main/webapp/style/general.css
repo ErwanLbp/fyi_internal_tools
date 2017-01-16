@@ -11,6 +11,11 @@ html {
     background-color: lightgrey;
 }
 
+body{
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
 #formSaisieCra input[type=text] {
     border: none;
     vertical-align: middle;
