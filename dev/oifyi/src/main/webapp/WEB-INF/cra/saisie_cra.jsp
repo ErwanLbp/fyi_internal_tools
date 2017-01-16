@@ -1,13 +1,10 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraJour" %>
 <%@ page import="common.Mission" %>
-<%@ page import="dao.CraJourDAO" %>
-<%@ page import="dao.CraMoisDAO" %>
-<%@ page import="dao.MappingUrlFichierDAO" %>
-<%@ page import="dao.MissionDAO" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
+<%@ page import="dao.*" %>
 
 <%
     Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte");
@@ -107,7 +104,7 @@
                 <% for (Mission m : missions) { %>
                 <tr class="tailleLigne" id="tr_mission_<%=m.getId_mission()%>">
                     <th class="firstCase" colspan="<%=colspanTH%>">
-                        <h5><%=m.getNom()%></h5>
+                        <h5><%=m.getNom()%> - <%=ClientDAO.get(m.getClient_id()).getRaison_sociale()%></h5>
                     </th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
