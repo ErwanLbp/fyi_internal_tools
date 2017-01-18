@@ -1,13 +1,10 @@
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraJour" %>
 <%@ page import="common.Mission" %>
-<%@ page import="dao.CraJourDAO" %>
-<%@ page import="dao.CraMoisDAO" %>
-<%@ page import="dao.MappingUrlFichierDAO" %>
-<%@ page import="dao.MissionDAO" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
+<%@ page import="dao.*" %>
 
 <%
     Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte");
@@ -105,9 +102,10 @@
 
                 <%--Liste des missions et case de saisie pour chaque jour--%>
                 <% for (Mission m : missions) { %>
-                <tr class="tailleLigne">
-                    <th class="firstCase" colspan="<%=colspanTH%>"><h5><%=m.getNom()%>
-                    </h5></th>
+                <tr class="tailleLigne" id="tr_mission_<%=m.getId_mission()%>">
+                    <th class="firstCase" colspan="<%=colspanTH%>">
+                        <h5><%=m.getNom()%> - <%=ClientDAO.get(m.getClient_id()).getRaison_sociale()%></h5>
+                    </th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
                         <%
@@ -225,6 +223,10 @@
             </table>
             <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
         </fieldset>
+
+        <%for( Mission m: missions ) { %>
+        <input type="button" class="btn btn-default" value="Imprimer mission <%=m.getNom()%>" onclick="Impression(<%=m.getId_mission()%>)"/>
+        <%}%>
     </form>
 </div>
 
@@ -241,7 +243,7 @@
         document.getElementById("tot_AS_I").value = 0;
         document.getElementById("tot_AB_F").value = 0;
         document.getElementById("tot_AB_C").value = 0;
-        document.getElementById("tot_tot").value = 0
+        document.getElementById("tot_tot").value = 0;
 
         // ************************************************
         // ** Totaux du bas et des cotés en même temps ! **
@@ -302,5 +304,22 @@
             if (document.getElementsByName("AS_N_" + i)[0].value == "") document.getElementsByName("AS_N_" + i)[0].value = 0;
             if (document.getElementsByName("AS_I_" + i)[0].value == "") document.getElementsByName("AS_I_" + i)[0].value = 0;
         }
+    }
+
+    function Impression(idMission) {
+
+        document.getElementsByClassName('header')[0].style.display = 'none';
+        <%for( Mission m: missions ) { %>
+        if(<%=m.getId_mission()%> != idMission) {
+            document.getElementById('tr_mission_<%=m.getId_mission()%>').style.display = 'none';
+        }
+        <%}%>
+        window.print();
+        document.getElementsByClassName('header')[0].style.display = 'block';
+        <%for( Mission m: missions ) { %>
+        if(<%=m.getId_mission()%> != idMission) {
+            document.getElementById('tr_mission_<%=m.getId_mission()%>').style.display = 'table-row';
+        }
+        <%}%>
     }
 </script>

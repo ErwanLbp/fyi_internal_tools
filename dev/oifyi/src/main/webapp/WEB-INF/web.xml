@@ -20,6 +20,11 @@
             <page-encoding>UTF-8</page-encoding>
         </jsp-property-group>
     </jsp-config>
+    
+    <context-param>
+        <param-name>file-upload</param-name>
+        <param-value>/data_oifyi/</param-value>
+    </context-param>
 
     <servlet>
         <servlet-name>connexion</servlet-name>
@@ -129,4 +134,12 @@
         <url-pattern>/oifyi/update_profil_consultant</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UploadCV</servlet-name>
+        <servlet-class>servlets.UploadCV</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadCV</servlet-name>
+        <url-pattern>/oifyi/upload_cv</url-pattern>
+    </servlet-mapping>
 </web-app>

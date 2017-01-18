@@ -55,7 +55,7 @@
 
     <title>OIFYI Intranet</title>
 </head>
-<body class="container">
+<body>
 <div id="background"></div>
 <div class="header">
     <jsp:include page="WEB-INF/header.jsp" flush="true"/>
