@@ -41,6 +41,10 @@ echo
 echo "*** Suppression du war"
 sudo rm -drfv $pathTMCT8/oifyi/oifyi.war
 
+echo 
+echo "*** Acquisition des droits sur le dossier de tomcat"
+sudo chmod 777 $pathTMCT8/oifyi/
+
 echo
 echo "*** Execution du script de création du schéma de la base de données en local"
 echo -n "Login dba : "
@@ -49,6 +53,11 @@ echo -n "Password dba : "
 read -s passSysOracle
 unset no_proxy
 echo exit | sqlplus $loginSysOracle/$passSysOracle @create_user
+
+echo
+echo "*** Creation des dossiers flyway dans : `pwd`"
+sudo mkdir flyway/
+sudo mkdir flyway/sql/
 
 echo
 echo "*** Copie des migrations flyway dans le dossier d'install"
