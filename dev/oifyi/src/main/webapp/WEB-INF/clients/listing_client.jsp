@@ -6,24 +6,6 @@
 
 <div class="col-lg-12">
     <div class="row">
-        <div class="col-md-6">
-            <h2>Rechercher un client</h2>
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Rechercher client"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <br/><br/><br/>
-
-    <div class="row">
         <div class="col-lg-12">
             <% List<Client> lcli = ClientDAO.getAll();%>
             <table class="table table-striped well">

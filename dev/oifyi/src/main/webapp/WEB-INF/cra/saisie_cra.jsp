@@ -211,7 +211,7 @@
                                 }
                             }
                         %>
-                        <input disabled class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé" value="<%=estAbsent?"1":""%>"/>
+                        <input readonly class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="Utiliser le module d'absences pour en saisir" value="<%=estAbsent?"1":""%>"/>
                     </td>
                     <% } %>
                     <td>
@@ -222,7 +222,7 @@
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
-                        <input disabled class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
+                        <input readonly class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
                     </td>
                     <% } %>
                     <td>
@@ -249,7 +249,7 @@
                 </tr>
 
             </table>
-            <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
+            <input type="submit" onclick="remplirVidesZeros(); return valider()" class="btn btn-primary" value="Envoyer"/>
         </fieldset>
 
         <%for (Mission m : missions) { %>
@@ -259,6 +259,17 @@
 </div>
 
 <script type="text/javascript">
+
+    function valider() {
+        for (i = 0; i < <%=jourMaxDuMois%>; i++) {
+            if (document.getElementById('tot_col_' + i).value != 1 && document.getElementById('tot_col_' + i).value != 0) {
+                alert('La colonne ' + (i + 1) + ' doit contenir un total = 1 ou = 0');
+                return false;
+            }
+        }
+        return true;
+    }
+
     function remplirTotaux() {
         // *******************
         // ** Remise à zero **

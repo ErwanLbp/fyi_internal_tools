@@ -8,21 +8,6 @@
 
 
 <div class="col-lg-12">
-    <div class="row barre-recherche">
-        <div class="col-md-5">
-            <form method="post" action="/oifyi/recherche_consultant">
-                <div id="custom-search-input" class="input-group col-md-12">
-                    <input type="text" class="form-control" placeholder="Rechercher un consultant"/>
-                    <span class="input-group-btn">
-                        <button class="btn btn-info" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div class="row">
         <% ArrayList<Consultant> lcon = ConsultantDAO.getAll(request.getParameter("sort"));%>
         <% String url_page = Recherche.supprimerSort(request.getRequestURI() + "?" + request.getQueryString()); %>

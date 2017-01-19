@@ -81,7 +81,6 @@ public class SaisieCra extends HttpServlet {
         }
     }
 
-    //TODO Javadoc : SaisieCra
     private String recuperationChampsForm(HttpServletRequest req) {
         try {
             consultant_id = Integer.parseInt(req.getParameter("consultant_id"));
@@ -159,7 +158,6 @@ public class SaisieCra extends HttpServlet {
         return null;
     }
 
-    //TODO Javadoc : SaisieCra
     private String validationChamps() {
 
         auMoinsUnJourTravaille = new boolean[missions.size()];
@@ -218,10 +216,7 @@ public class SaisieCra extends HttpServlet {
                     mCraJour.put(new CraJour(-1, i + 1, joursCra[i][j]), missions.get(j).getId_mission());
             }
 
-            // TODO Pour les absences
-
             // TODO Pour les astreintes
-
         }
 
         // On lance l'insertion de la transaction
