@@ -9,16 +9,12 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * <h1>dao ConsultantDAO</h1>
- * TODO Description
- *
  * @author Croute
  * @version 1.0
  * @since 25-10-2016
  */
 public class MissionDAO {
 
-    //TODO Javadoc : MissionDAO
     public static Mission get(int id_mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -34,7 +30,6 @@ public class MissionDAO {
         return null;
     }
 
-    //TODO Javadoc : MissionDAO
     public static Mission get(String nom_mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -50,7 +45,6 @@ public class MissionDAO {
         return null;
     }
 
-    //TODO Javadoc : ConsultantDAO
     public static ArrayList<Mission> getAll(String orderBy) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -71,7 +65,6 @@ public class MissionDAO {
     }
 
 
-    //TODO Javadoc : MissionDAO
     public static boolean insert(Mission mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -90,7 +83,6 @@ public class MissionDAO {
         }
     }
 
-    //TODO Javadoc : MissionDAO
     public static boolean update(Mission mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -110,7 +102,6 @@ public class MissionDAO {
         }
     }
 
-    //TODO Javadoc : MissionDAO
     public static boolean delete(int id_mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -124,7 +115,6 @@ public class MissionDAO {
         }
     }
 
-    //TODO Javadoc : MissionDAO
     public static boolean delete(String nom_mission) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -138,7 +128,6 @@ public class MissionDAO {
         }
     }
 
-    //TODO Javadoc : MissionDAO
     public static List<Mission> getMissionsDuConsultant(int id_consultant, Date moisAnnee) {
         Connection connection = MyConnectorJDBC.getConnection();
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
@@ -160,6 +149,25 @@ public class MissionDAO {
         }
         return list_res;
     }
+
+
+    public static List<Mission> getMissionsDuConsultant(int id_consultant) {
+        Connection connection = MyConnectorJDBC.getConnection();
+        if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
+
+        List<Mission> list_res = new ArrayList<>();
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM MISSION m, MISSION_CONSULTANT mc WHERE mc.CONSULTANT_ID=? AND m.ID_MISSION=mc.MISSION_ID")) {
+            req.setInt(1, id_consultant);
+            ResultSet res = req.executeQuery();
+            while (res.next())
+                list_res.add(new Mission(res.getInt("ID_MISSION"), res.getString("nom"), res.getString("numero_contrat"), res.getInt("client_id"), res.getDate("date_debut"), res.getDate("date_fin"), res.getInt("tjm")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            list_res.clear();
+        }
+        return list_res;
+    }
+
 
     public static boolean isInDB(int id_mission) {
         Connection connection = MyConnectorJDBC.getConnection();

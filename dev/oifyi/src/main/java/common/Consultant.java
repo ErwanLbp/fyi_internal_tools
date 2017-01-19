@@ -1,9 +1,6 @@
 package common;
 
 /**
- * <h1>common NewConsultant</h1>
- * TODO Description
- *
  * @author Erwan
  * @version 1.0
  * @since 21-10-2016

@@ -1,5 +1,8 @@
 <%@ page import="common.Consultant" %>
+<%@ page import="common.Mission" %>
+<%@ page import="dao.ClientDAO" %>
 <%@ page import="dao.DocumentLinkDAO" %>
+<%@ page import="dao.MissionDAO" %>
 <%@ page import="java.util.List" %>
 
 <% Consultant consultantConnecte = (Consultant) session.getAttribute("consultantConnecte"); %>
@@ -54,14 +57,12 @@
                     <%=cv%>
                 </a>
                 </td>
-                <td>
-                    <iframe src="<%=cv%>" width="800" height="600" align="middle"></iframe>
-                </td>
-
+                <%--<td>--%>
+                <%--<iframe src="<%=cv%>" width="800" height="600" align="middle"></iframe>--%>
+                <%--</td>--%>
             </tr>
             <%}%>
         </table>
-
 
         <div class="form-group">
             <label for="idCV">Charger un nouveau CV : </label>
@@ -71,8 +72,37 @@
         <input type="submit" value="Upload" class="btn btn-primary"/>
     </form>
 
-    <div>responsable de pole</div>
-    <div>responsable commercial</div>
-    <div>date dernier entretien</div>
-    <div>Liste des missions actuelles</div>
+
+    <% List<Mission> missions = MissionDAO.getMissionsDuConsultant(consultantConnecte.getId()); %>
+    <form class="well">
+        <legend>Missions du consultant</legend>
+        <table class="table table-striped table-condensed well">
+            <tr>
+                <th>Raison sociale du client</th>
+                <th>Nom de la mission</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+            </tr>
+            <% for (Mission mission : missions) { %>
+            <tr>
+                <td>
+                    <%=ClientDAO.get(mission.getClient_id()).getRaison_sociale()%>
+                </td>
+                <td>
+                    <%=mission.getNom()%>
+                </td>
+                <td>
+                    <%=mission.getDate_debut()%>
+                </td>
+                <td>
+                    <%=mission.getDate_fin()%>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </form>
+
+    <%--<div>responsable de pole</div>--%>
+    <%--<div>responsable commercial</div>--%>
+    <%--<div>date dernier entretien</div>--%>
 </div>
