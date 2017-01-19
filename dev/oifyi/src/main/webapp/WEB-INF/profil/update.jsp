@@ -53,13 +53,13 @@
         <table class="table table-striped table-condensed well">
             <% for (String cv : cvs) { %>
             <tr>
-                <td><a href="<%=cv%>" target="_blank">
+                <td><a href="<%=cv%>" target="_blank" onclick="">
                     <%=cv%>
                 </a>
                 </td>
-                <%--<td>--%>
-                <%--<iframe src="<%=cv%>" width="800" height="600" align="middle"></iframe>--%>
-                <%--</td>--%>
+                <td>
+                    <iframe src="<%=cv%>" width="800" height="600" align="middle"></iframe>
+                </td>
             </tr>
             <%}%>
         </table>

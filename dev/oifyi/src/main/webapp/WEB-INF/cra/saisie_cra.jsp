@@ -211,7 +211,7 @@
                                 }
                             }
                         %>
-                        <input readonly class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé" value="<%=estAbsent?"1":""%>"/>
+                        <input disabled class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé" value="<%=estAbsent?"1":""%>"/>
                     </td>
                     <% } %>
                     <td>
@@ -222,7 +222,7 @@
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
-                        <input readonly class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
+                        <input disabled class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
                     </td>
                     <% } %>
                     <td>

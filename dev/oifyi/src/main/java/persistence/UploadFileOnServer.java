@@ -1,9 +1,7 @@
 package persistence;
 
 import common.Consultant;
-import common.Parametrage;
 import dao.DocumentLinkDAO;
-import log.Log;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -18,8 +16,6 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Classe de méthode pour la gestion des uploades
- *
  * @author Erwan LBP
  * @version 1.0
  * @since 06-01-2017
@@ -44,23 +40,15 @@ public class UploadFileOnServer {
 
             Iterator<FileItem> itr = items.iterator();
 
-            String path = new Parametrage("test").getClass().getProtectionDomain().getCodeSource().getLocation().getFile();
-
-            File f = new File(path + filepathToStore + dateDirectory);
-            Log.info("Dossier " + f.getPath(), true, false);
-            Log.info(f.mkdirs() ? "créé" : "non créé", false, true);
-
             while (itr.hasNext()) {
                 FileItem item = itr.next();
-                System.out.println("item : " + item);
 
                 String fileExtensionName = item.getName();
                 fileExtensionName = FilenameUtils.getExtension(fileExtensionName);
 
                 int idConsultant = ((Consultant) request.getSession().getAttribute("consultantConnecte")).getId();
 
-                File file = new File(path + filepathToStore + dateDirectory, idConsultant + "_" + date + "." + fileExtensionName);
-                System.out.println("absolute path : " + file.getAbsolutePath());
+                File file = new File(filepathToStore + dateDirectory, idConsultant + "_" + date + "." + fileExtensionName);
 
                 if (listOfExtensions.contains(fileExtensionName)) {
                     item.write(file);

@@ -23,7 +23,7 @@
     
     <context-param>
         <param-name>file-upload</param-name>
-        <param-value>/data_oifyi/</param-value>
+        <param-value>/home/eisti/data_oifyi/</param-value>
     </context-param>
 
     <servlet>

@@ -42,8 +42,9 @@ echo "*** Suppression du war"
 sudo rm -drfv $pathTMCT8/oifyi/oifyi.war
 
 echo 
-echo "*** Acquisition des droits sur le dossier de tomcat"
-sudo chmod 777 $pathTMCT8/oifyi/
+echo "*** Creation du dossier data_oifyi"
+sudo mkdir /home/eisti/data_oifyi/
+sudo chmod 777 /home/eisti/data_oifyi/
 
 echo
 echo "*** Execution du script de création du schéma de la base de données en local"
