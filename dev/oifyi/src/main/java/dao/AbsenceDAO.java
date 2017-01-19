@@ -69,16 +69,16 @@ public class AbsenceDAO {
         if (connection == null) throw new RuntimeException("Probleme de connexion à la base de données");
 
         ArrayList<Absence> listeAbsencesConsultant = new ArrayList<>();
-        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM ABSENCE WHERE ID_CONSULTANT=? AND DATE_DEBUT>? AND DATE_FIN<?")) {
+        try (PreparedStatement req = connection.prepareStatement("SELECT * FROM ABSENCE WHERE ID_CONSULTANT=? AND DATE_DEBUT>=? AND DATE_FIN<=?")) {
             req.setInt(1, id_consultant);
             req.setDate(2, date_debut_periode);
             req.setDate(3, date_fin_periode);
             ResultSet res = req.executeQuery();
             while (res.next())
                 listeAbsencesConsultant.add(new Absence(res.getInt("ID_ABSENCE"), res.getInt("ID_CONSULTANT"), res.getInt("ID_TYPE_ABSENCE"), res.getString("PLUS_PRECISION"), res.getDate("DATE_DEBUT"), res.getDate("DATE_FIN"), res.getInt("ID_STATUT_ABSENCE"), res.getString("COMMENTAIRE")));
-            return listeAbsencesConsultant;
         } catch (SQLException e) {
             e.printStackTrace();
+            listeAbsencesConsultant.clear();
         }
         return listeAbsencesConsultant;
     }

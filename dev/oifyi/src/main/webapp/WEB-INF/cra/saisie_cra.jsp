@@ -1,14 +1,20 @@
+<%@ page import="common.Absence" %>
 <%@ page import="common.Consultant" %>
 <%@ page import="common.CraJour" %>
 <%@ page import="common.Mission" %>
+<%@ page import="dao.*" %>
 <%@ page import="java.text.ParseException" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
-<%@ page import="dao.*" %>
 
 <%
     Consultant consultantConnecte = (Consultant) request.getSession().getAttribute("consultantConnecte");
     int id_consultant = consultantConnecte.getId();
+    try {
+        String idConsultantStringReq = request.getParameter("idConsultant");
+        if (idConsultantStringReq != null) id_consultant = Integer.parseInt(idConsultantStringReq);
+    } catch (Exception e) {
+    }
 %>
 <% //Récupération du mois courant, si aucun paramètre n'est envoyé, le mois courant sera sélectionné
     // La date en paramètre doit être au format yyyy-MM
@@ -22,7 +28,16 @@
             request.setAttribute("erreur", "La date reçue est mal écrite");
         }
     }
+    // Pour remettre l'heure à 0
+    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
+
     // Remise du calendrier sur le premier jour du mois courant
+    calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+
+    // Pour récupérer les absences
+    java.sql.Date datePremierJourSQL = new java.sql.Date(calendar.getTimeInMillis());
+    calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+    java.sql.Date dateDernierJourSQL = new java.sql.Date(calendar.getTimeInMillis());
     calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
 
     // Date SQL pour le CraMoisDAO
@@ -39,6 +54,7 @@
     // Réajustement pour avoir le mois/annee courant
     calendar.add(Calendar.MONTH, -1);
     Date datePourMoisCourant = calendar.getTime();
+
 
     // Variables de début et fin des boucles for pour afficher les cases de saisies
     int jourMaxDuMois = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -104,7 +120,8 @@
                 <% for (Mission m : missions) { %>
                 <tr class="tailleLigne" id="tr_mission_<%=m.getId_mission()%>">
                     <th class="firstCase" colspan="<%=colspanTH%>">
-                        <h5><%=m.getNom()%> - <%=ClientDAO.get(m.getClient_id()).getRaison_sociale()%></h5>
+                        <h5><%=m.getNom()%> - <%=ClientDAO.get(m.getClient_id()).getRaison_sociale()%>
+                        </h5>
                     </th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %>">
@@ -179,11 +196,22 @@
                 </tr>
 
                 <%--Liste des journées d'absences et case de saisie pour chaque jour--%>
+                <% List<Absence> absences = AbsenceDAO.getAllForConsultantBetween(id_consultant, datePremierJourSQL, dateDernierJourSQL);%>
+
                 <tr class="tailleLigne">
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Congé</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
-                        <input class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé"/>
+                        <%
+                            boolean estAbsent = false;
+                            for (Absence absence : absences) {
+                                if (absence.estAbsentLeJour(java.sql.Date.valueOf(calendar.get(Calendar.YEAR) + "-" + calendar.get(Calendar.MONTH) + "-" + (i + 1)))) {
+                                    estAbsent = true;
+                                    break;
+                                }
+                            }
+                        %>
+                        <input readonly class="inputeSize" type="text" min="0" max="1" size="<%=size%>" name="AB_C_<%=i%>" title="0 / 0.5 / 1 jour de congé" value="<%=estAbsent?"1":""%>"/>
                     </td>
                     <% } %>
                     <td>
@@ -194,7 +222,7 @@
                     <th class="firstCase" colspan="<%=colspanTH%>"><h5>Ferié</h5></th>
                     <% for (int i = 0; i < jourMaxDuMois; i++) { %>
                     <td class="intStyle <%= listWeekend.contains(i) ? "weekend" : "" %> ">
-                        <input class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
+                        <input readonly class="inputeSize" type="text" min="0" max="1" name="AB_F_<%=i%>" title="0 / 0.5 / 1 jour férié"/>
                     </td>
                     <% } %>
                     <td>
@@ -224,7 +252,7 @@
             <input type="submit" onclick="remplirVidesZeros()" class="btn btn-primary" value="Envoyer"/>
         </fieldset>
 
-        <%for( Mission m: missions ) { %>
+        <%for (Mission m : missions) { %>
         <input type="button" class="btn btn-default" value="Imprimer mission <%=m.getNom()%>" onclick="Impression(<%=m.getId_mission()%>)"/>
         <%}%>
     </form>
@@ -310,14 +338,20 @@
 
         document.getElementsByClassName('header')[0].style.display = 'none';
         <%for( Mission m: missions ) { %>
-        if(<%=m.getId_mission()%> != idMission) {
+        if (<%=m.getId_mission()%> !=
+        idMission
+    )
+        {
             document.getElementById('tr_mission_<%=m.getId_mission()%>').style.display = 'none';
         }
         <%}%>
         window.print();
         document.getElementsByClassName('header')[0].style.display = 'block';
         <%for( Mission m: missions ) { %>
-        if(<%=m.getId_mission()%> != idMission) {
+        if (<%=m.getId_mission()%> !=
+        idMission
+    )
+        {
             document.getElementById('tr_mission_<%=m.getId_mission()%>').style.display = 'table-row';
         }
         <%}%>

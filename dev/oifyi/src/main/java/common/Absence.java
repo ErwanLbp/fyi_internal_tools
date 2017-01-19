@@ -24,8 +24,8 @@ public class Absence {
     private String commentaire;
 
     /**
-     *
      * Constructeur avec l'id de absence
+     *
      * @param id_absence
      * @param id_consultant
      * @param id_type_absence
@@ -48,6 +48,7 @@ public class Absence {
 
     /**
      * Constructeur sans l'id de absence
+     *
      * @param id_consultant
      * @param id_type_absence
      * @param plus_precision
@@ -68,6 +69,7 @@ public class Absence {
 
     /**
      * Getter absence
+     *
      * @return id_absence
      */
     public int getId_absence() {
@@ -76,6 +78,7 @@ public class Absence {
 
     /**
      * Setter absence
+     *
      * @param id_absence
      */
     public void setId_absence(int id_absence) {
@@ -84,6 +87,7 @@ public class Absence {
 
     /**
      * Getter id_consultant
+     *
      * @return id_consultant
      */
     public int getId_consultant() {
@@ -92,6 +96,7 @@ public class Absence {
 
     /**
      * Setter id consultant
+     *
      * @param id_consultant
      */
     public void setId_consultant(int id_consultant) {
@@ -100,6 +105,7 @@ public class Absence {
 
     /**
      * Getter id type absence
+     *
      * @return id_type_absence
      */
     public int getId_type_absence() {
@@ -108,6 +114,7 @@ public class Absence {
 
     /**
      * Setter id type absence
+     *
      * @param id_type_absence
      */
     public void setId_type_absence(int id_type_absence) {
@@ -116,6 +123,7 @@ public class Absence {
 
     /**
      * Getter plus_precision
+     *
      * @return plus_precision
      */
     public String getPlus_precision() {
@@ -124,6 +132,7 @@ public class Absence {
 
     /**
      * Setter plus_precision
+     *
      * @param plus_precision
      */
     public void setPlus_precision(String plus_precision) {
@@ -132,6 +141,7 @@ public class Absence {
 
     /**
      * Getter date_debut
+     *
      * @return date_debut
      */
     public Date getDate_debut() {
@@ -140,6 +150,7 @@ public class Absence {
 
     /**
      * Setter date_debut
+     *
      * @param date_debut
      */
     public void setDate_debut(Date date_debut) {
@@ -148,6 +159,7 @@ public class Absence {
 
     /**
      * Getter date_fin
+     *
      * @return date_fin
      */
     public Date getDate_fin() {
@@ -156,6 +168,7 @@ public class Absence {
 
     /**
      * Setter date_fin
+     *
      * @param date_fin
      */
     public void setDate_fin(Date date_fin) {
@@ -164,6 +177,7 @@ public class Absence {
 
     /**
      * Setter id_statut_absence
+     *
      * @return id_statut_absence
      */
     public int getId_statut_absence() {
@@ -172,6 +186,7 @@ public class Absence {
 
     /**
      * Setter id_statut_absence
+     *
      * @param id_statut_absence
      */
     public void setId_statut_absence(int id_statut_absence) {
@@ -180,6 +195,7 @@ public class Absence {
 
     /**
      * Getter commentaire
+     *
      * @return commentaire
      */
     public String getCommentaire() {
@@ -188,9 +204,14 @@ public class Absence {
 
     /**
      * Setter commentaire
-      * @param commentaire
+     *
+     * @param commentaire
      */
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
+    }
+
+    public boolean estAbsentLeJour(Date date) {
+        return date_debut.getTime() <= date.getTime() && date.getTime() <= date_fin.getTime();
     }
 }
