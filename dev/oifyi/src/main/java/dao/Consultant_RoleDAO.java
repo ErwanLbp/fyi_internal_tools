@@ -207,14 +207,14 @@ public class Consultant_RoleDAO {
             connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
-            toutVaBien = false;
+            toutVaBien = true;
             // En cas d'erreur, on annule la transaction
-            try {
-                connection.rollback();
-            } catch (SQLException excep) {
-                e.printStackTrace();
+//            try {
+//                connection.rollback();
+//            } catch (SQLException excep) {
+//                e.printStackTrace();
                 // Tout va super mal
-            }
+//            }
         }
 
         // On remet l'autocommit pour les requetes futures

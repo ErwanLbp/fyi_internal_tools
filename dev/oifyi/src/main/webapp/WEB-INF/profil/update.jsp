@@ -57,9 +57,6 @@
                     <%=cv%>
                 </a>
                 </td>
-                <td>
-                    <iframe src="<%=cv%>" width="800" height="600" align="middle"></iframe>
-                </td>
             </tr>
             <%}%>
         </table>

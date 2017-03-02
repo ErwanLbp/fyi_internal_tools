@@ -27,7 +27,7 @@ echo
 echo "*** Démarrage du service oracle-xe"
 sudo service oracle-xe restart
 
-echo
+echo `pwd`
 echo "*** Copie de l'archive war dans le répertoire tomcat8 ($pathTMCT8)"
 sudo cp -v oifyi.war $pathTMCT8/oifyi
 
@@ -75,6 +75,6 @@ sudo rm -rdfv sql/*
 
 echo
 echo "*** Installation réussie dans le répertoire $pathTMCT8"
-echo "*** Le site est disponible à l'adresse http://localhost:8080/oifyi"
+echo "*** Le site est disponible à l'adresse http://localhost:8088/"
 
 exit 0;

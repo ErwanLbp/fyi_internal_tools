@@ -59,7 +59,6 @@
                     <td>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary" onclick="window.location.href='<%=MappingUrlFichierDAO.getMuf("consultant", "update").formerUrl()%>&idConsultant=<%=con.getId()%>'" title="Modifier le consultant"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                            <button class="btn btn-danger" onclick="window.location.href='/oifyi/supprimerConsultant?idConsultant=<%=con.getId()%>'" title="Supprimer le consultant"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                         </div>
                     </td>
                 </tr>
